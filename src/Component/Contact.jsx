@@ -1,6 +1,3 @@
-
-
-
 // import React, { useState } from "react";
 // import { motion, AnimatePresence } from "framer-motion";
 // import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
@@ -288,11 +285,6 @@
 
 // export default ContactUs;
 
-
-
-
-
-
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
@@ -399,7 +391,11 @@ const ContactUs = () => {
             className="bg-white text-gray-800 rounded-2xl shadow-2xl p-8 overflow-hidden"
           >
             <AnimatePresence mode="wait">
-              {activeForm === "contact" ? <ContactForm /> : <ModernListingForm />}
+              {activeForm === "contact" ? (
+                <ContactForm />
+              ) : (
+                <ModernListingForm />
+              )}
             </AnimatePresence>
           </motion.div>
         </div>
@@ -455,9 +451,61 @@ const ModernListingForm = () => {
   const [propertyType, setPropertyType] = useState("Individual");
   const [bedrooms, setBedrooms] = useState("");
   const [agree, setAgree] = useState(true);
+  const [location, setLocation] = useState("");
+  const [filteredLocations, setFilteredLocations] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  // 🏙 Popular Indore locations
+  const indoreLocations = [
+    "Vijay Nagar",
+    "Bhawarkua",
+    "Palasia",
+    "Rajendra Nagar",
+    "Rau",
+    "Nipania",
+    "Scheme No. 78",
+    "Khajrana",
+    "Tilak Nagar",
+    "Annapurna",
+    "Sudama Nagar",
+    "AB Road",
+    "LIG Colony",
+    "MG Road",
+    "Old Palasia",
+    "New Palasia",
+    "Yeshwant Club Road",
+    "Pipliyahana",
+    "Bhawrasla",
+    "Chhoti Gwaltoli",
+  ];
+
+  const handleLocationChange = (e) => {
+    const input = e.target.value;
+    setLocation(input);
+
+    // If input is empty → show top localities
+    if (input.trim() === "") {
+      setFilteredLocations(indoreLocations.slice(0, 5)); // show top 5
+      setShowSuggestions(true);
+      return;
+    }
+
+    // Otherwise → filter by input
+    const filtered = indoreLocations.filter((loc) =>
+      loc.toLowerCase().includes(input.toLowerCase())
+    );
+    setFilteredLocations(filtered);
+    setShowSuggestions(true);
+  };
+
+  const handleSelectLocation = (loc) => {
+    console.log("loc", loc);
+    setLocation(loc); // ✅ fill the input
+    setShowSuggestions(false); // hide dropdown
+  };
 
   return (
-    <form className="space-y-4">
+    <form className="space-y-4 relative">
       <h3 className="text-2xl font-bold mb-4 text-indigo-800">
         Property Listing Form
       </h3>
@@ -501,7 +549,7 @@ const ModernListingForm = () => {
           Choose your Property type
         </p>
         <div className="flex gap-3">
-          {["Apartment", "Individual" , "Plot" , "Commercial"].map((opt) => (
+          {["Apartment", "Individual", "Plot", "Commercial"].map((opt) => (
             <button
               key={opt}
               type="button"
@@ -518,10 +566,10 @@ const ModernListingForm = () => {
         </div>
       </div>
 
-      {/* Bedrooms */}
+      {/* Area Size */}
       <div>
         <p className="text-sm font-medium text-gray-700 mb-1">
-        Size of area in the property
+          Size of area in the property
         </p>
         <div className="flex gap-3">
           {["1", "2", "3", "4+"].map((num) => (
@@ -546,25 +594,53 @@ const ModernListingForm = () => {
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Select located city
         </label>
-        <select className="w-full p-3 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-indigo-500 outline-none">
-          <option>Bangalore</option>
-          <option>Mumbai</option>
-          <option>Delhi</option>
-          <option>Pune</option>
-          <option>Hyderabad</option>
+        <select
+          value="Indore"
+          disabled
+          className="w-full p-3 border rounded-lg bg-gray-100 text-gray-700 focus:ring-2 focus:ring-indigo-500 outline-none"
+        >
+          <option>Indore</option>
         </select>
       </div>
 
-      {/* Address */}
-      <div>
+      {/* Location Search */}
+      <div className="relative">
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Where is your property located?
         </label>
         <input
           type="text"
+          value={location}
+          onChange={handleLocationChange}
           placeholder="Search Locality, Landmark or Tech Park"
           className="w-full p-3 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-indigo-500 outline-none"
+          onFocus={() => {
+            if (location.trim() === "") {
+              setFilteredLocations(indoreLocations.slice(0, 5));
+            }
+            setShowSuggestions(true);
+          }}
+          // onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
         />
+
+        {/* Suggestions Dropdown */}
+        {showSuggestions && filteredLocations.length > 0 && (
+          <ul className="absolute z-10 bg-white border rounded-lg mt-1 w-full shadow-lg max-h-40 overflow-y-auto">
+            {filteredLocations.map((loc) => (
+              <li
+                key={loc}
+                onClick={() => {
+                  console.log("location inside the button" , loc);
+                  handleSelectLocation(loc);
+                  setLocation(loc);
+                }}
+                className="p-2 hover:bg-indigo-100 cursor-pointer w-full text-gray-700"
+              >
+                {loc}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       {/* Phone */}
