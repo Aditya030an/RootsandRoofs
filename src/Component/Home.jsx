@@ -2,8 +2,7 @@ import React, { useEffect, useRef } from "react"; // ✅ add useRef here
 import FAQSection from "./FAQ";
 import Scroll from "./Scroll";
 import bg from "./photos/pic.jpeg";
-// import logo from "./photos/Finallogo.png";
-import logo from "./photos/Finallogo2.png";
+import logo from "./photos/image.png";
 // import logo from "./photos/logo2.jpg";
 import villa1 from "./photos/villa55.jpeg";
 import villa2 from "./photos/villa2.avif";
