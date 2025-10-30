@@ -316,7 +316,7 @@ const RentalProperties = () => {
     propertyType: [],
     verified: false,
     parking: false,
-    priceRange: [50000, 20000000],
+    priceRange: [0, 20000000],
     areaRange: [0, 10000],
     bathrooms: [],
   });
@@ -401,7 +401,7 @@ const RentalProperties = () => {
       propertyType: [],
       verified: false,
       parking: false,
-      priceRange: [50000, 20000000],
+      priceRange: [0, 20000000],
       areaRange: [0, 10000],
       bathrooms: [],
     });
