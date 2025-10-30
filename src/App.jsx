@@ -15,6 +15,8 @@ import Contact from './Component/Contact.jsx';
 import Onestop from './Component/Onestop.jsx';
 
 import Careerpage from './Component/Careerpage.jsx';
+import ScrollToTopButton from './Component/ScrollToTopButton.jsx';
+import WhatsAppButton from './Component/WhatsAppButton.jsx';
 function App() {
   return (
     <Router>
@@ -34,6 +36,8 @@ function App() {
           <Route path="/Onestop" element={<Onestop />} />
         </Routes>
         <Footer></Footer>
+          <WhatsAppButton/>
+           <ScrollToTopButton />
       </div>
     </Router>
   );

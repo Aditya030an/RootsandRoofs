@@ -432,10 +432,10 @@ const RentalProperties = () => {
 
   // Filter properties
   const filteredProperties = dummyProperties.filter((property) => {
-    console.log("active tab" , activeTab);
+    // 1️⃣ Match tab (Buy, Rent, Commercial, Plot)
     if (property.type !== activeTab) return false;
 
-    // Search query filter
+    // 2️⃣ Search query filter
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
       const matchesSearch =
@@ -444,36 +444,47 @@ const RentalProperties = () => {
       if (!matchesSearch) return false;
     }
 
+    // 3️⃣ BHK filter
     if (filters.bhk.length > 0 && !filters.bhk.includes(property.bhk))
       return false;
+
+    // 4️⃣ Property type filter
     if (
       filters.propertyType.length > 0 &&
       !filters.propertyType.includes(property.propertyType)
     )
       return false;
+
+    // 5️⃣ Verified & parking filters
     if (filters.verified && !property.verified) return false;
     if (filters.parking && !property.parking) return false;
+
+    // 6️⃣ Price range
     if (
       property.price < filters.priceRange[0] ||
       property.price > filters.priceRange[1]
     )
       return false;
+
+    // 7️⃣ Area range
     if (
       property.area < filters.areaRange[0] ||
       property.area > filters.areaRange[1]
     )
       return false;
 
+    // 8️⃣ Bathrooms filter
     if (filters.bathrooms.length > 0) {
       const propBathrooms =
         property.bathrooms >= 5 ? "5+" : property.bathrooms.toString();
       if (!filters.bathrooms.includes(propBathrooms)) return false;
     }
 
+    // ✅ Passed all filters
     return true;
   });
 
-  console.log("filter property" , filteredProperties);
+  console.log("filter property", filteredProperties);
 
   // Close suggestions when clicking outside
   useEffect(() => {
@@ -710,7 +721,7 @@ const RentalProperties = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="sticky top-0 z-10 bg-white border-b border-slate-200 shadow-md "
+          className="sticky top-0  bg-white border-b border-slate-200 shadow-md "
         >
           <div className="px-6 md:px-20 py-4">
             <div className="flex items-center justify-between mb-4">
@@ -934,8 +945,8 @@ const RentalProperties = () => {
                       </div>
                       <Range
                         values={filters.priceRange}
-                        step={50000}
-                        min={50000}
+                        step={500}
+                        min={0}
                         max={20000000}
                         onChange={(values) =>
                           handleFilterChange("priceRange", values)
@@ -945,7 +956,7 @@ const RentalProperties = () => {
                             {...props}
                             className="w-full h-2 bg-slate-200 rounded-full relative"
                           >
-                            <div
+                            {/* <div
                               className="absolute h-2 bg-[#7cc933] rounded-full"
                               style={{
                                 left: `${
@@ -958,6 +969,18 @@ const RentalProperties = () => {
                                   ((filters.priceRange[1] - 50000) /
                                     (20000000 - 50000)) *
                                     100
+                                }%`,
+                              }}
+                            /> */}
+                            <div
+                              className="absolute h-2 bg-[#7cc933] rounded-full"
+                              style={{
+                                // Calculating percentage based on min=0 and max=20000000
+                                left: `${
+                                  (filters.priceRange[0] / 20000000) * 100
+                                }%`,
+                                right: `${
+                                  100 - (filters.priceRange[1] / 20000000) * 100
                                 }%`,
                               }}
                             />

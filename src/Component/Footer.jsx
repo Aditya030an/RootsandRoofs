@@ -17,8 +17,8 @@ const footerLinks = [
   { title: "Home", href: "#" },
   { title: "Work", href: "#" },
   { title: "Studio", href: "#" },
-  { title: "Services", href: "#" },
-  { title: "Contact", href: "#" },
+  { title: "Services", href: "/Services" },
+  { title: "Contact", href: "/Contact" },
 ];
 
 const socialIcons = [
