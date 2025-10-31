@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from "react"; // ✅ add useRef here
+import  {useRef } from "react"; // ✅ add useRef here
 import FAQSection from "./FAQ";
 import Scroll from "./Scroll";
 import bg from "./photos/pic.jpeg";
 import logo from "./photos/image.png";
-// import logo from "./photos/logo2.jpg";
+
 import villa1 from "./photos/villa55.jpeg";
 import villa2 from "./photos/villa2.avif";
 import villa3 from "./photos/villa3.avif";
@@ -13,12 +13,9 @@ import flat2 from "./photos/villa3.avif";
 import flat3 from "./photos/villa1.avif";
 
 import com1 from "./photos/villa3.avif";
-import com2 from "./photos/villa2.avif";
 import com3 from "./photos/villa1.avif";
-import cover from "./photos/bg.mp4";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Link, useNavigate } from "react-router-dom";
+import cover from "./photos/bg_1.mp4";
+
 import ServicesHighlight from "./ServicesHighlight";
 
 const collections = [
@@ -37,7 +34,6 @@ const Home = () => {
   const ref = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const navigate = useNavigate();
 
   const springX = useSpring(x, { stiffness: 150, damping: 15 });
   const springY = useSpring(y, { stiffness: 150, damping: 15 });
@@ -62,13 +58,23 @@ const Home = () => {
         <div className="w-full h-[90vh] relative overflow-hidden">
           {/* Background Video */}
           <video
-            src={cover} // imported video path
+            src={cover}
             autoPlay
             loop
             muted
             playsInline
+            preload="none"
+            poster="/fallback.webp"
             className="absolute top-0 left-0 w-full h-full object-cover z-0"
-          />
+            aria-label="Background video showing Roots & Roofs properties"
+          >
+            <track
+              kind="captions"
+              src="/captions/intro.vtt"
+              srcLang="en"
+              label="English captions"
+            />
+          </video>
 
           {/* Lighter Overlay */}
           <div className="absolute top-0 left-0 w-full h-full bg-black/10 z-0" />
@@ -185,13 +191,11 @@ const Home = () => {
           </div>
         </div>
       </section>
-    
-    
+
       {/* Highlight Services Section */}
       <section>
-  <ServicesHighlight />
-</section>
-    
+        <ServicesHighlight />
+      </section>
 
       <section className="bg-gray-100 sticky top-[-110%] md:top-0 !z-999   py-16 px-6 md:px-20">
         {/* Section Title */}
@@ -214,6 +218,7 @@ const Home = () => {
               <img
                 src={item.image}
                 alt={item.title}
+                loading="lazy"
                 className="w-full h-48 md:h-56 object-cover transform group-hover:scale-105 transition duration-500"
               />
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition duration-300" />

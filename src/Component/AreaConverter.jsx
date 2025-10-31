@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FiChevronDown, FiSearch } from "react-icons/fi";
 import { MdSwapHoriz } from "react-icons/md";
 import { motion } from "framer-motion";
@@ -230,6 +230,7 @@ const AreaConverter = () => {
             <img
               src="/service-area-converter.png"
               alt="Area Calculator Illustration"
+              loading="lazy"
               className="w-full max-w-md lg:max-w-lg drop-shadow-2xl"
             />
           </motion.div>

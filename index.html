@@ -1,18 +1,148 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- ✅ Basic Meta -->
     <meta charset="UTF-8" />
-       <link rel="icon" type="image/png" href="/image.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Roots & Roofs</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <title>Roots & Roofs | Property Rentals & Real Estate Services</title>
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" type="image/png" href="/image.png" />
+
+    <!-- ✅ Description for SEO -->
+    <meta
+      name="description"
+      content="Roots & Roofs helps you find and list residential, commercial, and plot properties with ease. Explore verified listings, connect directly with owners, and discover your perfect property."
+    />
+
+    <!-- ✅ Keywords (optional, minor SEO impact) -->
+    <meta
+      name="keywords"
+      content="roots and roofs, real estate, property rental, buy house, sell property, commercial space, plots, rent home"
+    />
+
+    <!-- ✅ Open Graph / Social Sharing -->
+    <meta property="og:title" content="Roots & Roofs | Real Estate Platform" />
+    <meta
+      property="og:description"
+      content="Find residential, commercial, and plot properties easily on Roots & Roofs."
+    />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:url" content="https://rootsand-roofs.vercel.app/" />
+    <meta property="og:type" content="website" />
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Roots & Roofs" />
+    <meta
+      name="twitter:description"
+      content="Find and list properties with ease on Roots & Roofs."
+    />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <!-- ✅ Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- ✅ Optimized font imports -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Work+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ✅ Manifest (for PWA or mobile home screen support) -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- ✅ Theme color for browser address bar -->
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- ✅ Preload critical resources (faster LCP) -->
+    <link rel="preload" href="/image.png" as="image" />
+
+    <!-- ✅ Robots directive for SEO -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- ✅ Canonical URL to avoid duplicate content -->
+    <link rel="canonical" href="https://rootsand-roofs.vercel.app/" />
+
+    <!-- ✅ Inline CSS for preload spinner -->
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-      @import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-      
-      </style>
+      /* Fullscreen loader container */
+      #preloader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(6px);
+        z-index: 9999;
+      }
+
+      /* Dots animation */
+      .loader-dots {
+        display: flex;
+        gap: 8px;
+      }
+
+      .loader-dots span {
+        width: 10px;
+        height: 10px;
+        background: #334155; /* slate-700 */
+        border-radius: 50%;
+        animation: bounce 0.8s infinite ease-in-out;
+      }
+
+      .loader-dots span:nth-child(2) {
+        animation-delay: 0.15s;
+      }
+
+      .loader-dots span:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      @keyframes bounce {
+        0%,
+        80%,
+        100% {
+          transform: scale(0);
+        }
+        40% {
+          transform: scale(1);
+        }
+      }
+    </style>
   </head>
-  <body>
-    <div id="root"></div>
+
+  <body class="antialiased bg-white text-slate-900">
+    <!-- ✅ Root Container -->
+    <div id="root">
+      <!-- Preloader (shows before React mounts) -->
+      <div id="preloader">
+        <div class="loader-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Main entry point -->
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- ✅ Remove preloader once React mounts -->
+    <script>
+      window.addEventListener("load", () => {
+        const preloader = document.getElementById("preloader");
+        if (preloader) {
+          preloader.style.opacity = "0";
+          preloader.style.transition = "opacity 0.4s ease";
+          setTimeout(() => preloader.remove(), 400);
+        }
+      });
+    </script>
   </body>
 </html>

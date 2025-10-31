@@ -2,7 +2,6 @@ import flat3 from "./photos/villa1.avif";
 import com1 from "./photos/villa3.avif";
 import com2 from "./photos/villa2.avif";
 import com3 from "./photos/villa1.avif";
-import React from "react";
 import gsap from "gsap";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -86,6 +85,7 @@ gsap.registerPlugin(ScrollTrigger);
     <img
         src={com3}
         alt="Balloons"
+        loading="lazy"
         className="image opacity-0 translate-y-[120%]   rounded shadow-lg"
       />
 </Link>
@@ -98,6 +98,7 @@ gsap.registerPlugin(ScrollTrigger);
         <img
           src={flat3}
           alt="Girl"
+          loading="lazy"
           className="image opacity-0 translate-y-[100%] rounded shadow-lg"
           />
         </Link>
@@ -109,6 +110,7 @@ gsap.registerPlugin(ScrollTrigger);
         <img
           src={com1}
           alt="Plaque"
+          loading="lazy"
           className="image opacity-0 translate-y-[100%] rounded shadow-lg"
           />
         </Link>
@@ -120,6 +122,7 @@ gsap.registerPlugin(ScrollTrigger);
         <img
           src={com2}
           alt="Man"
+          loading="lazy"
           className="image  opacity-0 translate-y-[100%] rounded shadow-lg"
           />
         </Link>

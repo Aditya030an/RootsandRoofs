@@ -1,6 +1,3 @@
-
-
-import React from "react";
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -234,7 +231,7 @@ const Careerpage = () => {
           <ul className="grid grid-cols-1  font-[tinos]md:grid-cols-2 gap-4 text-lg text-gray-700">
             <li>🎯 Performance-based incentives</li>
             <li>🎓 Ongoing mentorship & training</li>
-            <li>🕒 Flexible work hours (select roles)</li>
+            <li>🕒 Flexible work hours (selected roles)</li>
             <li>🌍 Diverse, inclusive team culture</li>
             <li>🤝 Real estate expo & networking invites</li>
           </ul>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import { useLocation } from "react-router-dom"; // ✅ Import for active link
 import logo from "./photos/logo2.jpg";
@@ -27,6 +27,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Roots & Roofs"
+              loading="lazy"
               className="w-16 h-auto object-contain sm:w-20"
             />
           </div>

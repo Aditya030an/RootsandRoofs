@@ -1,8 +1,3 @@
-
-
-
-
-import React from "react";
 import { motion } from "framer-motion";
 import {
   FaArrowRight,
@@ -42,7 +37,7 @@ const PremiumAwwwardFooter = () => {
           transition={{ duration: 0.8 }}
           className="space-y-6"
         >
-          <img src={logo} alt="Roots 2 Roof Logo" className="w-28 h-auto" />
+          <img src={logo} alt="Roots 2 Roof Logo" loading="lazy" className="w-28 h-auto" />
           <p className="text-gray-400 text-base leading-relaxed max-w-sm">
             Roots 2 Roof is your trusted partner in real estate—helping you discover, buy, or list properties with ease, transparency, and confidence.
           </p>

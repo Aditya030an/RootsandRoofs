@@ -6,7 +6,6 @@
   import Onestop from "./Onestop";
   import EMICalculator from "../Component/EMICalculator"; // Make sure this exists
   import HomeLoanEligiblityCalculator from "./HomeLoanEligiblityCalculator";
-  import { FaFileInvoiceDollar} from "react-icons/fa";
   import {
     FaWrench,
     FaKey,
@@ -18,29 +17,6 @@
   import AreaConverter from "./AreaConverter";
   import ComparisonTable from "./ComparisonTable"
   import { useLocation } from "react-router-dom";
-
-
-
-
-  // Animation variants
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.25, // delay between each card
-      },
-    },
-  };
-
-  const card = {
-    hidden: { opacity: 0, y: 50 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
 
 
   const features = [
@@ -426,6 +402,7 @@
               <img
                 src={contactImg}
                 alt="Contact"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-green-600/60 via-transparent to-transparent" />
