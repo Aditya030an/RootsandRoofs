@@ -357,21 +357,27 @@ const ModernListingForm = () => {
       </div>
 
       {/* Phone */}
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
-          Enter your phone no. (should be available for calls & Whatsapp)
-        </label>
-        <div className="flex gap-2">
-          <span className="flex items-center px-3 border rounded-lg bg-gray-50 border-gray-300">
-            +91
-          </span>
-          <input
-            type="tel"
-            placeholder="Enter valid phone number"
-            className="flex-1 p-3 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-indigo-500 outline-none"
-          />
-        </div>
-      </div>
+     <div className="w-full">
+  <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+    Enter your phone no.{" "}
+    <span className="block sm:inline text-gray-500 text-xs sm:text-sm">
+      (should be available for calls & WhatsApp)
+    </span>
+  </label>
+
+  <div className="flex flex-col sm:flex-row gap-2">
+    <span className="flex items-center justify-center px-4 py-3 border rounded-lg bg-gray-50 border-gray-300 text-gray-700 text-sm sm:text-base">
+      +91
+    </span>
+
+    <input
+      type="tel"
+      placeholder="Enter valid phone number"
+      className="flex-1 px-4 py-3 border rounded-lg bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm sm:text-base"
+    />
+  </div>
+</div>
+
 
       {/* Email */}
       <div>

@@ -52,8 +52,7 @@
     },
     {
       title: "Unparalleled Expertise",
-      description:
-        "With 8+ years in the real estate industry, we currently oversee transactions worth ₹2000+ Crore.",
+      description:"“With a strong foundation in real estate, we continue to guide major property deals and deliver lasting value.”",
       icon: <FaChartLine className="text-5xl text-[#0e2338]" />,
     },
   ];
@@ -354,7 +353,7 @@
               ))}
             </div>
           </div>
-          <AnimatePresence>
+          {/* <AnimatePresence>
             {showPopup && !showEmiForm && (
               <motion.div
                 initial={{ opacity: 0, y: -40 }}
@@ -368,7 +367,7 @@
                 </p>
               </motion.div>
             )}
-          </AnimatePresence>
+          </AnimatePresence> */}
         </section>
 
 

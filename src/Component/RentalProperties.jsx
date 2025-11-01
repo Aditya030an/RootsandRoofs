@@ -295,6 +295,29 @@ const RentalProperties = () => {
     },
   ];
 
+  const filterRef = useRef(null);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!filterRef.current) return;
+      const rect = filterRef.current.getBoundingClientRect();
+
+      // When the top of the filter reaches top of screen
+      if (rect.top <= 0) {
+        setIsSticky(true);
+      }
+
+      // When user scrolls back above original filter position
+      if (window.scrollY < filterRef.current.offsetTop - 50) {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const [openDropdown, setOpenDropdown] = useState(null);
 
   const toggleDropdown = (type) => {
@@ -553,18 +576,19 @@ const RentalProperties = () => {
             }}
           />
 
-          <div className="relative z-10 w-full h-full flex flex-col justify-center items-center px-4">
+          <div className="relative z-10 w-full max-w-6xl flex flex-col justify-center items-center">
+            {/* Header */}
             <motion.div
               key={`header-${activeTab}`}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-center mb-4"
+              className="text-center mb-6"
             >
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-white drop-shadow-lg mb-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white drop-shadow-lg mb-3">
                 Property For - {activeTab}
               </h2>
-              <p className="text-sm md:text-base font-light text-white/80 tracking-wide">
+              <p className="text-sm sm:text-base font-light text-white/80 tracking-wide max-w-2xl mx-auto">
                 {currentTheme.description}
               </p>
             </motion.div>
@@ -572,18 +596,18 @@ const RentalProperties = () => {
             {/* Tabs */}
             <motion.div
               layout
-              className="max-w-3xl w-full mx-auto bg-black/30 backdrop-blur-md border-t border-white/20 rounded-t-3xl flex items-center justify-between overflow-hidden shadow-lg"
+              className="max-w-xl md:max-w-3xl w-full mx-auto bg-black/30 backdrop-blur-md border-t border-white/20 rounded-t-xl md:rounded-t-3xl flex items-center justify-between overflow-hidden shadow-lg"
             >
               {tabs.map((tab, idx) => (
                 <div
                   key={tab + idx}
                   onClick={() => setActiveTab(tab)}
-                  className="relative w-full text-center cursor-pointer py-4 text-sm md:text-lg font-medium text-white/70 hover:text-white/90 rounded-t-3xl transition-all duration-300"
+                  className="relative w-full text-center cursor-pointer py-3 sm:py-4 text-xs sm:text-sm md:text-lg font-medium text-white/70 hover:text-white/90 rounded-t-xl md:rounded-t-3xl transition-all duration-300"
                 >
                   {activeTab === tab && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute inset-0 rounded-t-3xl"
+                      className="absolute inset-0 rounded-t-xl md:rounded-t-3xl"
                       style={{
                         background: currentTheme.accent,
                         opacity: 0.9,
@@ -608,53 +632,60 @@ const RentalProperties = () => {
               ))}
             </motion.div>
 
-            {/* Search Bar with Suggestions */}
+            {/* Search Bar */}
             <motion.div
               key={`search-${activeTab}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="max-w-4xl w-full mx-auto relative"
+              className="w-full md:max-w-4xl mx-auto relative sm:px-0"
               ref={searchRef}
             >
-              <div className="bg-white/95 backdrop-blur-sm flex items-center gap-3 rounded-full shadow-2xl px-6 py-4">
-                <div className="text-gray-700 font-semibold w-1/5 text-center truncate text-sm md:text-base">
-                  Indore
+              <div className="bg-white/95  w-full backdrop-blur-sm flex flex-col sm:flex-row items-stretch sm:items-center gap-3 rounded-b-xl md:rounded-3xl shadow-2xl px-5 py-3">
+                {/* Location */}
+                <div className="flex gap-1 w-full">
+                  <div className="text-gray-700 font-semibold w-1/5 text-center truncate text-sm md:text-base">
+                    Indore
+                  </div>
+
+                  <div className="block w-[2px] h-6 bg-gray-300"></div>
+
+                  {/* Search Input */}
+                  <div className="flex items-center gap-2 w-full">
+                    <input
+                      type="text"
+                      placeholder="Search by property name or location..."
+                      value={searchQuery}
+                      onChange={(e) => {
+                        setSearchQuery(e.target.value);
+                        setShowSuggestions(true);
+                      }}
+                      onFocus={() => setShowSuggestions(true)}
+                      className="w-full border-none outline-none text-gray-700 placeholder-gray-400 text-sm md:text-base bg-transparent"
+                    />
+                    {searchQuery && (
+                      <button
+                        onClick={() => {
+                          setSearchQuery("");
+                          setShowSuggestions(false);
+                        }}
+                        className="text-gray-400 hover:text-gray-600"
+                      >
+                        <FaTimes />
+                      </button>
+                    )}
+                  </div>
                 </div>
-                <div className="w-[2px] h-6 bg-gray-300"></div>
 
-                <input
-                  type="text"
-                  placeholder="Search by property name or location..."
-                  value={searchQuery}
-                  onChange={(e) => {
-                    setSearchQuery(e.target.value);
-                    setShowSuggestions(true);
-                  }}
-                  onFocus={() => setShowSuggestions(true)}
-                  className="w-full border-none outline-none text-gray-700 placeholder-gray-400 text-sm md:text-base bg-transparent"
-                />
-
-                {searchQuery && (
-                  <button
-                    onClick={() => {
-                      setSearchQuery("");
-                      setShowSuggestions(false);
-                    }}
-                    className="text-gray-400 hover:text-gray-600"
-                  >
-                    <FaTimes />
-                  </button>
-                )}
-
+                {/* Lease/Rent Toggle (Commercial only) */}
                 {activeTab === "Commercial" && (
-                  <div className="flex w-[40%] bg-gray-100 rounded-full border border-gray-300 overflow-hidden">
+                  <div className="flex w-full sm:w-[40%] bg-gray-100 rounded-full border border-gray-300 overflow-hidden">
                     {["Lease", "Rent"].map((option) => (
                       <button
                         key={option}
                         onClick={() => setLeaseOption(option)}
                         type="button"
-                        className={`px-4 py-2 text-sm w-full md:text-base font-medium transition-all duration-300 ${
+                        className={`px-3 py-2 text-xs sm:text-sm w-full md:text-base font-medium transition-all duration-300 ${
                           leaseOption === option
                             ? "bg-[#7cc933] text-white"
                             : "text-gray-700 hover:bg-gray-200"
@@ -666,17 +697,18 @@ const RentalProperties = () => {
                   </div>
                 )}
 
+                {/* Search Button */}
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-3 rounded-full cursor-pointer transition-all duration-300 shadow-md"
+                  className="hidden md:block p-3  rounded-full cursor-pointer transition-all duration-300 shadow-md mx-auto sm:mx-0"
                   style={{ backgroundColor: currentTheme.accent }}
                 >
                   <FaSearch className="text-white text-lg" />
                 </motion.div>
               </div>
 
-              {/* Search Suggestions */}
+              {/* Suggestions Dropdown */}
               <AnimatePresence>
                 {showSuggestions &&
                   searchQuery &&
@@ -685,25 +717,25 @@ const RentalProperties = () => {
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="absolute top-full mt-2 w-full bg-white rounded-xl shadow-2xl overflow-hidden z-[1000px] border border-gray-200"
+                      className="absolute top-full mt-2 w-full bg-white rounded-xl shadow-2xl overflow-hidden z-50 border border-gray-200 max-h-64 overflow-y-auto"
                     >
                       {getSearchSuggestions().map((property) => (
                         <div
                           key={property.id}
                           onClick={() => handleSearchSelect(property)}
-                          className="px-6 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0 transition"
+                          className="px-5 py-3 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0 transition"
                         >
                           <div className="flex items-center justify-between">
                             <div>
-                              <p className="font-medium text-gray-800">
+                              <p className="font-medium text-gray-800 text-sm sm:text-base">
                                 {property.title}
                               </p>
-                              <p className="text-sm text-gray-500 flex items-center gap-1">
+                              <p className="text-xs sm:text-sm text-gray-500 flex items-center gap-1">
                                 <MdLocationOn className="text-xs" />
                                 {property.location}
                               </p>
                             </div>
-                            <p className="text-sm font-semibold text-[#7cc933]">
+                            <p className="text-xs sm:text-sm font-semibold text-[#7cc933]">
                               ₹{property.price.toLocaleString()}
                             </p>
                           </div>
@@ -717,354 +749,347 @@ const RentalProperties = () => {
         </motion.div>
 
         {/* Horizontal Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="sticky top-0  bg-white border-b border-slate-200 shadow-md "
-        >
-          <div className="px-6 md:px-20 py-4">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-slate-800 flex items-center gap-2">
-                <FaFilter className="text-slate-600" />
-                Filters
-              </h3>
-              <button
-                onClick={clearFilters}
-                className="text-sm text-blue-600 hover:text-blue-800 font-medium"
-              >
-                Clear All
-              </button>
-            </div>
+        <div ref={filterRef}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className={`z-40 transition-all duration-300 border-b border-slate-200 shadow-md ${
+              isSticky
+                ? "fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm"
+                : "relative bg-white"
+            }`}
+          >
+            <div className="px-6 md:px-20 py-4">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-slate-800 flex items-center gap-2">
+                  <FaFilter className="text-slate-600" />
+                  Filters
+                </h3>
+                <button
+                  onClick={clearFilters}
+                  className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                >
+                  Clear All
+                </button>
+              </div>
 
-            <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
-              {/* BHK Filter */}
-              {activeTab !== "Commercial" && activeTab !== "Plot" && (
+              <div className="flex flex-wrap lg:flex-nowrap gap-3 sm:gap-4 overflow-x-auto scrollbar-hide py-2 sm:py-4 px-2 sm:px-0">
+                {/* BHK Filter */}
+                {activeTab !== "Commercial" && activeTab !== "Plot" && (
+                  <div className="flex-shrink-0 ">
+                    <button
+                      onClick={() => toggleDropdown("bhk")}
+                      className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                    >
+                      <FaBed className="text-slate-500" />
+                      {getSelectedLabel("bhk") || "BHK Type"}
+                      {openDropdown === "bhk" ? (
+                        <FaChevronUp className="ml-1 text-xs" />
+                      ) : (
+                        <FaChevronDown className="ml-1 text-xs" />
+                      )}
+                    </button>
+
+                    {openDropdown === "bhk" && (
+                      <div className="absolute z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[180px]">
+                        <p className="text-xs font-semibold text-slate-600 mb-2">
+                          Select BHK
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {bhkOptions.map((option) => (
+                            <button
+                              key={option}
+                              onClick={() => handleFilterChange("bhk", option)}
+                              className={`px-3 py-1 rounded-lg text-sm font-medium transition-all ${
+                                filters.bhk.includes(option)
+                                  ? "bg-[#7cc933] text-white shadow-md"
+                                  : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                              }`}
+                            >
+                              {option}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Property Type Filter */}
                 <div className="flex-shrink-0 ">
                   <button
-                    onClick={() => toggleDropdown("bhk")}
+                    onClick={() => toggleDropdown("propertyType")}
                     className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
                   >
-                    <FaBed className="text-slate-500" />
-                    {getSelectedLabel("bhk") || "BHK Type"}
-                    {openDropdown === "bhk" ? (
+                    <FaHome className="text-slate-500" />
+                    {getSelectedLabel("propertyType") || "Property Type"}
+                    {openDropdown === "propertyType" ? (
                       <FaChevronUp className="ml-1 text-xs" />
                     ) : (
                       <FaChevronDown className="ml-1 text-xs" />
                     )}
                   </button>
 
-                  {openDropdown === "bhk" && (
+                  {openDropdown === "propertyType" && (
                     <div className="absolute z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[180px]">
                       <p className="text-xs font-semibold text-slate-600 mb-2">
-                        Select BHK
+                        Select Property Type
                       </p>
                       <div className="flex flex-wrap gap-2">
-                        {bhkOptions.map((option) => (
+                        {propertyTypes.map((type) => (
                           <button
-                            key={option}
-                            onClick={() => handleFilterChange("bhk", option)}
+                            key={type}
+                            onClick={() =>
+                              handleFilterChange("propertyType", type)
+                            }
                             className={`px-3 py-1 rounded-lg text-sm font-medium transition-all ${
-                              filters.bhk.includes(option)
+                              filters.propertyType.includes(type)
                                 ? "bg-[#7cc933] text-white shadow-md"
                                 : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                             }`}
                           >
-                            {option}
+                            {type}
                           </button>
                         ))}
                       </div>
                     </div>
                   )}
                 </div>
-              )}
 
-              {/* Property Type Filter */}
-              <div className="flex-shrink-0 ">
-                <button
-                  onClick={() => toggleDropdown("propertyType")}
-                  className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                >
-                  <FaHome className="text-slate-500" />
-                  {getSelectedLabel("propertyType") || "Property Type"}
-                  {openDropdown === "propertyType" ? (
-                    <FaChevronUp className="ml-1 text-xs" />
-                  ) : (
-                    <FaChevronDown className="ml-1 text-xs" />
-                  )}
-                </button>
+                {/* Bathrooms Filter */}
+                {activeTab !== "Plot" && activeTab !== "Commercial" && (
+                  <div className="flex-shrink-0 ">
+                    <button
+                      onClick={() => toggleDropdown("bathrooms")}
+                      className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                    >
+                      <FaBath className="text-slate-500" />
+                      {getSelectedLabel("bathrooms") || "Bathrooms"}
+                      {openDropdown === "bathrooms" ? (
+                        <FaChevronUp className="ml-1 text-xs" />
+                      ) : (
+                        <FaChevronDown className="ml-1 text-xs" />
+                      )}
+                    </button>
 
-                {openDropdown === "propertyType" && (
-                  <div className="absolute z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[180px]">
-                    <p className="text-xs font-semibold text-slate-600 mb-2">
-                      Select Property Type
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {propertyTypes.map((type) => (
+                    {openDropdown === "bathrooms" && (
+                      <div className="absolute z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[180px]">
+                        <p className="text-xs font-semibold text-slate-600 mb-2">
+                          Select Bathrooms
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {bathroomOptions.map((num) => (
+                            <button
+                              key={num}
+                              onClick={() =>
+                                handleFilterChange("bathrooms", num)
+                              }
+                              className={`px-3 py-1 rounded-lg text-sm font-medium transition-all ${
+                                filters.bathrooms.includes(num)
+                                  ? "bg-[#7cc933] text-white shadow-md"
+                                  : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                              }`}
+                            >
+                              {num}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Amenities */}
+                <div className="flex-shrink-0 ">
+                  <button
+                    onClick={() => toggleDropdown("amenities")}
+                    className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                  >
+                    <FaBuilding className="text-slate-500" />
+                    {filters.verified || filters.parking
+                      ? [
+                          filters.verified ? "Verified" : null,
+                          filters.parking ? "Parking" : null,
+                        ]
+                          .filter(Boolean)
+                          .join(", ")
+                      : "Amenities"}
+                    {openDropdown === "amenities" ? (
+                      <FaChevronUp className="ml-1 text-xs" />
+                    ) : (
+                      <FaChevronDown className="ml-1 text-xs" />
+                    )}
+                  </button>
+
+                  {openDropdown === "amenities" && (
+                    <div className="absolute z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[180px]">
+                      <p className="text-xs font-semibold text-slate-600 mb-2">
+                        Select Amenities
+                      </p>
+                      <div className="flex flex-wrap gap-2">
                         <button
-                          key={type}
                           onClick={() =>
-                            handleFilterChange("propertyType", type)
+                            handleFilterChange("verified", !filters.verified)
                           }
-                          className={`px-3 py-1 rounded-lg text-sm font-medium transition-all ${
-                            filters.propertyType.includes(type)
+                          className={`px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1 transition-all ${
+                            filters.verified
                               ? "bg-[#7cc933] text-white shadow-md"
                               : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                           }`}
                         >
-                          {type}
+                          <MdVerified /> Verified
                         </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Bathrooms Filter */}
-              {activeTab !== "Plot" && activeTab !== "Commercial" && (
-                <div className="flex-shrink-0 ">
-                  <button
-                    onClick={() => toggleDropdown("bathrooms")}
-                    className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                  >
-                    <FaBath className="text-slate-500" />
-                    {getSelectedLabel("bathrooms") || "Bathrooms"}
-                    {openDropdown === "bathrooms" ? (
-                      <FaChevronUp className="ml-1 text-xs" />
-                    ) : (
-                      <FaChevronDown className="ml-1 text-xs" />
-                    )}
-                  </button>
-
-                  {openDropdown === "bathrooms" && (
-                    <div className="absolute z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[180px]">
-                      <p className="text-xs font-semibold text-slate-600 mb-2">
-                        Select Bathrooms
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {bathroomOptions.map((num) => (
-                          <button
-                            key={num}
-                            onClick={() => handleFilterChange("bathrooms", num)}
-                            className={`px-3 py-1 rounded-lg text-sm font-medium transition-all ${
-                              filters.bathrooms.includes(num)
-                                ? "bg-[#7cc933] text-white shadow-md"
-                                : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                            }`}
-                          >
-                            {num}
-                          </button>
-                        ))}
+                        <button
+                          onClick={() =>
+                            handleFilterChange("parking", !filters.parking)
+                          }
+                          className={`px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1 transition-all ${
+                            filters.parking
+                              ? "bg-[#7cc933] text-white shadow-md"
+                              : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                          }`}
+                        >
+                          <FaParking /> Parking
+                        </button>
                       </div>
                     </div>
                   )}
                 </div>
-              )}
 
-              {/* Amenities */}
-              <div className="flex-shrink-0 ">
-                <button
-                  onClick={() => toggleDropdown("amenities")}
-                  className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                >
-                  <FaBuilding className="text-slate-500" />
-                  {filters.verified || filters.parking
-                    ? [
-                        filters.verified ? "Verified" : null,
-                        filters.parking ? "Parking" : null,
-                      ]
-                        .filter(Boolean)
-                        .join(", ")
-                    : "Amenities"}
-                  {openDropdown === "amenities" ? (
-                    <FaChevronUp className="ml-1 text-xs" />
-                  ) : (
-                    <FaChevronDown className="ml-1 text-xs" />
-                  )}
-                </button>
+                {/* Price Range */}
+                <div className="flex-shrink-0 ">
+                  <button
+                    onClick={() => toggleDropdown("priceRange")}
+                    className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                  >
+                    💰 Price Range
+                    {`₹${filters.priceRange[0].toLocaleString()} - ₹${filters.priceRange[1].toLocaleString()}`}
+                    {openDropdown === "priceRange" ? (
+                      <FaChevronUp />
+                    ) : (
+                      <FaChevronDown />
+                    )}
+                  </button>
 
-                {openDropdown === "amenities" && (
-                  <div className="absolute z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[180px]">
-                    <p className="text-xs font-semibold text-slate-600 mb-2">
-                      Select Amenities
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <button
-                        onClick={() =>
-                          handleFilterChange("verified", !filters.verified)
-                        }
-                        className={`px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1 transition-all ${
-                          filters.verified
-                            ? "bg-[#7cc933] text-white shadow-md"
-                            : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                        }`}
-                      >
-                        <MdVerified /> Verified
-                      </button>
-                      <button
-                        onClick={() =>
-                          handleFilterChange("parking", !filters.parking)
-                        }
-                        className={`px-3 py-1 rounded-lg text-sm font-medium flex items-center gap-1 transition-all ${
-                          filters.parking
-                            ? "bg-[#7cc933] text-white shadow-md"
-                            : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                        }`}
-                      >
-                        <FaParking /> Parking
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Price Range */}
-              <div className="flex-shrink-0 ">
-                <button
-                  onClick={() => toggleDropdown("priceRange")}
-                  className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                >
-                  💰 Price Range
-                  {`₹${filters.priceRange[0].toLocaleString()} - ₹${filters.priceRange[1].toLocaleString()}`}
-                  {openDropdown === "priceRange" ? (
-                    <FaChevronUp />
-                  ) : (
-                    <FaChevronDown />
-                  )}
-                </button>
-
-                {openDropdown === "priceRange" && (
-                  <div className="absolute z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[280px]">
-                    <p className="text-xs font-semibold text-slate-600 mb-2">
-                      Select Price Range
-                    </p>
-                    <div className="bg-slate-50 p-3 rounded-lg">
-                      <div className="flex justify-between text-xs text-slate-600 mb-2">
-                        <span>₹{filters.priceRange[0].toLocaleString()}</span>
-                        <span>₹{filters.priceRange[1].toLocaleString()}</span>
-                      </div>
-                      <Range
-                        values={filters.priceRange}
-                        step={500}
-                        min={0}
-                        max={20000000}
-                        onChange={(values) =>
-                          handleFilterChange("priceRange", values)
-                        }
-                        renderTrack={({ props, children }) => (
-                          <div
-                            {...props}
-                            className="w-full h-2 bg-slate-200 rounded-full relative"
-                          >
-                            {/* <div
-                              className="absolute h-2 bg-[#7cc933] rounded-full"
-                              style={{
-                                left: `${
-                                  ((filters.priceRange[0] - 50000) /
-                                    (20000000 - 50000)) *
-                                  100
-                                }%`,
-                                right: `${
-                                  100 -
-                                  ((filters.priceRange[1] - 50000) /
-                                    (20000000 - 50000)) *
-                                    100
-                                }%`,
-                              }}
-                            /> */}
+                  {openDropdown === "priceRange" && (
+                    <div className="absolute z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[280px]">
+                      <p className="text-xs font-semibold text-slate-600 mb-2">
+                        Select Price Range
+                      </p>
+                      <div className="bg-slate-50 p-3 rounded-lg">
+                        <div className="flex justify-between text-xs text-slate-600 mb-2">
+                          <span>₹{filters.priceRange[0].toLocaleString()}</span>
+                          <span>₹{filters.priceRange[1].toLocaleString()}</span>
+                        </div>
+                        <Range
+                          values={filters.priceRange}
+                          step={500}
+                          min={0}
+                          max={20000000}
+                          onChange={(values) =>
+                            handleFilterChange("priceRange", values)
+                          }
+                          renderTrack={({ props, children }) => (
                             <div
-                              className="absolute h-2 bg-[#7cc933] rounded-full"
-                              style={{
-                                // Calculating percentage based on min=0 and max=20000000
-                                left: `${
-                                  (filters.priceRange[0] / 20000000) * 100
-                                }%`,
-                                right: `${
-                                  100 - (filters.priceRange[1] / 20000000) * 100
-                                }%`,
-                              }}
-                            />
-                            {children}
-                          </div>
-                        )}
-                        renderThumb={({ props }) => (
-                          <div
-                            {...props}
-                            className="w-4 h-4 bg-[#7cc933] rounded-full shadow-lg cursor-pointer"
-                          />
-                        )}
-                      />
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Area Range Dropdown */}
-              <div className="flex-shrink-0 ">
-                <button
-                  onClick={() => toggleDropdown("areaRange")}
-                  className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                >
-                  <FaRulerCombined className="text-slate-500" />
-                  {`${filters.areaRange[0]} - ${filters.areaRange[1]} sq.ft`}
-                  {openDropdown === "areaRange" ? (
-                    <FaChevronUp />
-                  ) : (
-                    <FaChevronDown />
-                  )}
-                </button>
-
-                {openDropdown === "areaRange" && (
-                  <div className="absolute z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[280px]">
-                    <p className="text-xs font-semibold text-slate-600 mb-2">
-                      Select Area Range
-                    </p>
-                    <div className="bg-slate-50 p-3 rounded-lg">
-                      <div className="flex justify-between text-xs text-slate-600 mb-2">
-                        <span>{filters.areaRange[0]} sq.ft</span>
-                        <span>{filters.areaRange[1]} sq.ft</span>
-                      </div>
-                      <Range
-                        values={filters.areaRange}
-                        step={100}
-                        min={0}
-                        max={10000}
-                        onChange={(values) =>
-                          handleFilterChange("areaRange", values)
-                        }
-                        renderTrack={({ props, children }) => (
-                          <div
-                            {...props}
-                            className="w-full h-2 bg-slate-200 rounded-full relative"
-                          >
+                              {...props}
+                              className="w-full h-2 bg-slate-200 rounded-full relative"
+                            >
+                              <div
+                                className="absolute h-2 bg-[#7cc933] rounded-full"
+                                style={{
+                                  // Calculating percentage based on min=0 and max=20000000
+                                  left: `${
+                                    (filters.priceRange[0] / 20000000) * 100
+                                  }%`,
+                                  right: `${
+                                    100 -
+                                    (filters.priceRange[1] / 20000000) * 100
+                                  }%`,
+                                }}
+                              />
+                              {children}
+                            </div>
+                          )}
+                          renderThumb={({ props }) => (
                             <div
-                              className="absolute h-2 bg-[#7cc933] rounded-full"
-                              style={{
-                                left: `${
-                                  (filters.areaRange[0] / 10000) * 100
-                                }%`,
-                                right: `${
-                                  100 - (filters.areaRange[1] / 10000) * 100
-                                }%`,
-                              }}
+                              {...props}
+                              className="w-4 h-4 bg-[#7cc933] rounded-full shadow-lg cursor-pointer"
                             />
-                            {children}
-                          </div>
-                        )}
-                        renderThumb={({ props }) => (
-                          <div
-                            {...props}
-                            className="w-4 h-4 bg-[#7cc933] rounded-full shadow-lg cursor-pointer"
-                          />
-                        )}
-                      />
+                          )}
+                        />
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
+
+                {/* Area Range Dropdown */}
+                <div className="flex-shrink-0 ">
+                  <button
+                    onClick={() => toggleDropdown("areaRange")}
+                    className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                  >
+                    <FaRulerCombined className="text-slate-500" />
+                    {`${filters.areaRange[0]} - ${filters.areaRange[1]} sq.ft`}
+                    {openDropdown === "areaRange" ? (
+                      <FaChevronUp />
+                    ) : (
+                      <FaChevronDown />
+                    )}
+                  </button>
+
+                  {openDropdown === "areaRange" && (
+                    <div className="absolute right-0 xl:left-[70%] z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[280px]">
+                      <p className="text-xs font-semibold text-slate-600 mb-2">
+                        Select Area Range
+                      </p>
+                      <div className="bg-slate-50 p-3 rounded-lg">
+                        <div className="flex justify-between text-xs text-slate-600 mb-2">
+                          <span>{filters.areaRange[0]} sq.ft</span>
+                          <span>{filters.areaRange[1]} sq.ft</span>
+                        </div>
+                        <Range
+                          values={filters.areaRange}
+                          step={100}
+                          min={0}
+                          max={10000}
+                          onChange={(values) =>
+                            handleFilterChange("areaRange", values)
+                          }
+                          renderTrack={({ props, children }) => (
+                            <div
+                              {...props}
+                              className="w-full h-2 bg-slate-200 rounded-full relative"
+                            >
+                              <div
+                                className="absolute h-2 bg-[#7cc933] rounded-full"
+                                style={{
+                                  left: `${
+                                    (filters.areaRange[0] / 10000) * 100
+                                  }%`,
+                                  right: `${
+                                    100 - (filters.areaRange[1] / 10000) * 100
+                                  }%`,
+                                }}
+                              />
+                              {children}
+                            </div>
+                          )}
+                          renderThumb={({ props }) => (
+                            <div
+                              {...props}
+                              className="w-4 h-4 bg-[#7cc933] rounded-full shadow-lg cursor-pointer"
+                            />
+                          )}
+                        />
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Property Grid Section */}
         <motion.div

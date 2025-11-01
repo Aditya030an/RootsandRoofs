@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
-import { useLocation } from "react-router-dom"; // ✅ Import for active link
+import { useLocation } from "react-router-dom";
 import logo from "./photos/logo2.jpg";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation(); // ✅ Current route
-
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const location = useLocation();
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -18,24 +18,50 @@ const Navbar = () => {
     { name: "Careers", href: "/Careerpage" },
   ];
 
+  // ✅ Handle scroll hide/show
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // scrolling down → hide navbar
+        setShowNavbar(false);
+      } else {
+        // scrolling up → show navbar
+        setShowNavbar(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   return (
-    <header className="w-full bg-[#19273A] shadow-md">
+    <header
+      className={`fixed top-0 left-0 w-full z-50 bg-[#19273A] shadow-md transition-transform duration-500 ${
+        showNavbar ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-2">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <div className="flex items-center">
+          <a href="/" className="flex items-center">
             <img
               src={logo}
               alt="Roots & Roofs"
               loading="lazy"
               className="w-16 h-auto object-contain sm:w-20"
             />
-          </div>
+          </a>
 
-          {/* Desktop Nav Links */}
+          {/* Desktop Nav */}
           <nav className="hidden md:flex space-x-6 lg:space-x-8 text-white text-base lg:text-lg font-medium tracking-wide">
             {navLinks.map((link) => {
-              const isActive = location.pathname === link.href; // ✅ Check active link
+              const isActive = location.pathname === link.href;
               return (
                 <a
                   key={link.name}
