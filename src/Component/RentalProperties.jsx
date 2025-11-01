@@ -576,7 +576,7 @@ const RentalProperties = () => {
             }}
           />
 
-          <div className="relative z-10 w-full max-w-6xl flex flex-col justify-center items-center">
+          <div className="relative z-40 w-full max-w-6xl flex flex-col justify-center items-center">
             {/* Header */}
             <motion.div
               key={`header-${activeTab}`}
@@ -638,7 +638,7 @@ const RentalProperties = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="w-full md:max-w-4xl mx-auto relative sm:px-0"
+              className="w-full md:max-w-4xl mx-auto relative sm:px-0 "
               ref={searchRef}
             >
               <div className="bg-white/95  w-full backdrop-blur-sm flex flex-col sm:flex-row items-stretch sm:items-center gap-3 rounded-b-xl md:rounded-3xl shadow-2xl px-5 py-3">
@@ -754,7 +754,7 @@ const RentalProperties = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className={`z-40 transition-all duration-300 border-b border-slate-200 shadow-md ${
+            className={`z-10  transition-all duration-300 border-b border-slate-200 shadow-md ${
               isSticky
                 ? "fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm"
                 : "relative bg-white"
@@ -1122,7 +1122,7 @@ const RentalProperties = () => {
               </button>
             </motion.div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProperties.map((property, i) => (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
