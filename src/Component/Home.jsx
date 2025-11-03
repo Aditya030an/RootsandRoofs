@@ -1,5 +1,6 @@
 import  {useRef } from "react"; // ✅ add useRef here
 import FAQSection from "./FAQ";
+import { useNavigate } from "react-router-dom";
 import Scroll from "./Scroll";
 import bg from "./photos/pic.jpeg";
 import logo from "./photos/image.png";
@@ -32,6 +33,7 @@ const collections = [
 const Home = () => {
   // ✅ magnetic button logic must be inside component
   const ref = useRef(null);
+  const navigate = useNavigate();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -129,7 +131,7 @@ const Home = () => {
           {/* RIGHT AWARDS BLOCK */}
           <div className="grid gap-6">
             {/* AWARD CARD 1 */}
-            <div className="bg-white/60 backdrop-blur-xl p-6 rounded-2xl shadow-xl text-gray-800 w-full max-w-md">
+            <button onClick={()=>navigate("/Services", {state:{scrollTo: "property-info"}})} className="bg-white/60 cursor-pointer backdrop-blur-xl p-6 rounded-2xl shadow-xl text-gray-800 w-full max-w-md">
               <div className="flex flex-col items-start space-y-2">
                 <div>
                   <h4 className="text-sm font-bold uppercase text-gray-600 tracking-widest">
@@ -144,10 +146,10 @@ const Home = () => {
                   assistance, we ensure your property is always in safe hand.
                 </p>
               </div>
-            </div>
+            </button>
 
             {/* AWARD CARD 2 */}
-            <div className="bg-white/60 backdrop-blur-xl p-6 rounded-2xl shadow-xl text-gray-800 w-full max-w-md">
+            <button onClick={()=>navigate("/Services" , {state:{scrollTo: "one-stop"}})} className="bg-white/60 cursor-pointer backdrop-blur-xl p-6 rounded-2xl shadow-xl text-gray-800 w-full max-w-md">
               <div className="flex flex-col items-start space-y-2">
                 <div>
                   <h4 className="text-sm font-bold uppercase text-gray-600 tracking-widest">
@@ -163,7 +165,7 @@ const Home = () => {
                   Because Sapne se deed tak.. Hum apke sath hai!..
                 </p>
               </div>
-            </div>
+            </button>
             {/* <motion.button
         ref={ref}
         className="relative px-8 py-3 text-lg font-semibold text-white rounded-full overflow-hidden group backdrop-blur-md border border-white/20 shadow-xl"

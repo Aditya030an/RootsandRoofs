@@ -9,9 +9,8 @@ import {
 import logo from "./photos/logo2.jpg"; // Adjust the path as per your project structure
 
 const footerLinks = [
-  { title: "Home", href: "#" },
-  { title: "Work", href: "#" },
-  { title: "Studio", href: "#" },
+  { title: "Home", href: "/" },
+  { title: "Properties", href: "/Properties" },
   { title: "Services", href: "/Services" },
   { title: "Contact", href: "/Contact" },
 ];

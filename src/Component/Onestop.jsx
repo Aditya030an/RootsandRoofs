@@ -9,8 +9,11 @@ import {
   FaKey,
   FaHandsHelping,
   FaRegSmile,
+  FaFileAlt,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+
+import { MdOutlineSelfImprovement } from "react-icons/md";
 
 const steps = [
   {
@@ -218,25 +221,68 @@ export default function StepsSection() {
         viewport={{ once: true }}
         className="relative text-center z-10 pt-12 border-t border-white/10 px-2"
       >
-        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-white">
-          Ready to Begin Your Journey?
-        </h3>
-        <p className="text-gray-300 mb-8 font-medium text-sm sm:text-base">
-          Start your home search with Roots & Roofs today.
-        </p>
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
+          {/* Left Card */}
+          <div className="bg-[#14233b] rounded-2xl p-6 flex-1 shadow-lg">
+            <div className="flex items-center gap-3 mb-4">
+              <FaKey className="text-yellow-400 text-2xl" />
+              <h2 className="text-xl font-semibold text-white">
+                Welcome Home!
+              </h2>
+            </div>
+            <ul className="space-y-2 text-gray-200 text-sm md:text-base text-start leading-relaxed">
+              <li>1. Get your possession letter from the builder/seller.</li>
+              <li>2. Take physical handover of your home.</li>
+              <li>3. Society/NOC clearances (for apartments) are managed.</li>
+            </ul>
+          </div>
 
-        <motion.button
-          whileHover={{
-            scale: 1.05,
-            boxShadow: "0 0 30px rgba(124, 201, 51, 0.4)",
-          }}
-          whileTap={{ scale: 0.98 }}
-          onClick={() => navigate.push("/contact")}
-          className="bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-8 sm:px-10 py-3 sm:py-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
-        >
-          Connect with Us
-        </motion.button>
+          {/* Right Card */}
+          <div className="bg-[#14233b] rounded-2xl p-6 flex-1 shadow-lg">
+            <div className="flex items-center gap-3 mb-4">
+              <FaFileAlt className="text-blue-400 text-2xl" />
+              <h2 className="text-xl font-semibold text-white">
+                We’re still with you!
+              </h2>
+            </div>
+            <ul className="space-y-2 text-gray-200 text-sm md:text-base text-start leading-relaxed">
+              <li>1. Transfer property tax records.</li>
+              <li>2. Update utility connections (electricity, water, gas).</li>
+              <li>3. Mutation of property in local records.</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="max-w-6xl mx-auto mt-10 flex items-center bg-white text-[#0f1b2b] rounded-2xl shadow-lg py-4 px-2 text-center">
+          <div className="flex justify-center w-1/3 ">
+            <MdOutlineSelfImprovement className="text-9xl text-[#0f1b2b]" />
+          </div>
+          <div className="w-full text-center">
+            <h3 className="text-lg md:text-4xl font-semibold mb-2">
+              Feeling Overwhelmed?
+            </h3>
+            <p className="text-sm md:text-base text-gray-700">
+              Sit back, relax and have some Chai... because <br />
+              <span className="font-semibold">Roots & Roofs</span> will handle
+              it for you!!
+            </p>
+
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 30px rgba(124, 201, 51, 0.4)",
+              }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => navigate.push("/contact")}
+              className="bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-8 sm:px-3 py-3 sm:py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
+            >
+              Connect with Us
+            </motion.button>
+          </div>
+        </div>
       </motion.div>
+
     </section>
   );
 }

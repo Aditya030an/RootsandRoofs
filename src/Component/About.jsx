@@ -480,11 +480,11 @@ const AboutUsHero = () => {
       </section>
 
       {/* Our Journey */}
-      <section className="bg-white py-20 px-6 md:px-16 font-serif text-black">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+      <section className="bg-white py-20 px-6 md:px-16 font-serif text-black ">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start ">
           {/* Left Image */}
           <motion.div
-            className="flex justify-center"
+            className="flex justify-start "
             variants={fadeIn}
             initial="hidden"
             whileInView="visible"
@@ -524,29 +524,38 @@ const AboutUsHero = () => {
         </div>
 
         {/* Stats Row */}
-        <motion.div
-          className="max-w-5xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            visible: {
-              transition: { staggerChildren: 0.2 },
-            },
-          }}
-        >
-          {stats.map((stat, idx) => (
-            <motion.div
-              key={idx}
-              variants={fadeIn}
-              transition={{ duration: 0.6 }}
-            >
-              <h3 className="text-xl font-semibold text-gray-800">
-                {stat.label}
-              </h3>
-            </motion.div>
-          ))}
-        </motion.div>
+       <motion.div
+  className="max-w-7xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={{
+    visible: {
+      transition: { staggerChildren: 0.2 },
+    },
+  }}
+>
+  {stats.map((stat, idx) => (
+    <motion.div
+      key={idx}
+      variants={fadeIn}
+      transition={{ duration: 0.6 }}
+      whileHover={{ scale: 1.05, y: -5 }}
+      className="bg-white/70 backdrop-blur-md border border-gray-200 rounded-2xl shadow-lg p-8 transition-all hover:shadow-xl cursor-default"
+    >
+      {/* Number / Value */}
+      {/* <h2 className="text-3xl font-bold text-green-700 mb-2">
+        {stat.value}
+      </h2> */}
+
+      {/* Label */}
+      <h3 className="text-lg font-semibold text-gray-800">
+        {stat.label}
+      </h3>
+    </motion.div>
+  ))}
+</motion.div>
+
       </section>
 
       <section className="bg-neutral-50 py-20 px-6 md:px-16 font-sans">
