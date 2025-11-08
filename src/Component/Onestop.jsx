@@ -46,16 +46,16 @@ const steps = [
     description: "Get the keys and make it officially your home.",
     icon: <FaKey />,
   },
-  {
-    title: "Welcome Home!",
-    description: "Move in easily — we'll help make it seamless.",
-    icon: <FaHandsHelping />,
-  },
-  {
-    title: "We're Still With You",
-    description: "After the handover, we remain for support and care.",
-    icon: <FaRegSmile />,
-  },
+  // {
+  //   title: "Welcome Home!",
+  //   description: "Move in easily — we'll help make it seamless.",
+  //   icon: <FaHandsHelping />,
+  // },
+  // {
+  //   title: "We're Still With You",
+  //   description: "After the handover, we remain for support and care.",
+  //   icon: <FaRegSmile />,
+  // },
 ];
 
 export default function StepsSection() {
@@ -152,7 +152,7 @@ export default function StepsSection() {
         {steps.map((step, index) => (
           <motion.div
             key={index}
-            className="h-44 sm:h-48 md:h-52 cursor-pointer"
+            className="h-44 cursor-pointer  "
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -161,7 +161,7 @@ export default function StepsSection() {
             onMouseLeave={() => handleFlip(index, false)}
           >
             <motion.div
-              className="relative w-full h-full [perspective:1200px]"
+              className="relative w-full h-full [perspective:1200px] "
               animate={{ rotateY: flipped[index] ? 180 : 0 }}
               transition={{
                 duration: 0.8,
@@ -171,7 +171,7 @@ export default function StepsSection() {
             >
               {/* Front Face */}
               <motion.div
-                className="absolute inset-0 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-lg p-6 flex items-start gap-5 transition-transform duration-500"
+                className="absolute inset-0 rounded-2xl bg-white/10 backdrop-blur-xl  border border-white/20 shadow-lg p-6 flex items-start gap-5 transition-transform duration-500"
                 style={{ backfaceVisibility: "hidden" }}
               >
                 <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-[#7cc933] to-[#5fa02b] flex items-center justify-center text-white text-xl shadow-lg">
@@ -255,16 +255,29 @@ export default function StepsSection() {
 
         {/* Bottom Section */}
         <div className="max-w-6xl mx-auto mt-10 flex items-center bg-white text-[#0f1b2b] rounded-2xl shadow-lg py-4 px-2 text-center">
-          <div className="flex justify-center w-1/3 ">
-            <MdOutlineSelfImprovement className="text-9xl text-[#0f1b2b]" />
+          <div className="flex justify-center w-1/3">
+            <MdOutlineSelfImprovement className="text-8xl text-[#0f1b2b]" />
           </div>
-          <div className="w-full text-center">
-            <h3 className="text-lg md:text-4xl font-semibold mb-2">
-              Feeling Overwhelmed?
-            </h3>
-            <p className="text-sm md:text-base text-gray-700">
-              Sit back, relax and have some Chai... because <br />
-              <span className="font-semibold">Roots & Roofs</span> will handle
+          <div className="w-full text-start ">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg md:text-4xl font-semibold mb-2">
+                Feeling Overwhelmed?
+              </h3>
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 0 30px rgba(124, 201, 51, 0.4)",
+                }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => navigate.push("/contact")}
+                className="hidden md:flex bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-8 sm:px-3 py-3 sm:py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
+              >
+                Connect with Us
+              </motion.button>
+            </div>
+            <p className="text-sm md:text-base text-gray-700 mt-3">
+              Sit back, relax and have some Chai... because
+              <span className="font-semibold"> Roots & Roofs</span> will handle
               it for you!!
             </p>
 
@@ -275,14 +288,13 @@ export default function StepsSection() {
               }}
               whileTap={{ scale: 0.98 }}
               onClick={() => navigate.push("/contact")}
-              className="bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-8 sm:px-3 py-3 sm:py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
+              className="md:hidden bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-3 py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
             >
               Connect with Us
             </motion.button>
           </div>
         </div>
       </motion.div>
-
     </section>
   );
 }

@@ -234,7 +234,7 @@ const ExpertiseSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="group relative flex flex-wrap items-start gap-6 p-8 rounded-3xl 
+              className="group relative flex flex-wrap md:flex-nowrap items-start gap-6 p-8 rounded-3xl 
                     bg-white/60 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
                     border border-white/40 hover:shadow-[0_8px_40px_rgb(0,0,0,0.2)] 
                     transition-all duration-500 hover:-translate-y-2"
@@ -324,9 +324,9 @@ const ExpertiseSection = () => {
                 innovation.
               </p>
             </div>
-            <button className="mt-6 md:mt-0 flex items-center gap-2 bg-white text-slate-900 font-semibold px-4 py-2 rounded hover:bg-gray-200 transition">
+            {/* <button className="mt-6 md:mt-0 flex items-center gap-2 bg-white text-slate-900 font-semibold px-4 py-2 rounded hover:bg-gray-200 transition">
               Explore our services <FaArrowRight className="text-blue-600" />
-            </button>
+            </button> */}
           </div>
 
           <div className="grid gap-12">

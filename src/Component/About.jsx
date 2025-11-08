@@ -481,10 +481,10 @@ const AboutUsHero = () => {
 
       {/* Our Journey */}
       <section className="bg-white py-20 px-6 md:px-16 font-serif text-black ">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start ">
+        <div className="max-w-7xl mx-auto flex flex-wrap md:flex-nowrap gap-2 items-center justify-between ">
           {/* Left Image */}
           <motion.div
-            className="flex justify-start "
+            className="flex justify-start max-w-xs lg:max-w-sm "
             variants={fadeIn}
             initial="hidden"
             whileInView="visible"
@@ -494,7 +494,7 @@ const AboutUsHero = () => {
             <motion.img
               src={logo}
               alt="Roots & Roofs"
-              className="w-full max-w-sm object-contain"
+              className="w-full object-contain"
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300 }}
             />
@@ -507,55 +507,69 @@ const AboutUsHero = () => {
             whileInView="visible"
             transition={{ duration: 0.8, delay: 0.3 }}
             viewport={{ once: true }}
+            className=" md:w-[63%] h-full flex flex-col gap-12"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Journey</h2>
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Roots & Roofs was founded to transform the real estate experience
-              by making it simpler, more transparent, and client-focused.
-              Leveraging years of expertise, we do more than close deals; we
-              offer guidance and exceptional value across all property types.
-            </p>
-            <p className="text-gray-700 leading-relaxed">
-              Our mission is just beginning, and we are committed to exceeding
-              your expectations and delivering more than what you’ll find
-              elsewhere.
-            </p>
+            <motion.div className="">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Our Journey
+              </h2>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Roots & Roofs was founded to transform the real estate
+                experience by making it simpler, more transparent, and
+                client-focused. Leveraging years of expertise, we do more than
+                close deals; we offer guidance and exceptional value across all
+                property types.
+              </p>
+              <p className="text-gray-700 leading-relaxed">
+                Our mission is just beginning, and we are committed to exceeding
+                your expectations and delivering more than what you’ll find
+                elsewhere.
+              </p>
+            </motion.div>
+            <motion.div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 gap-8 text-center">
+              {stats.map((stat, idx) => (
+                <motion.div
+                  key={idx}
+                  
+                  className="bg-white/70 backdrop-blur-md border border-gray-200 rounded-lg shadow-slate-400 shadow-lg px-1 py-3 text-center transition-all hover:shadow-xl cursor-default"
+                >
+                  {/* Label */}
+                  <h3 className="text-md text-center font-semibold text-gray-800">
+                    {stat.label}
+                  </h3>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
 
         {/* Stats Row */}
-       <motion.div
-  className="max-w-7xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  variants={{
-    visible: {
-      transition: { staggerChildren: 0.2 },
-    },
-  }}
->
-  {stats.map((stat, idx) => (
-    <motion.div
-      key={idx}
-      variants={fadeIn}
-      transition={{ duration: 0.6 }}
-      whileHover={{ scale: 1.05, y: -5 }}
-      className="bg-white/70 backdrop-blur-md border border-gray-200 rounded-2xl shadow-lg p-8 transition-all hover:shadow-xl cursor-default"
-    >
-      {/* Number / Value */}
-      {/* <h2 className="text-3xl font-bold text-green-700 mb-2">
-        {stat.value}
-      </h2> */}
-
-      {/* Label */}
-      <h3 className="text-lg font-semibold text-gray-800">
-        {stat.label}
-      </h3>
-    </motion.div>
-  ))}
-</motion.div>
-
+        <motion.div
+          className="max-w-7xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-2 lg:hidden gap-8 text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            visible: {
+              transition: { staggerChildren: 0.2 },
+            },
+          }}
+        >
+          {stats.map((stat, idx) => (
+            <motion.div
+              key={idx}
+              variants={fadeIn}
+              transition={{ duration: 0.6 }}
+              whileHover={{ scale: 1.05, y: -5 }}
+              className="bg-white/70 backdrop-blur-md border border-gray-200 rounded-lg shadow-slate-400 shadow-lg px-1 py-3 text-center transition-all hover:shadow-xl cursor-default"
+            >
+              
+              <h3 className="text-md font-semibold text-gray-800">
+                {stat.label}
+              </h3>
+            </motion.div>
+          ))}
+        </motion.div>
       </section>
 
       <section className="bg-neutral-50 py-20 px-6 md:px-16 font-sans">
