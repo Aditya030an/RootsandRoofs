@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaUser, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { FaUser, FaPhoneAlt, FaEnvelope, FaSpinner } from "react-icons/fa";
 
 const ContactFormModal = ({
   isOpen,
@@ -9,6 +9,8 @@ const ContactFormModal = ({
   formData,
   setFormData,
   handleSubmit,
+  errors,
+  loading,
 }) => {
   return (
     <AnimatePresence>
@@ -20,10 +22,7 @@ const ContactFormModal = ({
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
         >
           {/* Background click closes modal */}
-          <div
-            className="absolute inset-0"
-            onClick={onClose}
-          />
+          <div className="absolute inset-0" onClick={onClose} />
 
           {/* Form Card */}
           <motion.div
@@ -57,7 +56,6 @@ const ContactFormModal = ({
             <motion.form
               onSubmit={(e) => {
                 handleSubmit(e);
-                onClose(); // optional auto close after submit
               }}
               initial="hidden"
               animate="visible"
@@ -79,7 +77,7 @@ const ContactFormModal = ({
                 <input
                   type="text"
                   name="name"
-                  value={formData.name}
+                  value={formData?.name}
                   onChange={(e) =>
                     setFormData({
                       ...formData,
@@ -90,6 +88,9 @@ const ContactFormModal = ({
                   placeholder="Your Name"
                   className="w-full pl-10 pr-4 py-3 bg-white/80 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
                 />
+                {errors?.name && (
+                  <p className="text-red-500 text-sm">{errors?.name}</p>
+                )}
               </motion.div>
 
               {/* Phone */}
@@ -115,6 +116,9 @@ const ContactFormModal = ({
                   placeholder="Phone Number"
                   className="w-full pl-10 pr-4 py-3 bg-white/80 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
                 />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm">{errors.phone}</p>
+                )}
               </motion.div>
 
               {/* Email */}
@@ -140,7 +144,31 @@ const ContactFormModal = ({
                   placeholder="Email Address"
                   className="w-full pl-10 pr-4 py-3 bg-white/80 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email}</p>
+                )}
               </motion.div>
+
+              <motion.textarea
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                name="message"
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    [e.target.name]: e.target.value,
+                  })
+                }
+                required
+                placeholder="Your Message"
+                className="w-full pl-10 pr-4 py-3 bg-white/80 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
+              />
+              {errors.message && (
+                <p className="text-red-500 text-sm">{errors.message}</p>
+              )}
 
               {/* Submit button */}
               <motion.button
@@ -149,17 +177,38 @@ const ContactFormModal = ({
                 type="submit"
                 className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold py-3 rounded-xl shadow-lg hover:shadow-green-300 transition-all"
               >
-                Request Callback
+                {loading ? (
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    <span className="ml-2">Loading...</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center justify-center">
+                    <FaPhoneAlt className="mr-2" />
+                    <span>Request Callback</span>
+                  </div>
+                )}
+                {/* {
+                  loading ? (
+                    <div className="flex items-center justify-center">
+                      <FaSpinner className="animate-spin mr-2" />
+                      <span>Loading...</span>
+                    </div>
+                  ) : (
+                    (
+                      <div className="flex items-center justify-center">
+                        <FaPhoneAlt className="mr-2" />
+                        <span>Request Callback</span>
+                      </div>
+                  )
+                  )
+                } */}
               </motion.button>
             </motion.form>
           </motion.div>
         </motion.div>
       )}
-
-     
     </AnimatePresence>
-
-    
   );
 };
 

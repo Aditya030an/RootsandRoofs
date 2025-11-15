@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import GlobalContactPopup from "./Component/GlobalContactPopup.jsx";
 
 // Lazy-loaded components
 const Navbar = lazy(() => import("./Component/navbar.jsx"));
@@ -37,6 +38,7 @@ function App() {
     <Suspense fallback={<Loader />}>
       <Router>
         <div>
+          <GlobalContactPopup/>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />

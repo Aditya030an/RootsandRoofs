@@ -11,7 +11,7 @@ import {
   FaRegSmile,
   FaFileAlt,
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useRoutes } from "react-router-dom";
 
 import { MdOutlineSelfImprovement } from "react-icons/md";
 
@@ -46,16 +46,16 @@ const steps = [
     description: "Get the keys and make it officially your home.",
     icon: <FaKey />,
   },
-  // {
-  //   title: "Welcome Home!",
-  //   description: "Move in easily — we'll help make it seamless.",
-  //   icon: <FaHandsHelping />,
-  // },
-  // {
-  //   title: "We're Still With You",
-  //   description: "After the handover, we remain for support and care.",
-  //   icon: <FaRegSmile />,
-  // },
+  {
+    title: "Welcome Home!",
+    description: "Move in easily — we'll help make it seamless.",
+    icon: <FaHandsHelping />,
+  },
+  {
+    title: "We're Still With You",
+    description: "After the handover, we remain for support and care.",
+    icon: <FaRegSmile />,
+  },
 ];
 
 export default function StepsSection() {
@@ -221,8 +221,8 @@ export default function StepsSection() {
         viewport={{ once: true }}
         className="relative text-center z-10 pt-12 border-t border-white/10 px-2"
       >
-        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
-          {/* Left Card */}
+        {/* <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
+         
           <div className="bg-[#14233b] rounded-2xl p-6 flex-1 shadow-lg">
             <div className="flex items-center gap-3 mb-4">
               <FaKey className="text-yellow-400 text-2xl" />
@@ -237,7 +237,7 @@ export default function StepsSection() {
             </ul>
           </div>
 
-          {/* Right Card */}
+          
           <div className="bg-[#14233b] rounded-2xl p-6 flex-1 shadow-lg">
             <div className="flex items-center gap-3 mb-4">
               <FaFileAlt className="text-blue-400 text-2xl" />
@@ -251,48 +251,49 @@ export default function StepsSection() {
               <li>3. Mutation of property in local records.</li>
             </ul>
           </div>
-        </div>
+        </div> */}
 
         {/* Bottom Section */}
-        <div className="max-w-6xl mx-auto mt-10 flex items-center bg-white text-[#0f1b2b] rounded-2xl shadow-lg py-4 px-2 text-center">
-          <div className="flex justify-center w-1/3">
+        <div className="max-w-6xl mx-auto mt-1 flex items-center  bg-white text-[#0f1b2b] rounded-2xl shadow-lg py-4 px-2 text-center">
+          <div className="w-[15%] flex justify-center ">
             <MdOutlineSelfImprovement className="text-8xl text-[#0f1b2b]" />
           </div>
-          <div className="w-full text-start ">
-            <div className="flex items-center justify-between">
-              <h3 className="text-lg md:text-4xl font-semibold mb-2">
-                Feeling Overwhelmed?
-              </h3>
-              <motion.button
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 0 30px rgba(124, 201, 51, 0.4)",
-                }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => navigate.push("/contact")}
-                className="hidden md:flex bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-8 sm:px-3 py-3 sm:py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
-              >
-                Connect with Us
-              </motion.button>
-            </div>
+
+          <div className=" w-full flex flex-col  text-center  ">
+            <h3 className="text-lg md:text-4xl font-semibold mb-2">
+              Feeling Overwhelmed?
+            </h3>
+
             <p className="text-sm md:text-base text-gray-700 mt-3">
               Sit back, relax and have some Chai... because
               <span className="font-semibold"> Roots & Roofs</span> will handle
               it for you!!
             </p>
+          </div>
 
-            <motion.button
+          {/* <motion.button
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 0 30px rgba(124, 201, 51, 0.4)",
               }}
               whileTap={{ scale: 0.98 }}
               onClick={() => navigate.push("/contact")}
-              className="md:hidden bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-3 py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
+              className="hidden md:flex bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-8 sm:px-3 py-3 sm:py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
             >
               Connect with Us
-            </motion.button>
-          </div>
+            </motion.button> */}
+
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 0 30px rgba(124, 201, 51, 0.4)",
+            }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => navigate("/Contact")}
+            className="w-[22%] bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-3 py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
+          >
+            Connect with Us
+          </motion.button>
         </div>
       </motion.div>
     </section>

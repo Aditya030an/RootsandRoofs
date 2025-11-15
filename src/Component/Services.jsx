@@ -17,7 +17,7 @@ import {
 } from "react-icons/fa";
 import AreaConverter from "./AreaConverter";
 import ComparisonTable from "./ComparisonTable";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ContactFormModal from "./ContactSection";
 
 const features = [
@@ -116,8 +116,11 @@ const ExpertiseSection = () => {
   const [submitted, setSubmitted] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const formRef = useRef(null);
-  const [showEmiForm, setShowEmiForm] = useState(false);
+  const [showAllForm, setShowAllForm] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const [showFormModal, setShowFormModal] = useState(false);
 
@@ -141,16 +144,24 @@ const ExpertiseSection = () => {
     name: "",
     phone: "",
     email: "",
+    message: "",
   });
 
   useEffect(() => {
-    if (!showEmiForm) {
+    if (
+      localStorage.getItem("showAllForm") ||
+      localStorage.getItem("contact_form_filled") === "true"
+    ) {
+      setShowAllForm(true);
+      return;
+    }
+    if (!showAllForm) {
       const interval = setInterval(() => {
         setShowPopup(true);
       }, 20000);
       return () => clearInterval(interval);
     }
-  }, [showEmiForm]);
+  }, [showAllForm]);
 
   useEffect(() => {
     if (showPopup) {
@@ -159,19 +170,29 @@ const ExpertiseSection = () => {
     }
   }, [showPopup]);
 
+  const validateForm = () => {
+    let temp = {};
+
+    if (!formData.name.trim()) temp.name = "Name is required";
+
+    if (!formData.phone.trim()) temp.phone = "Phone number is required";
+    else if (!/^[0-9]{10}$/.test(formData.phone))
+      temp.phone = "Phone must be 10 digits";
+
+    if (!formData.email.trim()) temp.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(formData.email))
+      temp.email = "Invalid email format";
+
+    if (!formData.message.trim()) temp.message = "Message is required";
+
+    setErrors(temp);
+    return Object.keys(temp).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const dataToSend = {
-      formType: "ExpertiseCallback",
-      name: formData.name || "",
-      surname: "",
-      email: formData.email || "",
-      message: "",
-      phone: formData.phone || "",
-      subject: "",
-      contactUsType: "",
-    };
+    if (!validateForm()) return;
+    setLoading(true);
 
     try {
       const res = await fetch(import.meta.env.VITE_GOOGLE_SHEET_ID, {
@@ -180,27 +201,37 @@ const ExpertiseSection = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(dataToSend),
+        body: JSON.stringify({
+          formType: "contact",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        }),
       });
       console.log("Response:", res);
       alert("Form submitted successfully!");
+      localStorage.setItem("showAllForm", true);
       setSubmitted(true); // ✅ Keep this true permanently
       setShowPopup(false);
-      setShowEmiForm(true); // Show EMI Calculator after submission
-      setFormData({ name: "", phone: "", email: "" });
+      setShowAllForm(true); // Show EMI Calculator after submission
+      setFormData({ name: "", phone: "", email: "", message: "" });
 
       // 🔴 REMOVE THIS LINE:
       setTimeout(() => setSubmitted(false), 3000);
     } catch (error) {
       console.error("Submission failed", error);
+    } finally {
+      setLoading(false);
     }
   };
 
-
-
   return (
     <>
-      <section id="property-info" className="relative bg-gradient-to-br from-[#f8fafc] via-[#eef3f9] to-[#dbeafe] py-28 px-6 md:px-20 overflow-hidden">
+      <section
+        id="property-info"
+        className="relative bg-gradient-to-br from-[#f8fafc] via-[#eef3f9] to-[#dbeafe] py-28 px-6 md:px-20 overflow-hidden"
+      >
         {/* Decorative Background Orbs */}
         <div className="absolute -top-20 -left-20 w-72 h-72 bg-gradient-to-br from-[#0e2338] via-[#1e3a8a] to-[#2563eb] rounded-full opacity-20 blur-3xl animate-pulse"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-emerald-400/30 to-cyan-400/20 rounded-full blur-3xl"></div>
@@ -265,6 +296,28 @@ const ExpertiseSection = () => {
         </div>
       </section>
 
+      <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Register Your Property
+          </h2>
+          <p className="text-lg text-gray-600 mb-8">
+            Own a property you’d like to list? With us you can easily upload
+            your property details, get it in front of interested renters or
+            buyers, and let our team handle the rest. It’s fast, transparent and
+            hassle-free.
+          </p>
+          <button
+            onClick={() =>
+              navigate("/Contact", { state: { openTab: "listing" } })
+            }
+            className="inline-block bg-[#19273A] cursor-pointer text-white font-medium py-3 px-8 rounded-md transition"
+          >
+            Upload Property
+          </button>
+        </div>
+      </section>
+
       <section id="one-stop">
         <Onestop />
       </section>
@@ -273,16 +326,16 @@ const ExpertiseSection = () => {
         id="emi-calculator"
         className={`mt-10 relative max-w-4xl mx-auto px-6  `}
       >
-        {!showEmiForm && (
-          <div className="absolute z-50  left-0 h-full flex flex-col gap-2 items-center justify-center top-0 text-center w-full">
-            <p className="text-red-600 font-semibold">
+        {!showAllForm && (
+          <div className="absolute z-40  left-0 h-full flex flex-col gap-2 items-center justify-center top-0 text-center w-full">
+            <p className="text-red-600 font-semibold text-[12px] sm:text-[20px] md:text-[24px]">
               ⚠️ Please fill the Lets Talk form above to access the EMI
               Calculator
             </p>
             <button
               // onClick={handleEmiClick}
               onClick={() => setShowFormModal(true)}
-              className="cursor-pointer bg-yellow-700 text-white  px-2 py-2 rounded-[8px]"
+              className="cursor-pointer bg-[#19273A] text-white  px-2 py-2 rounded-[8px]"
             >
               Click to go on form
             </button>
@@ -290,19 +343,61 @@ const ExpertiseSection = () => {
         )}
         <div
           className={`transition-all duration-500 relative ${
-            !showEmiForm ? "blur-sm pointer-events-none select-none" : "blur-0"
+            !showAllForm ? "blur-sm pointer-events-none select-none" : "blur-0"
           }`}
         >
           <EMICalculator />
         </div>
       </section>
 
-      <section id="loan-calculator">
-        <HomeLoanEligiblityCalculator />
+      <section id="loan-calculator" className={`relative  `}>
+        {!showAllForm && (
+          <div className="absolute z-40  left-0 h-full flex flex-col gap-2 items-center justify-center top-0 text-center w-full">
+            <p className="text-red-600 font-semibold text-[12px] sm:text-[20px] md:text-[24px]">
+              ⚠️ Please fill the Lets Talk form above to access the Loan
+              Calculator
+            </p>
+            <button
+              // onClick={handleEmiClick}
+              onClick={() => setShowFormModal(true)}
+              className="cursor-pointer bg-[#19273A] text-white  px-2 py-2 rounded-[8px]"
+            >
+              Click to go on form
+            </button>
+          </div>
+        )}
+        <div
+          className={`transition-all duration-500 relative ${
+            !showAllForm ? "blur-sm pointer-events-none select-none" : "blur-0"
+          }`}
+        >
+          <HomeLoanEligiblityCalculator />
+        </div>
       </section>
 
-      <section id="area-calculator">
-        <AreaConverter />
+      <section id="area-calculator" className={`relative   `}>
+        {!showAllForm && (
+          <div className="absolute z-40  left-0 h-full flex flex-col gap-2 items-center justify-center top-0 text-center w-full">
+            <p className="text-red-600 font-semibold text-[12px] sm:text-[20px] md:text-[24px] ">
+              ⚠️ Please fill the Lets Talk form above to access the Area
+              Calculator
+            </p>
+            <button
+              // onClick={handleEmiClick}
+              onClick={() => setShowFormModal(true)}
+              className="cursor-pointer bg-[#19273A] text-white  px-2 py-2 rounded-[8px]"
+            >
+              Click to go on form
+            </button>
+          </div>
+        )}
+        <div
+          className={`transition-all duration-500 relative ${
+            !showAllForm ? "blur-sm pointer-events-none select-none" : "blur-0"
+          }`}
+        >
+          <AreaConverter />
+        </div>
       </section>
 
       <ComparisonTable />
@@ -448,6 +543,9 @@ const ExpertiseSection = () => {
                   placeholder="Your Name"
                   className="w-full pl-10 pr-4 py-3 bg-white/80 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-sm">{errors.name}</p>
+                )}
               </motion.div>
 
               {/* Phone */}
@@ -473,6 +571,9 @@ const ExpertiseSection = () => {
                   placeholder="Phone Number"
                   className="w-full pl-10 pr-4 py-3 bg-white/80 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
                 />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm">{errors.phone}</p>
+                )}
               </motion.div>
 
               {/* Email */}
@@ -498,7 +599,26 @@ const ExpertiseSection = () => {
                   placeholder="Email Address"
                   className="w-full pl-10 pr-4 py-3 bg-white/80 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email}</p>
+                )}
               </motion.div>
+              <textarea
+                name="message"
+                placeholder="Message"
+                className="w-full px-3 py-3 bg-white/80 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
+                rows={2}
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    [e.target.name]: e.target.value,
+                  })
+                }
+              />
+              {errors.message && (
+                <p className="text-red-500 text-sm">{errors.message}</p>
+              )}
 
               {/* Button */}
               <motion.div
@@ -511,9 +631,21 @@ const ExpertiseSection = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.96 }}
                   type="submit"
-                  className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold py-3 rounded-xl shadow-lg hover:shadow-green-300 transition-all"
+                  className={`w-full bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold py-3 rounded-xl shadow-lg hover:shadow-green-300 transition-all ${
+                    loading ? "cursor-wait" : "cursor-pointer"
+                  }`}
                 >
-                  Request Callback
+                  {loading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      <span className="ml-2">Loading...</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-center">
+                      <FaPhoneAlt className="mr-2" />
+                      <span>Request Callback</span>
+                    </div>
+                  )}
                 </motion.button>
               </motion.div>
             </motion.form>
@@ -554,6 +686,8 @@ const ExpertiseSection = () => {
         formData={formData}
         setFormData={setFormData}
         handleSubmit={handleSubmit}
+        errors={errors}
+        loading={loading}
       />
     </>
   );
