@@ -179,10 +179,10 @@ const ServicesHighlight = () => {
             Need help choosing the right property?
           </p>
           <motion.button
-            onClick={() => navigate.push("/Services")}
+            onClick={() => navigate("/Contact")}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 sm:px-8 py-3 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300 shadow-lg"
+            className="px-6 sm:px-8 py-3 cursor-pointer bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-colors duration-300 shadow-lg"
           >
             Talk to an Expert
           </motion.button>

@@ -482,7 +482,7 @@ const ExpertiseSection = () => {
               loading="lazy"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-green-600/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 " />
           </div>
 
           {/* Center Text */}
