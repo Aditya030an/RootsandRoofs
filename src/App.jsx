@@ -10,6 +10,7 @@ const FAQ = lazy(() => import("./Component/FAQ.jsx"));
 const Services = lazy(() => import("./Component/Services.jsx"));
 const Footer = lazy(() => import("./Component/Footer.jsx"));
 const RentalProperties = lazy(() => import("./Component/RentalProperties.jsx"));
+const PropertyDetails = lazy(() => import("./Component/PropertyDetails.jsx"));
 const About = lazy(() => import("./Component/About.jsx"));
 const Contact = lazy(() => import("./Component/Contact.jsx"));
 const Onestop = lazy(() => import("./Component/Onestop.jsx"));
@@ -50,6 +51,7 @@ function App() {
             <Route path="/Contact" element={<Contact />} />
             <Route path="/careerpage" element={<Careerpage />} />
             <Route path="/Onestop" element={<Onestop />} />
+            <Route path="/propertyDetails/:id" element={<PropertyDetails/>} />
           </Routes>
           <Footer />
           <WhatsAppButton />

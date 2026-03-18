@@ -15,6 +15,9 @@ import {
 import { MdVerified, MdLocationOn } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import { Range } from "react-range";
+import { useNavigate } from "react-router-dom";
+import propertyList from "../utils/propertyList";
+
 
 const RentalProperties = () => {
   const [formData, setFormData] = useState({
@@ -27,12 +30,13 @@ const RentalProperties = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef(null);
+  const navigate = useNavigate();
 
   const tabs = ["Buy", "Rent", "Commercial", "Plot"];
   const bhkOptions = ["1 BHK", "2 BHK", "3 BHK", "4 BHK", "5+ BHK"];
 
   // Extensive dummy property data
-  const dummyProperties = [
+  const dummyProperty = [
     {
       id: 1,
       title: "Luxury Villa Paradise",
@@ -339,7 +343,7 @@ const RentalProperties = () => {
     propertyType: [],
     verified: false,
     parking: false,
-    priceRange: [0, 20000000],
+    priceRange: [0, 100000000],
     areaRange: [0, 10000],
     bathrooms: [],
   });
@@ -424,7 +428,7 @@ const RentalProperties = () => {
       propertyType: [],
       verified: false,
       parking: false,
-      priceRange: [0, 20000000],
+      priceRange: [0, 100000000],
       areaRange: [0, 10000],
       bathrooms: [],
     });
@@ -436,7 +440,7 @@ const RentalProperties = () => {
     if (!searchQuery.trim()) return [];
 
     const query = searchQuery.toLowerCase();
-    const suggestions = dummyProperties
+    const suggestions = propertyList
       .filter((p) => p.type === activeTab)
       .filter(
         (p) =>
@@ -454,7 +458,7 @@ const RentalProperties = () => {
   };
 
   // Filter properties
-  const filteredProperties = dummyProperties.filter((property) => {
+  const filteredProperties = propertyList.filter((property) => {
     // 1️⃣ Match tab (Buy, Rent, Commercial, Plot)
     if (property.type !== activeTab) return false;
 
@@ -986,7 +990,7 @@ const RentalProperties = () => {
                           values={filters.priceRange}
                           step={500}
                           min={0}
-                          max={20000000}
+                          max={100000000}
                           onChange={(values) =>
                             handleFilterChange("priceRange", values)
                           }
@@ -1000,11 +1004,11 @@ const RentalProperties = () => {
                                 style={{
                                   // Calculating percentage based on min=0 and max=20000000
                                   left: `${
-                                    (filters.priceRange[0] / 20000000) * 100
+                                    (filters.priceRange[0] / 100000000) * 100
                                   }%`,
                                   right: `${
                                     100 -
-                                    (filters.priceRange[1] / 20000000) * 100
+                                    (filters.priceRange[1] / 100000000) * 100
                                   }%`,
                                 }}
                               />
@@ -1131,6 +1135,7 @@ const RentalProperties = () => {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.02, y: -5 }}
                   key={property.id}
+                  onClick={()=> navigate(`/propertyDetails/${property?.id}`)}
                   className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300"
                 >
                   <div className="relative h-48 bg-gradient-to-br from-slate-200 to-slate-300 w-full">

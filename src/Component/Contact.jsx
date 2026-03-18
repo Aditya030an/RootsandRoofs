@@ -88,11 +88,11 @@ const ContactUs = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info Cards */}
           <motion.div className="space-y-8">
-            <InfoCard
+            {/* <InfoCard
               icon={<FaMapMarkerAlt />}
               title="Visit Us"
               text="123 Luxury Street\nIndore, MP 452001"
-            />
+            /> */}
             <InfoCard
               icon={<FaPhoneAlt />}
               title="Call Us"

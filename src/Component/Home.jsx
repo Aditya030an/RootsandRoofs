@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import Scroll from "./Scroll";
 import bg from "./photos/pic.jpeg";
 import logo from "./photos/image.png";
+// import logo from "./photos/logo2.jpg";
+// import logo from "./photos/logo4.png";
 
 import villa1 from "./photos/villa55.jpeg";
 import villa2 from "./photos/villa2.avif";
@@ -15,7 +17,9 @@ import flat3 from "./photos/villa1.avif";
 
 import com1 from "./photos/villa3.avif";
 import com3 from "./photos/villa1.avif";
-import cover from "./photos/bg_1.mp4";
+// import cover from "./photos/bg_1.mp4";
+// import cover from "./photos/bg_2.mp4";
+import cover from "./photos/bg_3.mp4";
 
 import ServicesHighlight from "./ServicesHighlight";
 
@@ -82,27 +86,35 @@ const Home = () => {
           <div className="absolute top-0 left-0 w-full h-full bg-black/10 z-0" />
 
           {/* Content over video */}
-          <div className="relative z-10 flex flex-col items-center justify-center h-full w-full">
-            {/* Animated Logo */}
-            <motion.img
-              src={logo}
-              alt="Roots & Roofs"
-              initial={{ opacity: 0, y: -40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-              className="w-44 md:w-52 shadow-lg mb-6"
-            />
+          <div className="relative h-full w-full">
 
-            {/* Animated Heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-              className="text-3xl md:text-5xl font-bold font-[tinos] text-white px-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
-            >
-              Discover Your Dream Place With Us
-            </motion.h1>
-          </div>
+  {/* Black Shade Overlay */}
+  <div className="absolute inset-0 bg-gray/10 z-0"></div>
+
+  <div className="relative z-10 flex flex-col items-center justify-center h-full w-full">
+    
+    {/* Animated Logo */}
+    <motion.img
+      src={logo}
+      alt="Roots & Roofs"
+      initial={{ opacity: 0, y: -40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+      className="w-56 md:w-52 shadow-lg mb-6 backdrop-blur-sm "
+    />
+
+    {/* Animated Heading */}
+    <motion.h1
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+      className="text-3xl md:text-5xl font-bold font-[tinos] text-white px-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+    >
+      Discover Your Dream Place With Us
+    </motion.h1>
+
+  </div>
+</div>
         </div>
       </section>
 
