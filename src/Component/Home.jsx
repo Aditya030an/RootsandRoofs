@@ -3,7 +3,8 @@ import FAQSection from "./FAQ";
 import { useNavigate } from "react-router-dom";
 import Scroll from "./Scroll";
 import bg from "./photos/pic.jpeg";
-import logo from "./photos/image.png";
+// import logo from "./photos/image.png";
+import logo from "./photos/image_1.png";
 // import logo from "./photos/logo2.jpg";
 // import logo from "./photos/logo4.png";
 
@@ -100,9 +101,18 @@ const Home = () => {
       initial={{ opacity: 0, y: -40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-      className="w-56 md:w-52 shadow-lg mb-6 backdrop-blur-sm "
+      className="w-56 md:w-52 shadow-lg mb-6  "
     />
 
+    {/* Animated Heading */}
+    <motion.h1
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+      className="text-3xl md:text-2xl font-semibold font-serif text-white px-4 py-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]"
+    >
+      APKI SPACE KA PERFECT PARTNER
+    </motion.h1>
     {/* Animated Heading */}
     <motion.h1
       initial={{ opacity: 0, y: 40 }}
