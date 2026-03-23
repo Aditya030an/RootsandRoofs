@@ -7,7 +7,7 @@ const propertyList = [
     pricePerSqFt: 7500,
     type: "Buy",
     bhk: "4 BHK",
-    area: 4200,
+    area: "4200 sq.ft",
     verified: true,
     parking: true,
     bathrooms: 4,
@@ -58,6 +58,205 @@ const propertyList = [
       pdf: "/pdfs/vidhya-tower-2.pdf", // original PDF
     },
   },
+  {
+  id: 101,
+  title: "Madhuvan by Micro Mitti",
+  location: "Jhalaria Road, Indore",
+
+  city: "Indore",
+  state: "Madhya Pradesh",
+  type: "Buy",
+  propertyType: "Township",
+
+  price: 0,
+  pricePerSqFt: 0,
+
+  area:" 30 Acres",
+  verified: true,
+  featured: true,
+  readyToMove: true,
+
+  description:
+    "Forest-inspired residential township designed for modern and healthy living.",
+
+  aboutProject: `Micro Mitti Madhuban is an innovative, forest-inspired residential township spread over 30 acres in Indore, designed to accommodate 450 families. It blends nature with modern living, promoting clean air, greenery, and wellness.`,
+
+ keyHighlights: [
+  {
+    title: "Forest-Inspired Design",
+    description:
+      "The township is conceptualized as a natural forest environment where sunlight and fresh air flow freely into every home and garden, creating a serene atmosphere for residents.",
+  },
+
+  {
+    title: "Plot and Layout Features",
+    points: [
+      "Plots range between 1250 sq. ft. to 2400 sq. ft. with two-way east-west orientation.",
+      "Roads are 10.5 to 12 meters wide, ensuring accessibility and ventilation.",
+      "Each home includes a backyard garden providing additional green open space and natural light.",
+    ],
+  },
+
+  {
+    title: "Award-Winning Architecture",
+    points: [
+      "The Crescent Club has received the World Architecture Community Award in Singapore.",
+      "Designed by India’s leading architect Sanjay Puri.",
+    ],
+  },
+
+  {
+    title: "The Crescent Club Amenities",
+    points: [
+      "Spans 35,000 sq. ft. with 17,000 sq. ft. private club and garden each.",
+      "Includes swimming pool, terrace garden, banquet hall, and restaurants.",
+      "Wellness zones, indoor games, and gymnasium available.",
+      "Multi-purpose courts for tennis and football.",
+      "Temple and spiritual zones for peace and balance.",
+    ],
+  },
+
+  {
+    title: "Ready-to-Move Villas",
+    points: [
+      "Option to buy ready-to-move villas.",
+      "Designed by Sanjay Puri.",
+      "Developed under Micro Mitti’s quality standards.",
+    ],
+  },
+
+  {
+    title: "Connectivity and Location",
+    points: [
+      "Accessible via Omex City Road, MR 111 Road, and Jhalaria Main Road.",
+      "Close to Phoenix Citadel Mall and Emerald International School.",
+      "Well connected to MR 12 Road and Airport.",
+      "Surrounded by premium colonies, schools, hospitals, and clubs.",
+    ],
+  },
+],
+
+  sections: {
+    overview: `The township is designed as a natural forest ecosystem where sunlight and fresh air flow into every home.`,
+
+    amenities: [
+      "Swimming pool",
+      "Terrace garden",
+      "Banquet hall",
+      "Restaurants",
+      "Gymnasium",
+      "Indoor games",
+      "Tennis & football courts",
+      "Temple & spiritual zones",
+    ],
+
+    specifications: [
+      "Plot sizes: 1250 – 2400 sq.ft.",
+      "Road width: 10.5m – 12m",
+      "East-West facing plots",
+      "Private backyard gardens",
+    ],
+
+    connectivity: [
+      "Connected via MR-111 Road",
+      "Close to Jhalaria Main Road",
+      "Near Phoenix Citadel Mall",
+      "Near Emerald International School",
+      "Easy access to Airport",
+    ],
+
+    vision: [
+      "Sustainable living",
+      "Healthy environment with clean air",
+      "Community-focused lifestyle",
+      "Nature-integrated design",
+    ],
+  },
+
+  projectData: [
+    { label: "Total Area", value: "30 Acres" },
+    { label: "Number of Families", value: "400" },
+    { label: "Plot Sizes", value: "1250 - 2400 sq.ft." },
+    { label: "Road Width", value: "10.5m - 12m" },
+    { label: "Central Courtyard", value: "35,000 sq.ft." },
+    { label: "Private Club Area", value: "17,000 sq.ft." },
+    { label: "Garden Area", value: "17,000 sq.ft." },
+    { label: "Number of Gardens", value: "14" },
+    { label: "Main Road Width", value: "75 meters" },
+  ],
+
+  // Main Images
+  images: [
+    "/propertyList/madhuban/img1.png",
+    "/propertyList/madhuban/img2.png",
+    "/propertyList/madhuban/img3.png",
+    "/propertyList/madhuban/img4.png",
+    "/propertyList/madhuban/img5.png",
+    "/propertyList/madhuban/img6.png",
+    "/propertyList/madhuban/img7.png",
+    "/propertyList/madhuban/img8.png",
+    "/propertyList/madhuban/img9.png",
+    "/propertyList/madhuban/img10.png",
+    "/propertyList/madhuban/img11.png",
+    "/propertyList/madhuban/img12.png",
+    "/propertyList/madhuban/img13.png",
+    "/propertyList/madhuban/img14.png",
+    "/propertyList/madhuban/img15.png",
+    "/propertyList/madhuban/img16.png",
+    "/propertyList/madhuban/img17.png",
+    "/propertyList/madhuban/img18.png",
+    "/propertyList/madhuban/img19.png",
+    "/propertyList/madhuban/img20.png",
+  ],
+
+  // Floor Plan
+  floorPlan: {
+    image: "/propertyList/madhuban/floorplane.png",
+    pdf: "/pdfs/madhuban.pdf",
+  },
+
+  // Map
+  map: {
+    image: "/propertyList/madhuban/mapViewImg.png",
+    locationLink: "https://maps.google.com/?q=madhuban+indore",
+  },
+
+  // Extra Galleries
+  galleries: [
+    {
+      title: "Ready to Move Villas",
+      images: [
+        "/propertyList/madhuban/img21.png",
+        "/propertyList/madhuban/img22.png",
+        "/propertyList/madhuban/img23.png",
+        "/propertyList/madhuban/img24.png",
+      ],
+    },
+    // {
+    //   title: "Landscape Plan",
+    //   images: [
+    //     "/propertyList/madhuban/floorplane.png",
+    //   ],
+    // },
+    // {
+    //   title: "Development Around Micro Mitti",
+    //   images: [
+    //     "/propertyList/madhuban/dev.png",
+    //   ],
+    // },
+  ],
+
+  developer: {
+    name: "Micro Mitti",
+    description:
+      "Focused on sustainable, nature-driven township development.",
+  },
+
+  disclaimer:
+    "All details mentioned are based on project information. Please verify all details by visiting the site and consulting the official team before making a decision.",
+
+  contact: true,
+},
   {
     id: 2,
     title: "Modern Sky Apartment",

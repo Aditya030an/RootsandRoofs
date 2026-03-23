@@ -93,7 +93,7 @@ const [loading , setLoading] = useState(false);
       } else {
         clearInterval(interval); // stop permanently after submit
       }
-    }, 7000); // ⏳ show every 7 seconds
+    }, 360000); // ⏳ show every 7 seconds
 
     return () => clearInterval(interval);
   };
@@ -105,7 +105,7 @@ const [loading , setLoading] = useState(false);
       // first popup after page load
       const timeout = setTimeout(() => {
         setIsOpen(true);
-      }, 7000);
+      }, 360000);
 
       // continue showing repeatedly every 7 sec
       const stop = startAutoPopup();

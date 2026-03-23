@@ -158,14 +158,14 @@ const ExpertiseSection = () => {
     if (!showAllForm) {
       const interval = setInterval(() => {
         setShowPopup(true);
-      }, 20000);
+      }, 360000);
       return () => clearInterval(interval);
     }
   }, [showAllForm]);
 
   useEffect(() => {
     if (showPopup) {
-      const timeout = setTimeout(() => setShowPopup(false), 5000); // hide after 5 seconds
+      const timeout = setTimeout(() => setShowPopup(false), 360000); // hide after 5 seconds
       return () => clearTimeout(timeout);
     }
   }, [showPopup]);

@@ -18,7 +18,6 @@ import { Range } from "react-range";
 import { useNavigate } from "react-router-dom";
 import propertyList from "../utils/propertyList";
 
-
 const RentalProperties = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -445,7 +444,7 @@ const RentalProperties = () => {
       .filter(
         (p) =>
           p.title.toLowerCase().includes(query) ||
-          p.location.toLowerCase().includes(query)
+          p.location.toLowerCase().includes(query),
       )
       .slice(0, 5);
 
@@ -550,7 +549,7 @@ const RentalProperties = () => {
           className="w-full h-[70vh] flex flex-col justify-center items-center relative overflow-visible"
           style={{
             background: `linear-gradient(135deg, #1a2a3a 0%, #1f3549 50%, #1a2a3a 100%), ${getBackgroundPattern(
-              activeTab
+              activeTab,
             )}`,
             backgroundAttachment: "fixed",
           }}
@@ -1135,10 +1134,10 @@ const RentalProperties = () => {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.02, y: -5 }}
                   key={property.id}
-                  onClick={()=> navigate(`/propertyDetails/${property?.id}`)}
+                  onClick={() => navigate(`/propertyDetails/${property?.id}`)}
                   className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300"
                 >
-                  <div className="relative h-48 bg-gradient-to-br from-slate-200 to-slate-300 w-full">
+                  {/* <div className="relative h-48 bg-gradient-to-br from-slate-200 to-slate-300 w-full">
                     <div className="absolute top-3 left-3 flex gap-2">
                       {property.verified && (
                         <span className="bg-[#7cc933] text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
@@ -1148,6 +1147,35 @@ const RentalProperties = () => {
                       <span className="bg-white/90 backdrop-blur-sm text-slate-800 px-3 py-1 rounded-full text-xs font-semibold">
                         {property.bhk}
                       </span>
+                    </div>
+                  </div> */}
+                  <div className="relative h-48 w-full overflow-hidden">
+                    <img
+                      src={property?.images?.[0]}
+                      alt={property.title}
+                      className="w-full h-full object-cover"
+                    />
+
+                    {/* Fallback if no image */}
+                    {!property?.images?.[0] && (
+                      <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center text-sm text-gray-500">
+                        No Image
+                      </div>
+                    )}
+
+                    {/* Top badges */}
+                    <div className="absolute top-3 left-3 flex gap-2">
+                      {property.verified && (
+                        <span className="bg-[#7cc933] text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                          <MdVerified /> Verified
+                        </span>
+                      )}
+
+                      {property.bhk && (
+                        <span className="bg-white/90 backdrop-blur-sm text-slate-800 px-3 py-1 rounded-full text-xs font-semibold">
+                          {property.bhk}
+                        </span>
+                      )}
                     </div>
                   </div>
 
