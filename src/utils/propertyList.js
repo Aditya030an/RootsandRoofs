@@ -140,14 +140,82 @@ const propertyList = [
     overview: `The township is designed as a natural forest ecosystem where sunlight and fresh air flow into every home.`,
 
     amenities: [
-      "Swimming pool",
-      "Terrace garden",
-      "Banquet hall",
-      "Restaurants",
-      "Gymnasium",
-      "Indoor games",
-      "Tennis & football courts",
-      "Temple & spiritual zones",
+      {
+        title:"Club House",
+        img:"/propertyList/madhuban/img2.png"
+      },
+      {
+        title:"Swimming pool",
+        img:"/propertyList/madhuban/img3.png"
+      },
+      {
+        title:"Cafe Lounge",
+        img:"/propertyList/madhuban/img4.png"
+      },
+      {
+        title:"Restaurant",
+        img:"/propertyList/madhuban/img5.png"
+      },
+      {
+        title:"Gym",
+        img:"/propertyList/madhuban/img6.png"
+      },
+      {
+        title:"Games Room",
+        img:"/propertyList/madhuban/img7.png"
+      },
+      {
+        title:"Pre-Function Area",
+        img:"/propertyList/madhuban/img8.png"
+      },
+      {
+        title:"Multipurpose Event Hall",
+        img:"/propertyList/madhuban/img9.png"
+      },
+      {
+        title:"Conference",
+        img:"/propertyList/madhuban/img10.png"
+      },
+      {
+        title:"Reception",
+        img:"/propertyList/madhuban/img11.png"
+      },
+      {
+        title:"Sauna",
+        img:"/propertyList/madhuban/img12.png"
+      },
+      {
+        title:"Architectural Stairs",
+        img:"/propertyList/madhuban/img13.png"
+      },
+      {
+        title:"Lavish Washrooms",
+        img:"/propertyList/madhuban/img14.png"
+      },
+      {
+        title:"Tennis & football courts",
+        img:"/propertyList/madhuban/img15.png"
+      },
+      {
+        title:"Temple & spiritual zones",
+        img:"/propertyList/madhuban/img16.png"
+      },
+      {
+        title:"Pavilion",
+        img:"/propertyList/madhuban/img17.png"
+      },
+      {
+        title:"Seating Alcove",
+        img:"/propertyList/madhuban/img18.png"
+      },
+      {
+        title:"Children's Play Area",
+        img:"/propertyList/madhuban/img19.png"
+      },
+      {
+        title:"Yoga Deck",
+        img:"/propertyList/madhuban/img20.png"
+      },
     ],
 
     specifications: [
@@ -218,7 +286,7 @@ const propertyList = [
   // Map
   map: {
     image: "/propertyList/madhuban/mapViewImg.png",
-    locationLink: "https://maps.google.com/?q=madhuban+indore",
+    locationLink: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
   },
 
   // Extra Galleries
