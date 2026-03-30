@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import propertyList from "../utils/propertyList";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { ChevronLeft, ChevronRight, X, ChevronDown } from "lucide-react";
 import {
   Train,
   Bus,
@@ -14,6 +13,11 @@ import {
   Building2,
   Eye,
   CheckCircle,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  ChevronDown,
+  Star,
 } from "lucide-react";
 
 const PropertyDetails = () => {
@@ -41,37 +45,28 @@ const PropertyDetails = () => {
 
   const [openHighlight, setOpenHighlight] = useState(null);
 
-  const toggleHighlight = (index) => {
-    setOpenHighlight(openHighlight === index ? null : index);
-  };
+  const overviewRef = useRef();
+  const floorPlaneRef = useRef();
+  const amenitiesRef = useRef();
+  const paymentRef = useRef();
+  const specificationRef = useRef();
+  const projectDataRef = useRef();
+  const locationRef = useRef();
+  const connectivityRef = useRef();
+  const emiRef = useRef();
+  // const ratingRef = useRef();
+  // const aboutDeveloperRef = useRef();
+  // const similarProjectRef = useRef();
+  const overviewScrollRef = useRef(null);
 
   const amenities = property?.sections?.amenities || [];
 
-  const openAmenity = (index) => {
-    setActiveAmenityIndex(index);
-    setShowAmenityPopup(true);
-  };
-
-  const nextAmenity = () => {
-    setActiveAmenityIndex((prev) =>
-      prev === amenities.length - 1 ? 0 : prev + 1,
-    );
-  };
-
-  const prevAmenity = () => {
-    setActiveAmenityIndex((prev) =>
-      prev === 0 ? amenities.length - 1 : prev - 1,
-    );
-  };
-
-  const calculateEMI = () => {
-    const r = rate / 12 / 100;
-    const n = tenure * 12;
-
-    const emiValue = (loan * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-
-    setEmi(Math.round(emiValue));
-  };
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,42 +90,6 @@ const PropertyDetails = () => {
   useEffect(() => {
     calculateEMI();
   }, [loan, rate, tenure]);
-
-  const overviewRef = useRef();
-  const floorPlaneRef = useRef();
-  const amenitiesRef = useRef();
-  const paymentRef = useRef();
-  const specificationRef = useRef();
-  const projectDataRef = useRef();
-  const locationRef = useRef();
-  const connectivityRef = useRef();
-  const emiRef = useRef();
-  // const ratingRef = useRef();
-  // const aboutDeveloperRef = useRef();
-  // const similarProjectRef = useRef();
-  const overviewScrollRef = useRef(null);
-
-  const scrollLeft = () => {
-    overviewScrollRef.current?.scrollBy({
-      left: -400,
-      behavior: "smooth",
-    });
-  };
-
-  const scrollRight = () => {
-    overviewScrollRef.current?.scrollBy({
-      left: 400,
-      behavior: "smooth",
-    });
-  };
-
-  const scrollToSection = (ref, tab) => {
-    setActiveTab(tab);
-    ref.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -161,6 +120,58 @@ const PropertyDetails = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const toggleHighlight = (index) => {
+    setOpenHighlight(openHighlight === index ? null : index);
+  };
+
+  const openAmenity = (index) => {
+    setActiveAmenityIndex(index);
+    setShowAmenityPopup(true);
+  };
+
+  const nextAmenity = () => {
+    setActiveAmenityIndex((prev) =>
+      prev === amenities.length - 1 ? 0 : prev + 1,
+    );
+  };
+
+  const prevAmenity = () => {
+    setActiveAmenityIndex((prev) =>
+      prev === 0 ? amenities.length - 1 : prev - 1,
+    );
+  };
+
+  const calculateEMI = () => {
+    const r = rate / 12 / 100;
+    const n = tenure * 12;
+
+    const emiValue = (loan * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+
+    setEmi(Math.round(emiValue));
+  };
+
+  const scrollLeft = () => {
+    overviewScrollRef.current?.scrollBy({
+      left: -400,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollRight = () => {
+    overviewScrollRef.current?.scrollBy({
+      left: 400,
+      behavior: "smooth",
+    });
+  };
+
+  const scrollToSection = (ref, tab) => {
+    setActiveTab(tab);
+    ref.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
   const getConnectivityIcon = (text) => {
     const t = text.toLowerCase();
@@ -391,132 +402,96 @@ const PropertyDetails = () => {
         </div>
 
         {/* ================= SPECIFICATION ================= */}
-        {/* <div
-          ref={specificationRef}
-          className="max-w-7xl mx-auto px-6 md:px-10 py-10 scroll-mt-28"
-        >
-          <h2 className="text-3xl font-serif mb-6">Highlights</h2>
-
-          {property?.keyHighlights?.map((item, i) => (
-            <div key={i} className="bg-white p-4 mb-3 rounded shadow">
-              <h3 className="font-semibold">{item.title}</h3>
-
-              {item.description && <p>{item.description}</p>}
-
-              {item.points && (
-                <ul className="list-disc pl-5">
-                  {item.points.map((p, idx) => (
-                    <li key={idx}>{p}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
-
-          <div className="bg-gray-300  p-2">
-            <h2 className="text-lg font-medium">Specification</h2>
-            <div className="grid grid-cols-4 gap-3">
-              {property?.sections?.specifications?.map((v, i) => (
-                <div key={i} className="bg-white p-1 rounded text-md">
-                  {v}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div> */}
         <div
           ref={specificationRef}
-          className="max-w-7xl mx-auto px-10 py-10 scroll-mt-28"
+          className="max-w-6xl mx-auto px-6 py-12 scroll-mt-28"
         >
+          {/* ================= TITLE ================= */}
+
+          <h2 className="text-4xl font-serif mb-8 text-gray-900">Highlights</h2>
+
           {/* ================= HIGHLIGHTS ================= */}
 
-          <h2 className="text-3xl font-serif mb-6">Highlights</h2>
-
-          <div className="space-y-4">
+          <div className="space-y-5">
             {property?.keyHighlights?.map((item, i) => {
               const isOpen = openHighlight === i;
 
               return (
                 <div
                   key={i}
-                  className="
-            border 
-            rounded-xl 
-            overflow-hidden
-            bg-white
-            shadow-sm
-            transition
-          "
+                  className="rounded-2xl overflow-hidden bg-white shadow-md border transition duration-300 hover:shadow-lg"
                 >
                   {/* HEADER */}
+
                   <button
                     onClick={() => toggleHighlight(i)}
-                    className="
-              w-full 
-              flex 
-              items-center 
-              justify-between
-              px-5 
-              py-4 
-              text-left
-              hover:bg-gray-50
-              transition
-            "
+                    className="w-full flex items-center justify-between px-6 py-5 text-left bg-gradient-to-r from-white to-gray-50 hover:from-gray-50 hover:to-gray-100 transition duration-300"
                   >
-                    <h3 className="font-medium text-lg">{item.title}</h3>
+                    <div className="flex items-center gap-3">
+                      {/* ICON */}
+
+                      <div className="p-2 bg-gray-100 rounded-xl">
+                        <Star size={18} className="text-gray-700" />
+                      </div>
+
+                      <h3 className="font-semibold text-lg text-gray-800">
+                        {item.title}
+                      </h3>
+                    </div>
+
+                    {/* ARROW */}
 
                     <ChevronDown
-                      className={`
-                transition-transform 
-                duration-300
-                ${isOpen ? "rotate-180" : ""}
-              `}
+                      className={`transition-transform duration-500 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
                     />
                   </button>
 
                   {/* CONTENT */}
-                  <div
-                    className={`
-              overflow-hidden 
-              transition-all 
-              duration-300
-              ${isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"}
-            `}
-                  >
-                    <div className="px-5 pb-5 text-gray-700">
-                      {item.description && (
-                        <p className="mb-3">{item.description}</p>
-                      )}
 
-                      {item.points && (
-                        <ul className="list-disc pl-5 space-y-1">
-                          {item.points.map((p, idx) => (
-                            <li key={idx}>{p}</li>
-                          ))}
-                        </ul>
-                      )}
+                  <div
+                    className={`grid transition-all duration-500 ease-in-out ${
+                      isOpen
+                        ? "grid-rows-[1fr] opacity-100"
+                        : "grid-rows-[0fr] opacity-0"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-6 pb-6 text-gray-700">
+                        {/* DESCRIPTION */}
+
+                        {item.description && (
+                          <p className="mb-4 text-gray-600 leading-relaxed">
+                            {item.description}
+                          </p>
+                        )}
+
+                        {/* POINTS */}
+
+                        {item.points && (
+                          <ul className="space-y-2">
+                            {item.points.map((p, idx) => (
+                              <li
+                                key={idx}
+                                className="flex items-start gap-2 animate-fadeIn"
+                              >
+                                <CheckCircle
+                                  size={16}
+                                  className="text-green-500 mt-1"
+                                />
+
+                                <span className="text-gray-700">{p}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
               );
             })}
-          </div>
-
-          {/* ================= SPECIFICATIONS ================= */}
-
-          <div className="mt-12">
-            <h2 className="text-3xl font-serif mb-6">Specifications</h2>
-
-            <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
-              {property?.sections?.specifications?.map((v, i) => (
-                <div
-                  key={i}
-                  className="  bg-white p-4 rounded-xl shadow-sm border transition hover:shadow-md hover:-translate-y-1"
-                >
-                  <p className="text-gray-700 text-sm">{v}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
 
@@ -543,26 +518,7 @@ const PropertyDetails = () => {
         >
           <div className="text-3xl font-serif mb-6">Location</div>
           <div className=" grid grid-cols-2 gap-8 px-0 scroll-mt-28">
-            <div className="bg-green-500 h-[400px] flex flex-col items-center justify-center text-white text-xl font-semibold text-center p-2">
-              <h2>Google Map for Location (VR View)</h2>
-              {property?.map?.image && (
-                <TransformWrapper>
-                  <TransformComponent>
-                    <img src={property?.map?.image} className="rounded" />
-                  </TransformComponent>
-                </TransformWrapper>
-              )}
-            </div>
-
-            <div
-              className="
-    bg-white
-    rounded-xl
-    shadow-sm
-    border
-    overflow-hidden
-  "
-            >
+            <div className=" bg-white rounded-xl shadow-sm border overflow-hidden ">
               {/* Title */}
 
               <div className="px-6 py-4 border-b bg-gray-50">
@@ -587,6 +543,30 @@ const PropertyDetails = () => {
                 )}
               </div>
             </div>
+            <div className=" bg-white rounded-xl shadow-sm border overflow-hidden ">
+              {/* Title */}
+
+              <div className="px-6 py-4 border-b bg-green-500">
+                <h2 className="text-lg font-semibold text-white">
+                  Google Map for Location (VR View)
+                </h2>
+              </div>
+
+              {/* Map */}
+
+              <div className="w-full h-[340px]">
+                {property?.map?.image && (
+                  <TransformWrapper>
+                    <TransformComponent>
+                      <img
+                        src={property?.map?.image}
+                        className="rounded h-[400px]"
+                      />
+                    </TransformComponent>
+                  </TransformWrapper>
+                )}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -595,56 +575,17 @@ const PropertyDetails = () => {
           className="max-w-7xl mx-auto px-6 md:px-10 py-10 scroll-mt-28"
         >
           {/* Heading */}
-          <h2 className="text-3xl font-serif mb-6 ">
-            Connectivity
-          </h2>
+          <h2 className="text-3xl font-serif mb-6 ">Connectivity</h2>
 
           {/* Grid */}
-          <div
-            className="
-    grid
-    grid-cols-1
-    sm:grid-cols-2
-    md:grid-cols-3
-    lg:grid-cols-4
-    gap-5
-  "
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {property?.sections?.connectivity?.map((c, i) => (
               <div
                 key={i}
-                className="
-          group
-          bg-white
-          border
-          rounded-xl
-          p-4
-          flex
-          items-center
-          gap-4
-          shadow-sm
-          transition-all
-          duration-300
-          hover:shadow-md
-          hover:-translate-y-1
-        "
+                className=" group  bg-white border rounded-xl p-4 flex items-center gap-4 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1"
               >
                 {/* Icon */}
-                <div
-                  className="
-          w-10
-          h-10
-          flex
-          items-center
-          justify-center
-          bg-gray-100
-          rounded-lg
-          text-gray-700
-          group-hover:bg-blue-50
-          group-hover:text-green-600
-          transition
-        "
-                >
+                <div className=" w-10 h-10 flex items-center justify-center  bg-gray-100 rounded-lg  text-gray-700  group-hover:bg-blue-50  group-hover:text-green-600 transition ">
                   {getConnectivityIcon(c)}
                 </div>
 
@@ -666,29 +607,11 @@ const PropertyDetails = () => {
           </h2>
 
           {/* Table Card */}
-          <div
-            className="
-    bg-white
-    border
-    rounded-xl
-    shadow-sm
-    overflow-hidden
-  "
-          >
+          <div className="  bg-white border rounded-xl shadow-sm overflow-hidden ">
             {/* Desktop Table */}
             <div className="hidden md:block">
               {/* Header */}
-              <div
-                className="
-        grid
-        grid-cols-5
-        bg-gray-50
-        text-sm
-        font-medium
-        text-gray-600
-        p-4
-      "
-              >
+              <div className=" grid grid-cols-5  bg-gray-50 text-sm font-medium  text-gray-600 p-4">
                 <span>Unit Type</span>
                 <span>Size (Sq. Ft.)</span>
                 <span>Price / Sq. Ft.</span>
@@ -697,17 +620,7 @@ const PropertyDetails = () => {
               </div>
 
               {/* Row */}
-              <div
-                className="
-        grid
-        grid-cols-5
-        p-4
-        text-gray-800
-        border-t
-        hover:bg-gray-50
-        transition
-      "
-              >
+              <div className="grid grid-cols-5 p-4 text-gray-800 border-t  hover:bg-gray-50 transition">
                 <span className="font-medium">{property?.bhk}</span>
 
                 <span>{property?.area} Carpet</span>
