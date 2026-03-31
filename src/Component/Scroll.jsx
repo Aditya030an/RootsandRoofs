@@ -2,6 +2,7 @@ import flat3 from "./photos/villa1.avif";
 import com1 from "./photos/villa3.avif";
 import com2 from "./photos/villa2.avif";
 import com3 from "./photos/villa1.avif";
+import img1 from "/propertyList/madhuban/img1.png";
 import gsap from "gsap";
 import { useEffect } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -70,6 +71,8 @@ const Scroll = () => {
   }, []);
   return (
     <div className="relative w-full h-screen bg-[#192739] text-white overflow-hidden flex items-center justify-center">
+      <div className="absolute -top-20 -left-20 w-72 h-72 bg-gradient-to-br from-[#0e2338] via-[#1e3a8a] to-[#2563eb] rounded-full opacity-20 blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-emerald-400/30 to-cyan-400/20 rounded-full blur-3xl"></div>
       {/* Central Text */}
       <div className="text-center z-10">
         <h1
@@ -78,7 +81,7 @@ const Scroll = () => {
             webkitTextStroke: ".2vw white",
             color: "transparent",
           }}
-          className=" text-[2.5rem] md:text-[6rem]  font-bold     leading-tight"
+          className=" text-[2.5rem] md:text-[6rem]  font-bold leading-tight"
         >
           Where Dreams <br /> Meet Homes
         </h1>
@@ -122,14 +125,18 @@ const Scroll = () => {
 
       {/* Bottom Center - Man */}
       <div className="img4 overflow-hidden absolute bottom-[5%] left-1/2 transform -translate-x-1/2 w-[180px] md:w-[300px] h-[fit]">
-        <Link to="/">
+        <a
+          href="/propertyDetails/101"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img
-            src={com2}
+            src={img1}
             alt="Man"
             loading="lazy"
             className="image  opacity-0 translate-y-[100%] rounded shadow-lg"
           />
-        </Link>
+        </a>
       </div>
     </div>
   );

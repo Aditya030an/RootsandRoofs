@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { FaArrowRight, FaUser, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { FaUser, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 // import contactImg from "./photos/banner.png"; // Or update path if needed
 import contactImg from "./photos/billboard.jpeg"; // Or update path if needed
@@ -322,31 +322,29 @@ const ExpertiseSection = () => {
         <Onestop />
       </section>
       {/* EMI Calculator Section */}
-      <section
-        id="emi-calculator"
-        className={`mt-10 relative max-w-4xl mx-auto px-6  `}
-      >
-        {!showAllForm && (
-          <div className="absolute z-40  left-0 h-full flex flex-col gap-2 items-center justify-center top-0 text-center w-full">
-            <p className="text-red-600 font-semibold text-[12px] sm:text-[20px] md:text-[24px]">
-              ⚠️ Please fill the Lets Talk form above to access the EMI
-              Calculator
-            </p>
-            <button
-              // onClick={handleEmiClick}
-              onClick={() => setShowFormModal(true)}
-              className="cursor-pointer bg-[#19273A] text-white  px-2 py-2 rounded-[8px]"
-            >
-              Click to go on form
-            </button>
+      <section id="emi-calculator" className="bg-gray-100 py-12 relative">
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-emerald-400/30 to-cyan-400/20 rounded-full blur-3xl"></div>
+        <div className={`relative max-w-4xl mx-auto px-6  `}>
+          {/* {!showAllForm && (
+            <div className="absolute z-40  left-0 h-full flex flex-col gap-2 items-center justify-center top-0 text-center w-full">
+              <p className="text-red-600 font-semibold text-[12px] sm:text-[20px] md:text-[24px]">
+                ⚠️ Please fill the Lets Talk form above to access the EMI
+                Calculator
+              </p>
+              <button
+                // onClick={handleEmiClick}
+                onClick={() => setShowFormModal(true)}
+                className="cursor-pointer bg-[#19273A] text-white  px-2 py-2 rounded-[8px]"
+              >
+                Click to go on form
+              </button>
+            </div>
+          )} */}
+          <div
+            className={`transition-all duration-500 relative blur-0 `}
+          >
+            <EMICalculator  showAllForm={showAllForm} setShowFormModal={setShowFormModal}/>
           </div>
-        )}
-        <div
-          className={`transition-all duration-500 relative ${
-            !showAllForm ? "blur-sm pointer-events-none select-none" : "blur-0"
-          }`}
-        >
-          <EMICalculator />
         </div>
       </section>
 

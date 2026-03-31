@@ -36,9 +36,9 @@ const PremiumAwwwardFooter = () => {
           transition={{ duration: 0.8 }}
           className="space-y-6"
         >
-          <img src={logo} alt="Roots 2 Roofs Logo" loading="lazy" className="w-28 h-auto" />
+          <img src={logo} alt="Roots & Roofs Logo" loading="lazy" className="w-28 h-auto" />
           <p className="text-gray-400 text-base leading-relaxed max-w-sm">
-            Roots 2 Roofs is your trusted partner in real estate—helping you discover, buy, or list properties with ease, transparency, and confidence.
+            Roots & Roofs is your trusted partner in real estate—helping you discover, buy, or list properties with ease, transparency, and confidence.
           </p>
        
         </motion.div>
@@ -103,7 +103,7 @@ const PremiumAwwwardFooter = () => {
 
       {/* Bottom Copyright */}
       <div className="relative z-10 text-center text-gray-600 text-sm py-6 border-t border-gray-800">
-        &copy; {new Date().getFullYear()} Roots 2 Roofs — Crafted with care & code.
+        &copy; {new Date().getFullYear()} Roots & Roofs — Crafted with care & code.
       </div>
 
       {/* Gradient text style */}

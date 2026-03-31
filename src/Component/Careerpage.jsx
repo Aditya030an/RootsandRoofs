@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
 const jobCardVariants = {
@@ -62,6 +62,8 @@ const Careerpage = () => {
 
   const [selectedJob, setSelectedJob] = useState(null);
   const [resume, setResume] = useState(null);
+
+  const careerRef = useRef(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -129,6 +131,13 @@ const Careerpage = () => {
     });
 
     setResume(null);
+  };
+
+   const scrollToSection = (ref) => {
+    ref.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
@@ -219,7 +228,7 @@ const Careerpage = () => {
           >
             <button className="relative px-10 py-4 text-lg font-semibold text-white rounded-full overflow-hidden group backdrop-blur-md border border-white/20 shadow-xl">
               <span className="absolute inset-0 bg-gradient-to-r from-[#48b2ff] to-[#1c8cff] transition-transform transform group-hover:scale-110 group-hover:rotate-2 duration-700 ease-out" />
-              <span className="relative z-10">Join Our Team</span>
+              <button onClick={()=>scrollToSection(careerRef)} className="relative z-10">Join Our Team</button>
             </button>
           </motion.div>
         </div>
@@ -282,7 +291,7 @@ const Careerpage = () => {
         </div>
 
         {/* Job Listings */}
-        <div>
+        <div ref={careerRef}>
           <h2 className="text-3xl font-bold mb-6 font-[tinos] text-[#0e2338]">
             Current Openings
           </h2>
@@ -349,163 +358,171 @@ const Careerpage = () => {
             We’re not just a team — we’re a family with a vision. If you’re
             ready to grow, learn, and create impact — we want you with us.
           </p>
-          <a
-            href="mailto:careers@rootsandroofs.in"
+          <button
+            onClick={()=>scrollToSection(careerRef)}
             className="inline-flex items-center px-6 py-3 font-[tinos] bg-orange-500 text-white rounded-full hover:bg-orange-600 transition font-medium shadow-md"
           >
             Apply Now <FaArrowRight className="ml-2" />
-          </a>
+          </button>
         </motion.div>
       </div>
 
       {selectedJob && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-2">
-          <div
-            className="
-      bg-white
-      w-full
-      max-w-2xl
-      max-h-[95vh]
-      overflow-y-auto
-      no-scrollbar
-      rounded-2xl
-      shadow-2xl
-      p-8
-      relative
-    "
-          >
-            {/* Close Button */}
+  <div
+    className="bg-white w-full max-w-2xl max-h-[95vh] overflow-y-auto no-scrollbar rounded-2xl shadow-2xl p-8 relative"
+  >
+    {/* Close Button */}
+    <button
+      onClick={() => setSelectedJob(null)}
+      className="  absolute  top-4  right-4  text-gray-500  hover:text-black text-xl"
+    >
+      ✕
+    </button>
 
-            <button
-              onClick={() => setSelectedJob(null)}
-              className="
-          absolute
-          top-4
-          right-4
-          text-gray-500
-          hover:text-black
-          text-xl
-        "
-            >
-              ✕
-            </button>
+    {/* Job Title */}
+    <h2 className="text-2xl font-bold mb-6 text-[#0e2338]">
+      Apply for {selectedJob.title}
+    </h2>
 
-            {/* Job Title */}
+    {/* Form */}
+    <form onSubmit={handleSubmit} className="space-y-5">
 
-            <h2
-              className="
-        text-2xl
-        font-bold
-        mb-6
-        text-[#0e2338]
-      "
-            >
-              Apply for {selectedJob.title}
-            </h2>
+      {/* Name + Email */}
+      <div className="grid md:grid-cols-2 gap-4">
 
-            {/* Form */}
+        {/* Full Name */}
+        <div>
+          <label className="block mb-1 font-medium">
+            Full Name <span className="text-red-600">*</span>
+          </label>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Name */}
-              <div className="flex items-center justify-between gap-3">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Full Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full border rounded-lg p-3"
-                />
-
-                {/* Email */}
-
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full border rounded-lg p-3"
-                />
-              </div>
-              <div className="flex items-center justify-between gap-3">
-                {/* Phone */}
-
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone Number"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="w-full border rounded-lg p-3"
-                />
-
-                {/* Experience */}
-
-                <input
-                  type="text"
-                  name="experience"
-                  placeholder="Years of Experience"
-                  value={formData.experience}
-                  onChange={handleChange}
-                  required
-                  className="w-full border rounded-lg p-3"
-                />
-              </div>
-
-              {/* Message */}
-
-              <textarea
-                name="message"
-                placeholder="Why should we hire you?"
-                rows={4}
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full border rounded-lg p-3"
-              />
-
-              {/* Resume Upload */}
-
-              <div>
-                <label className="block mb-2 font-medium">
-                  Upload Resume (PDF)
-                </label>
-
-                <input
-                  type="file"
-                  accept="application/pdf"
-                  onChange={handleFileChange}
-                  className="w-full border rounded-lg p-2"
-                />
-
-                {resume && (
-                  <p className="text-sm text-green-600 mt-2">{resume.name}</p>
-                )}
-              </div>
-
-              {/* Submit */}
-
-              <button
-                type="submit"
-                className="
-            w-full
-            bg-orange-500
-            text-white
-            py-3
-            rounded-lg
-            font-medium
-            hover:bg-green-600
-            transition
-          "
-              >
-                Submit Application
-              </button>
-            </form>
-          </div>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter full name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="w-full border rounded-lg p-3"
+          />
         </div>
+
+        {/* Email */}
+        <div>
+          <label className="block mb-1 font-medium">
+            Email Address <span className="text-red-600">*</span>
+          </label>
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter email address"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full border rounded-lg p-3"
+          />
+        </div>
+
+      </div>
+
+      {/* Phone + Experience */}
+      <div className="grid md:grid-cols-2 gap-4">
+
+        {/* Phone */}
+        <div>
+          <label className="block mb-1 font-medium">
+            Phone Number <span className="text-red-600">*</span>
+          </label>
+
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Enter phone number"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+            className="w-full border rounded-lg p-3"
+          />
+        </div>
+
+        {/* Experience */}
+        <div>
+          <label className="block mb-1 font-medium">
+            Years of Experience
+          </label>
+
+          <input
+            type="text"
+            name="experience"
+            placeholder="Enter years of experience"
+            value={formData.experience}
+            onChange={handleChange}
+            className="w-full border rounded-lg p-3"
+          />
+        </div>
+
+      </div>
+
+      {/* Message */}
+      <div>
+        <label className="block mb-1 font-medium">
+          Why should we hire you?
+        </label>
+
+        <textarea
+          name="message"
+          placeholder="Write your message"
+          rows={4}
+          value={formData.message}
+          onChange={handleChange}
+          className="w-full border rounded-lg p-3"
+        />
+      </div>
+
+      {/* Resume Upload */}
+      <div>
+        <label className="block mb-2 font-medium">
+          Upload Resume (PDF)
+          <span className="text-red-600"> *</span>
+        </label>
+
+        <input
+          type="file"
+          accept="application/pdf"
+          onChange={handleFileChange}
+          required
+          className="w-full border rounded-lg p-2"
+        />
+
+        {resume && (
+          <p className="text-sm text-green-600 mt-2">
+            {resume.name}
+          </p>
+        )}
+      </div>
+
+      {/* Submit Button */}
+      <button
+        type="submit"
+        className="
+          w-full
+          bg-orange-500
+          text-white
+          py-3
+          rounded-lg
+          font-medium
+          hover:bg-green-600
+          transition
+        "
+      >
+        Submit Application
+      </button>
+
+    </form>
+  </div>
+</div>
       )}
     </div>
   );

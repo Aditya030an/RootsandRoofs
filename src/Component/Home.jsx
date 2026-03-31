@@ -38,6 +38,7 @@ const collections = [
 const Home = () => {
   // ✅ magnetic button logic must be inside component
   const ref = useRef(null);
+  
   const navigate = useNavigate();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -221,7 +222,7 @@ const Home = () => {
         <ServicesHighlight />
       </section>
 
-      <section className="bg-gray-100 sticky top-[-110%] md:top-0 !z-999   py-16 px-6 md:px-20">
+      <section className="bg-gray-100 sticky top-[-110%] md:top-0 !z-999 pb-44 pt-6 px-6 md:px-20">
         {/* Section Title */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">

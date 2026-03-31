@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import contactImage from "./photos/abou1.jpeg";
 import { useLocation } from "react-router-dom";
 
@@ -19,6 +19,13 @@ const fadeInUp = {
 const ContactUs = () => {
   const [activeForm, setActiveForm] = useState("contact");
   const location = useLocation();
+
+  useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "instant",
+      });
+    }, []);
 
   useEffect(() => {
     if (location.state?.openTab) {

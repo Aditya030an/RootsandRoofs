@@ -1127,28 +1127,18 @@ const RentalProperties = () => {
           ) : (
             <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProperties.map((property, i) => (
-                <motion.div
+                <motion.a
+                  href={`/propertyDetails/${property?.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.02, y: -5 }}
                   key={property.id}
-                  onClick={() => navigate(`/propertyDetails/${property?.id}`)}
-                  className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300"
+                  className="bg-white cursor-pointer border border-slate-200 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300"
                 >
-                  {/* <div className="relative h-48 bg-gradient-to-br from-slate-200 to-slate-300 w-full">
-                    <div className="absolute top-3 left-3 flex gap-2">
-                      {property.verified && (
-                        <span className="bg-[#7cc933] text-white px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
-                          <MdVerified /> Verified
-                        </span>
-                      )}
-                      <span className="bg-white/90 backdrop-blur-sm text-slate-800 px-3 py-1 rounded-full text-xs font-semibold">
-                        {property.bhk}
-                      </span>
-                    </div>
-                  </div> */}
                   <div className="relative h-48 w-full overflow-hidden">
                     <img
                       src={property?.images?.[0]}
@@ -1227,7 +1217,7 @@ const RentalProperties = () => {
                       </motion.button>
                     </div>
                   </div>
-                </motion.div>
+                </motion.a>
               ))}
             </div>
           )}
