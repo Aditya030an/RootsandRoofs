@@ -263,7 +263,7 @@ const ExpertiseSection = () => {
               key={index}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              transition={{ duration: 0.1, delay: index * 0.1 }}
               viewport={{ once: true }}
               className="group relative flex flex-wrap md:flex-nowrap items-start gap-6 p-8 rounded-3xl 
                     bg-white/60 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] 
@@ -325,21 +325,6 @@ const ExpertiseSection = () => {
       <section id="emi-calculator" className="bg-gray-100 py-12 relative">
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-emerald-400/30 to-cyan-400/20 rounded-full blur-3xl"></div>
         <div className={`relative max-w-4xl mx-auto px-6  `}>
-          {/* {!showAllForm && (
-            <div className="absolute z-40  left-0 h-full flex flex-col gap-2 items-center justify-center top-0 text-center w-full">
-              <p className="text-red-600 font-semibold text-[12px] sm:text-[20px] md:text-[24px]">
-                ⚠️ Please fill the Lets Talk form above to access the EMI
-                Calculator
-              </p>
-              <button
-                // onClick={handleEmiClick}
-                onClick={() => setShowFormModal(true)}
-                className="cursor-pointer bg-[#19273A] text-white  px-2 py-2 rounded-[8px]"
-              >
-                Click to go on form
-              </button>
-            </div>
-          )} */}
           <div
             className={`transition-all duration-500 relative blur-0 `}
           >
@@ -347,56 +332,27 @@ const ExpertiseSection = () => {
           </div>
         </div>
       </section>
-
-      <section id="loan-calculator" className={`relative  `}>
-        {!showAllForm && (
-          <div className="absolute z-40  left-0 h-full flex flex-col gap-2 items-center justify-center top-0 text-center w-full">
-            <p className="text-red-600 font-semibold text-[12px] sm:text-[20px] md:text-[24px]">
-              ⚠️ Please fill the Lets Talk form above to access the Loan
-              Calculator
-            </p>
-            <button
-              // onClick={handleEmiClick}
-              onClick={() => setShowFormModal(true)}
-              className="cursor-pointer bg-[#19273A] text-white  px-2 py-2 rounded-[8px]"
-            >
-              Click to go on form
-            </button>
+      <section id="loan-calculator" className="bg-gray-100 py-12 relative">
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-emerald-400/30 to-cyan-400/20 rounded-full blur-3xl"></div>
+        <div className={`relative max-w-4xl mx-auto px-6  `}>
+          <div
+            className={`transition-all duration-500 relative blur-0 `}
+          >
+            <HomeLoanEligiblityCalculator showAllForm={showAllForm} setShowFormModal={setShowFormModal}/>
           </div>
-        )}
-        <div
-          className={`transition-all duration-500 relative ${
-            !showAllForm ? "blur-sm pointer-events-none select-none" : "blur-0"
-          }`}
-        >
-          <HomeLoanEligiblityCalculator />
+        </div>
+      </section>
+      <section id="area-calculator" className="bg-gray-100 relative">
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-emerald-400/30 to-cyan-400/20 rounded-full blur-3xl"></div>
+        <div className={`relative w-full `}>
+          <div
+            className={`transition-all duration-500 relative blur-0 `}
+          >
+            <AreaConverter showAllForm={showAllForm} setShowFormModal={setShowFormModal}/>
+          </div>
         </div>
       </section>
 
-      <section id="area-calculator" className={`relative   `}>
-        {!showAllForm && (
-          <div className="absolute z-40  left-0 h-full flex flex-col gap-2 items-center justify-center top-0 text-center w-full">
-            <p className="text-red-600 font-semibold text-[12px] sm:text-[20px] md:text-[24px] ">
-              ⚠️ Please fill the Lets Talk form above to access the Area
-              Calculator
-            </p>
-            <button
-              // onClick={handleEmiClick}
-              onClick={() => setShowFormModal(true)}
-              className="cursor-pointer bg-[#19273A] text-white  px-2 py-2 rounded-[8px]"
-            >
-              Click to go on form
-            </button>
-          </div>
-        )}
-        <div
-          className={`transition-all duration-500 relative ${
-            !showAllForm ? "blur-sm pointer-events-none select-none" : "blur-0"
-          }`}
-        >
-          <AreaConverter />
-        </div>
-      </section>
 
       <ComparisonTable />
 

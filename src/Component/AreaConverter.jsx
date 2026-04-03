@@ -36,11 +36,34 @@ const unitConversions = {
 
 // ✅ All states for searchable dropdown
 const states = [
-  "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
-  "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
-  "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya",
-  "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim",
-  "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal",
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
 ];
 
 // 🔍 Searchable dropdown for states
@@ -50,8 +73,8 @@ const SearchableStateInput = ({ value, onChange, options }) => {
   const inputRef = useRef(null);
   const dropdownRef = useRef(null);
 
-  const filteredOptions = options.filter(option =>
-    option.toLowerCase().includes(inputValue.toLowerCase())
+  const filteredOptions = options.filter((option) =>
+    option.toLowerCase().includes(inputValue.toLowerCase()),
   );
 
   useEffect(() => setInputValue(value), [value]);
@@ -145,8 +168,11 @@ const CustomDropdown = ({ value, onChange, options }) => {
 
       {isOpen && (
         <>
-          <div className="fixed inset-0 z-10" onClick={() => setIsOpen(false)} />
-          <div className="absolute z-20 w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-2xl max-h-72 overflow-y-auto animate-fadeIn">
+          <div
+            className="fixed inset-0 z-20"
+            onClick={() => setIsOpen(false)}
+          />
+          <div className="absolute z-20 w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-2xl max-h-40 overflow-y-auto animate-fadeIn">
             {options.map((option) => (
               <div
                 key={option}
@@ -171,7 +197,7 @@ const CustomDropdown = ({ value, onChange, options }) => {
 };
 
 // 🧮 Area Converter Main Component
-const AreaConverter = () => {
+const AreaConverter = ({ showAllForm, setShowFormModal }) => {
   const [state, setState] = useState("Madhya Pradesh");
   const [fromUnit, setFromUnit] = useState("Square Meter");
   const [toUnit, setToUnit] = useState("Square Feet");
@@ -215,7 +241,8 @@ const AreaConverter = () => {
             Area Calculator
           </h1>
           <p className="text-gray-300 max-w-2xl mx-auto text-sm md:text-base">
-            Convert land, villa, or apartment area from one unit to another effortlessly.
+            Convert land, villa, or apartment area from one unit to another
+            effortlessly.
           </p>
         </motion.div>
 
@@ -252,7 +279,11 @@ const AreaConverter = () => {
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Select State
                 </label>
-                <SearchableStateInput value={state} onChange={setState} options={states} />
+                <SearchableStateInput
+                  value={state}
+                  onChange={setState}
+                  options={states}
+                />
               </div>
 
               {/* Value Input */}
@@ -276,7 +307,9 @@ const AreaConverter = () => {
                 </label>
                 <div className="flex gap-3 items-end flex-wrap">
                   <div className="flex-1 min-w-[140px]">
-                    <label className="block text-xs text-gray-500 mb-2 uppercase tracking-wide">From</label>
+                    <label className="block text-xs text-gray-500 mb-2 uppercase tracking-wide">
+                      From
+                    </label>
                     <CustomDropdown
                       value={fromUnit}
                       onChange={setFromUnit}
@@ -293,7 +326,9 @@ const AreaConverter = () => {
                   </button>
 
                   <div className="flex-1 min-w-[140px]">
-                    <label className="block text-xs text-gray-500 mb-2 uppercase tracking-wide">To</label>
+                    <label className="block text-xs text-gray-500 mb-2 uppercase tracking-wide">
+                      To
+                    </label>
                     <CustomDropdown
                       value={toUnit}
                       onChange={setToUnit}
@@ -309,18 +344,43 @@ const AreaConverter = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
-                  className="bg-gradient-to-r from-blue-100 via-indigo-100 to-purple-100 p-4 rounded-xl shadow-lg"
+                  className="bg-gradient-to-r from-blue-100 via-indigo-100 to-purple-100 p-4 rounded-xl shadow-lg relative"
                 >
-                  <p className="text-xs text-gray-600 mb-1 uppercase tracking-wide font-semibold">
-                    Result
-                  </p>
-                  <p className="text-lg md:text-xl text-gray-800">
-                    <span className="font-bold">{value} {fromUnit}</span>
-                    <span className="mx-2 text-green-500">=</span>
-                    <span className="font-semibold text-green-600">
-                      {result.toFixed(6)} {toUnit}
-                    </span>
-                  </p>
+                  {!showAllForm && (
+                    <div className="absolute z-10  left-0 h-full flex flex-col gap-2 items-center justify-center top-0 text-center w-full">
+                      <p className="text-red-600 font-semibold text-[12px] sm:text-[20px] md:text-[16px]">
+                        ⚠️ Please fill the Lets Talk form above to access the
+                        EMI Calculator
+                      </p>
+                      <button
+                        // onClick={handleEmiClick}
+                        onClick={() => setShowFormModal(true)}
+                        className="cursor-pointer bg-[#19273A] text-white  px-2 py-1 rounded-[8px] text-[12px]"
+                      >
+                        Click to go on form
+                      </button>
+                    </div>
+                  )}
+                  <div
+                    className={` ${
+                      !showAllForm
+                        ? "blur-sm pointer-events-none select-none"
+                        : "blur-0"
+                    }`}
+                  >
+                    <p className="text-xs text-gray-600 mb-1 uppercase tracking-wide font-semibold">
+                      Result
+                    </p>
+                    <p className="text-lg md:text-xl text-gray-800">
+                      <span className="font-bold">
+                        {value} {fromUnit}
+                      </span>
+                      <span className="mx-2 text-green-500">=</span>
+                      <span className="font-semibold text-green-600">
+                        {result.toFixed(6)} {toUnit}
+                      </span>
+                    </p>
+                  </div>
                 </motion.div>
               )}
             </div>

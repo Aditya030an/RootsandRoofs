@@ -1,6 +1,6 @@
 import  { useState, useEffect } from 'react';
 
-const HomeLoanEligiblityCalculator = () => {
+const HomeLoanEligiblityCalculator = ({ showAllForm, setShowFormModal }) => {
   const [income, setIncome] = useState(25000);
   const [tenure, setTenure] = useState(30);
   const [interestRate, setInterestRate] = useState(7.9);
@@ -112,7 +112,28 @@ const HomeLoanEligiblityCalculator = () => {
         </div>
 
         {/* Result Panel */}
-        <div className="bg-gray-100 p-6 rounded-md text-center">
+        <div className="bg-gray-100 p-6 rounded-md text-center relative">
+           {!showAllForm && (
+              <div className="absolute z-40  left-0 h-full flex flex-col gap-2 items-center justify-center top-0 text-center w-full">
+                <p className="text-red-600 font-semibold text-[12px] sm:text-[20px] md:text-[24px]">
+                  ⚠️ Please fill the Lets Talk form above to access the EMI
+                  Calculator
+                </p>
+                <button
+                  // onClick={handleEmiClick}
+                  onClick={() => setShowFormModal(true)}
+                  className="cursor-pointer bg-[#19273A] text-white  px-2 py-2 rounded-[8px]"
+                >
+                  Click to go on form
+                </button>
+              </div>
+            )}
+            <div className={` ${
+                !showAllForm
+                  ? "blur-md pointer-events-none select-none"
+                  : "blur-0"
+              }`}>
+
           <h3 className="text-xl font-semibold mb-4">Your Home Loan Eligibility</h3>
           <p className="text-3xl font-bold text-blue-600 mb-2">
             ₹{eligibility.toLocaleString()}
@@ -122,6 +143,7 @@ const HomeLoanEligiblityCalculator = () => {
           <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded">
             Apply Now
           </button>
+            </div>
         </div>
       </div>
     </div>

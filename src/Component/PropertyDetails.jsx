@@ -540,15 +540,15 @@ const PropertyDetails = () => {
             <div className="text-3xl font-serif mb-6">Location</div>
             <div className=" bg-white rounded-xl shadow-sm border overflow-hidden ">
               {/* Title */}
-              <div className="px-6 py-4 border-b bg-gray-50">
+              {/* <div className="px-6 py-4 border-b bg-gray-50">
                 <h2 className="text-lg font-semibold text-gray-800">
                   Google Map for Location (VR View)
                 </h2>
-              </div>
+              </div> */}
 
               {/* Map */}
 
-              <div className="w-full h-[340px]">
+              <div className="w-full h-[400px]">
                 {property?.map?.locationLink && (
                   <iframe
                     src={property?.map?.locationLink}

@@ -102,33 +102,91 @@ const philosophyData = [
   },
 ];
 
+const properties = [
+  {
+    id: 1,
+    name: "Property 1",
+    image: "/allPropertyLogo/logo1.jpg",
+    link: "/property/1",
+  },
+  {
+    id: 2,
+    name: "Property 2",
+    image: "/allPropertyLogo/logo2.jpg",
+    link: "/property/2",
+  },
+  {
+    id: 3,
+    name: "Property 3",
+    image: "/allPropertyLogo/logo3.png",
+    link: "/property/3",
+  },
+  {
+    id: 4,
+    name: "Property 4",
+    image: "/allPropertyLogo/logo4.png",
+    link: "/property/4",
+  },
+  {
+    id: 5,
+    name: "Property 5",
+    image: "/allPropertyLogo/logo5.png",
+    link: "/property/5",
+  },
+  {
+    id: 6,
+    name: "Property 6",
+    image: "/allPropertyLogo/logo6.png",
+    link: "/property/6",
+  },
+  {
+    id: 7,
+    name: "Property 7",
+    image: "/allPropertyLogo/logo7.png",
+    link: "/property/7",
+  },
+  {
+    id: 8,
+    name: "Property 8",
+    image: "/allPropertyLogo/logo8.png",
+    link: "/property/8",
+  },
+];
+
 const AboutUsHero = () => {
   return (
     <>
       {/* Hero Section with Video */}
-      <section className="relative w-full h-screen overflow-hidden text-white font-sans">
+      <section className="relative w-full mt-16 h-screen overflow-hidden text-white font-sans">
         {/* Background Video */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="none"
-          poster="/fallback.webp"
-          aria-label="Background video showing Roots & Roofs properties"
-        >
-          <source src={bgVideo} type="video/mp4" />
-          <track
-            kind="captions"
-            src="/captions/bgVideo.vtt"
-            srcLang="en"
-            label="English captions"
-          />
-        </video>
+        <div className="absolute inset-0 grid grid-cols-2 md:grid-cols-4 gap-3 p-4 z-0">
+          {properties.map((item, index) => (
+            <motion.a
+              key={item.id}
+              href={item.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              className="group relative overflow-hidden rounded-xl"
+            >
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-500"
+              />
+
+              {/* Title */}
+              <div className="absolute bottom-3 left-3 text-sm md:text-base font-semibold opacity-0 group-hover:opacity-100 transition">
+                {item.name}
+              </div>
+            </motion.a>
+          ))}
+        </div>
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-0" />
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-0" /> */}
 
         {/* Heading */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-5 md:px-12 text-center">
@@ -372,7 +430,7 @@ const AboutUsHero = () => {
         </section>
       </div>
 
-      <section className="relative bg-[#f7f9fb] text-gray-800 py-32 px-6 overflow-hidden font-[tinos]">
+      <section className="relative bg-[#f7f9fb] text-gray-800 py-10 px-6 overflow-hidden font-[tinos]">
         {/* Blurred lighting accents for glow */}
         <div className="absolute w-80 h-80 bg-pink-300/30 rounded-full blur-3xl top-10 left-[-4rem] z-0"></div>
         <div className="absolute w-80 h-80 bg-sky-300/30 rounded-full blur-3xl bottom-10 right-[-4rem] z-0"></div>
@@ -430,7 +488,7 @@ const AboutUsHero = () => {
       </section>
 
       {/* Our Philosophy */}
-      <section className="bg-gray-100 py-20 px-6 md:px-16">
+      <section className="bg-gray-100 py-10 px-6 md:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
             <motion.h2
@@ -530,7 +588,6 @@ const AboutUsHero = () => {
               {stats.map((stat, idx) => (
                 <motion.div
                   key={idx}
-                  
                   className="bg-white/70 backdrop-blur-md border border-gray-200 rounded-lg shadow-slate-400 shadow-lg px-1 py-3 text-center transition-all hover:shadow-xl cursor-default"
                 >
                   {/* Label */}
@@ -563,7 +620,6 @@ const AboutUsHero = () => {
               whileHover={{ scale: 1.05, y: -5 }}
               className="bg-white/70 backdrop-blur-md border border-gray-200 rounded-lg shadow-slate-400 shadow-lg px-1 py-3 text-center transition-all hover:shadow-xl cursor-default"
             >
-              
               <h3 className="text-md font-semibold text-gray-800">
                 {stat.label}
               </h3>
