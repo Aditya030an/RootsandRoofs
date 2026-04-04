@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import propertyList from "../utils/propertyList";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { motion } from "framer-motion";
 import {
   Train,
   Bus,
@@ -22,6 +23,7 @@ import {
 
 const PropertyDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const property = propertyList.find((item) => item.id === Number(id));
   console.log("property", property);
 
@@ -58,6 +60,8 @@ const PropertyDetails = () => {
   // const aboutDeveloperRef = useRef();
   // const similarProjectRef = useRef();
   const overviewScrollRef = useRef(null);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const containerRef = useRef(null);
 
   const amenities = property?.sections?.amenities || [];
 
@@ -192,6 +196,15 @@ const PropertyDetails = () => {
     if (t.includes("road")) return <MapPin size={22} />;
 
     return <Building2 size={22} />;
+  };
+
+  const handleMouseMove = (e) => {
+    const rect = containerRef.current.getBoundingClientRect();
+
+    setPos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
   };
 
   if (!property) return <div className="p-10">Property not found</div>;
@@ -516,12 +529,24 @@ const PropertyDetails = () => {
           </div>
 
           {/* PROJECT DATA */}
+
           <div
-            ref={projectDataRef}
-            className="relative max-w-7xl mx-auto px-10 py-10 scroll-mt-28"
+            ref={containerRef}
+            onMouseMove={handleMouseMove}
+            className="relative max-w-7xl mx-auto px-10 py-10 scroll-mt-28 overflow-hidden"
           >
-            <div className="absolute top-0 left-0 w-48 h-48 bg-gradient-to-tr from-pink-400/30 to-green-400/20 rounded-full blur-xl"></div>
+            {/* Cursor-follow blur */}
+            <motion.div
+              className="pointer-events-none absolute w-48 h-48 bg-gradient-to-tr from-blue-400/30 to-green-400/20 rounded-full blur-xl"
+              animate={{
+                x: pos.x - 100,
+                y: pos.y - 100,
+              }}
+              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+            />
+
             <h2 className="text-3xl font-serif mb-6">Project Data</h2>
+
             <div className="grid grid-cols-4 gap-3 mt-6">
               {property?.projectData?.map((d, i) => (
                 <div key={i} className="bg-white p-3 rounded">
@@ -590,23 +615,13 @@ const PropertyDetails = () => {
                 ))}
               </div>
               <div className=" bg-white rounded-xl shadow-sm border overflow-hidden ">
-                {/* Title */}
-
-                <div className="px-6 py-4 border-b bg-green-500">
-                  <h2 className="text-lg font-semibold text-white">
-                    Google Map for Location (VR View)
-                  </h2>
-                </div>
-
-                {/* Map */}
-
-                <div className="w-full h-[340px]">
+                <div className="w-full h-full">
                   {property?.map?.image && (
                     <TransformWrapper>
                       <TransformComponent>
                         <img
                           src={property?.map?.image}
-                          className="rounded h-[400px]"
+                          className="rounded h-[500px] "
                         />
                       </TransformComponent>
                     </TransformWrapper>
@@ -768,7 +783,14 @@ const PropertyDetails = () => {
           </div>
 
           <div className="max-w-7xl mx-auto flex justify-end mt-6 px-8 scroll-mt-28">
-            <button className="bg-[#1e3447] text-white px-10 py-4 rounded-full text-lg">
+            <button
+              onClick={() =>
+                navigate("/Contact", {
+                  state: { openTab: "listing", scrollTo: "contact-Us" },
+                })
+              }
+              className="bg-[#1e3447] text-white px-10 py-4 rounded-full text-lg"
+            >
               Book your Appointment
             </button>
           </div>

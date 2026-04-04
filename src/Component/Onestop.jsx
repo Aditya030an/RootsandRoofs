@@ -289,7 +289,7 @@ export default function StepsSection() {
               boxShadow: "0 0 30px rgba(124, 201, 51, 0.4)",
             }}
             whileTap={{ scale: 0.98 }}
-            onClick={() => navigate("/Contact")}
+             onClick={() => navigate("/Contact" , {state:{scrollTo:"contact-Us"}})}
             className="w-[22%] bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-3 py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
           >
             Connect with Us

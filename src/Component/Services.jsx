@@ -125,6 +125,19 @@ const ExpertiseSection = () => {
   const [showFormModal, setShowFormModal] = useState(false);
 
   useEffect(() => {
+    // Restore
+    const savedScroll = sessionStorage.getItem("service_scroll");
+    if (savedScroll) {
+      window.scrollTo(0, parseInt(savedScroll));
+    }
+
+    // Save on unmount
+    return () => {
+      sessionStorage.setItem("service_scroll", window.scrollY);
+    };
+  }, []);
+
+  useEffect(() => {
     if (location?.state?.scrollTo) {
       const sectionId = location?.state?.scrollTo;
 
@@ -309,7 +322,9 @@ const ExpertiseSection = () => {
           </p>
           <button
             onClick={() =>
-              navigate("/Contact", { state: { openTab: "listing" } })
+              navigate("/Contact", {
+                state: { openTab: "listing", scrollTo: "contact-Us" },
+              })
             }
             className="inline-block bg-[#19273A] cursor-pointer text-white font-medium py-3 px-8 rounded-md transition"
           >
@@ -325,34 +340,36 @@ const ExpertiseSection = () => {
       <section id="emi-calculator" className="bg-gray-100 py-12 relative">
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-emerald-400/30 to-cyan-400/20 rounded-full blur-3xl"></div>
         <div className={`relative max-w-4xl mx-auto px-6  `}>
-          <div
-            className={`transition-all duration-500 relative blur-0 `}
-          >
-            <EMICalculator  showAllForm={showAllForm} setShowFormModal={setShowFormModal}/>
+          <div className={`transition-all duration-500 relative blur-0 `}>
+            <EMICalculator
+              showAllForm={showAllForm}
+              setShowFormModal={setShowFormModal}
+            />
           </div>
         </div>
       </section>
       <section id="loan-calculator" className="bg-gray-100 py-12 relative">
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-emerald-400/30 to-cyan-400/20 rounded-full blur-3xl"></div>
         <div className={`relative max-w-4xl mx-auto px-6  `}>
-          <div
-            className={`transition-all duration-500 relative blur-0 `}
-          >
-            <HomeLoanEligiblityCalculator showAllForm={showAllForm} setShowFormModal={setShowFormModal}/>
+          <div className={`transition-all duration-500 relative blur-0 `}>
+            <HomeLoanEligiblityCalculator
+              showAllForm={showAllForm}
+              setShowFormModal={setShowFormModal}
+            />
           </div>
         </div>
       </section>
       <section id="area-calculator" className="bg-gray-100 relative">
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-emerald-400/30 to-cyan-400/20 rounded-full blur-3xl"></div>
         <div className={`relative w-full `}>
-          <div
-            className={`transition-all duration-500 relative blur-0 `}
-          >
-            <AreaConverter showAllForm={showAllForm} setShowFormModal={setShowFormModal}/>
+          <div className={`transition-all duration-500 relative blur-0 `}>
+            <AreaConverter
+              showAllForm={showAllForm}
+              setShowFormModal={setShowFormModal}
+            />
           </div>
         </div>
       </section>
-
 
       <ComparisonTable />
 

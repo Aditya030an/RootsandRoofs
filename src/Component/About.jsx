@@ -18,6 +18,8 @@ import {
   FaRecycle,
   FaUserFriends,
 } from "react-icons/fa";
+import { useState } from "react";
+import InfiniteScroll from "./InfiniteScroll";
 const headingWords = ["Why", "Choose", "Us?"];
 
 const benefits = [
@@ -153,76 +155,74 @@ const properties = [
   },
 ];
 
+const duplicatedProperties = [...properties, ...properties];
+
 const AboutUsHero = () => {
+  const [isPaused, setIsPaused] = useState(false);
   return (
     <>
       {/* Hero Section with Video */}
-      <section className="relative w-full mt-16 h-screen overflow-hidden text-white font-sans">
+      <section className="relative w-full mt-20 h-screen overflow-hidden text-white font-sans">
         {/* Background Video */}
-        <div className="absolute inset-0 grid grid-cols-2 md:grid-cols-4 gap-3 p-4 z-0">
-          {properties.map((item, index) => (
-            <motion.a
-              key={item.id}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group relative overflow-hidden rounded-xl"
-            >
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-500"
-              />
-
-              {/* Title */}
-              <div className="absolute bottom-3 left-3 text-sm md:text-base font-semibold opacity-0 group-hover:opacity-100 transition">
-                {item.name}
-              </div>
-            </motion.a>
-          ))}
+        <div className="absolute inset-0 p-4 z-0">
+          <motion.a
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+            className="group relative overflow-hidden rounded-xl"
+          >
+            <img
+              src="/aboutUsImg.jpg"
+              alt="about us image"
+              className="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-500"
+            />
+          </motion.a>
         </div>
 
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-0" />
 
         {/* Heading */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full px-5 md:px-12 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-5xl md:text-7xl font-[tinos] font-bold tracking-widest relative"
-          >
-            <span className="absolute -inset-1 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 opacity-20 blur-md">
-              ABOUT US
-            </span>
-            <span className="relative z-10">ABOUT US</span>
-          </motion.h1>
+        <div className="relative z-10 flex flex-col items-center justify-between h-full text-center">
+          <InfiniteScroll />
+          <div className="relative flex flex-col items-center justify-between">
+            <motion.h1
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="text-5xl md:text-7xl font-[tinos] font-bold tracking-widest relative"
+            >
+              <span className="absolute -inset-1 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 opacity-20 blur-md">
+                ABOUT US
+              </span>
+              <span className="relative z-10">ABOUT US</span>
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="mt-6 max-w-2xl text-lg md:text-xl text-gray-200"
-          >
-            We are passionate creators, blending innovation and design to craft
-            meaningful experiences that inspire.
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 1 }}
+              className="mt-6 max-w-2xl text-lg md:text-xl text-gray-200"
+            >
+              We are passionate creators, blending innovation and design to
+              craft meaningful experiences that inspire.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 1 }}
+              className="absolute -bottom-28 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-sm text-gray-300"
+            >
+              <FaArrowDown className="animate-bounce text-xl border-2 border-solid border-neutral-500 p-1 rounded-full" />
+              <span className="mt-2 tracking-wide">Scroll Down</span>
+            </motion.div>
+          </div>
+          <InfiniteScroll />
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-sm text-gray-300"
-        >
-          <FaArrowDown className="animate-bounce text-xl" />
-          <span className="mt-2 tracking-wide">Scroll Down</span>
-        </motion.div>
       </section>
 
       <section className="relative z-10 px-6 py-28 overflow-hidden bg-[#0f172a] text-white font-[tinos]">

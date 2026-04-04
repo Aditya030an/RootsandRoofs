@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import contactImage from "./photos/abou1.jpeg";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // const GOOGLE_SHEET_URL = 
 //   "https://script.google.com/macros/s/AKfycbxG1QObuvp4PQUoVfysygo5Kn5Tho_AUlJWKxwrzAnMdWnkyziHdI-EqphokuY4gOsd/exec";
@@ -19,19 +20,60 @@ const fadeInUp = {
 const ContactUs = () => {
   const [activeForm, setActiveForm] = useState("contact");
   const location = useLocation();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: "instant",
-      });
-    }, []);
 
-  useEffect(() => {
-    if (location.state?.openTab) {
-      setActiveForm(location.state.openTab);
-    }
-  }, [location]);
+  // useEffect(() => {
+  //     window.scrollTo({
+  //       top: 0,
+  //       behavior: "instant",
+  //     });
+  //   }, []);
+
+//  useEffect(() => {
+//   if (location.state?.openTab) {
+//     setActiveForm(location.state.openTab);
+//   }
+
+//   if (location?.state?.scrollTo) {
+//     const sectionId = location.state.scrollTo;
+
+//     // Step 1: Reset scroll instantly
+//     window.scrollTo({ top: 0, behavior: "instant" });
+
+//     // Step 2: Wait for DOM paint, then scroll smoothly
+//     requestAnimationFrame(() => {
+//       const element = document.getElementById(sectionId);
+//       if (element) {
+//         element.scrollIntoView({
+//           behavior: "smooth",
+//           block: "center",
+//         });
+//       }
+//     });
+//   }
+// }, [location]);
+
+useEffect(() => {
+   if (location.state?.openTab) {
+    setActiveForm(location.state.openTab);
+  }
+  if (location?.state?.scrollTo) {
+    const sectionId = location.state.scrollTo;
+
+    window.scrollTo({ top: 0, behavior: "instant" });
+
+    requestAnimationFrame(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+
+    // 🔥 Clear state
+    navigate(location.pathname, { replace: true });
+  }
+}, [location]);
 
   return (
     <div className="bg-gradient-to-br from-[#0e2338] via-[#1c3c59] to-[#274b6d] text-white min-h-screen">
@@ -67,7 +109,7 @@ const ContactUs = () => {
       </section>
 
       {/* Toggle Buttons */}
-      <div className="flex justify-center space-x-4 mt-10">
+      <div id="contact-Us" className="flex justify-center space-x-4 mt-10">
         <button
           className={`px-6 py-2 rounded-full font-semibold transition ${
             activeForm === "contact"
@@ -91,15 +133,10 @@ const ContactUs = () => {
       </div>
 
       {/* Forms Section */}
-      <section className="py-16 px-6 max-w-6xl mx-auto">
+      <section  className="py-16 px-6 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Info Cards */}
           <motion.div className="space-y-8">
-            {/* <InfoCard
-              icon={<FaMapMarkerAlt />}
-              title="Visit Us"
-              text="123 Luxury Street\nIndore, MP 452001"
-            /> */}
             <InfoCard
               icon={<FaPhoneAlt />}
               title="Call Us"

@@ -171,7 +171,7 @@ const ComparisonTable = () => {
                         boxShadow: "0 0 30px rgba(124, 201, 51, 0.4)",
                       }}
                       whileTap={{ scale: 0.98 }}
-                       onClick={() => navigate("/contact")}
+                        onClick={() => navigate("/Contact" , {state:{scrollTo:"contact-Us"}})}
                       className="bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-10 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       Contact Us
