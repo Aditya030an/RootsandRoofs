@@ -20,6 +20,7 @@ import {
 } from "react-icons/fa";
 import { useState } from "react";
 import InfiniteScroll from "./InfiniteScroll";
+import VerticalInfiniteScrolling from "./VerticalINfiniteScrolling";
 const headingWords = ["Why", "Choose", "Us?"];
 
 const benefits = [

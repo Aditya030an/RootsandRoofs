@@ -20,7 +20,8 @@ import com1 from "./photos/villa3.avif";
 import com3 from "./photos/villa1.avif";
 // import cover from "./photos/bg_1.mp4";
 // import cover from "./photos/bg_2.mp4";
-import cover from "./photos/bg_3.mp4";
+// import cover from "./photos/bg_3.mp4";
+import cover from "./photos/bg_4.MOV";
 
 import ServicesHighlight from "./ServicesHighlight";
 

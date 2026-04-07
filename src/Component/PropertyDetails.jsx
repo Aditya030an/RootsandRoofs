@@ -20,6 +20,7 @@ import {
   ChevronDown,
   Star,
 } from "lucide-react";
+import gsap from "gsap";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -46,6 +47,10 @@ const PropertyDetails = () => {
   const [activeAmenityIndex, setActiveAmenityIndex] = useState(0);
 
   const [openHighlight, setOpenHighlight] = useState(null);
+
+  const specificationRef2 = useRef(null);
+  const glow1Ref = useRef(null);
+  const glow2Ref = useRef(null);
 
   const overviewRef = useRef();
   const floorPlaneRef = useRef();
@@ -206,6 +211,40 @@ const PropertyDetails = () => {
       y: e.clientY - rect.top,
     });
   };
+
+  useEffect(() => {
+    const container = specificationRef.current;
+    const glow1 = glow1Ref.current;
+    const glow2 = glow2Ref.current;
+
+    const moveGlow = (e) => {
+      const rect = container.getBoundingClientRect();
+
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Smooth GSAP movement
+      gsap.to(glow1, {
+        x: x - 100,
+        y: y - 100,
+        duration: 0.6,
+        ease: "power3.out",
+      });
+
+      gsap.to(glow2, {
+        x: x - 50,
+        y: y - 50,
+        duration: 1,
+        ease: "power3.out",
+      });
+    };
+
+    container.addEventListener("mousemove", moveGlow);
+
+    return () => {
+      container.removeEventListener("mousemove", moveGlow);
+    };
+  }, []);
 
   if (!property) return <div className="p-10">Property not found</div>;
   return (
@@ -435,8 +474,17 @@ const PropertyDetails = () => {
             ref={specificationRef}
             className="max-w-6xl mx-auto px-6 py-12 scroll-mt-28 bg-gray-100 relative"
           >
-            <div className="absolute top-0 left-0 w-28 h-28 bg-gradient-to-tr from-emerald-400/30 to-cyan-400/20 rounded-full blur-xl"></div>
-            <div className="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tr from-pink-400/30 to-blue-400/20 rounded-full blur-xl"></div>
+            <div
+              ref={glow1Ref}
+              className="pointer-events-none absolute w-40 h-40 bg-gradient-to-tr from-emerald-400/30 to-cyan-400/20 rounded-full blur-2xl"
+              style={{ top: 0, left: 0 }}
+            />
+
+            <div
+              ref={glow2Ref}
+              className="pointer-events-none absolute w-28 h-28 bg-gradient-to-tr from-pink-400/30 to-blue-400/20 rounded-full blur-2xl"
+              style={{ top: 0, left: 0 }}
+            />
             {/* ================= TITLE ================= */}
 
             <h2 className="text-4xl font-serif mb-8 text-gray-900">

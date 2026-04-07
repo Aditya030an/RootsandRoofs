@@ -291,7 +291,7 @@ const Careerpage = () => {
         </div>
 
         {/* Job Listings */}
-        <div ref={careerRef}>
+        <div ref={careerRef} className="pt-20">
           <h2 className="text-3xl font-bold mb-6 font-[tinos] text-[#0e2338]">
             Current Openings
           </h2>
