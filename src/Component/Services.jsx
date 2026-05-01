@@ -124,34 +124,113 @@ const ExpertiseSection = () => {
 
   const [showFormModal, setShowFormModal] = useState(false);
 
-  useEffect(() => {
-    // Restore
-    const savedScroll = sessionStorage.getItem("service_scroll");
-    if (savedScroll) {
-      window.scrollTo(0, parseInt(savedScroll));
-    }
+  // useEffect(() => {
+  //   // Restore
+  //   const savedScroll = sessionStorage.getItem("service_scroll");
+  //   if (savedScroll) {
+  //     window.scrollTo(0, parseInt(savedScroll));
+  //   }
 
-    // Save on unmount
-    return () => {
-      sessionStorage.setItem("service_scroll", window.scrollY);
-    };
-  }, []);
+  //   // Save on unmount
+  //   return () => {
+  //     sessionStorage.setItem("service_scroll", window.scrollY);
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    if (location?.state?.scrollTo) {
-      const sectionId = location?.state?.scrollTo;
+  // useEffect(() => {
+  //   if (location?.state?.scrollTo) {
+  //     const sectionId = location?.state?.scrollTo;
 
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      }, 300);
-    }
-  }, [location]);
+  //     setTimeout(() => {
+  //       const element = document.getElementById(sectionId);
+  //       if (element) {
+  //         element.scrollIntoView({
+  //           behavior: "smooth",
+  //           block: "start",
+  //         });
+  //       }
+  //     }, 300);
+  //   }
+  // }, [location]);
+
+ useEffect(() => {
+  const sectionId = location.state?.scrollTo;
+
+  if (sectionId) {
+    const timer = setTimeout(() => {
+      const element = document.getElementById(sectionId);
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      // clear state only after scrolling
+      navigate(location.pathname, { replace: true, state: null });
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }
+
+  // only for normal navbar/direct visit
+  window.scrollTo(0, 0);
+}, [location.key]);
+
+//   useEffect(() => {
+//   const sectionId = location?.state?.scrollTo;
+
+//   if (sectionId) {
+//     const timer = setTimeout(() => {
+//       const element = document.getElementById(sectionId);
+
+//       if (element) {
+//         element.scrollIntoView({
+//           behavior: "smooth",
+//           block: "start",
+//         });
+//       }
+//     }, 200);
+
+//     // clear state after scroll so refresh/back doesn't repeat it
+//     navigate(location.pathname, { replace: true });
+
+//     return () => clearTimeout(timer);
+//   } else {
+//     // when coming normally from navbar/navlink, always start from top
+//     window.scrollTo({
+//       top: 0,
+//       behavior: "smooth",
+//     });
+//   }
+// }, [location.key]);
+
+// useEffect(() => {
+//   const sectionId = location?.state?.scrollTo;
+
+//   if (sectionId) {
+//     const timer = setTimeout(() => {
+//       const element = document.getElementById(sectionId);
+
+//       if (element) {
+//         element.scrollIntoView({
+//           behavior: "smooth",
+//           block: "start",
+//         });
+//       }
+//     }, 200);
+
+//     navigate(location.pathname, { replace: true, state: {} });
+
+//     return () => clearTimeout(timer);
+//   } else {
+//     window.scrollTo({
+//       top: 0,
+//       behavior: "smooth",
+//     });
+//   }
+// }, [location.state, location.pathname, navigate]);
 
   const [formData, setFormData] = useState({
     name: "",

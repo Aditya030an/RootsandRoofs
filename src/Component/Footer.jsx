@@ -10,9 +10,11 @@ import logo from "./photos/logo2.jpg"; // Adjust the path as per your project st
 
 const footerLinks = [
   { title: "Home", href: "/" },
-  { title: "Properties", href: "/Properties" },
   { title: "Services", href: "/Services" },
+  { title: "Properties", href: "/Properties" },
+  { title: "About Us", href: "/About" },
   { title: "Contact", href: "/Contact" },
+  { title: "Careers", href: "/Careerpage" },
 ];
 
 const socialIcons = [

@@ -220,38 +220,7 @@ export default function StepsSection() {
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
         className="relative text-center z-10 pt-12 border-t border-white/10 px-2"
-      >
-        {/* <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
-         
-          <div className="bg-[#14233b] rounded-2xl p-6 flex-1 shadow-lg">
-            <div className="flex items-center gap-3 mb-4">
-              <FaKey className="text-yellow-400 text-2xl" />
-              <h2 className="text-xl font-semibold text-white">
-                Welcome Home!
-              </h2>
-            </div>
-            <ul className="space-y-2 text-gray-200 text-sm md:text-base text-start leading-relaxed">
-              <li>1. Get your possession letter from the builder/seller.</li>
-              <li>2. Take physical handover of your home.</li>
-              <li>3. Society/NOC clearances (for apartments) are managed.</li>
-            </ul>
-          </div>
-
-          
-          <div className="bg-[#14233b] rounded-2xl p-6 flex-1 shadow-lg">
-            <div className="flex items-center gap-3 mb-4">
-              <FaFileAlt className="text-blue-400 text-2xl" />
-              <h2 className="text-xl font-semibold text-white">
-                We’re still with you!
-              </h2>
-            </div>
-            <ul className="space-y-2 text-gray-200 text-sm md:text-base text-start leading-relaxed">
-              <li>1. Transfer property tax records.</li>
-              <li>2. Update utility connections (electricity, water, gas).</li>
-              <li>3. Mutation of property in local records.</li>
-            </ul>
-          </div>
-        </div> */}
+      >  
 
         {/* Bottom Section */}
         <div className="max-w-6xl mx-auto mt-1 flex items-center  bg-white text-[#0f1b2b] rounded-2xl shadow-lg py-4 px-2 text-center">
@@ -271,17 +240,6 @@ export default function StepsSection() {
             </p>
           </div>
 
-          {/* <motion.button
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 0 30px rgba(124, 201, 51, 0.4)",
-              }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => navigate.push("/contact")}
-              className="hidden md:flex bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-8 sm:px-3 py-3 sm:py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
-            >
-              Connect with Us
-            </motion.button> */}
 
           <motion.button
             whileHover={{

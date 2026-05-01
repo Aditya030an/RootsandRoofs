@@ -23,6 +23,20 @@ import InfiniteScroll from "./InfiniteScroll";
 // import VerticalInfiniteScrolling from "./VerticalInfiniteScrolling";
 const headingWords = ["Why", "Choose", "Us?"];
 
+const textVariant = {
+  hidden: { y: 80, opacity: 0 },
+  visible: (i) => ({
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: i * 0.08,
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  }),
+};
+const title = "ABOUT US".split("");
+
 const benefits = [
   {
     icon: <FaUserCheck className="text-blue-600 text-4xl mb-4" />,
@@ -162,68 +176,37 @@ const AboutUsHero = () => {
   const [isPaused, setIsPaused] = useState(false);
   return (
     <>
-      {/* Hero Section with Video */}
-      <section className="relative w-full mt-20 h-screen overflow-hidden text-white font-sans">
+       {/* Hero Section with Video */}
+      <section className="relative w-full h-screen overflow-hidden text-white font-sans">
         {/* Background Video */}
-        <div className="absolute inset-0 p-4 z-0">
-          <motion.a
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-            className="group relative overflow-hidden rounded-xl"
-          >
-            <img
-              src="/aboutUsImg.jpg"
-              alt="about us image"
-              className="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-500"
-            />
-          </motion.a>
-        </div>
-
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-0" />
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src={bgVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/50 z-0" />
 
         {/* Heading */}
-        <div className="relative z-10 flex flex-col items-center justify-between h-full text-center">
-          <InfiniteScroll />
-          <div className="relative flex flex-col items-center justify-between">
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="text-5xl md:text-7xl font-[tinos] font-bold tracking-widest relative"
-            >
-              <span className="absolute -inset-1 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 opacity-20 blur-md">
-                ABOUT US
-              </span>
-              <span className="relative z-10">ABOUT US</span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="mt-6 max-w-2xl text-lg md:text-xl text-gray-200"
-            >
-              We are passionate creators, blending innovation and design to
-              craft meaningful experiences that inspire.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 1 }}
-              className="absolute -bottom-28 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-sm text-gray-300"
-            >
-              <FaArrowDown className="animate-bounce text-xl border-2 border-solid border-neutral-500 p-1 rounded-full" />
-              <span className="mt-2 tracking-wide">Scroll Down</span>
-            </motion.div>
-          </div>
-          <InfiniteScroll />
+        <div className="relative z-10 flex items-end justify-start h-full px-5 md:px-12 pb-36">
+          <h1 className="text-4xl md:text-6xl font-[tinos] font-light tracking-wide">
+            {title.map((letter, i) => (
+              <motion.span
+                key={i}
+                custom={i}
+                variants={textVariant}
+                initial="hidden"
+                animate="visible"
+                className={letter === " " ? "mr-2" : ""}
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </h1>
         </div>
-
-        {/* Scroll Indicator */}
       </section>
 
       <section className="relative z-10 px-6 py-28 overflow-hidden bg-[#0f172a] text-white font-[tinos]">

@@ -475,13 +475,13 @@ const PropertyDetails = () => {
             className="max-w-6xl mx-auto px-6 py-12 scroll-mt-28 bg-gray-100 relative"
           >
             <div
-              ref={glow1Ref}
+              // ref={glow1Ref}
               className="pointer-events-none absolute w-40 h-40 bg-gradient-to-tr from-emerald-400/30 to-cyan-400/20 rounded-full blur-2xl"
               style={{ top: 0, left: 0 }}
             />
 
             <div
-              ref={glow2Ref}
+              // ref={glow2Ref}
               className="pointer-events-none absolute w-28 h-28 bg-gradient-to-tr from-pink-400/30 to-blue-400/20 rounded-full blur-2xl"
               style={{ top: 0, left: 0 }}
             />
@@ -586,10 +586,10 @@ const PropertyDetails = () => {
             {/* Cursor-follow blur */}
             <motion.div
               className="pointer-events-none absolute w-48 h-48 bg-gradient-to-tr from-blue-400/30 to-green-400/20 rounded-full blur-xl"
-              animate={{
-                x: pos.x - 100,
-                y: pos.y - 100,
-              }}
+              // animate={{
+              //   x: pos.x - 100,
+              //   y: pos.y - 100,
+              // }}
               transition={{ type: "spring", stiffness: 100, damping: 20 }}
             />
 

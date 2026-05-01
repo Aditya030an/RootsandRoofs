@@ -2,7 +2,11 @@ import flat3 from "./photos/villa1.avif";
 import com1 from "./photos/villa3.avif";
 import com2 from "./photos/villa2.avif";
 import com3 from "./photos/villa1.avif";
-import img1 from "/propertyList/madhuban/img1.png";
+import img1 from "/allPropertyLogo/logo3.png";
+import img2 from "/allPropertyLogo/logo7.png";
+import img3 from "/allPropertyLogo/logo5.png";
+import img4 from "/propertyList/madhuban/img1.png";
+
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -113,7 +117,7 @@ const Scroll = () => {
         <h1
           style={{
             fontFamily: "Goldman",
-            WebkitTextStroke: ".2vw white",
+            WebkitTextStroke: ".2vw yellow",
             color: "transparent",
           }}
           className="text-[2.5rem] md:text-[6rem] font-bold leading-tight"
@@ -124,45 +128,45 @@ const Scroll = () => {
 
       {/* Top Center - Balloons */}
       <div className="img1 overflow-hidden absolute top-[14%] left-400 transform -translate-x-1/2 h-[120px] md:h-auto w-[150px] md:w-[300px]">
-        <Link to="/">
+         <a href="/propertyDetails/101" target="_blank" rel="noopener noreferrer">
           <img
-            src={com3}
+            src={img1}
             alt="Balloons"
             loading="lazy"
             className="image opacity-0 translate-y-[120%] rounded shadow-lg"
           />
-        </Link>
+        </a>
       </div>
 
       {/* Top Right - Girl */}
       <div className="img2 overflow-hidden absolute top-[25%] md:top-[30%] right-[3%] transform h-[110px] md:h-auto w-[200px] md:w-[270px]">
-        <Link to="/">
+         <a href="/propertyDetails/101" target="_blank" rel="noopener noreferrer">
           <img
-            src={flat3}
+            src={img2}
             alt="Girl"
             loading="lazy"
             className="image opacity-0 translate-y-[100%] rounded shadow-lg"
           />
-        </Link>
+        </a>
       </div>
 
       {/* Bottom Left - Plaque */}
       <div className="img3 overflow-hidden absolute bottom-[12%] left-[1%] w-[200px] md:w-[290px]">
-        <Link to="/">
+        <a href="/propertyDetails/101" target="_blank" rel="noopener noreferrer">
           <img
-            src={com1}
+            src={img3}
             alt="Plaque"
             loading="lazy"
             className="image opacity-0 translate-y-[100%] rounded shadow-lg"
           />
-        </Link>
+        </a>
       </div>
 
       {/* Bottom Center - Man */}
       <div className="img4 overflow-hidden absolute bottom-[5%] left-1/2 transform -translate-x-1/2 w-[180px] md:w-[300px]">
         <a href="/propertyDetails/101" target="_blank" rel="noopener noreferrer">
           <img
-            src={img1}
+            src={img4}
             alt="Man"
             loading="lazy"
             className="image opacity-0 translate-y-[100%] rounded shadow-lg"

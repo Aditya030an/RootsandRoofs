@@ -3,8 +3,8 @@ import FAQSection from "./FAQ";
 import { useNavigate } from "react-router-dom";
 import Scroll from "./Scroll";
 import bg from "./photos/pic.jpeg";
-// import logo from "./photos/image.png";
-import logo from "./photos/image_1.png";
+import logo from "./photos/image.png";
+// import logo from "./photos/image_1.png";
 // import logo from "./photos/logo2.jpg";
 // import logo from "./photos/logo4.png";
 
@@ -201,18 +201,17 @@ const Home = () => {
         <span className="relative z-10">Start Your Project</span>
       </motion.button> */}
             <div className="flex justify-center items-center pt-4 pb-18">
-              <a href="/Services">
-                <motion.button
-                  ref={ref}
-                  className="relative px-6 py-2 text-base font-semibold text-white rounded-full overflow-hidden group backdrop-blur-md border border-white/20 shadow-lg"
-                  style={{ x: springX, y: springY }}
-                  onMouseMove={handleMouseMove}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <span className="absolute inset-0 bg-gradient-to-r from-[#86C24D] to-[#1c8cff] transition-transform transform group-hover:scale-110 group-hover:rotate-2 duration-700 ease-out" />
-                  <span className="relative z-10">Start Your Project</span>
-                </motion.button>
-              </a>
+             <motion.button
+  ref={ref}
+  onClick={() => navigate("/Services")}
+  className="relative px-6 py-2 text-base font-semibold text-white rounded-full overflow-hidden group backdrop-blur-md border border-white/20 shadow-lg"
+  style={{ x: springX, y: springY }}
+  onMouseMove={handleMouseMove}
+  onMouseLeave={handleMouseLeave}
+>
+  <span className="absolute inset-0 bg-gradient-to-r from-[#86C24D] to-[#1c8cff] transition-transform transform group-hover:scale-110 group-hover:rotate-2 duration-700 ease-out" />
+  <span className="relative z-10">Start Your Project</span>
+</motion.button>
             </div>
           </div>
         </div>

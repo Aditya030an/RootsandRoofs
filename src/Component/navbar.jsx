@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
-import { useLocation } from "react-router-dom";
+import { useLocation  , NavLink  } from "react-router-dom";
 import logo from "./photos/logo2.jpg";
 
 const Navbar = () => {
@@ -63,17 +63,17 @@ const Navbar = () => {
             {navLinks.map((link) => {
               const isActive = location.pathname === link.href;
               return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className={`transition-colors duration-200 ${
-                    isActive
-                      ? "text-orange-500 border-b-2 border-orange-500 pb-1"
-                      : "hover:text-orange-500"
-                  }`}
-                >
-                  {link.name}
-                </a>
+                <NavLink
+  key={link.name}
+  to={link.href}
+  className={`transition-colors duration-200 ${
+    isActive
+      ? "text-orange-500 border-b-2 border-orange-500 pb-1"
+      : "hover:text-orange-500"
+  }`}
+>
+  {link.name}
+</NavLink>
               );
             })}
           </nav>
@@ -94,18 +94,18 @@ const Navbar = () => {
             {navLinks.map((link) => {
               const isActive = location.pathname === link.href;
               return (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`block text-lg font-medium px-4 py-2 rounded transition-all duration-200 ${
-                    isActive
-                      ? "text-orange-500 bg-[#223549]"
-                      : "text-white hover:text-orange-500 hover:bg-[#223549]"
-                  }`}
-                >
-                  {link.name}
-                </a>
+                <NavLink
+  key={link.name}
+  to={link.href}
+  onClick={() => setIsMenuOpen(false)}
+  className={`block text-lg font-medium px-4 py-2 rounded transition-all duration-200 ${
+    isActive
+      ? "text-orange-500 bg-[#223549]"
+      : "text-white hover:text-orange-500 hover:bg-[#223549]"
+  }`}
+>
+  {link.name}
+</NavLink>
               );
             })}
           </nav>
