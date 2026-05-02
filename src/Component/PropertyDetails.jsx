@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import propertyList from "../utils/propertyList";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { motion } from "framer-motion";
+import { FiChevronDown, FiSearch } from "react-icons/fi";
+import { MdSwapHoriz } from "react-icons/md";
 import {
   Train,
   Bus,
@@ -21,6 +23,200 @@ import {
   Star,
 } from "lucide-react";
 import gsap from "gsap";
+import AreaConverter from "./AreaConverter";
+
+// ✅ Unit conversion ratios
+const unitConversions = {
+  "Square Meter": 1,
+  "Square Feet": 0.092903,
+  Guntha: 101.17,
+  "Square Inch": 0.00064516,
+  Hectare: 10000,
+  Ground: 203.0,
+  "Square Mile": 2.59e6,
+  Bigha: 1337.8,
+  "Square Karam": 9.0,
+  "Square Kilometer": 1e6,
+  Murabba: 2500,
+  Decimal: 40.47,
+  Lessa: 16.18,
+  Cent: 40.47,
+  "Biswa Kacha": 63.63,
+  Marla: 25.29,
+  Chatak: 4.57,
+  Dhur: 16.93,
+  Biswa: 125.0,
+  Acre: 4046.86,
+  "Square Yard": 0.836127,
+  Kanal: 505.857,
+  Kila: 10000,
+  Gaj: 0.836127,
+  Pura: 101.17,
+  Katha: 126.0,
+  "Square Centimeter": 0.0001,
+};
+
+// ✅ All states for searchable dropdown
+const states = [
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+];
+
+// 🔍 Searchable dropdown for states
+const SearchableStateInput = ({ value, onChange, options }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [inputValue, setInputValue] = useState(value);
+  const inputRef = useRef(null);
+  const dropdownRef = useRef(null);
+
+  const filteredOptions = options.filter((option) =>
+    option.toLowerCase().includes(inputValue.toLowerCase()),
+  );
+
+  useEffect(() => setInputValue(value), [value]);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target) &&
+        !inputRef.current.contains(e.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="relative">
+      <div className="relative">
+        <input
+          ref={inputRef}
+          value={inputValue}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+            setIsOpen(true);
+          }}
+          onFocus={() => setIsOpen(true)}
+          placeholder="Search or select state..."
+          className="w-full p-3 pr-10 rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50 text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm"
+        />
+        <FiChevronDown
+          className={`absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 transition-transform duration-300 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+        />
+      </div>
+
+      {isOpen && (
+        <div
+          ref={dropdownRef}
+          className="absolute z-30 w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-2xl max-h-64 overflow-y-auto animate-fadeIn"
+        >
+          {filteredOptions.length > 0 ? (
+            filteredOptions.map((option) => (
+              <div
+                key={option}
+                onClick={() => {
+                  onChange(option);
+                  setInputValue(option);
+                  setIsOpen(false);
+                }}
+                className={`p-3 cursor-pointer transition ${
+                  option === value
+                    ? "bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 font-semibold"
+                    : "hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 text-gray-700"
+                }`}
+              >
+                {option}
+              </div>
+            ))
+          ) : (
+            <div className="p-4 text-center text-gray-500">
+              <FiSearch className="w-6 h-6 text-gray-400 mx-auto mb-2" />
+              No states found
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// 📦 Simple dropdown component
+const CustomDropdown = ({ value, onChange, options }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full p-3 bg-gray-50 rounded-lg flex items-center justify-between text-gray-700 hover:bg-gray-100 transition shadow-sm"
+      >
+        <span className="font-medium">{value}</span>
+        <FiChevronDown
+          className={`w-5 h-5 text-gray-500 transition-transform ${
+            isOpen ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+
+      {isOpen && (
+        <>
+          <div
+            className="fixed inset-0 z-20"
+            onClick={() => setIsOpen(false)}
+          />
+          <div className="absolute z-20 w-full mt-2 bg-white border border-gray-200 rounded-lg shadow-2xl max-h-40 overflow-y-auto animate-fadeIn">
+            {options.map((option) => (
+              <div
+                key={option}
+                onClick={() => {
+                  onChange(option);
+                  setIsOpen(false);
+                }}
+                className={`p-3 cursor-pointer transition ${
+                  option === value
+                    ? "bg-gradient-to-r from-gray-100 to-gray-200 text-gray-900 font-semibold border-l-4 border-gray-400"
+                    : "hover:bg-gray-50 text-gray-700"
+                }`}
+              >
+                {option}
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -68,7 +264,31 @@ const PropertyDetails = () => {
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
 
+  const [showAllConnectivity, setShowAllConnectivity] = useState(false);
+
+  const connectivityItems = property?.sections?.connectivity || [];
+  const visibleConnectivity = showAllConnectivity
+    ? connectivityItems
+    : connectivityItems.slice(0, 5);
+
   const amenities = property?.sections?.amenities || [];
+  const [state, setState] = useState("Madhya Pradesh");
+  const [fromUnit, setFromUnit] = useState("Square Meter");
+  const [toUnit, setToUnit] = useState("Square Feet");
+  const [value, setValue] = useState("1");
+  const [result, setResult] = useState("");
+
+  useEffect(() => {
+    if (value === "" || isNaN(value)) return setResult("");
+    const valueInMeters = value * (unitConversions[fromUnit] || 1);
+    const converted = valueInMeters / (unitConversions[toUnit] || 1);
+    setResult(converted);
+  }, [value, fromUnit, toUnit]);
+
+  const handleSwap = () => {
+    setFromUnit(toUnit);
+    setToUnit(fromUnit);
+  };
 
   useEffect(() => {
     window.scrollTo({
@@ -642,34 +862,44 @@ const PropertyDetails = () => {
             ref={connectivityRef}
             className="max-w-7xl mx-auto px-6 md:px-10 py-10 scroll-mt-28"
           >
-            {/* Heading */}
-            <h2 className="text-3xl font-serif mb-6 ">Connectivity</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {/* Grid */}
-              <div className="grid grid-cols-1 gap-5">
-                {property?.sections?.connectivity?.map((c, i) => (
-                  <div
-                    key={i}
-                    className=" group  bg-white border rounded-xl p-4 flex items-center gap-4 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1"
-                  >
-                    {/* Icon */}
-                    <div className=" w-10 h-10 flex items-center justify-center  bg-gray-100 rounded-lg  text-gray-700  group-hover:bg-blue-50  group-hover:text-green-600 transition ">
-                      {getConnectivityIcon(c)}
-                    </div>
+            <h2 className="text-3xl font-serif mb-6">Connectivity</h2>
 
-                    {/* Text */}
-                    <p className="text-sm md:text-base text-gray-700">{c}</p>
-                  </div>
-                ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <div className="grid grid-cols-1 gap-5">
+                  {visibleConnectivity.map((c, i) => (
+                    <div
+                      key={i}
+                      className="group bg-white border rounded-xl p-4 flex items-center gap-4 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+                    >
+                      <div className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-lg text-gray-700 group-hover:bg-blue-50 group-hover:text-green-600 transition">
+                        {getConnectivityIcon(c)}
+                      </div>
+
+                      <p className="text-sm md:text-base text-gray-700">{c}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {connectivityItems.length > 7 && (
+                  <button
+                    onClick={() => setShowAllConnectivity(!showAllConnectivity)}
+                    className="mt-5 px-5 py-2 rounded-lg bg-green-700 text-white text-sm font-medium hover:bg-green-800 transition"
+                  >
+                    {showAllConnectivity ? "Show Less" : "Show More"}
+                  </button>
+                )}
               </div>
-              <div className=" bg-white rounded-xl shadow-sm border overflow-hidden ">
+
+              <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
                 <div className="w-full h-full">
                   {property?.map?.image && (
                     <TransformWrapper>
                       <TransformComponent>
                         <img
                           src={property?.map?.image}
-                          className="rounded h-[500px] "
+                          alt="Location Map"
+                          className="rounded w-full h-[500px] "
                         />
                       </TransformComponent>
                     </TransformWrapper>
@@ -791,7 +1021,7 @@ const PropertyDetails = () => {
               </button>
             </div>
             {/* GALLERIES */}
-            <div className="flex flex-col items-center justify-center">
+            {/* <div className="flex flex-col items-center justify-center">
               {property?.galleries?.map((g, i) => {
                 const images = g.images;
                 const extraCount = images.length - 4;
@@ -815,7 +1045,7 @@ const PropertyDetails = () => {
                             className="w-60 h-40 object-cover rounded transition-transform duration-300 hover:scale-105"
                           />
 
-                          {/* +MORE OVERLAY */}
+                         
                           {idx === 3 && extraCount > 0 && (
                             <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-white text-lg font-semibold rounded">
                               +{extraCount} more
@@ -827,7 +1057,100 @@ const PropertyDetails = () => {
                   </div>
                 );
               })}
+            </div> */}
+
+            <div className="space-y-6">
+              {/* State Selection */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Select State
+                </label>
+                <SearchableStateInput
+                  value={state}
+                  onChange={setState}
+                  options={states}
+                />
+              </div>
+
+              {/* Value Input */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Enter Value
+                </label>
+                <input
+                  type="number"
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
+                  placeholder="Enter value"
+                  className="w-full p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-400 text-gray-700 font-medium shadow-sm"
+                />
+              </div>
+
+              {/* Unit Conversions */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-3">
+                  Conversion Units
+                </label>
+                <div className="flex gap-3 items-end flex-wrap">
+                  <div className="flex-1 min-w-[140px]">
+                    <label className="block text-xs text-gray-500 mb-2 uppercase tracking-wide">
+                      From
+                    </label>
+                    <CustomDropdown
+                      value={fromUnit}
+                      onChange={setFromUnit}
+                      options={Object.keys(unitConversions)}
+                    />
+                  </div>
+
+                  <button
+                    onClick={handleSwap}
+                    className="p-3 bg-gradient-to-br from-green-400 to-green-600 text-white rounded-lg shadow-lg hover:scale-105 transition-transform"
+                    title="Swap units"
+                  >
+                    <MdSwapHoriz className="w-6 h-6" />
+                  </button>
+
+                  <div className="flex-1 min-w-[140px]">
+                    <label className="block text-xs text-gray-500 mb-2 uppercase tracking-wide">
+                      To
+                    </label>
+                    <CustomDropdown
+                      value={toUnit}
+                      onChange={setToUnit}
+                      options={Object.keys(unitConversions)}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Result */}
+              {result && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-gradient-to-r from-blue-100 via-indigo-100 to-purple-100 p-4 rounded-xl shadow-lg relative"
+                >
+                  <div>
+                    <p className="text-xs text-gray-600 mb-1 uppercase tracking-wide font-semibold">
+                      Result
+                    </p>
+                    <p className="text-lg md:text-xl text-gray-800">
+                      <span className="font-bold">
+                        {value} {fromUnit}
+                      </span>
+                      <span className="mx-2 text-green-500">=</span>
+                      <span className="font-semibold text-green-600">
+                        {result.toFixed(6)} {toUnit}
+                      </span>
+                    </p>
+                  </div>
+                </motion.div>
+              )}
             </div>
+
+            {/* <AreaConverter /> */}
           </div>
 
           <div className="max-w-7xl mx-auto flex justify-end mt-6 px-8 scroll-mt-28">

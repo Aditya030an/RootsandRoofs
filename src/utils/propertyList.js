@@ -1,352 +1,3 @@
-// const propertyList = [
-//   {
-//     id: 1,
-//     title: "4 BHK Ultra-Luxury Apartment",
-//     location: "Geeta Bhawan, Indore",
-//     price: 31500000,
-//     pricePerSqFt: 7500,
-//     type: "Buy",
-//     bhk: "4 BHK",
-//     area: "4200 sq.ft",
-//     verified: true,
-//     parking: true,
-//     bathrooms: 4,
-//     propertyType: "Apartment",
-
-//     furnishing: "Luxury",
-//     balcony: true,
-//     servantRoom: true,
-//     construction: "Premium",
-//     description:
-//       "Spacious 4 BHK ultra-luxurious apartment with large balcony and servant room. Located in prime city centre Geeta Bhawan, perfect for families seeking luxury living.",
-//     city: "Indore",
-//     state: "Madhya Pradesh",
-//     listingType: "Luxury",
-//     contact: true,
-
-//     // ⭐ Key Highlights
-//     keyHighlights: [
-//       "Spacious layout with large balcony",
-//       "Servant room for added convenience",
-//       "Premium construction & elegant design",
-//       "Located in the prime city centre – Geeta Bhawan",
-//     ],
-
-//     images: [
-//       "/propertyList/property1/img1.jpeg",
-//       "/propertyList/property1/img2.jpeg",
-//       "/propertyList/property1/img3.jpeg",
-//       "/propertyList/property1/img4.jpeg",
-//       "/propertyList/property1/img5.jpeg",
-//       "/propertyList/property1/img6.jpeg",
-//       "/propertyList/property1/img7.jpeg",
-//       "/propertyList/property1/img8.jpeg",
-//       "/propertyList/property1/img9.jpeg",
-//       "/propertyList/property1/img10.jpeg",
-//       "/propertyList/property1/img11.jpeg",
-//       "/propertyList/property1/img12.jpeg",
-//       "/propertyList/property1/img13.jpeg",
-//       "/propertyList/property1/img14.jpeg",
-//       "/propertyList/property1/img15.jpeg",
-//       "/propertyList/property1/img16.jpeg",
-//       "/propertyList/property1/img17.jpeg",
-//     ],
-
-//     // 📄 PDF Layout
-//     floorPlan: {
-//       image: "/propertyList/property1/floorplan.png", // converted image from PDF
-//       pdf: "/pdfs/vidhya-tower-2.pdf", // original PDF
-//     },
-//   },
-//   {
-//     id: 101,
-//     title: "Madhuvan by Micro Mitti",
-//     location: "Jhalaria Road, Indore",
-
-//     city: "Indore",
-//     state: "Madhya Pradesh",
-//     type: "Buy",
-//     propertyType: "Township",
-
-//     price: 0,
-//     pricePerSqFt: 0,
-
-//     area: " 30 Acres",
-//     verified: true,
-//     featured: true,
-//     readyToMove: true,
-
-//     description:
-//       "Forest-inspired residential township designed for modern and healthy living.",
-
-//     aboutProject: `Micro Mitti Madhuban is an innovative, forest-inspired residential township spread over 30 acres in Indore, designed to accommodate 450 families. It blends nature with modern living, promoting clean air, greenery, and wellness.`,
-
-//     keyHighlights: [
-//       {
-//         title: "Forest-Inspired Design",
-//         description:
-//           "The township is conceptualized as a natural forest environment where sunlight and fresh air flow freely into every home and garden, creating a serene atmosphere for residents.",
-//       },
-
-//       {
-//         title: "Plot and Layout Features",
-//         points: [
-//           "Plots range between 1250 sq. ft. to 2400 sq. ft. with two-way east-west orientation.",
-//           "Roads are 10.5 to 12 meters wide, ensuring accessibility and ventilation.",
-//           "Each home includes a backyard garden providing additional green open space and natural light.",
-//         ],
-//       },
-
-//       {
-//         title: "Award-Winning Architecture",
-//         points: [
-//           "The Crescent Club has received the World Architecture Community Award in Singapore.",
-//           "Designed by India’s leading architect Sanjay Puri.",
-//         ],
-//       },
-
-//       {
-//         title: "The Crescent Club Amenities",
-//         points: [
-//           "Spans 35,000 sq. ft. with 17,000 sq. ft. private club and garden each.",
-//           "Includes swimming pool, terrace garden, banquet hall, and restaurants.",
-//           "Wellness zones, indoor games, and gymnasium available.",
-//           "Multi-purpose courts for tennis and football.",
-//           "Temple and spiritual zones for peace and balance.",
-//         ],
-//       },
-
-//       {
-//         title: "Ready-to-Move Villas",
-//         points: [
-//           "Option to buy ready-to-move villas.",
-//           "Designed by Sanjay Puri.",
-//           "Developed under Micro Mitti’s quality standards.",
-//         ],
-//       },
-
-//       {
-//         title: "Connectivity and Location",
-//         points: [
-//           "Accessible via Omex City Road, MR 111 Road, and Jhalaria Main Road.",
-//           "Close to Phoenix Citadel Mall and Emerald International School.",
-//           "Well connected to MR 12 Road and Airport.",
-//           "Surrounded by premium colonies, schools, hospitals, and clubs.",
-//         ],
-//       },
-//     ],
-
-//     sections: {
-//       overview: `The township is designed as a natural forest ecosystem where sunlight and fresh air flow into every home.`,
-
-//       amenities: [
-//         {
-//           title: "Club House",
-//           img: "/propertyList/madhuban/img2.png",
-//         },
-//         {
-//           title: "Swimming pool",
-//           img: "/propertyList/madhuban/img3.png",
-//         },
-//         {
-//           title: "Cafe Lounge",
-//           img: "/propertyList/madhuban/img4.png",
-//         },
-//         {
-//           title: "Restaurant",
-//           img: "/propertyList/madhuban/img5.png",
-//         },
-//         {
-//           title: "Gym",
-//           img: "/propertyList/madhuban/img6.png",
-//         },
-//         {
-//           title: "Games Room",
-//           img: "/propertyList/madhuban/img7.png",
-//         },
-//         {
-//           title: "Pre-Function Area",
-//           img: "/propertyList/madhuban/img8.png",
-//         },
-//         {
-//           title: "Multipurpose Event Hall",
-//           img: "/propertyList/madhuban/img9.png",
-//         },
-//         {
-//           title: "Conference",
-//           img: "/propertyList/madhuban/img10.png",
-//         },
-//         {
-//           title: "Reception",
-//           img: "/propertyList/madhuban/img11.png",
-//         },
-//         {
-//           title: "Sauna",
-//           img: "/propertyList/madhuban/img12.png",
-//         },
-//         {
-//           title: "Architectural Stairs",
-//           img: "/propertyList/madhuban/img13.png",
-//         },
-//         {
-//           title: "Lavish Washrooms",
-//           img: "/propertyList/madhuban/img14.png",
-//         },
-//         {
-//           title: "Tennis & football courts",
-//           img: "/propertyList/madhuban/img15.png",
-//         },
-//         {
-//           title: "Temple & spiritual zones",
-//           img: "/propertyList/madhuban/img16.png",
-//         },
-//         {
-//           title: "Pavilion",
-//           img: "/propertyList/madhuban/img17.png",
-//         },
-//         {
-//           title: "Seating Alcove",
-//           img: "/propertyList/madhuban/img18.png",
-//         },
-//         {
-//           title: "Children's Play Area",
-//           img: "/propertyList/madhuban/img19.png",
-//         },
-//         {
-//           title: "Yoga Deck",
-//           img: "/propertyList/madhuban/img20.png",
-//         },
-//       ],
-
-//       specifications: [
-//         "Plot sizes: 1250 – 2400 sq.ft.",
-//         "Road width: 10.5m – 12m",
-//         "East-West facing plots",
-//         "Private backyard gardens",
-//       ],
-
-//       connectivity: [
-//         "Connected via MR-111 Road",
-//         "Close to Jhalaria Main Road",
-//         "Near Phoenix Citadel Mall",
-//         "Near Emerald International School",
-//         "Easy access to Airport",
-//       ],
-
-//       vision: [
-//         "Sustainable living",
-//         "Healthy environment with clean air",
-//         "Community-focused lifestyle",
-//         "Nature-integrated design",
-//       ],
-//     },
-
-//     projectData: [
-//       { label: "Total Area", value: "30 Acres" },
-//       { label: "Number of Families", value: "400" },
-//       { label: "Plot Sizes", value: "1250 - 2400 sq.ft." },
-//       { label: "Road Width", value: "10.5m - 12m" },
-//       { label: "Central Courtyard", value: "35,000 sq.ft." },
-//       { label: "Private Club Area", value: "17,000 sq.ft." },
-//       { label: "Garden Area", value: "17,000 sq.ft." },
-//       { label: "Number of Gardens", value: "14" },
-//       { label: "Main Road Width", value: "75 meters" },
-//     ],
-
-//     // Main Images
-//     images: [
-//       "/propertyList/madhuban/img1.png",
-//       "/propertyList/madhuban/img2.png",
-//       "/propertyList/madhuban/img3.png",
-//       "/propertyList/madhuban/img4.png",
-//       "/propertyList/madhuban/img5.png",
-//       "/propertyList/madhuban/img6.png",
-//       "/propertyList/madhuban/img7.png",
-//       "/propertyList/madhuban/img8.png",
-//       "/propertyList/madhuban/img9.png",
-//       "/propertyList/madhuban/img10.png",
-//       "/propertyList/madhuban/img11.png",
-//       "/propertyList/madhuban/img12.png",
-//       "/propertyList/madhuban/img13.png",
-//       "/propertyList/madhuban/img14.png",
-//       "/propertyList/madhuban/img15.png",
-//       "/propertyList/madhuban/img16.png",
-//       "/propertyList/madhuban/img17.png",
-//       "/propertyList/madhuban/img18.png",
-//       "/propertyList/madhuban/img19.png",
-//       "/propertyList/madhuban/img20.png",
-//     ],
-
-//     // Floor Plan
-//     floorPlan: {
-//       image: "/propertyList/madhuban/floorplane.png",
-//       pdf: "/pdfs/madhuban.pdf",
-//     },
-
-//     // Map
-//     map: {
-//       image: "/propertyList/madhuban/mapViewImg.png",
-//       locationLink:
-//         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
-//     },
-
-//     // Extra Galleries
-//     galleries: [
-//       {
-//         title: "Ready to Move Villas",
-//         images: [
-//           "/propertyList/madhuban/img21.png",
-//           "/propertyList/madhuban/img22.png",
-//           "/propertyList/madhuban/img23.png",
-//           "/propertyList/madhuban/img24.png",
-//         ],
-//       },
-//       // {
-//       //   title: "Landscape Plan",
-//       //   images: [
-//       //     "/propertyList/madhuban/floorplane.png",
-//       //   ],
-//       // },
-//       // {
-//       //   title: "Development Around Micro Mitti",
-//       //   images: [
-//       //     "/propertyList/madhuban/dev.png",
-//       //   ],
-//       // },
-//     ],
-
-//     developer: {
-//       name: "Micro Mitti",
-//       description:
-//         "Focused on sustainable, nature-driven township development.",
-//     },
-
-//     disclaimer:
-//       "All details mentioned are based on project information. Please verify all details by visiting the site and consulting the official team before making a decision.",
-
-//     contact: true,
-//   },
-// ];
-
-// export default propertyList;
-
-// // ✨ Luxury Living in the Heart of Indore ✨
-
-// // 4 BHK Ultra-Luxurious Apartment available for sale at Vibrant Vidhya Palace, Geeta Bhawan – Indore
-
-// // 🏡 Size: 4200 Sq. Ft.
-// // 💰 Demand: ₹7,500 / Sq. Ft.
-
-// // Key Highlights:
-// // * Spacious layout with large balcony
-// // * Servant room for added convenience
-// // * Premium construction & elegant design
-// // * Located in the prime city centre – Geeta Bhawan
-
-// // Perfect for families looking for luxury, space & prime location.
-
-// // 📞 For details & site visit, connect with me
-
 const DEFAULT_PROPERTY_VALUES = {
   price: 0,
   pricePerSqFt: 0,
@@ -367,7 +18,7 @@ const DEFAULT_PROPERTY_VALUES = {
   images: [],
   galleries: [],
   floorPlan: { image: "", pdf: "" },
-  map: { image: "", locationLink:"" },
+  map: { image: "", locationLink: "" },
   sections: {
     overview: "",
     amenities: [],
@@ -416,22 +67,22 @@ const rawPropertyList = [
       "Aakash Greens is a developed plotting colony with approved layout, wide C.C. roads, landscaped garden, secure boundary wall, drainage, water arrangement and street lighting.",
     keyHighlights: [
       {
-        title: "योजना के मुख्य आकर्षण",
+        title: "Key Highlights of the Project",
         points: [
-          "शासन द्वारा पूर्ण मान्यता प्राप्त वैध एवं विकसित कॉलोनी",
-          "पूर्ण विकसित चौड़ी, आधुनिक तरीके से बनी हुई C.C. रोड",
-          "पूर्णतः सुरक्षित कॉलोनी",
-          "हरे भरे प्राकृतिक वातावरण युक्त गार्डन",
-          "सभी आधुनिक सुख सुविधाओं से युक्त विकसित कॉलोनी",
-          "भव्य आकर्षक एवं सुसज्जित प्रवेश द्वार",
-          "प्रोजेक्ट के चारों ओर सुरक्षित बाउंड्रीवाल",
-          "पूर्ण व्यवस्थित ड्रेनेज लाइन",
-          "पानी की उत्तम व्यवस्था हेतु नर्मदा पाइप लाइन, बोरिंग एवं विशालकाय पानी की टंकी",
-          "बच्चों के खेलने के लिए हरा भरा गार्डन एवं प्लेग्राउंड",
-          "सम्पूर्ण प्राकृतिक एवं प्रदूषण मुक्त वातावरण",
-          "वास्तु अनुसार प्लान की हुई कॉलोनी",
-          "विद्युत प्रकाश हेतु आकर्षक स्ट्रीट लाइट",
-          "विभिन्न बैंकों द्वारा सुविधाजनक ऋण योजनाएं उपलब्ध",
+          "Government-approved, fully legal and developed township",
+          "Well-developed, wide roads constructed with modern C.C. technology",
+          "Fully secure and safe colony",
+          "Green garden with a natural environment",
+          "Well-developed colony with all modern amenities",
+          "Grand, attractive, and well-designed entrance gate",
+          "Secure boundary wall surrounding the entire project",
+          "Well-planned drainage system",
+          "Excellent water supply system with Narmada pipeline, borewell, and large water tank",
+          "Green garden and playground for children",
+          "Completely natural and pollution-free environment",
+          "Colony planned as per Vastu principles",
+          "Attractive street lighting for proper illumination",
+          "Easy loan facilities available from various banks",
         ],
       },
     ],
@@ -479,7 +130,6 @@ const rawPropertyList = [
       { label: "Property Type", value: "Plotting Project" },
       { label: "Location", value: "Indore, Madhya Pradesh" },
       { label: "Developer", value: "Sarthak Singapore" },
-      { label: "Available Media", value: "10 images + floor plan + video" },
     ],
     images: Array.from(
       { length: 10 },
@@ -490,7 +140,11 @@ const rawPropertyList = [
       image: "/propertyList/Aakash Green by Sarthak Singapore/floorplane.PNG",
       pdf: "",
     },
-    map: { image: "", locationLink:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin" },
+    map: {
+      image: "",
+      locationLink:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
+    },
     developer: {
       name: "Sarthak Singapore",
       description:
@@ -563,7 +217,6 @@ const rawPropertyList = [
       { label: "Property Type", value: "Plotting Project" },
       { label: "Location", value: "Indore, Madhya Pradesh" },
       { label: "Developer", value: "Millennium Infra" },
-      { label: "Available Media", value: "16 images + floor plan + map" },
     ],
     images: Array.from(
       { length: 16 },
@@ -575,7 +228,8 @@ const rawPropertyList = [
     },
     map: {
       image: "/propertyList/Millenium Infra/mapViewImg.jpg",
-      locationLink:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
+      locationLink:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
     },
     developer: {
       name: "Millennium Infra",
@@ -613,6 +267,25 @@ const rawPropertyList = [
           "Total security system",
         ],
       },
+      {
+        title: "Nearby Connectivity",
+        points: [
+          "Rau Circle",
+          "Sanjeevni Hospital",
+          "DPS School (Rau)",
+          "Emerald Heights School",
+          "Silicon City",
+          "Best Price",
+          "Enrise by Sayaji Hotel",
+          "Papaya Tree Hotel",
+          "Fundore",
+          "Medicaps University",
+          "Sage University",
+          "Rala Mandal",
+          "D Mart",
+          "Proposed MR3",
+        ],
+      },
     ],
     sections: {
       overview: "PM Uplands",
@@ -624,10 +297,40 @@ const rawPropertyList = [
         { title: "Kids Play Area", img: "/propertyList/PM Uplands/img6.PNG" },
         { title: "Garden", img: "/propertyList/PM Uplands/img7.PNG" },
         {
-          title: "Upmarket Amenities",
-          img: "/propertyList/PM Uplands/img8.PNG",
+          title: "Jogging Track",
+          img: "/propertyList/PM Uplands/IMG_1309.PNG",
+        },
+        { title: "Yoga Deck", img: "/propertyList/PM Uplands/IMG_1309.PNG" },
+        { title: "Gymnasium", img: "/propertyList/PM Uplands/IMG_1309.PNG" },
+        {
+          title: "Multi-function Party Lounge",
+          img: "/propertyList/PM Uplands/IMG_1309.PNG",
+        },
+        {
+          title: "Lavish Club House",
+          img: "/propertyList/PM Uplands/IMG_1309.PNG",
+        },
+        { title: "Cafeteria", img: "/propertyList/PM Uplands/IMG_1309.PNG" },
+        { title: "Library Area", img: "/propertyList/PM Uplands/IMG_1309.PNG" },
+        {
+          title: "Board Games Area",
+          img: "/propertyList/PM Uplands/IMG_1309.PNG",
+        },
+        { title: "CCTV Camera", img: "/propertyList/PM Uplands/IMG_1309.PNG" },
+        {
+          title: "Multi-function Sports Courts",
+          img: "/propertyList/PM Uplands/IMG_1309.PNG",
+        },
+        {
+          title: "Parks & Open Play Area",
+          img: "/propertyList/PM Uplands/IMG_1309.PNG",
+        },
+        {
+          title: "Total Security System",
+          img: "/propertyList/PM Uplands/IMG_1309.PNG",
         },
       ],
+
       specifications: [
         "Jogging track",
         "Yoga deck",
@@ -642,7 +345,24 @@ const rawPropertyList = [
         "Parks & open play area",
         "Total security system",
       ],
-      connectivity: [],
+
+      connectivity: [
+        "Rau Circle",
+        "Sanjeevni Hospital",
+        "DPS School (Rau)",
+        "Emerald Heights School",
+        "Silicon City",
+        "Best Price",
+        "Enrise by Sayaji Hotel",
+        "Papaya Tree Hotel",
+        "Fundore",
+        "Medicaps University",
+        "Sage University",
+        "Rala Mandal",
+        "D Mart",
+        "Proposed MR3",
+      ],
+
       vision: [
         "Club house",
         "Swimming pool",
@@ -650,13 +370,14 @@ const rawPropertyList = [
         "Temple",
         "Kids play area",
         "Garden",
+        "Premium lifestyle amenities",
+        "Strong nearby connectivity",
       ],
     },
     projectData: [
       { label: "Project Name", value: "PM Uplands" },
       { label: "Property Type", value: "Villa / Plot Project" },
       { label: "Location", value: "Indore, Madhya Pradesh" },
-      { label: "Available Media", value: "14 images + floor plan + map" },
     ],
     images: [
       ...Array.from(
@@ -666,7 +387,11 @@ const rawPropertyList = [
       "/propertyList/PM Uplands/IMG_1309.PNG",
     ],
     floorPlan: { image: "/propertyList/PM Uplands/floorplane.PNG", pdf: "" },
-    map: { image: "/propertyList/PM Uplands/mapViewImg.PNG", locationLink:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin" },
+    map: {
+      image: "/propertyList/PM Uplands/mapViewImg.PNG",
+      locationLink:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
+    },
   },
   {
     id: 204,
@@ -753,7 +478,6 @@ const rawPropertyList = [
       { label: "Configuration", value: "4 BHK Villas" },
       { label: "West Facing Villa Size", value: "23 x 42 = 966 approx" },
       { label: "East Facing Villa Size", value: "23 x 55 = 1265 approx" },
-      { label: "Available Media", value: "13 images + floor plan + map" },
     ],
     images: Array.from(
       { length: 13 },
@@ -768,7 +492,8 @@ const rawPropertyList = [
     map: {
       image:
         "/propertyList/Sanjana Grande 4BHK Luxurious Villas/mapViewImg.PNG",
-      locationLink:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
+      locationLink:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
     },
     developer: {
       name: "Sanjana Group",
@@ -882,10 +607,6 @@ const rawPropertyList = [
       { label: "Project Name", value: "Sanjana Mayfair" },
       { label: "Property Type", value: "Villa" },
       { label: "Configuration", value: "8 Exclusive Villas" },
-      {
-        label: "Available Media",
-        value: "5 images + floor plan + map + video",
-      },
     ],
     images: Array.from(
       { length: 5 },
@@ -897,7 +618,8 @@ const rawPropertyList = [
     },
     map: {
       image: "/propertyList/Sanjana Mayfaire/mapViewImg.PNG",
-      locationLink:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
+      locationLink:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
     },
     developer: {
       name: "Sanjana Group",
@@ -982,7 +704,6 @@ const rawPropertyList = [
       { label: "Project Name", value: "Malwa Enclave" },
       { label: "Property Type", value: "Villa" },
       { label: "Location", value: "Malwa County, Indore Bypass Road, Indore" },
-      { label: "Available Media", value: "10 images + floor plan + map" },
     ],
     images: [
       ...Array.from(
@@ -997,7 +718,8 @@ const rawPropertyList = [
     },
     map: {
       image: "/propertyList/Satya group Malwa Enclave/mapViewImg.PNG",
-      locationLink:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
+      locationLink:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
     },
     developer: {
       name: "Satya Group",
@@ -1087,7 +809,6 @@ const rawPropertyList = [
       { label: "Project Name", value: "Malwa Prime" },
       { label: "Property Type", value: "Plotting Project" },
       { label: "Location", value: "Malwa County, Indore" },
-      { label: "Available Media", value: "10 images + floor plan + map" },
     ],
     images: Array.from(
       { length: 10 },
@@ -1099,7 +820,8 @@ const rawPropertyList = [
     },
     map: {
       image: "/propertyList/Satya group Malwa Prime/mapViewImg.PNG",
-      locationLink:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
+      locationLink:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
     },
     developer: {
       name: "Satya Group",
@@ -1222,7 +944,6 @@ const rawPropertyList = [
       { label: "Project Name", value: "Singapore The Grand Virasat" },
       { label: "Property Type", value: "Residential Plotting Project" },
       { label: "Developer", value: "Sarthak Singapore" },
-      { label: "Available Media", value: "15 images + floor plan + map" },
     ],
     images: Array.from(
       { length: 15 },
@@ -1237,7 +958,8 @@ const rawPropertyList = [
     map: {
       image:
         "/propertyList/The Grand Virasat by Sarthak Singapore/mapViewImg.PNG",
-      locationLink:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
+      locationLink:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
     },
     developer: {
       name: "Sarthak Singapore",
@@ -1332,7 +1054,6 @@ const rawPropertyList = [
       { label: "Project Name", value: "Tulsivanam Greens" },
       { label: "Property Type", value: "Apartment" },
       { label: "Developer", value: "Diyara Infra" },
-      { label: "Available Media", value: "9 images + floor plan + map" },
     ],
     images: Array.from(
       { length: 9 },
@@ -1344,7 +1065,8 @@ const rawPropertyList = [
     },
     map: {
       image: "/propertyList/Tulsivanam by Diyara Infra/mapViewImg.png",
-      locationLink:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
+      locationLink:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d206047.3731371395!2d75.59162819453122!3d22.74988690000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8a517fddfa56dec1%3A0x7c1d59d30dfecf25!2sMicro%20Mitti%20-%20Group%20Headquarter!5e1!3m2!1sen!2sin!4v1774692062023!5m2!1sen!2sin",
     },
     developer: {
       name: "Diyara Infra",
@@ -1534,7 +1256,6 @@ const rawPropertyList = [
       { label: "Project Name", value: "Micro Mitti Madhuvan" },
       { label: "Property Type", value: "Township" },
       { label: "Location", value: "Jhalaria Road, Indore" },
-      { label: "Available Media", value: "26 images" },
       { label: "Total Area", value: "30 Acres" },
       { label: "Number of Families", value: "400" },
       { label: "Plot Sizes", value: "1250 - 2400 sq.ft." },

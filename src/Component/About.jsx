@@ -191,8 +191,8 @@ const AboutUsHero = () => {
         <div className="absolute inset-0 bg-black/50 z-0" />
 
         {/* Heading */}
-        <div className="relative z-10 flex items-end justify-start h-full px-5 md:px-12 pb-36">
-          <h1 className="text-4xl md:text-6xl font-[tinos] font-light tracking-wide">
+        <div className="relative z-10 flex items-center justify-center h-full px-5 md:px-12 pb-36">
+          <h1 className="text-4xl md:text-7xl font-[tinos] mt-28 font-light tracking-wide">
             {title.map((letter, i) => (
               <motion.span
                 key={i}

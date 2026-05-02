@@ -350,7 +350,7 @@ const AreaConverter = ({ showAllForm, setShowFormModal }) => {
                     <div className="absolute z-10  left-0 h-full flex flex-col gap-2 items-center justify-center top-0 text-center w-full">
                       <p className="text-red-600 font-semibold text-[12px] sm:text-[20px] md:text-[16px]">
                         ⚠️ Please fill the Lets Talk form above to access the
-                        EMI Calculator
+                        Area Calculator
                       </p>
                       <button
                         // onClick={handleEmiClick}
