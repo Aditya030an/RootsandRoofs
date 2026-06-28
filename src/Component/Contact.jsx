@@ -140,12 +140,12 @@ useEffect(() => {
             <InfoCard
               icon={<FaPhoneAlt />}
               title="Call Us"
-              text="+91 98765 43210"
+              text="+91 92036 26426"
             />
             <InfoCard
               icon={<FaEnvelope />}
               title="Email Us"
-              text="support@rootsandroofs.com"
+              text="realroof25@gmail.com"
             />
           </motion.div>
 
@@ -216,7 +216,7 @@ const ContactForm = () => {
     else if (!/\S+@\S+\.\S+/.test(formData.email))
       temp.email = "Invalid email format";
 
-    if (!formData.message.trim()) temp.message = "Message is required";
+    // if (!formData.message.trim()) temp.message = "Message is required";
 
     setErrors(temp);
     return Object.keys(temp).length === 0;

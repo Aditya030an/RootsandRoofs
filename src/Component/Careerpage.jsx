@@ -27,34 +27,34 @@ const title = "Career at Roots & Roofs".split("");
 const Careerpage = () => {
   const jobs = [
     {
-      title: "Real Estate Consultant",
+      title: "Senior Client Advisor",
       type: "Full-time / Part-time",
-      location: "[City Name]",
-      exp: "0–3 years",
+      location: "Indore",
+      exp: "0-1 years",
       duties:
         "Assist clients in discovering suitable properties, facilitate site viewing, and oversee negotiations.",
     },
     {
       title: "Digital Marketing Executive",
       type: "Hybrid",
-      location: "Hybrid",
+      location: "(Hybrid / Indore)",
       exp: "1–4 years",
       duties:
         "Execute social media campaigns, oversee listings, and create engaging online brand presence.",
     },
     {
-      title: "Sales Associate – Property Sales",
-      type: "On-Site",
-      location: "On-Site",
-      exp: "1+ years",
+      title: "Client Advisor – Property Sales",
+      type: "Hybrid",
+      location: "(Hybrid / Indore)",
+      exp: "0-1 years",
       duties:
         "Oversee end-to-end client interactions, from lead conversion to property closure.",
     },
     {
-      title: "Telecalling Executive (Lead Generation)",
-      type: "Remote / On-Site",
-      location: "Remote / On-Site",
-      exp: "0–2 years",
+      title: "Customer Relationship Manager ",
+      type: "Remote",
+      location: "Remote",
+      exp: "0–1 years",
       duties:
         "Call on prospective clients, fix appointments, and follow up on property leads.",
     },
@@ -311,7 +311,7 @@ const Careerpage = () => {
                   {job.title}
                 </h3>
                 <p className="text-sm text-gray-500 mb-3">
-                  {job.type} • {job.location} • Experience: {job.exp}
+                  {job.type} {job.type === "Remote" ? "" : "• " + job.location} • Experience: {job.exp}
                 </p>
                 <p className="text-gray-700">{job.duties}</p>
               </motion.div>
@@ -320,10 +320,10 @@ const Careerpage = () => {
           <p className="mt-10 text-lg font-[tinos] text-gray-700">
             <strong>Not the right role?</strong> Email us at{" "}
             <a
-              href="mailto:careers@rootsandroofs.in"
+              href="mailto:realroof25@gmail.com"
               className="text-orange-600 font-[tinos] underline hover:text-orange-800 transition"
             >
-              careers@rootsandroofs.in
+              realroof25@gmail.com
             </a>{" "}
             with your resume and a short note.
           </p>

@@ -18,8 +18,8 @@ const footerLinks = [
 ];
 
 const socialIcons = [
-  { icon: <FaInstagram />, href: "#" },
-  { icon: <FaLinkedinIn />, href: "#" },
+  { icon: <FaInstagram />, href: "https://www.instagram.com/roots_n_roofs/" },
+  { icon: <FaLinkedinIn />, href: "https://www.linkedin.com/company/roots-roofs/?lipi=urn%3Ali%3Apage%3Ad_flagship3_company%3Bulu%2BuQMsRl2cl%2B4RQxuqPA%3D%3D" },
   { icon: <FaDribbble />, href: "#" },
   { icon: <FaBehance />, href: "#" },
 ];
@@ -93,7 +93,10 @@ const PremiumAwwwardFooter = () => {
             {socialIcons.map(({ icon, href }, index) => (
               <a
                 key={index}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 href={href}
+              
                 className="text-white hover:text-blue-500 text-lg transition"
               >
                 {icon}

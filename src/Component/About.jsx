@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import bgVideo from "./photos/cover_1.mp4";
 import logo from "./photos/billboard.jpeg";
+import { useNavigate, useRoutes } from "react-router-dom";
 import {
   FaUserCheck,
   FaComments,
@@ -20,6 +21,7 @@ import {
 } from "react-icons/fa";
 import { useState } from "react";
 import InfiniteScroll from "./InfiniteScroll";
+import { MdOutlineSelfImprovement } from "react-icons/md";
 // import VerticalInfiniteScrolling from "./VerticalInfiniteScrolling";
 const headingWords = ["Why", "Choose", "Us?"];
 
@@ -174,6 +176,7 @@ const duplicatedProperties = [...properties, ...properties];
 
 const AboutUsHero = () => {
   const [isPaused, setIsPaused] = useState(false);
+   const navigate = useNavigate();
   return (
     <>
        {/* Hero Section with Video */}
@@ -215,7 +218,7 @@ const AboutUsHero = () => {
         <div className="absolute w-72 h-72 bg-purple-500/20 rounded-full blur-3xl bottom-10 -right-10"></div>
 
         {/* Heading with split-word animation */}
-        <div className="max-w-7xl mx-auto text-center mb-16 relative z-10">
+        <div className="max-w-7xl mx-auto text-center mb-16 relative z-10 font-sans ">
           <motion.h2
             className="text-4xl md:text-5xl font-bold flex flex-wrap justify-center gap-2"
             initial="hidden"
@@ -258,7 +261,7 @@ const AboutUsHero = () => {
         </div>
 
         {/* Feature Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto relative z-10 font-sans ">
           {benefits.map((item, index) => (
             <motion.div
               key={index}
@@ -333,6 +336,48 @@ const AboutUsHero = () => {
             </div>
           </div>
         </section>
+
+<div className=" max-w-6xl mx-auto mt-4 bg-white text-[#0f1b2b] rounded-2xl shadow-lg p-4 md:p-6 backdrop-blur-sm border border-gray-100 hover:shadow-2xl transition-all duration-300 "
+>
+  <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+
+    {/* Icon */}
+    <div className="flex justify-center md:w-[15%]">
+      <MdOutlineSelfImprovement className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#0f1b2b]" />
+    </div>
+
+    {/* Content */}
+    <div className="flex-1 text-center">
+      <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
+        Feeling Overwhelmed?
+      </h3>
+
+      <p className="text-sm sm:text-base md:text-lg text-gray-700 mt-3">
+        Sit back, relax and have some Chai... because
+        <span className="font-semibold"> Roots & Roofs</span> will handle
+        it for you!!
+      </p>
+    </div>
+
+    {/* Button */}
+    <motion.button
+      whileHover={{
+        scale: 1.05,
+        boxShadow: "0 0 30px rgba(124, 201, 51, 0.4)",
+      }}
+      whileTap={{ scale: 0.98 }}
+      onClick={() =>
+        navigate("/Contact", {
+          state: { scrollTo: "contact-Us" },
+        })
+      }
+      className=" w-full sm:w-auto md:w-[220px] bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 "
+    >
+      Connect with Us
+    </motion.button>
+
+  </div>
+</div>
 
         {/* Why Choose Us Section */}
         <section className="bg-blue-50 py-12 px-6 md:px-20">
@@ -414,7 +459,7 @@ const AboutUsHero = () => {
         </section>
       </div>
 
-      <section className="relative bg-[#f7f9fb] text-gray-800 py-10 px-6 overflow-hidden font-[tinos]">
+      <section className="relative bg-[#f7f9fb] text-gray-800 py-10 px-6 overflow-hidden font-sans ">
         {/* Blurred lighting accents for glow */}
         <div className="absolute w-80 h-80 bg-pink-300/30 rounded-full blur-3xl top-10 left-[-4rem] z-0"></div>
         <div className="absolute w-80 h-80 bg-sky-300/30 rounded-full blur-3xl bottom-10 right-[-4rem] z-0"></div>
@@ -472,11 +517,11 @@ const AboutUsHero = () => {
       </section>
 
       {/* Our Philosophy */}
-      <section className="bg-gray-100 py-10 px-6 md:px-16">
+      <section className="bg-gray-100 py-10 px-6 md:px-16 font-sans ">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
             <motion.h2
-              className="text-4xl md:text-6xl font-serif font-bold text-black"
+              className="text-4xl md:text-6xl font-sans font-bold text-black"
               variants={fadeIn}
               initial="hidden"
               whileInView="visible"
@@ -522,7 +567,7 @@ const AboutUsHero = () => {
       </section>
 
       {/* Our Journey */}
-      <section className="bg-white py-20 px-6 md:px-16 font-serif text-black ">
+      <section className="bg-white py-20 px-6 md:px-16 font-sans  text-black ">
         <div className="max-w-7xl mx-auto flex flex-wrap md:flex-nowrap gap-2 items-center justify-between ">
           {/* Left Image */}
           <motion.div
@@ -612,7 +657,7 @@ const AboutUsHero = () => {
         </motion.div>
       </section>
 
-      <section className="bg-neutral-50 py-20 px-6 md:px-16 font-sans">
+      <section className="bg-neutral-50 py-20 px-6 md:px-16 font-sans ">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -621,7 +666,7 @@ const AboutUsHero = () => {
             transition={{ duration: 0.6 }}
             className="mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-serif font-semibold text-gray-900">
+            <h2 className="text-4xl md:text-5xl font-sans font-semibold text-gray-900">
               Meet the Team
             </h2>
             <p className="text-sm text-gray-500 mt-3">
