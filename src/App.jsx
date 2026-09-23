@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GlobalContactPopup from "./Component/GlobalContactPopup.jsx";
 import ScrollManager from "./Component/ScrollManager.jsx";
+import CallButton from "./Component/CallButton.jsx";
 
 // Lazy-loaded components
 const Navbar = lazy(() => import("./Component/navbar.jsx"));
@@ -16,6 +17,8 @@ const About = lazy(() => import("./Component/About.jsx"));
 const Contact = lazy(() => import("./Component/Contact.jsx"));
 const Onestop = lazy(() => import("./Component/Onestop.jsx"));
 const Careerpage = lazy(() => import("./Component/Careerpage.jsx"));
+const PrivacyPolicy = lazy(() => import("./Component/PrivacyPolicy.jsx"));
+const Terms = lazy(() => import("./Component/Terms.jsx"));
 const ScrollToTopButton = lazy(() =>
   import("./Component/ScrollToTopButton.jsx")
 );
@@ -54,9 +57,12 @@ function App() {
             <Route path="/careerpage" element={<Careerpage />} />
             <Route path="/Onestop" element={<Onestop />} />
             <Route path="/propertyDetails/:id" element={<PropertyDetails/>} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
           <Footer />
           <WhatsAppButton />
+          <CallButton/>
           <ScrollToTopButton />
         </div>
       </Router>
