@@ -203,7 +203,7 @@ const Home = () => {
             <div className="flex justify-center items-center pt-4 pb-18">
              <motion.button
   ref={ref}
-  onClick={() => navigate("/Services")}
+  onClick={() => navigate("/properties", { state: { scrollTo: "one-stop" } })}
   className="relative px-6 py-2 text-base font-semibold text-white rounded-full overflow-hidden group backdrop-blur-md border border-white/20 shadow-lg"
   style={{ x: springX, y: springY }}
   onMouseMove={handleMouseMove}
@@ -222,8 +222,8 @@ const Home = () => {
         <ServicesHighlight />
       </section>
 
-      <section className="bg-gray-100 sticky top-[-110%] md:top-0 !z-999 pb-44 pt-6 px-6 md:px-20">
-        {/* Section Title */}
+      {/* <section className="bg-gray-100 sticky top-[-110%] md:top-0 !z-999 pb-44 pt-6 px-6 md:px-20">
+        
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-800">
             Curated Collections
@@ -233,7 +233,6 @@ const Home = () => {
           </p>
         </div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {collections.map((item, index) => (
             <div
@@ -253,7 +252,7 @@ const Home = () => {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       <FAQSection></FAQSection>
 

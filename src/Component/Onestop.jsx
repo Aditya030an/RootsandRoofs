@@ -223,36 +223,47 @@ export default function StepsSection() {
       >  
 
         {/* Bottom Section */}
-        <div className="max-w-6xl mx-auto mt-1 flex items-center  bg-white text-[#0f1b2b] rounded-2xl shadow-lg py-4 px-2 text-center">
-          <div className="w-[15%] flex justify-center ">
-            <MdOutlineSelfImprovement className="text-8xl text-[#0f1b2b]" />
-          </div>
+        <div className=" max-w-6xl mx-auto mt-4 bg-white text-[#0f1b2b] rounded-2xl shadow-lg p-4 md:p-6 backdrop-blur-sm border border-gray-100 hover:shadow-2xl transition-all duration-300 "
+>
+  <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
 
-          <div className=" w-full flex flex-col  text-center  ">
-            <h3 className="text-lg md:text-4xl font-semibold mb-2">
-              Feeling Overwhelmed?
-            </h3>
+    {/* Icon */}
+    <div className="flex justify-center md:w-[15%]">
+      <MdOutlineSelfImprovement className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#0f1b2b]" />
+    </div>
 
-            <p className="text-sm md:text-base text-gray-700 mt-3">
-              Sit back, relax and have some Chai... because
-              <span className="font-semibold"> Roots & Roofs</span> will handle
-              it for you!!
-            </p>
-          </div>
+    {/* Content */}
+    <div className="flex-1 text-center">
+      <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">
+        Feeling Overwhelmed?
+      </h3>
 
+      <p className="text-sm sm:text-base md:text-lg text-gray-700 mt-3">
+        Sit back, relax and have some Chai... because
+        <span className="font-semibold"> Roots & Roofs</span> will handle
+        it for you!!
+      </p>
+    </div>
 
-          <motion.button
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 0 30px rgba(124, 201, 51, 0.4)",
-            }}
-            whileTap={{ scale: 0.98 }}
-             onClick={() => navigate("/Contact" , {state:{scrollTo:"contact-Us"}})}
-            className="w-[22%] bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-3 py-2 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
-          >
-            Connect with Us
-          </motion.button>
-        </div>
+    {/* Button */}
+    <motion.button
+      whileHover={{
+        scale: 1.05,
+        boxShadow: "0 0 30px rgba(124, 201, 51, 0.4)",
+      }}
+      whileTap={{ scale: 0.98 }}
+      onClick={() =>
+        navigate("/Contact", {
+          state: { scrollTo: "contact-Us" },
+        })
+      }
+      className=" w-full sm:w-auto md:w-[220px] bg-gradient-to-r from-[#7cc933] to-[#5fa02b] cursor-pointer text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 "
+    >
+      Connect with Us
+    </motion.button>
+
+  </div>
+</div>
       </motion.div>
     </section>
   );

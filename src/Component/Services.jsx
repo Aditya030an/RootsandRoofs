@@ -17,7 +17,7 @@ import {
 } from "react-icons/fa";
 import AreaConverter from "./AreaConverter";
 import ComparisonTable from "./ComparisonTable";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ContactFormModal from "./ContactSection";
 
 const features = [
@@ -117,7 +117,6 @@ const ExpertiseSection = () => {
   const [showPopup, setShowPopup] = useState(false);
   const formRef = useRef(null);
   const [showAllForm, setShowAllForm] = useState(false);
-  const location = useLocation();
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -153,30 +152,8 @@ const ExpertiseSection = () => {
   //   }
   // }, [location]);
 
- useEffect(() => {
-  const sectionId = location.state?.scrollTo;
-
-  if (sectionId) {
-    const timer = setTimeout(() => {
-      const element = document.getElementById(sectionId);
-
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-
-      // clear state only after scrolling
-      navigate(location.pathname, { replace: true, state: null });
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }
-
-  // only for normal navbar/direct visit
-  window.scrollTo(0, 0);
-}, [location.key]);
+ // Scroll behaviour (section landing, top-on-navbar, restore-on-back) is handled
+ // globally by <ScrollManager /> in App.jsx.
 
 //   useEffect(() => {
 //   const sectionId = location?.state?.scrollTo;
@@ -275,7 +252,7 @@ const ExpertiseSection = () => {
     else if (!/\S+@\S+\.\S+/.test(formData.email))
       temp.email = "Invalid email format";
 
-    if (!formData.message.trim()) temp.message = "Message is required";
+    // if (!formData.message.trim()) temp.message = "Message is required";
 
     setErrors(temp);
     return Object.keys(temp).length === 0;

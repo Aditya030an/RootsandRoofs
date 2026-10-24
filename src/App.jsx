@@ -1,6 +1,8 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
 import GlobalContactPopup from "./Component/GlobalContactPopup.jsx";
+import ScrollManager from "./Component/ScrollManager.jsx";
+import CallButton from "./Component/CallButton.jsx";
 
 // Lazy-loaded components
 const Navbar = lazy(() => import("./Component/navbar.jsx"));
@@ -11,14 +13,20 @@ const Services = lazy(() => import("./Component/Services.jsx"));
 const Footer = lazy(() => import("./Component/Footer.jsx"));
 const RentalProperties = lazy(() => import("./Component/RentalProperties.jsx"));
 const PropertyDetails = lazy(() => import("./Component/PropertyDetails.jsx"));
+const LegacyPropertyRedirect = lazy(() =>
+  import("./Component/PropertyDetails.jsx").then((m) => ({ default: m.LegacyPropertyRedirect })),
+);
 const About = lazy(() => import("./Component/About.jsx"));
 const Contact = lazy(() => import("./Component/Contact.jsx"));
 const Onestop = lazy(() => import("./Component/Onestop.jsx"));
 const Careerpage = lazy(() => import("./Component/Careerpage.jsx"));
+const PrivacyPolicy = lazy(() => import("./Component/PrivacyPolicy.jsx"));
+const Terms = lazy(() => import("./Component/Terms.jsx"));
 const ScrollToTopButton = lazy(() =>
   import("./Component/ScrollToTopButton.jsx")
 );
 const WhatsAppButton = lazy(() => import("./Component/WhatsAppButton.jsx"));
+const AdminApp = lazy(() => import("./admin/AdminApp.jsx"));
 
 /* ------------------ Custom Loader Component ------------------ */
 const Loader = () => {
@@ -33,16 +41,21 @@ const Loader = () => {
   );
 };
 
+// Site chrome (navbar, footer, floating buttons) is hidden on /admin pages.
+const HideOnAdmin = ({ children }) =>
+  useLocation().pathname.startsWith("/admin") ? null : children;
+
 /* ------------------ App Component ------------------ */
 function App() {
   return (
     <Suspense fallback={<Loader />}>
-      <Router>
+            <Router>
+        <ScrollManager />
         <div>
-          <GlobalContactPopup/>
-          <Navbar />
+          <HideOnAdmin><GlobalContactPopup/></HideOnAdmin>
+          <HideOnAdmin><Navbar /></HideOnAdmin>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<RentalProperties />} />
             <Route path="/Scroll" element={<Scroll />} />
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/Services" element={<Services />} />
@@ -51,11 +64,16 @@ function App() {
             <Route path="/Contact" element={<Contact />} />
             <Route path="/careerpage" element={<Careerpage />} />
             <Route path="/Onestop" element={<Onestop />} />
-            <Route path="/propertyDetails/:id" element={<PropertyDetails/>} />
+            <Route path="/property/:slug" element={<PropertyDetails/>} />
+            <Route path="/propertyDetails/:id" element={<LegacyPropertyRedirect />} />
+            <Route path="/admin/*" element={<AdminApp />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
-          <Footer />
-          <WhatsAppButton />
-          <ScrollToTopButton />
+          <HideOnAdmin><Footer /></HideOnAdmin>
+          <HideOnAdmin><WhatsAppButton /></HideOnAdmin>
+          <HideOnAdmin><CallButton/></HideOnAdmin>
+          <HideOnAdmin><ScrollToTopButton /></HideOnAdmin>
         </div>
       </Router>
     </Suspense>

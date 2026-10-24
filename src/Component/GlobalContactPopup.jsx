@@ -6,6 +6,9 @@ export default function GlobalContactPopup() {
   const [isOpen, setIsOpen] = useState(false);
 const [loading , setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  // Holds the property reference (title + link) when the popup is opened from a
+  // "Price on request" link, so we always know which property the lead is for.
+  const [propertyRef, setPropertyRef] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -33,7 +36,7 @@ const [loading , setLoading] = useState(false);
     else if (!/\S+@\S+\.\S+/.test(formData.email))
       temp.email = "Invalid email format";
 
-    if (!formData.message.trim()) temp.message = "Message is required";
+    // if (!formData.message.trim()) temp.message = "Message is required";
 
     setErrors(temp);
     return Object.keys(temp).length === 0;
@@ -57,7 +60,9 @@ const [loading , setLoading] = useState(false);
           name: formData.name,
           email: formData.email,
           phone: formData.phone,
-          message: formData.message,
+          // Always append the property reference (if any) so the team can tell
+          // which property the enquiry is about, even if the user edits the note.
+          message: [formData.message, propertyRef].filter(Boolean).join("\n"),
         }),
       });
 
@@ -75,6 +80,7 @@ const [loading , setLoading] = useState(false);
     } finally {
       setLoading(false);
       setIsOpen(false);
+      setPropertyRef("");
     }
 
     // TODO: send formData to backend
@@ -97,6 +103,27 @@ const [loading , setLoading] = useState(false);
 
     return () => clearInterval(interval);
   };
+
+  // Allow any component (e.g. a "Price on request" link) to open this popup and
+  // attach the property it relates to via a global custom event.
+  useEffect(() => {
+    const handleOpen = (e) => {
+      const { title, link } = e?.detail || {};
+      setPropertyRef(link ? `Property: ${title || ""} - ${link}` : "");
+      setFormData((prev) => ({
+        ...prev,
+        message: title
+          ? `I'm interested in "${title}". Please share the price details.${
+              link ? `\n${link}` : ""
+            }`
+          : prev.message,
+      }));
+      setIsOpen(true);
+    };
+
+    window.addEventListener("open-contact-popup", handleOpen);
+    return () => window.removeEventListener("open-contact-popup", handleOpen);
+  }, []);
 
   useEffect(() => {
     const filled = localStorage.getItem(FORM_KEY) || localStorage.getItem("showAllForm");
@@ -121,7 +148,10 @@ const [loading , setLoading] = useState(false);
     <>
       <ContactFormModal
         isOpen={isOpen}
-        onClose={() => setIsOpen(false)} // Close ONLY hides temporarily
+        onClose={() => {
+          setIsOpen(false);
+          setPropertyRef("");
+        }} // Close ONLY hides temporarily
         formData={formData}
         setFormData={setFormData}
         handleSubmit={handleSubmit}

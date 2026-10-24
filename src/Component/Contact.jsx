@@ -4,6 +4,7 @@ import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import contactImage from "./photos/abou1.jpeg";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // const GOOGLE_SHEET_URL = 
 //   "https://script.google.com/macros/s/AKfycbxG1QObuvp4PQUoVfysygo5Kn5Tho_AUlJWKxwrzAnMdWnkyziHdI-EqphokuY4gOsd/exec";
@@ -17,10 +18,50 @@ const fadeInUp = {
   }),
 };
 
+
 const ContactUs = () => {
   const [activeForm, setActiveForm] = useState("contact");
   const location = useLocation();
   const navigate = useNavigate();
+  const [copied, setCopied] = useState(false);
+
+const handleCopyPhone = async () => {
+  const phoneNumber = "+91 92036 26426";
+
+  try {
+    await navigator.clipboard.writeText(phoneNumber);
+    setCopied(true);
+
+    setTimeout(() => {
+      setCopied(false);
+    }, 2000);
+  } catch (error) {
+    console.error("Failed to copy:", error);
+
+    // Fallback for browsers where Clipboard API is unavailable
+    const textArea = document.createElement("textarea");
+    textArea.value = phoneNumber;
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      document.execCommand("copy");
+      setCopied(true);
+
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    } catch (fallbackError) {
+      console.error("Fallback copy failed:", fallbackError);
+    }
+
+    document.body.removeChild(textArea);
+  }
+};
 
 
   // useEffect(() => {
@@ -134,39 +175,60 @@ useEffect(() => {
 
       {/* Forms Section */}
       <section  className="py-16 px-6 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info Cards */}
-          <motion.div className="space-y-8">
-            <InfoCard
-              icon={<FaPhoneAlt />}
-              title="Call Us"
-              text="+91 98765 43210"
-            />
-            <InfoCard
-              icon={<FaEnvelope />}
-              title="Email Us"
-              text="support@rootsandroofs.com"
-            />
-          </motion.div>
+       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+  {/* Contact Info Cards */}
+  <motion.div
+    className="space-y-5 sm:space-y-6 lg:space-y-8"
+    initial={{ opacity: 0, x: -30 }}
+    animate={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.5 }}
+  >
+    {/* Phone */}
+    <InfoCard
+  icon={<FaPhoneAlt />}
+  title="Call Us"
+  text={
+    copied
+      ? "Copied to clipboard!"
+      : "+91 92036 26426"
+  }
+  onClick={handleCopyPhone}
+  className="cursor-pointer"
+/>
 
-          {/* Animated Form Section */}
-          <motion.div
-            key={activeForm}
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.6 }}
-            className="bg-white text-gray-800 rounded-2xl shadow-2xl p-8 overflow-hidden"
-          >
-            <AnimatePresence mode="wait">
-              {activeForm === "contact" ? (
-                <ContactForm />
-              ) : (
-                <ModernListingForm />
-              )}
-            </AnimatePresence>
-          </motion.div>
-        </div>
+    {/* Email */}
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=enquiry@rootsandroofs.in"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block"
+    >
+      <InfoCard
+        icon={<FaEnvelope />}
+        title="Email Us"
+        text="enquiry@rootsandroofs.in"
+      />
+    </a>
+  </motion.div>
+
+  {/* Animated Form Section */}
+  <motion.div
+    key={activeForm}
+    initial={{ opacity: 0, x: 50 }}
+    animate={{ opacity: 1, x: 0 }}
+    exit={{ opacity: 0, x: -50 }}
+    transition={{ duration: 0.6 }}
+    className="w-full bg-white text-gray-800 rounded-2xl shadow-2xl p-5 sm:p-6 lg:p-8 overflow-hidden"
+  >
+    <AnimatePresence mode="wait">
+      {activeForm === "contact" ? (
+        <ContactForm />
+      ) : (
+        <ModernListingForm />
+      )}
+    </AnimatePresence>
+  </motion.div>
+</div>
       </section>
     </div>
   );
@@ -216,7 +278,7 @@ const ContactForm = () => {
     else if (!/\S+@\S+\.\S+/.test(formData.email))
       temp.email = "Invalid email format";
 
-    if (!formData.message.trim()) temp.message = "Message is required";
+    // if (!formData.message.trim()) temp.message = "Message is required";
 
     setErrors(temp);
     return Object.keys(temp).length === 0;
@@ -654,7 +716,7 @@ const ModernListingForm = () => {
       </div>
 
       {/* Checkbox */}
-      <div className="flex items-start gap-2 text-sm">
+      {/* <div className="flex items-start gap-2 text-sm">
         <input
           type="checkbox"
           checked={agree}
@@ -663,17 +725,21 @@ const ModernListingForm = () => {
         />
         <p className="text-gray-600">
           I agree to be contacted by Roots & Roofs as per{" "}
-          <a href="#" className="text-indigo-600 underline">
+          <Link
+            to="/privacy-policy"
+            target="_blank"
+            className="text-indigo-600 underline"
+          >
             Roots & Roofs Privacy Policy
-          </a>{" "}
+          </Link>{" "}
           and{" "}
-          <a href="#" className="text-indigo-600 underline">
+          <Link to="/terms" target="_blank" className="text-indigo-600 underline">
             T&C
-          </a>
+          </Link>
           .
         </p>
       </div>
-      {errors.agree && <p className="text-red-500 text-sm">{errors.agree}</p>}
+      {errors.agree && <p className="text-red-500 text-sm">{errors.agree}</p>} */}
 
       {/* Continue Button */}
       <button

@@ -26,3 +26,14 @@ dist-ssr
 
 .env
 .env.*
+
+# seed upload cache
+server/scripts/.upload-cache.json
+
+# Property images live on Cloudinary now; keep only the one local file the home page imports
+public/propertyList/*
+!public/propertyList/madhuban/
+public/propertyList_old/
+
+# Raw brochure downloads used to import properties
+drive-download-*/

@@ -114,6 +114,7 @@ const ContactFormModal = ({
                   }
                   required
                   placeholder="Phone Number"
+                  maxLength={10}
                   className="w-full pl-10 pr-4 py-3 bg-white/80 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
                 />
                 {errors.phone && (
@@ -162,7 +163,6 @@ const ContactFormModal = ({
                     [e.target.name]: e.target.value,
                   })
                 }
-                required
                 placeholder="Your Message"
                 className="w-full pl-10 pr-4 py-3 bg-white/80 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400"
               />
