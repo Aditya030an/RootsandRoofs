@@ -37,3 +37,11 @@ public/propertyList_old/
 
 # Raw brochure downloads used to import properties
 drive-download-*/
+
+# Hostinger upload bundle
+rr-hostinger.zip
+.env.production
+
+# Hostinger upload bundle
+rr-hostinger.zip
+.env.production
