@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "server": "node server/index.js",
     "seed": "node server/scripts/seed.js",
-    "seed:images": "node server/scripts/seed.js --upload-images"
+    "seed:images": "node server/scripts/seed.js --upload-images",
+    "build:hostinger": "vite build && node scripts/prune-dist.js"
   },
   "dependencies": {
     "@react-three/drei": "^9.53.2",
