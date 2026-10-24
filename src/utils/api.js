@@ -55,6 +55,7 @@ export const api = {
     });
     return request(`/properties?${qs}`, { signal });
   },
+  listPromoted: (signal) => request("/properties/promoted", { signal }),
   getProperty: (id) => request(`/properties/${id}`),
   getSimilar: (id) => request(`/properties/${id}/similar`),
   login: (email, password) => request("/auth/login", { method: "POST", body: { email, password } }),

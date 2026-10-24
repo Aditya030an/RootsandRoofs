@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import gsap from "gsap";
 import AreaConverter from "./AreaConverter";
+import PromotedPanel from "./PromotedPanel";
 
 // ✅ Unit conversion ratios
 const unitConversions = {
@@ -1769,6 +1770,7 @@ const PropertyDetailsView = ({ property, similarProperties }) => {
               {callLoading ? "Submitting..." : "Get a Call"}
             </button>
           </form>
+          <PromotedPanel compact excludeId={property?.id} />
         </div>
       </div>
       

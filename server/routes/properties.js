@@ -1,6 +1,6 @@
 import { Router } from "express";
 import Property from "../models/Property.js";
-import { listCatalog, similarTo } from "../catalog.js";
+import { listCatalog, listPromoted, similarTo } from "../catalog.js";
 
 const router = Router();
 
@@ -14,6 +14,16 @@ router.get("/", async (req, res, next) => {
   try {
     cacheHeaders(res);
     res.json(await listCatalog(req.query));
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Advertised properties for the right-side panel (must precede /:idOrSlug).
+router.get("/promoted", async (req, res, next) => {
+  try {
+    res.set("Cache-Control", "public, max-age=10, s-maxage=30, stale-while-revalidate=120");
+    res.json({ items: await listPromoted() });
   } catch (err) {
     next(err);
   }

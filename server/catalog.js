@@ -65,7 +65,7 @@ const parsePrice = (price) => {
 // Only what a listing card / similar-projects card needs.
 const PROJECTION = {
   id: 1, title: 1, slug: 1, location: 1, city: 1, state: 1, type: 1, propertyType: 1,
-  bhk: 1, area: 1, price: 1, verified: 1, parking: 1, bathrooms: 1, published: 1,
+  bhk: 1, area: 1, price: 1, verified: 1, parking: 1, bathrooms: 1, published: 1, promoted: 1, promotedOrder: 1,
   images: { $slice: 1 }, "developer.name": 1, "sections.amenities.title": 1,
 };
 
@@ -86,6 +86,8 @@ const build = async () => {
       bathrooms: d.bathrooms || 0, images: (d.images || []).slice(0, 1),
       developer: { name: d.developer?.name || "" },
     },
+    promoted: d.promoted === true,
+    promotedOrder: Number(d.promotedOrder) || 0,
     search: `${lc(d.title)} ${lc(d.location)}`,
     amenityTitles: (d.sections?.amenities || []).map((a) => lc(a.title)),
     bhkNums: bhkNumbers(d.bhk),
@@ -166,6 +168,15 @@ export const listCatalog = async (query) => {
     limit,
     facets,
   };
+};
+
+// Cards the admin chose to advertise, in the admin's order.
+export const listPromoted = async () => {
+  const rows = await getCatalog();
+  return rows
+    .filter((r) => r.promoted)
+    .sort((a, b) => a.promotedOrder - b.promotedOrder || a.card.id - b.card.id)
+    .map((r) => r.card);
 };
 
 // Same-builder-first ranking used by "Similar Projects" on the detail page.

@@ -24,6 +24,8 @@ const validate = (data, { partial = false } = {}) => {
   if (!partial || "title" in data) {
     if (!String(data.title || "").trim()) errors.push("Title is required");
   }
+  if ("promotedOrder" in data && !Number.isFinite(Number(data.promotedOrder)))
+    errors.push("promotedOrder must be a number");
   if ("images" in data && !Array.isArray(data.images)) errors.push("images must be a list");
   if ("sections" in data && (typeof data.sections !== "object" || data.sections === null))
     errors.push("sections must be an object");
@@ -35,6 +37,7 @@ router.get("/properties", async (req, res, next) => {
   try {
     const limit = Math.min(Math.max(Number(req.query.limit) || 20, 1), 100);
     const filter = {};
+    if (req.query.promoted === "true") filter.promoted = true;
     const q = String(req.query.q || "").trim();
     if (q) {
       const rx = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
@@ -44,10 +47,10 @@ router.get("/properties", async (req, res, next) => {
     const pages = Math.max(Math.ceil(total / limit), 1);
     const page = Math.min(Math.max(Number(req.query.page) || 1, 1), pages);
     const items = await Property.find(filter, {
-      id: 1, title: 1, slug: 1, location: 1, city: 1, type: 1, propertyType: 1, published: 1,
+      id: 1, title: 1, slug: 1, location: 1, city: 1, type: 1, propertyType: 1, published: 1, promoted: 1, promotedOrder: 1,
       images: { $slice: 1 }, "developer.name": 1,
     })
-      .sort({ id: -1 })
+      .sort(req.query.promoted === "true" ? { promotedOrder: 1, id: 1 } : { id: -1 })
       .skip((page - 1) * limit)
       .limit(limit)
       .lean();

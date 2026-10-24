@@ -23,6 +23,8 @@ const BLANK = {
   bathrooms: 0,
   verified: true,
   featured: false,
+  promoted: false,
+  promotedOrder: 0,
   readyToMove: false,
   parking: false,
   published: true,
@@ -187,9 +189,15 @@ const PropertyForm = () => {
           <Toggle label="Published (visible on site)" checked={form.published} onChange={(v) => set({ published: v })} />
           <Toggle label="Verified badge" checked={form.verified} onChange={(v) => set({ verified: v })} />
           <Toggle label="Featured" checked={form.featured} onChange={(v) => set({ featured: v })} />
+          <Toggle label="Promote (show in right-side Featured panel)" checked={form.promoted} onChange={(v) => set({ promoted: v })} />
           <Toggle label="Ready to move" checked={form.readyToMove} onChange={(v) => set({ readyToMove: v })} />
           <Toggle label="Parking" checked={form.parking} onChange={(v) => set({ parking: v })} />
         </div>
+        {form.promoted && (
+          <Field label="Promotion order" hint="1 shows first. Properties with the same number are sorted by ID.">
+            <input type="number" min="0" className={`${inputCls} sm:w-40`} value={form.promotedOrder ?? 0} onChange={(e) => set({ promotedOrder: Number(e.target.value) || 0 })} />
+          </Field>
+        )}
       </Card>
 
       <Card title="Price" hint="Leave at 0 / empty to show “Price on Request”.">
