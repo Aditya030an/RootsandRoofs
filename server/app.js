@@ -10,6 +10,9 @@ import adminRoutes from "./routes/admin.js";
 
 const app = express();
 
+// Behind Vercel's proxy: use the real client IP (rate limiting, logs).
+app.set("trust proxy", 1);
+
 app.use(helmet());
 app.use(compression());
 app.use(
