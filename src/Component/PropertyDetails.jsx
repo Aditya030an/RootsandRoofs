@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import propertyList from "../utils/propertyList";
+import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
+import { api } from "../utils/api";
+import { optimizeImage } from "../utils/image";
+// Local data is no longer rendered: properties come from the backend API.
+// import propertyList from "../utils/propertyList";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { motion } from "framer-motion";
 import { FiChevronDown, FiSearch } from "react-icons/fi";
@@ -219,43 +222,19 @@ const CustomDropdown = ({ value, onChange, options }) => {
   );
 };
 
-const PropertyDetails = () => {
-  const { id } = useParams();
+const PropertyDetailsView = ({ property, similarProperties }) => {
+  const { slug } = useParams();
   const navigate = useNavigate();
-  const property = propertyList.find((item) => item.id === Number(id));
-  console.log("property", property);
 
   const location = useLocation();
   // Navigate to another property re-using the current route's last segment.
   const goToProperty = (newId) =>
     navigate(location.pathname.replace(/[^/]+$/, String(newId)));
 
-  // ✅ Similar Projects: same builder/developer is prioritised highest,
-  // then same property type, same city and same configuration.
+  // Similar Projects are ranked on the server (same builder first, then type,
+  // city and configuration) and passed in as `similarProperties`.
   const norm = (s) => (s || "").trim().toLowerCase();
   const currentDeveloper = norm(property?.developer?.name);
-  const similarProperties = !property
-    ? []
-    : propertyList
-        .filter((item) => item.id !== property.id)
-        .map((item) => {
-          let score = 0;
-          if (
-            currentDeveloper &&
-            norm(item.developer?.name) === currentDeveloper
-          )
-            score += 100; // same builder → high priority
-          if (norm(item.propertyType) === norm(property.propertyType))
-            score += 10;
-          if (norm(item.city) === norm(property.city)) score += 5;
-          if (norm(item.bhk) === norm(property.bhk)) score += 3;
-          return { item, score };
-        })
-        // Only keep genuinely related properties (drop zero-signal matches).
-        .filter((x) => x.score > 0)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 7)
-        .map((x) => x.item);
 
   const [mainImage, setMainImage] = useState(property?.images[0]);
   const [activeTab, setActiveTab] = useState("overview");
@@ -328,7 +307,7 @@ const PropertyDetails = () => {
   // Open the global contact popup for a price enquiry, attaching this property's
   // title + link so the team knows exactly which property the lead is about.
   const requestPrice = () => {
-    const link = `${window.location.origin}/propertyDetails/${property?.id}`;
+    const link = `${window.location.origin}/property/${property?.slug || property?.id}`;
     window.dispatchEvent(
       new CustomEvent("open-contact-popup", {
         detail: { title: property?.title, link },
@@ -442,7 +421,7 @@ const PropertyDetails = () => {
     // Reset the hero image when navigating between properties (same component).
     setMainImage(property?.images?.[0]);
     setActiveFloorPlan(0);
-  }, [id]);
+  }, [slug]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -710,7 +689,9 @@ const PropertyDetails = () => {
           {/* LEFT LOGO IMAGE */}
           <div className="flex w-full lg:w-1/2 items-center justify-center">
             <img
-              src={property?.images?.[0]}
+              src={optimizeImage(property?.images?.[0], 1000)}
+              fetchPriority="high"
+              decoding="async"
               alt={property?.title}
               className="w-full h-[220px] sm:h-[320px] lg:h-[420px] object-contain rounded bg-slate-50 p-4"
             />
@@ -847,7 +828,8 @@ const PropertyDetails = () => {
                 {property?.images.map((img, i) => (
                   <img
                     key={i}
-                    src={img}
+                    src={optimizeImage(img, 700)}
+                    loading="lazy"
                     onClick={() => openOverview(i)}
                     className="min-w-[220px] h-[180px] sm:min-w-[300px] sm:h-[260px]  object-contain rounded cursor-pointer  flex-shrink-0 hover:scale-105 transition"
                   />
@@ -891,9 +873,9 @@ const PropertyDetails = () => {
                     contentClass="!w-full"
                   >
                     <img
-                      src={floorPlans[activeFloorPlan]}
+                      src={optimizeImage(floorPlans[activeFloorPlan], 1400)}
                       alt={`Floor Plan ${activeFloorPlan + 1}`}
-                      className="w-full min-h-[260px] sm:min-h-[400px] md:min-h-[600px] max-h-[70vh] object-cover rounded"
+                      className="w-full min-h-[260px] sm:min-h-[400px] md:min-h-[600px] max-h-[70vh] object-contain rounded"
                     />
                   </TransformComponent>
                 </TransformWrapper>
@@ -962,7 +944,9 @@ const PropertyDetails = () => {
                   {/* Image */}
                   <div className="overflow-hidden">
                     <img
-                      src={a?.img}
+                      src={optimizeImage(a?.img, 480)}
+                      loading="lazy"
+                      decoding="async"
                       alt={a?.title}
                       className=" w-full  h-48  object-cover  transition-transform  duration-500 hover:scale-110 "
                     />
@@ -1360,7 +1344,9 @@ const PropertyDetails = () => {
                           }}
                         >
                           <img
-                            src={img}
+                            src={optimizeImage(img, 480)}
+                            loading="lazy"
+                            decoding="async"
                             className="w-60 h-40 object-cover rounded transition-transform duration-300 hover:scale-105"
                           />
 
@@ -1622,7 +1608,7 @@ const PropertyDetails = () => {
                       return (
                         <a
                           key={item.id}
-                          href={`/propertyDetails/${item.id}`}
+                          href={`/property/${item.slug || item.id}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="block border rounded-xl overflow-hidden hover:shadow-md transition cursor-pointer"
@@ -1631,7 +1617,7 @@ const PropertyDetails = () => {
                           <div className="relative h-40 bg-gray-200">
                             {item.images?.[0] && (
                               <img
-                                src={item.images[0]}
+                                src={optimizeImage(item.images[0], 500)}
                                 alt={item.title}
                                 loading="lazy"
                                 className="h-40 w-full object-cover"
@@ -1697,7 +1683,8 @@ const PropertyDetails = () => {
                   {activeGallery.map((img, i) => (
                     <img
                       key={i}
-                      src={img}
+                      src={optimizeImage(img, 480)}
+                      loading="lazy"
                       className="w-full h-40 object-cover rounded"
                     />
                   ))}
@@ -1716,7 +1703,7 @@ const PropertyDetails = () => {
             <div className="bg-white rounded-md shadow border">
               <img
                 alt="img"
-                src={property?.images[0]}
+                src={optimizeImage(property?.images[0], 400)}
                 loading="lazy"
                 className="h-36 w-full object-contain rounded-t-md"
               />
@@ -1844,7 +1831,7 @@ const PropertyDetails = () => {
           {/* Image Container */}
           <div className="max-w-4xl w-full text-center">
             <img
-              src={amenities[activeAmenityIndex]?.img}
+              src={optimizeImage(amenities[activeAmenityIndex]?.img, 1200)}
               alt={amenities[activeAmenityIndex]?.title}
               className="
           w-full 
@@ -1916,7 +1903,8 @@ const PropertyDetails = () => {
               {overviewImages.map((img, i) => (
                 <img
                   key={i}
-                  src={img}
+                  src={optimizeImage(img, 200)}
+                  loading="lazy"
                   onClick={() => setActiveOverviewIndex(i)}
                   className={`h-16 w-24 object-cover rounded cursor-pointer flex-shrink-0 transition ${
                     i === activeOverviewIndex
@@ -1931,6 +1919,93 @@ const PropertyDetails = () => {
       )}
     </div>
   );
+};
+
+const DetailSkeleton = () => (
+  <div className="min-h-screen pt-28 px-4 sm:px-6 md:px-10 animate-pulse" aria-busy="true">
+    <div className="flex flex-col lg:flex-row gap-8">
+      <div className="lg:w-1/2 h-[260px] sm:h-[380px] bg-slate-100 rounded-xl" />
+      <div className="lg:w-1/2 space-y-4">
+        <div className="h-8 w-2/3 bg-slate-100 rounded" />
+        <div className="h-5 w-1/2 bg-slate-100 rounded" />
+        <div className="h-24 bg-slate-100 rounded" />
+        <div className="h-12 w-40 bg-slate-100 rounded" />
+      </div>
+    </div>
+    <div className="mt-10 h-40 bg-slate-100 rounded-xl" />
+  </div>
+);
+
+// Real, shareable URL: /property/<slug>. The property loads from MongoDB via the
+// API as soon as the page opens; similar projects load afterwards so they never
+// delay the main content. Keyed by slug so navigating resets all page state.
+const PropertyDetails = () => {
+  const { slug } = useParams();
+  const [state, setState] = useState({ slug: null, property: null, error: "" });
+  const [similar, setSimilar] = useState([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    window.scrollTo(0, 0);
+    api
+      .getProperty(slug)
+      .then((property) => {
+        if (cancelled) return;
+        setState({ slug, property, error: "" });
+        // Non-blocking: similar projects fill in once ready.
+        api
+          .getSimilar(property.id)
+          .then((items) => !cancelled && setSimilar(items))
+          .catch(() => {});
+      })
+      .catch((err) => {
+        if (!cancelled) setState({ slug, property: null, error: err.message });
+      });
+    return () => {
+      cancelled = true;
+      setSimilar([]);
+    };
+  }, [slug]);
+
+  // Per-property tab title + description (helps sharing and search results).
+  const property = state.slug === slug ? state.property : null;
+  useEffect(() => {
+    if (!property) return;
+    const previousTitle = document.title;
+    document.title = `${property.title}${property.developer?.name ? ` by ${property.developer.name}` : ""} | Roots & Roofs`;
+    const meta = document.querySelector('meta[name="description"]');
+    const previousDescription = meta?.getAttribute("content");
+    if (meta && property.description) meta.setAttribute("content", property.description.slice(0, 160));
+    return () => {
+      document.title = previousTitle;
+      if (meta && previousDescription != null) meta.setAttribute("content", previousDescription);
+    };
+  }, [property]);
+
+  if (state.slug !== slug) return <DetailSkeleton />;
+  if (state.error || !state.property) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4 text-center px-6">
+        <h1 className="text-2xl font-bold text-slate-800">Property not found</h1>
+        <p className="text-slate-600">{state.error || "This property is no longer available."}</p>
+        <a href="/" className="px-6 py-3 bg-[#7cc933] text-white rounded-lg font-medium">Browse properties</a>
+      </div>
+    );
+  }
+  return <PropertyDetailsView key={slug} property={state.property} similarProperties={similar} />;
+};
+
+// Old links (/propertyDetails/209) redirect to the real URL (/property/<slug>).
+export const LegacyPropertyRedirect = () => {
+  const { id } = useParams();
+  const [target, setTarget] = useState(null);
+  useEffect(() => {
+    api
+      .getProperty(id)
+      .then((p) => setTarget(`/property/${p.slug}`))
+      .catch(() => setTarget("/"));
+  }, [id]);
+  return target ? <Navigate to={target} replace /> : <DetailSkeleton />;
 };
 
 export default PropertyDetails;

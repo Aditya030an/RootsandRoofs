@@ -1,3 +1,6 @@
+// LEGACY SNAPSHOT — no longer rendered by the site. Properties now come from
+// the backend API (MongoDB). This file is kept only as the source for
+// server/scripts/seed.js; edit properties in the admin dashboard instead.
 const DEFAULT_PROPERTY_VALUES = {
   price: 0,
   pricePerSqFt: 0,
@@ -14453,6 +14456,3667 @@ const rawPropertyList = [
     "description": "Developer details are taken from the uploaded project brochure and layout drawings."
   },
   "disclaimer": "Project details are prepared from the developer's uploaded brochure and layout drawings. Please verify price, plot/unit sizes, availability, approvals and specifications with the official sales team before making a decision."
+},
+{
+  "id": 400,
+  "title": "NRC Business Park",
+  "slug": "nrc-business-park-nrc-group",
+  "location": "Plot No. 21, Scheme 139, Super Corridor, Next to Bhagirath Tata Motors, Near Luv Kush Square",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Commercial",
+  "bhk": "Showrooms & Offices",
+  "area": "462 - 2344 Sq.ft. (SBA)",
+  "description": "New Race Course Business Park by NRC Group is a premium commercial development on the Super Corridor in Indore, near Luv Kush Square. It offers showrooms on the ground floor and offices on the upper floors around an interactive central atrium, with designated parking, access-controlled elevators, green spaces, natural light and cross ventilation. Per the brochure floor schedules, saleable areas range from roughly 462 sq.ft. for compact offices to about 2344 sq.ft. for larger ground-floor showrooms.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Showrooms and offices in a premium Super Corridor location, 0.5 km from Luv Kush Square",
+        "Interactive atrium design with majestic office entrances",
+        "Designated parking areas and access-controlled elevators",
+        "Designated green spaces, optimised natural lighting and organic air ventilation",
+        "IGBC certified heat management with UV infiltration reducing glass",
+        "Solar-powered common areas, waste segregation and rainwater harvesting",
+        "RERA No. P-IND-23-3982"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A premium commercial building on the Super Corridor, Indore with showrooms and offices around an interactive atrium, near Luv Kush Square.",
+    "amenities": [
+      {
+        "title": "Interactive Atrium",
+        "img": "/propertyList/NRC Business Park/img8.jpg"
+      },
+      {
+        "title": "Majestic Office Entrance Lobby",
+        "img": "/propertyList/NRC Business Park/img9.jpg"
+      },
+      {
+        "title": "Cafeteria",
+        "img": "/propertyList/NRC Business Park/img10.jpg"
+      },
+      {
+        "title": "Lift Lobby with Access-Controlled Elevators",
+        "img": "/propertyList/NRC Business Park/img11.jpg"
+      },
+      {
+        "title": "Designated Parking Areas",
+        "img": "/propertyList/NRC Business Park/img4.jpg"
+      },
+      {
+        "title": "Green Spaces and Green Balconies",
+        "img": "/propertyList/NRC Business Park/img2.jpg"
+      }
+    ],
+    "specifications": [
+      "Ground floor showrooms with upper-floor offices; floor-wise unit schedules (carpet, balcony, built-up and SBA) are given in the brochure",
+      "Mezzanine, first and typical floors with 6' wide corridors and common green areas",
+      "Access-controlled passenger lifts and double-height entrance lobby",
+      "Dedicated parking for all offices",
+      "IGBC certified, scientifically calibrated heat management with UV infiltration reducing glass",
+      "Common areas powered by dedicated solar panels",
+      "Eco-friendly waste segregation, rainwater harvesting and water-conserving fixtures"
+    ],
+    "connectivity": [
+      "Luv Kush Square - 0.5 km",
+      "ISBT - 2.8 km",
+      "Tata Consultancy Services - 5.1 km",
+      "Vijaynagar - 6.4 km",
+      "SVKM's NMIMS - 8.5 km",
+      "Symbiosis University - 8.6 km",
+      "Indore International Airport - 10.3 km"
+    ],
+    "vision": [
+      "To provide world-class business spaces with a grand arrival experience, abundant natural light and sustainable, eco-sensitive features."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "New Race Course Business Park"
+    },
+    {
+      "label": "Property Type",
+      "value": "Commercial - Showrooms & Offices"
+    },
+    {
+      "label": "Location",
+      "value": "Super Corridor, near Luv Kush Square, Indore, Madhya Pradesh"
+    },
+    {
+      "label": "Site Address",
+      "value": "Plot Number 21, Scheme 139, Super Corridor, Next to Bhagirath Tata Motors, Near Luv Kush Square, Indore"
+    },
+    {
+      "label": "Developer",
+      "value": "NRC Group"
+    },
+    {
+      "label": "RERA No.",
+      "value": "P-IND-23-3982"
+    },
+    {
+      "label": "Marketing Partner RERA No.",
+      "value": "A-IND-17-47"
+    },
+    {
+      "label": "Architect",
+      "value": "Spacon Design (India) Pvt. Ltd."
+    },
+    {
+      "label": "Saleable Area (SBA)",
+      "value": "Approx. 462 - 2344 sq.ft."
+    },
+    {
+      "label": "Enquiries",
+      "value": "+91 9009 68 68 68, enquiry@newracecourse.com"
+    }
+  ],
+  "images": [
+    "/propertyList/NRC Business Park/img1.jpg",
+    "/propertyList/NRC Business Park/img14.jpg",
+    "/propertyList/NRC Business Park/img15.jpg",
+    "/propertyList/NRC Business Park/img2.jpg",
+    "/propertyList/NRC Business Park/img3.jpg",
+    "/propertyList/NRC Business Park/img4.jpg",
+    "/propertyList/NRC Business Park/img5.jpg",
+    "/propertyList/NRC Business Park/img6.jpg",
+    "/propertyList/NRC Business Park/img7.jpg",
+    "/propertyList/NRC Business Park/img8.jpg",
+    "/propertyList/NRC Business Park/img9.jpg",
+    "/propertyList/NRC Business Park/img10.jpg",
+    "/propertyList/NRC Business Park/img11.jpg",
+    "/propertyList/NRC Business Park/img12.jpg",
+    "/propertyList/NRC Business Park/img13.jpg",
+    "/propertyList/NRC Business Park/img16.jpg",
+    "/propertyList/NRC Business Park/img17.jpg",
+    "/propertyList/NRC Business Park/img18.jpg",
+    "/propertyList/NRC Business Park/img19.jpg",
+    "/propertyList/NRC Business Park/img20.jpg",
+    "/propertyList/NRC Business Park/img21.jpg",
+    "/propertyList/NRC Business Park/img22.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/NRC Business Park/img16.jpg",
+    "images": [
+      "/propertyList/NRC Business Park/img16.jpg",
+      "/propertyList/NRC Business Park/img17.jpg",
+      "/propertyList/NRC Business Park/img18.jpg",
+      "/propertyList/NRC Business Park/img19.jpg",
+      "/propertyList/NRC Business Park/img20.jpg",
+      "/propertyList/NRC Business Park/img21.jpg",
+      "/propertyList/NRC Business Park/img22.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/NRC Business Park/img13.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "NRC Group",
+    "description": "NRC Group (New Race Course), Indore. Corporate address: 103 A, Kanchan Sagar Building, AB Road, Indore. Phone +91 7314 2796 33. Website: www.newracecourse.com."
+  },
+  "disclaimer": "NRC Business Park details are prepared from the developer brochure and site photos. Images are artistic impressions; areas, price, availability and approvals should be verified with the official sales team and RERA records."
+},
+{
+  "id": 401,
+  "title": "NRC Greens",
+  "slug": "nrc-greens-nrc-group",
+  "location": "Baroda Kara, Kanadia Road",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "Approx. 401 - 1588 Sq.ft.",
+  "description": "NRC Greens by NRC Group is a gated residential plotted township at Baroda Kara, Kanadia Road, Indore. The master plan has 327 plots of varying sizes (general residential, residential/commercial, LIG and EWS categories) laid out along wide internal roads with a network of landscaped green spaces. Planned lifestyle amenities include a grand entrance gate, tree-lined walkways, gardens, a children's play area, yoga deck, outdoor gym, sports court, amphitheatre and a temple.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Gated township with grand entrance gateway",
+        "327 plots; sizes range from about 401 to 1588 sq.ft.",
+        "Wide approach road and well-planned internal roads",
+        "Landscaped gardens, tree-lined walkways and children's play area",
+        "Yoga deck, outdoor gym and sports facilities",
+        "Amphitheatre and temple within the community",
+        "RERA No. P-IND-25-5617"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A gated plotted township with landscaped open spaces and lifestyle amenities at Baroda Kara, Kanadia Road, Indore.",
+    "amenities": [
+      {
+        "title": "Grand Entrance Gate",
+        "img": "/propertyList/NRC Greens/img1.jpg"
+      },
+      {
+        "title": "Tree-lined Walkways",
+        "img": "/propertyList/NRC Greens/img4.jpg"
+      },
+      {
+        "title": "Gardens and Children's Play Area",
+        "img": "/propertyList/NRC Greens/img5.jpg"
+      },
+      {
+        "title": "Landscaped Seating and Water Feature",
+        "img": "/propertyList/NRC Greens/img6.jpg"
+      },
+      {
+        "title": "Yoga Deck",
+        "img": "/propertyList/NRC Greens/img7.jpg"
+      },
+      {
+        "title": "Sports Court and Jogging Track",
+        "img": "/propertyList/NRC Greens/img8.jpg"
+      },
+      {
+        "title": "Temple",
+        "img": "/propertyList/NRC Greens/img9.jpg"
+      },
+      {
+        "title": "Outdoor Gym",
+        "img": "/propertyList/NRC Greens/img10.jpg"
+      },
+      {
+        "title": "Amphitheatre",
+        "img": "/propertyList/NRC Greens/img11.jpg"
+      }
+    ],
+    "specifications": [
+      "327 plots with front, depth and area schedule given in the brochure",
+      "Plot categories: general residential, residential/commercial, LIG and EWS",
+      "12 m wide approach road with wide internal roads",
+      "Landscaped open spaces and perimeter greenery",
+      "Outdoor gym, yoga deck, sports area, amphitheatre and temple"
+    ],
+    "connectivity": [
+      "Located at Baroda Kara, Kanadia Road, Indore",
+      "Approach via a 12 m wide approach road (location plan in brochure)"
+    ],
+    "vision": [
+      "To create a gated, nature-connected community with wide roads, green spaces and amenities for an active, healthy lifestyle."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "New Race Course NRC Greens"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plotted Township"
+    },
+    {
+      "label": "Location",
+      "value": "Baroda Kara, Kanadia Road, Indore, Madhya Pradesh"
+    },
+    {
+      "label": "Developer",
+      "value": "NRC Group"
+    },
+    {
+      "label": "RERA No.",
+      "value": "P-IND-25-5617"
+    },
+    {
+      "label": "Marketing Partner RERA No.",
+      "value": "A-IND-17-47"
+    },
+    {
+      "label": "Total Plots",
+      "value": "327"
+    },
+    {
+      "label": "Plot Sizes",
+      "value": "Approx. 401 - 1588 sq.ft."
+    },
+    {
+      "label": "Architect",
+      "value": "Spacon Design (India) Pvt. Ltd."
+    },
+    {
+      "label": "Enquiries",
+      "value": "+91 9009 68 68 68, enquiry@newracecourse.com"
+    }
+  ],
+  "images": [
+    "/propertyList/NRC Greens/img1.jpg",
+    "/propertyList/NRC Greens/img2.jpg",
+    "/propertyList/NRC Greens/img3.jpg",
+    "/propertyList/NRC Greens/img4.jpg",
+    "/propertyList/NRC Greens/img5.jpg",
+    "/propertyList/NRC Greens/img6.jpg",
+    "/propertyList/NRC Greens/img7.jpg",
+    "/propertyList/NRC Greens/img8.jpg",
+    "/propertyList/NRC Greens/img9.jpg",
+    "/propertyList/NRC Greens/img10.jpg",
+    "/propertyList/NRC Greens/img11.jpg",
+    "/propertyList/NRC Greens/img12.jpg",
+    "/propertyList/NRC Greens/img13.jpg",
+    "/propertyList/NRC Greens/img14.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/NRC Greens/img12.jpg",
+    "images": [
+      "/propertyList/NRC Greens/img12.jpg",
+      "/propertyList/NRC Greens/img13.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/NRC Greens/img14.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "NRC Group",
+    "description": "NRC Group (New Race Course), Indore. Corporate address: 103 A, Kanchan Sagar Building, AB Road, Indore. Phone +91 7314 2796 33."
+  },
+  "disclaimer": "NRC Greens details are prepared from the developer brochure dated 30 May 2025. Images are artistic impressions; plot dimensions, price, availability and approvals should be verified with the official sales team and RERA records."
+},
+{
+  "id": 402,
+  "title": "NRC IT Park",
+  "slug": "nrc-it-park-nrc-group",
+  "location": "",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Commercial",
+  "bhk": "Offices",
+  "area": "",
+  "description": "NRC IT Park (New Race Course IT Park) by NRC Group is a premium commercial ecosystem for offices in Indore. As per the promotional creative, the project is TNCP approved with development permission and building permission secured, and offices can be booked with just 1%. Detailed size, price and location information is not available in the provided material.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "TNCP approved",
+        "Development permission secured",
+        "Building permission secured",
+        "Book your office with just 1%"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A premium commercial IT park ecosystem by NRC Group, Indore, with TNCP approval and development and building permissions secured.",
+    "amenities": [],
+    "specifications": [],
+    "connectivity": [],
+    "vision": [
+      "A premium commercial ecosystem where infrastructure meets opportunity."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "New Race Course IT Park (NRC IT Park)"
+    },
+    {
+      "label": "Property Type",
+      "value": "Commercial - IT Park Offices"
+    },
+    {
+      "label": "City",
+      "value": "Indore, Madhya Pradesh"
+    },
+    {
+      "label": "Developer",
+      "value": "NRC Group"
+    },
+    {
+      "label": "Approvals",
+      "value": "TNCP approved; development permission and building permission secured"
+    },
+    {
+      "label": "Marketing Partner",
+      "value": "Ranveer Realty (RERA No. A-IND-17-47)"
+    },
+    {
+      "label": "Enquiries",
+      "value": "+91 90096 86868 (Ranveer Realty)"
+    }
+  ],
+  "images": [
+    "/propertyList/NRC IT Park/img1.jpg"
+  ],
+  "floorPlan": {
+    "image": "",
+    "images": [],
+    "pdf": ""
+  },
+  "map": {
+    "image": "",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "NRC Group",
+    "description": "NRC Group (New Race Course), Indore. Exclusively marketed by Ranveer Realty, MR 10, Kumedi, near upcoming Hotel Taj Vivanta, Indore."
+  },
+  "disclaimer": "NRC IT Park details are prepared only from a promotional creative. Image is an artistic impression; size, price, location, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 420,
+  "title": "Anand Vihar",
+  "slug": "anand-vihar-ruchi-lifescapes",
+  "location": "Morod, Near Country Club, Tejaji Nagar, Khandwa Road",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "",
+  "description": "Anand Vihar is a plotted township on Khandwa Road, Indore, near Country Club and Tejaji Nagar. The township is planned with 18 meter and 9 meter wide concrete roads, a fully equipped clubhouse, swimming pool, indoor games room, library, gymnasium, parks and gardens, kids play-zone, walking and jogging tracks and a plot reserved for a primary school. RERA Registered No.: P-IND-17-1342.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Safe township with 18 m and 9 m wide concrete roads",
+        "Fully equipped clubhouse with swimming pool",
+        "Indoor games room (table tennis, chess, ludo, carom), library and gymnasium",
+        "More than one park and garden with walking and jogging tracks",
+        "Plot for primary school; storm waterline; overhead electricity transmitter unit",
+        "RERA Registered No.: P-IND-17-1342"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A safe plotted township on Khandwa Road, Indore with a clubhouse, swimming pool, parks and wide concrete roads.",
+    "amenities": [
+      {
+        "title": "Clubhouse",
+        "img": "/propertyList/Anand Vihar by Ruchi Lifescapes/img3.jpg"
+      },
+      {
+        "title": "Swimming Pool",
+        "img": "/propertyList/Anand Vihar by Ruchi Lifescapes/img2.jpg"
+      },
+      {
+        "title": "Indoor Games Room",
+        "img": "/propertyList/Anand Vihar by Ruchi Lifescapes/img2.jpg"
+      },
+      {
+        "title": "Library and Gymnasium",
+        "img": "/propertyList/Anand Vihar by Ruchi Lifescapes/img2.jpg"
+      },
+      {
+        "title": "Open Playground",
+        "img": "/propertyList/Anand Vihar by Ruchi Lifescapes/img2.jpg"
+      },
+      {
+        "title": "Parks and Gardens",
+        "img": "/propertyList/Anand Vihar by Ruchi Lifescapes/img2.jpg"
+      },
+      {
+        "title": "Kids Play-zone",
+        "img": "/propertyList/Anand Vihar by Ruchi Lifescapes/img2.jpg"
+      },
+      {
+        "title": "Walking and Jogging Tracks",
+        "img": "/propertyList/Anand Vihar by Ruchi Lifescapes/img2.jpg"
+      },
+      {
+        "title": "Gazebo",
+        "img": "/propertyList/Anand Vihar by Ruchi Lifescapes/img2.jpg"
+      }
+    ],
+    "specifications": [
+      "18 meter and 9 meter wide concrete roads",
+      "Boundary wall and water tank",
+      "Plot for primary school",
+      "Convenient pedestrian track",
+      "Storm waterline",
+      "Overhead electricity transmitter unit"
+    ],
+    "connectivity": [
+      "Tejaji Nagar Square - 1.5 km",
+      "Carmel Convent School - 1 km",
+      "Crystal IT Park Square - 5 km",
+      "Bhawarkua Square - 7 km",
+      "On Indore-Khandwa Road near Morod Phata, with bypass road access"
+    ],
+    "vision": [
+      "A township for your dream home, with community amenities and green open spaces."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Anand Vihar"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": "Morod, Near Country Club, Tejaji Nagar, Khandwa Road, Indore"
+    },
+    {
+      "label": "Developer",
+      "value": "Ruchi Lifescapes"
+    },
+    {
+      "label": "RERA No.",
+      "value": "P-IND-17-1342"
+    },
+    {
+      "label": "Booking Contact",
+      "value": "91099-70962, 91099-70963"
+    },
+    {
+      "label": "Email",
+      "value": "info@anandviharindore.com"
+    },
+    {
+      "label": "Website",
+      "value": "www.anandviharindore.com"
+    }
+  ],
+  "images": [
+    "/propertyList/Anand Vihar by Ruchi Lifescapes/img1.jpg",
+    "/propertyList/Anand Vihar by Ruchi Lifescapes/img2.jpg",
+    "/propertyList/Anand Vihar by Ruchi Lifescapes/img3.jpg",
+    "/propertyList/Anand Vihar by Ruchi Lifescapes/img5.jpg",
+    "/propertyList/Anand Vihar by Ruchi Lifescapes/img4.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Anand Vihar by Ruchi Lifescapes/img4.jpg",
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Anand Vihar by Ruchi Lifescapes/img5.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Ruchi Lifescapes",
+    "description": "Ruchi Realty (Ruchi Lifescapes) is an Indore-based developer that began its journey in 2008, with townships and projects in Indore, Bhopal and Kolkata. Per its brochure: 10+ million sq.ft. sold, 5+ million sq.ft. under construction, 12+ ready-to-move-in spaces delivered, 5+ ongoing projects and 5000+ families residing."
+  },
+  "disclaimer": "Anand Vihar details are prepared only from the uploaded brochure. Price, plot sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 421,
+  "title": "Oscar Fort",
+  "slug": "oscar-fort-ruchi-lifescapes",
+  "location": "Bicholi Hapsi, Near Mayank Blue Water Park",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "",
+  "description": "Oscar Fort is a limited-edition gated plotted township at Bicholi Hapsi, Indore, near Mayank Blue Water Park. Its design is inspired by traditional Indian fort architecture with jharokha and jaali work, and the brochure describes it as sprawling over several acres with the serenity of a country township and modern city amenities. Planned amenities include a Fort grand entry, zero-edge swimming pool, amphitheatre, banquet hall, indoor and outdoor gym, kids play area and more. Oscar Fort is a niche brand of Ruchi Realty. RERA No.: P-IND-22-3414.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Limited edition plots in a premium gated township close to the city",
+        "Fort-inspired architecture with jharokha and jaali work",
+        "Highly secured fort wall, CCTV surveillance and modern security systems",
+        "Zero edge swimming pool, jacuzzi / steam / sauna, amphitheatre and banquet hall",
+        "Baoli-style amphitheatre, kids play zone, leisure garden and avenue water features",
+        "RERA No.: P-IND-22-3414"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A premium fort-themed gated plotted township at Bicholi Hapsi, Indore by Ruchi Realty.",
+    "amenities": [
+      {
+        "title": "Fort Grand Entry",
+        "img": "/propertyList/Oscar Fort by Ruchi Lifescapes/img3.jpg"
+      },
+      {
+        "title": "Kids Play Area",
+        "img": "/propertyList/Oscar Fort by Ruchi Lifescapes/img9.jpg"
+      },
+      {
+        "title": "Senior Citizen Garden",
+        "img": "/propertyList/Oscar Fort by Ruchi Lifescapes/img7.jpg"
+      },
+      {
+        "title": "Outdoor Games Area",
+        "img": "/propertyList/Oscar Fort by Ruchi Lifescapes/img8.jpg"
+      },
+      {
+        "title": "Zero Edge Swimming Pool",
+        "img": "/propertyList/Oscar Fort by Ruchi Lifescapes/img10.jpg"
+      },
+      {
+        "title": "Amphitheatre",
+        "img": "/propertyList/Oscar Fort by Ruchi Lifescapes/img7.jpg"
+      },
+      {
+        "title": "Indoor and Outdoor Gym",
+        "img": "/propertyList/Oscar Fort by Ruchi Lifescapes/img11.jpg"
+      },
+      {
+        "title": "Banquet Hall",
+        "img": "/propertyList/Oscar Fort by Ruchi Lifescapes/img11.jpg"
+      },
+      {
+        "title": "Avenue Water Features",
+        "img": "/propertyList/Oscar Fort by Ruchi Lifescapes/img6.jpg"
+      },
+      {
+        "title": "Yoga and Meditation Area",
+        "img": "/propertyList/Oscar Fort by Ruchi Lifescapes/img11.jpg"
+      },
+      {
+        "title": "Library, Indoor Games Room",
+        "img": "/propertyList/Oscar Fort by Ruchi Lifescapes/img11.jpg"
+      }
+    ],
+    "specifications": [
+      "Kids Play Area",
+      "Senior Citizen Garden",
+      "Outdoor Games Area (Cricket Mini Turf / Basketball Court)",
+      "Library",
+      "All modern security system and CCTV surveillance",
+      "Highly secured fort wall",
+      "Zero edge swimming pool; jacuzzi / steam / sauna",
+      "Amphitheatre; banquet hall; indoor and outdoor gym",
+      "Fort grand entry; avenue water features",
+      "Underground services (electric and wifi cables)",
+      "Indoor games room (chess / carrom / card room / table tennis / billiards)",
+      "Yoga and meditation area",
+      "Site plan features: Entrance Court, Formal Gardens, MUGA, Baoli Style Amphitheatre, Kids Play Zone, Leisure Garden, Parterres, Lawns, Water Feature Wall, Baradari"
+    ],
+    "connectivity": [
+      "Located at Bicholi Hapsi near Mayank Blue Water Park",
+      "Proposed 100 ft road",
+      "Near Agrawal Public School, Zodiac Mall, Passport Office and Pipliyahana Square (per location map)",
+      "Access to Ring Road and Bypass"
+    ],
+    "vision": [
+      "Feel royal, live royal: a kingdom of dreams and happiness in a gated community."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Oscar Fort"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": "Bicholi Hapsi, Near Mayank Blue Water Park, Indore"
+    },
+    {
+      "label": "Developer",
+      "value": "Ruchi Realty"
+    },
+    {
+      "label": "RERA No.",
+      "value": "P-IND-22-3414"
+    },
+    {
+      "label": "Email",
+      "value": "amanatinfratech2020@gmail.com"
+    }
+  ],
+  "images": [
+    "/propertyList/Oscar Fort by Ruchi Lifescapes/img1.jpg",
+    "/propertyList/Oscar Fort by Ruchi Lifescapes/img13.jpg",
+    "/propertyList/Oscar Fort by Ruchi Lifescapes/img3.jpg",
+    "/propertyList/Oscar Fort by Ruchi Lifescapes/img4.jpg",
+    "/propertyList/Oscar Fort by Ruchi Lifescapes/img5.jpg",
+    "/propertyList/Oscar Fort by Ruchi Lifescapes/img6.jpg",
+    "/propertyList/Oscar Fort by Ruchi Lifescapes/img7.jpg",
+    "/propertyList/Oscar Fort by Ruchi Lifescapes/img8.jpg",
+    "/propertyList/Oscar Fort by Ruchi Lifescapes/img9.jpg",
+    "/propertyList/Oscar Fort by Ruchi Lifescapes/img10.jpg",
+    "/propertyList/Oscar Fort by Ruchi Lifescapes/img11.jpg",
+    "/propertyList/Oscar Fort by Ruchi Lifescapes/img12.jpg",
+    "/propertyList/Oscar Fort by Ruchi Lifescapes/img2.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Oscar Fort by Ruchi Lifescapes/img13.jpg",
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Oscar Fort by Ruchi Lifescapes/img13.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Ruchi Realty",
+    "description": "Ruchi Realty (Ruchi Lifescapes) is an Indore-based developer that began its journey in 2008, with townships and projects in Indore, Bhopal and Kolkata. Per its brochure: 10+ million sq.ft. sold, 5+ million sq.ft. under construction, 12+ ready-to-move-in spaces delivered, 5+ ongoing projects and 5000+ families residing. Oscar Fort is a niche brand of Ruchi Realty."
+  },
+  "disclaimer": "Oscar Fort details are prepared only from the uploaded brochure. Price, plot sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 422,
+  "title": "Oscar Palace",
+  "slug": "oscar-palace-ruchi-lifescapes",
+  "location": "Hingoniya, Off Indore Nagpur Highway (Besides Ruchi Lifescapes, Jhalariya)",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "3,500 - 20,000 sq.ft. (325 - 1,858 sq.m.)",
+  "description": "Oscar Palace is a 60+ acre plotted township at Hingoniya, off the Indore-Nagpur Highway, beside Ruchi Lifescapes, Jhalariya, Indore. The brochure offers plot sizes from 325 to 1,858 sq. mtr (3,500 to 20,000 sq. ft.) so buyers can build a palatial house or a modern villa. The township has a heritage-themed design with a grand entrance, baradaris, chhatris and gazebos, and amenities include tennis and basketball court, cricket and football turf, pickleball, skating rink, temples, sky walk, library room, EV charging stations and more. RERA: P-IND-24-4828.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "60+ acre township with plot sizes from 325 to 1,858 sq. mtr (3,500 to 20,000 sq. ft.)",
+        "Heritage-themed design with grand entrance, baradaris, chhatris and gazebos",
+        "Tennis and basketball court, cricket and football turf, pickleball, skating rink",
+        "Gardens, kids play area, outdoor pet park, senior citizen park, temples",
+        "EV charging stations, ambulance and doctor on call, heritage-themed street lighting",
+        "RERA: P-IND-24-4828"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A 60+ acre heritage-inspired plotted township at Hingoniya, Indore by Ruchi Realty.",
+    "amenities": [
+      {
+        "title": "Tennis and Basketball Court",
+        "img": "/propertyList/Oscar Palace by Ruchi Lifescapes/img15.jpg"
+      },
+      {
+        "title": "Kids Play Area",
+        "img": "/propertyList/Oscar Palace by Ruchi Lifescapes/img15.jpg"
+      },
+      {
+        "title": "Gardens",
+        "img": "/propertyList/Oscar Palace by Ruchi Lifescapes/img6.jpg"
+      },
+      {
+        "title": "Yoga and Meditation Spaces",
+        "img": "/propertyList/Oscar Palace by Ruchi Lifescapes/img10.jpg"
+      },
+      {
+        "title": "Jogging and Walking Tracks",
+        "img": "/propertyList/Oscar Palace by Ruchi Lifescapes/img12.jpg"
+      },
+      {
+        "title": "Water Fountains",
+        "img": "/propertyList/Oscar Palace by Ruchi Lifescapes/img13.jpg"
+      },
+      {
+        "title": "Baradaris, Chhatris and Gazebos",
+        "img": "/propertyList/Oscar Palace by Ruchi Lifescapes/img5.jpg"
+      },
+      {
+        "title": "Senior Citizen Park",
+        "img": "/propertyList/Oscar Palace by Ruchi Lifescapes/img3.jpg"
+      },
+      {
+        "title": "Temples",
+        "img": "/propertyList/Oscar Palace by Ruchi Lifescapes/img9.jpg"
+      }
+    ],
+    "specifications": [
+      "Tennis and Basketball Court",
+      "Cricket and Football Turf",
+      "Pickleball",
+      "Open Gym",
+      "Skating Rink",
+      "Temples",
+      "Gardens",
+      "Kids Play Area",
+      "Barbeque, Grill and Picnic Zone",
+      "Outdoor Pet Park",
+      "Doctor on Call",
+      "Ambulance",
+      "Library Room",
+      "Sky Walk",
+      "Water Fountains",
+      "Senior Citizen Park",
+      "Stargazing Deck",
+      "Campfire Zone",
+      "EV Charging Stations",
+      "Yoga and Meditation Spaces",
+      "Jogging and Walking Tracks",
+      "Baradaris, Chhatris and Gazebos",
+      "Selfie Walls and Wall Sculptures",
+      "Heritage Themed Street Lighting"
+    ],
+    "connectivity": [
+      "Off Indore Nagpur Highway at Hingoniya, beside Ruchi Lifescapes, Jhalariya",
+      "Proposed 60 mtr wide road (NH-59), 30 mtr wide master plan roads and 18 mtr wide road nearby (per location map)",
+      "Landmarks on location map: Shishukunj School, Phoenix Citadel Mall, Best Price, Mridang Resorts, Khajrana, Oscar Pride, Oscar Fort, Oscar Mansion"
+    ],
+    "vision": [
+      "Shape your dream palace here, your majesty."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Oscar Palace"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": "Hingoniya, Off Indore Nagpur Highway, Indore - 452016"
+    },
+    {
+      "label": "Developer",
+      "value": "Ruchi Realty"
+    },
+    {
+      "label": "Plot Sizes",
+      "value": "325 - 1,858 sq. mtr (3,500 - 20,000 sq. ft.)"
+    },
+    {
+      "label": "Project Area",
+      "value": "60+ acres"
+    },
+    {
+      "label": "RERA No.",
+      "value": "P-IND-24-4828"
+    },
+    {
+      "label": "Contact",
+      "value": "+91 89292 25275"
+    },
+    {
+      "label": "Email",
+      "value": "emarketing@rrhlrealty.com"
+    },
+    {
+      "label": "Website",
+      "value": "ruchirealty.com/oscar-palace"
+    },
+    {
+      "label": "City Office",
+      "value": "Nishchit Infratech Pvt. Ltd., 2/1, South Tukoganj, Behind High Court, Indore - 452001"
+    }
+  ],
+  "images": [
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img7.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img1.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img2.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img3.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img4.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img5.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img6.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img8.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img9.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img10.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img11.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img12.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img13.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img14.jpg",
+    "/propertyList/Oscar Palace by Ruchi Lifescapes/img15.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Oscar Palace by Ruchi Lifescapes/img16.jpg",
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Oscar Palace by Ruchi Lifescapes/img16.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Ruchi Realty",
+    "description": "Ruchi Realty (Ruchi Lifescapes) is an Indore-based developer that began its journey in 2008, with townships and projects in Indore, Bhopal and Kolkata. Per its brochure: 10+ million sq.ft. sold, 5+ million sq.ft. under construction, 12+ ready-to-move-in spaces delivered, 5+ ongoing projects and 5000+ families residing."
+  },
+  "disclaimer": "Oscar Palace details are prepared only from the uploaded brochure. Price, plot sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 423,
+  "title": "Oscar Pride",
+  "slug": "oscar-pride-ruchi-lifescapes",
+  "location": "Bypass, near Bhandari Resort, Kanadiya Bypass Square",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "1,070 - 3,210 sq.ft.",
+  "description": "Oscar Pride is an 8 acre plotted project on the Indore Bypass, near Kanadiya Bypass Square. The brochure describes plots to suit varied needs and budgets, with easy connectivity to schools, colleges, hospitals and shopping centres. The layout plan lists 129 plots on 9.0 mt wide roads with plot areas from 1,070 to 3,210 sq.ft. Amenities shown include a gymnasium, swimming pool, kids play area, senior citizen gardens, jogging track, temple, Buddha statue, gardens and barbeque area.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Spread over 8 acres on the Bypass, Indore",
+        "Plots from 1,070 to 3,210 sq.ft. as per the layout plan (129 plots)",
+        "9.0 mt wide internal roads and open areas",
+        "Gymnasium, swimming pool, kids play area and senior citizen gardens",
+        "Temple, Buddha statue, jogging track and barbeque area",
+        "Close to Pride Hotel and Convention (2.4 km), Phoenix Mall (3.0 km) and ISKCON Temple (3.3 km)"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A plotted project of about 8 acres on Bypass Road, Indore by Ruchi Realty - Your Royal Abode.",
+    "amenities": [
+      {
+        "title": "Entrance Gate",
+        "img": "/propertyList/Oscar Pride by Ruchi Lifescapes/img2.jpg"
+      },
+      {
+        "title": "Temple",
+        "img": "/propertyList/Oscar Pride by Ruchi Lifescapes/img2.jpg"
+      },
+      {
+        "title": "Buddha Statue",
+        "img": "/propertyList/Oscar Pride by Ruchi Lifescapes/img2.jpg"
+      },
+      {
+        "title": "Jogging Track",
+        "img": "/propertyList/Oscar Pride by Ruchi Lifescapes/img3.jpg"
+      },
+      {
+        "title": "Gymnasium",
+        "img": "/propertyList/Oscar Pride by Ruchi Lifescapes/img3.jpg"
+      },
+      {
+        "title": "Kids Play Area",
+        "img": "/propertyList/Oscar Pride by Ruchi Lifescapes/img4.jpg"
+      },
+      {
+        "title": "Garden",
+        "img": "/propertyList/Oscar Pride by Ruchi Lifescapes/img4.jpg"
+      },
+      {
+        "title": "Barbeque Area",
+        "img": "/propertyList/Oscar Pride by Ruchi Lifescapes/img5.jpg"
+      }
+    ],
+    "specifications": [
+      "Plots with 9.0 mt wide roads",
+      "Open green areas within the layout",
+      "Plot sizes: 1070, 1150, 1250, 1300, 1345, 1496, 1500, 1664, 2600, 2800 and 3210 sq.ft. (per layout plan)",
+      "Highly secured and encompassed with essential amenities"
+    ],
+    "connectivity": [
+      "Pride Hotel and Convention - 2.4 km",
+      "Best Price - 2.5 km",
+      "Amber Convention Centre - 2.5 km",
+      "Phoenix Mall - 3.0 km",
+      "ISKCON Temple - 3.3 km",
+      "Shishukunj School - 3.9 km",
+      "Khajrana Temple - 3.9 km",
+      "Delhi Public School - 4.1 km",
+      "Sheraton Grand - 5.0 km",
+      "Bombay Hospital - 5.5 km",
+      "Medanta Hospital - 6.1 km",
+      "Railway Station - 7.6 km",
+      "Ralamandal Wildlife Sanctuary - 10 km",
+      "Airport - 22 km"
+    ],
+    "vision": [
+      "Let your address be your pride: a plotted project planned on quality, sustainability, beauty, peace and serenity."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Oscar Pride"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": "Bypass, near Bhandari Resort, Kanadiya Bypass Square, Indore"
+    },
+    {
+      "label": "Developer",
+      "value": "Ruchi Realty"
+    },
+    {
+      "label": "Project Area",
+      "value": "8 acres"
+    },
+    {
+      "label": "Total Plots (layout)",
+      "value": "129"
+    },
+    {
+      "label": "Plot Areas (layout)",
+      "value": "1,070 - 3,210 sq.ft."
+    }
+  ],
+  "images": [
+    "/propertyList/Oscar Pride by Ruchi Lifescapes/img1.jpg",
+    "/propertyList/Oscar Pride by Ruchi Lifescapes/img2.jpg",
+    "/propertyList/Oscar Pride by Ruchi Lifescapes/img3.jpg",
+    "/propertyList/Oscar Pride by Ruchi Lifescapes/img4.jpg",
+    "/propertyList/Oscar Pride by Ruchi Lifescapes/img5.jpg",
+    "/propertyList/Oscar Pride by Ruchi Lifescapes/img6.jpg",
+    "/propertyList/Oscar Pride by Ruchi Lifescapes/img7.jpg",
+    "/propertyList/Oscar Pride by Ruchi Lifescapes/img8.jpg",
+    "/propertyList/Oscar Pride by Ruchi Lifescapes/img9.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Oscar Pride by Ruchi Lifescapes/img9.jpg",
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Oscar Pride by Ruchi Lifescapes/img8.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Ruchi Realty",
+    "description": "Ruchi Realty (Ruchi Lifescapes) is an Indore-based developer that began its journey in 2008, with townships and projects in Indore, Bhopal and Kolkata. Per its brochure: 10+ million sq.ft. sold, 5+ million sq.ft. under construction, 12+ ready-to-move-in spaces delivered, 5+ ongoing projects and 5000+ families residing."
+  },
+  "disclaimer": "Oscar Pride details are prepared only from the uploaded brochure. Price, plot sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 424,
+  "title": "Saatvik Green",
+  "slug": "saatvik-green-ruchi-lifescapes",
+  "location": "Near Center Point Petrol Pump, Rahu Kheda, A.B. Road, Mangaliya",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "",
+  "description": "Saatvik Green is a 28 acre plotted township by Ruchi Realty on the Mangaliya Bypass, A.B. Road, Indore, with direct city connectivity. The leaflet lists a covered campus, 8+ gardens, kids play zone, a proposed Shiv and Parshwanath Jain temple, multi sports turf, adequate electricity and water, 24x7 security guard, 9 m and 18 m roads and underground electricity. It offers plots of every size to suit different budgets. RERA No.: P-SWR-24-4662, P-SWR-24-4859.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "28 acre secure and developed township",
+        "Location on Mangaliya Bypass, A.B. Road with direct city connectivity",
+        "Plots of every size to suit every budget",
+        "Covered campus, 8+ gardens, kids play zone, multi sports turf",
+        "Proposed Shiv and Parshwanath Jain temple",
+        "9 m and 18 m roads, 24x7 security guard and underground electricity",
+        "RERA No.: P-SWR-24-4662, P-SWR-24-4859"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A 28 acre secure gated plotted township on A.B. Road, Mangaliya, Indore by Ruchi Realty.",
+    "amenities": [
+      {
+        "title": "Covered Campus",
+        "img": "/propertyList/Saatvik Green by Ruchi Lifescapes/img2.jpg"
+      },
+      {
+        "title": "Gardens (8+)",
+        "img": "/propertyList/Saatvik Green by Ruchi Lifescapes/img3.jpg"
+      },
+      {
+        "title": "Kids Play Zone",
+        "img": "/propertyList/Saatvik Green by Ruchi Lifescapes/img3.jpg"
+      },
+      {
+        "title": "Multi Sports Turf",
+        "img": "/propertyList/Saatvik Green by Ruchi Lifescapes/img3.jpg"
+      },
+      {
+        "title": "Proposed Temples",
+        "img": "/propertyList/Saatvik Green by Ruchi Lifescapes/img3.jpg"
+      }
+    ],
+    "specifications": [
+      "Covered campus",
+      "8+ gardens",
+      "Kids play zone",
+      "Proposed Shiv and Parshwanath Jain temple",
+      "Multi sports turf",
+      "Adequate electricity and water",
+      "24x7 security guard",
+      "9 m and 18 m wide roads",
+      "Underground electricity"
+    ],
+    "connectivity": [
+      "Mangaliya Bypass, A.B. Road - easy connectivity across the city",
+      "Nearby schools, colleges, hospitals, market, mall and hotels within minutes (distances not specified)"
+    ],
+    "vision": [
+      "Own a home in a green, thoughtfully planned township with a prosperous future."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Saatvik Green"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": "Near Center Point Petrol Pump, Rahu Kheda, A.B. Road, Mangaliya, Indore"
+    },
+    {
+      "label": "Developer",
+      "value": "Ruchi Realty"
+    },
+    {
+      "label": "Project Area",
+      "value": "28 acres"
+    },
+    {
+      "label": "RERA No.",
+      "value": "P-SWR-24-4662, P-SWR-24-4859"
+    },
+    {
+      "label": "Contact",
+      "value": "89292 25275"
+    },
+    {
+      "label": "Email",
+      "value": "emarketing@rrhlrealty.com"
+    },
+    {
+      "label": "Website",
+      "value": "saatvikgreen.in"
+    }
+  ],
+  "images": [
+    "/propertyList/Saatvik Green by Ruchi Lifescapes/img1.jpg",
+    "/propertyList/Saatvik Green by Ruchi Lifescapes/img2.jpg",
+    "/propertyList/Saatvik Green by Ruchi Lifescapes/img3.jpg",
+    "/propertyList/Saatvik Green by Ruchi Lifescapes/img4.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Saatvik Green by Ruchi Lifescapes/img4.jpg",
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Saatvik Green by Ruchi Lifescapes/img4.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Ruchi Realty",
+    "description": "Ruchi Realty (Ruchi Lifescapes) is an Indore-based developer that began its journey in 2008, with townships and projects in Indore, Bhopal and Kolkata. Per its brochure: 10+ million sq.ft. sold, 5+ million sq.ft. under construction, 12+ ready-to-move-in spaces delivered, 5+ ongoing projects and 5000+ families residing."
+  },
+  "disclaimer": "Saatvik Green details are prepared only from the uploaded brochure. Price, plot sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 425,
+  "title": "Satvik Vihar",
+  "slug": "satvik-vihar-ruchi-lifescapes",
+  "location": "Near Sanchi Depot, Mangaliya Sadak, A.B. Road",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "600 - 1,350 sq.ft.",
+  "description": "Satvik (Saatvik) Vihar is a RERA-approved plotted township by Ruchi Realty Pvt. Ltd. near Sanchi Depot, Mangaliya Sadak, A.B. Road, Indore. As per the brochure, plots range from 600 sq.ft. to 1,350 sq.ft., and every plot gets a front boundary wall so the whole colony looks uniform. The township is planned with a grand entrance plaza, temple, wide roads with street lights, cycle and jogging track, fruit park, kids play zone, acupressure and yoga garden and senior citizen park, with 24-hour security guards and city bus facility from the main road.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Plots from 600 sq.ft. to 1,350 sq.ft.",
+        "Front boundary wall for every plot for a uniform colony",
+        "Grand entrance plaza, temple and planned development",
+        "Wide roads with street lights; cycle and jogging track",
+        "Fruit park, kids play zone, acupressure and yoga garden, senior citizen park",
+        "24-hour security guards; city bus facility from the main road",
+        "RERA approved"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A RERA-approved green plotted township on A.B. Road, Indore by Ruchi Realty Pvt. Ltd.",
+    "amenities": [
+      {
+        "title": "Entrance Plaza",
+        "img": "/propertyList/Satvik Vihar by Ruchi Lifescapes/img1.jpg"
+      },
+      {
+        "title": "Kids Play Zone",
+        "img": "/propertyList/Satvik Vihar by Ruchi Lifescapes/img14.jpg"
+      },
+      {
+        "title": "Fruit Park",
+        "img": "/propertyList/Satvik Vihar by Ruchi Lifescapes/img14.jpg"
+      },
+      {
+        "title": "Acupressure and Yoga Garden",
+        "img": "/propertyList/Satvik Vihar by Ruchi Lifescapes/img14.jpg"
+      },
+      {
+        "title": "Senior Citizen Park",
+        "img": "/propertyList/Satvik Vihar by Ruchi Lifescapes/img14.jpg"
+      },
+      {
+        "title": "Cycle and Jogging Track",
+        "img": "/propertyList/Satvik Vihar by Ruchi Lifescapes/img13.jpg"
+      },
+      {
+        "title": "Wide Roads and Street Lights",
+        "img": "/propertyList/Satvik Vihar by Ruchi Lifescapes/img13.jpg"
+      },
+      {
+        "title": "24-hour Security Guard",
+        "img": "/propertyList/Satvik Vihar by Ruchi Lifescapes/img13.jpg"
+      },
+      {
+        "title": "Temple and Planned Development",
+        "img": "/propertyList/Satvik Vihar by Ruchi Lifescapes/img3.jpg"
+      }
+    ],
+    "specifications": [
+      "Front boundary wall for every plot",
+      "Wide roads and street lights",
+      "Cycle and jogging track",
+      "24-hour security guards",
+      "City bus facility from main road"
+    ],
+    "connectivity": [
+      "Prime location on A.B. Road (Indore - Agra-Mumbai Highway), near Sanchi Depot, Mangaliya Sadak",
+      "City bus facility from the main road"
+    ],
+    "vision": [
+      "Prakriti ki god mein aapka swagat hai: a green township close to the city and away from pollution."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Satvik Vihar"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": "Near Sanchi Depot, Mangaliya Sadak, A.B. Road, Indore"
+    },
+    {
+      "label": "Developer",
+      "value": "Ruchi Realty Pvt. Ltd."
+    },
+    {
+      "label": "Plot Sizes",
+      "value": "600 - 1,350 sq.ft."
+    },
+    {
+      "label": "RERA",
+      "value": "Approved (number not stated in brochure)"
+    }
+  ],
+  "images": [
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img1.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img2.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img3.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img4.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img5.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img6.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img7.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img8.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img9.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img10.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img11.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img12.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img13.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img14.jpg",
+    "/propertyList/Satvik Vihar by Ruchi Lifescapes/img15.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Satvik Vihar by Ruchi Lifescapes/img12.jpg",
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Satvik Vihar by Ruchi Lifescapes/img15.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Ruchi Realty Pvt. Ltd.",
+    "description": "Ruchi Realty (Ruchi Lifescapes) is an Indore-based developer that began its journey in 2008, with townships and projects in Indore, Bhopal and Kolkata. Per its brochure: 10+ million sq.ft. sold, 5+ million sq.ft. under construction, 12+ ready-to-move-in spaces delivered, 5+ ongoing projects and 5000+ families residing."
+  },
+  "disclaimer": "Satvik Vihar details are prepared only from the uploaded brochure. Price, plot sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 426,
+  "title": "Ruchi Lifescapes Indore",
+  "slug": "ruchi-lifescapes-indore-ruchi-realty",
+  "location": "Behind Shishukunj School, Bypass, Jhalaria Village",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "1,400 - 10,000 sq.ft.",
+  "description": "Ruchi Lifescapes Indore is a premium township of about 75 acres (the leaflet also mentions 73 acres) at Jhalaria on the Indore Bypass, with villas, row houses and plots. The leaflet lists plot sizes of 1400, 1800, 2322, 2800, 3500, 4000 and 10,000 sq.ft. and highlights 15 XL gardens, 700 happy families, cemented roads, kids play area, gym, advanced CCTV system and a yoga / meditation area. RERA No.: P-IND-17-1024.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "About 75 acres township at Jhalaria, Indore Bypass",
+        "Plot sizes: 1400, 1800, 2322, 2800, 3500, 4000 and 10,000 sq.ft.",
+        "15 XL gardens and 700 happy families",
+        "Cemented roads, kids play area, gym, advanced CCTV and yoga / meditation area",
+        "Ready possession villas and row houses",
+        "Home loan facility available from leading banks",
+        "RERA No.: P-IND-17-1024"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A premium township at Jhalaria on the Indore Bypass by Ruchi Realty with plots, villas and row houses.",
+    "amenities": [
+      {
+        "title": "Cemented Roads",
+        "img": "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img3.jpg"
+      },
+      {
+        "title": "Kids Play Area",
+        "img": "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img3.jpg"
+      },
+      {
+        "title": "Gym",
+        "img": "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img2.jpg"
+      },
+      {
+        "title": "Advanced CCTV System",
+        "img": "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img3.jpg"
+      },
+      {
+        "title": "Yoga / Meditation Area",
+        "img": "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img3.jpg"
+      },
+      {
+        "title": "Outdoor Games Court",
+        "img": "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img3.jpg"
+      },
+      {
+        "title": "XL Gardens",
+        "img": "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img3.jpg"
+      }
+    ],
+    "specifications": [
+      "Cemented roads",
+      "Kids play area",
+      "Gym",
+      "Advanced CCTV system",
+      "Yoga / meditation area",
+      "Outdoor games court",
+      "15 XL gardens"
+    ],
+    "connectivity": [
+      "Railway station - 9 km",
+      "Hotel - 1 km",
+      "Airport - 22 km",
+      "School - 2 km",
+      "Hospital - 3 km",
+      "Mall - 4 km",
+      "Nagpur highway - 200 mtr",
+      "MR-10 - 3 km"
+    ],
+    "vision": [
+      "Live a legacy that defines happiness: a thoughtfully designed layout with well-planned roadway and lush green zones."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Ruchi Lifescapes Indore"
+    },
+    {
+      "label": "Property Type",
+      "value": "Plots, Villas and Row Houses (plot layout shown)"
+    },
+    {
+      "label": "Location",
+      "value": "Behind Shishukunj School, Bypass, Jhalaria Village, Indore"
+    },
+    {
+      "label": "Developer",
+      "value": "Ruchi Realty"
+    },
+    {
+      "label": "Project Area",
+      "value": "About 75 acres"
+    },
+    {
+      "label": "Plot Sizes",
+      "value": "1400, 1800, 2322, 2800, 3500, 4000 and 10,000 sq.ft."
+    },
+    {
+      "label": "RERA No.",
+      "value": "P-IND-17-1024"
+    },
+    {
+      "label": "TNCP No.",
+      "value": "6825/TNCP/2012, Date 06/11/12; Development Permission 30/2012, Date 28/04/2012"
+    },
+    {
+      "label": "Promoted By",
+      "value": "Vishal Resorts & Hotels Pvt. Ltd."
+    },
+    {
+      "label": "Contact",
+      "value": "+91 89292 25275"
+    },
+    {
+      "label": "Email",
+      "value": "emarketing@rrhlrealty.com"
+    },
+    {
+      "label": "Website",
+      "value": "ruchilifescapes.in"
+    }
+  ],
+  "images": [
+    "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img1.jpg",
+    "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img2.jpg",
+    "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img3.jpg",
+    "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img4.jpg",
+    "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img5.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img4.jpg",
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Ruchi Lifescapes Indore by Ruchi Lifescapes/img5.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Ruchi Realty",
+    "description": "Ruchi Realty (Ruchi Lifescapes) is an Indore-based developer that began its journey in 2008, with townships and projects in Indore, Bhopal and Kolkata. Per its brochure: 10+ million sq.ft. sold, 5+ million sq.ft. under construction, 12+ ready-to-move-in spaces delivered, 5+ ongoing projects and 5000+ families residing."
+  },
+  "disclaimer": "Ruchi Lifescapes Indore details are prepared only from the uploaded brochure. Price, plot sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 427,
+  "title": "OS Layout Plan",
+  "slug": "os-layout-plan-ruchi-lifescapes",
+  "location": "",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "Up to 3,200 sq.ft.",
+  "description": "This entry is based only on a plotted layout plan titled 'OS LAYOUT PLAN' from Ruchi Realty's Oscar series. The plan lists 999 plots in four categories: CR 3200 sq.ft. (43), SA 2400 sq.ft. (198), R / C / A categories of about 1800 sq.ft. and below (684) and O 2600-2800 sq.ft. (74), along with E.W.S. and L.I.G. plots, commercial plots, 9 to 18 mt wide roads and open areas. The specific project name and location are not stated on the plan.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Layout plan with 999 plots in total",
+        "CR 3200 sq.ft. - 43 plots; SA 2400 sq.ft. - 198 plots",
+        "R, C, A categories (up to 1800 sq.ft.) - 684 plots; O 2600-2800 sq.ft. - 74 plots",
+        "Includes E.W.S. and L.I.G. plots, commercial plots and open areas",
+        "Internal roads of 9.0 to 18.0 mt width"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "Plotted layout plan from the Oscar series; project name and location are not stated on the plan.",
+    "amenities": [],
+    "specifications": [
+      "Internal roads 9.0, 10.5, 12.0 and 18.0 mt wide; 30 mt and proposed 75 mt master plan roads at the boundary",
+      "Commercial and shop / residence plots, open areas and 3.0 m wide pathways"
+    ],
+    "connectivity": [],
+    "vision": []
+  },
+  "projectData": [
+    {
+      "label": "Plot Layout",
+      "value": "999 plots"
+    },
+    {
+      "label": "Plot Categories",
+      "value": "CR 3200 sq.ft., SA 2400 sq.ft., R / C / A up to 1800 sq.ft., O 2600-2800 sq.ft."
+    },
+    {
+      "label": "Developer",
+      "value": "Ruchi Realty (Oscar series, project not confirmed)"
+    }
+  ],
+  "images": [
+    "/propertyList/OS Layout Plan by Ruchi Lifescapes/img1.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/OS Layout Plan by Ruchi Lifescapes/img1.jpg",
+    "pdf": ""
+  },
+  "map": {
+    "image": "",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Ruchi Realty",
+    "description": "Ruchi Realty (Ruchi Lifescapes) is an Indore-based developer that began its journey in 2008, with townships and projects in Indore, Bhopal and Kolkata. Per its brochure: 10+ million sq.ft. sold, 5+ million sq.ft. under construction, 12+ ready-to-move-in spaces delivered, 5+ ongoing projects and 5000+ families residing."
+  },
+  "disclaimer": "This listing is prepared only from an uploaded layout plan. Project name, location, price, availability and approvals must be verified with the official sales team."
+},
+{
+  "id": 440,
+  "title": "Highline Fortune",
+  "slug": "highline-fortune-shree-balaji-infrastructure",
+  "location": "Opp. Aurobindo Hospital, Bhawrasla, Ujjain Road",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Apartment",
+  "bhk": "2 BHK",
+  "area": "",
+  "description": "Highline Fortune is a 2 BHK luxury apartment township (RERA No. P-IND-23-4166) on Ujjain Road, Indore, opposite Aurobindo Hospital at Bhawrasla. The project offers 2 BHK apartments with terrace, park-facing and garden-view homes, attached balconies with every bedroom, branded fixtures and a vehicle-free landscaped podium with recreational facilities, with commercial shops along the frontage.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "RERA registered: P-IND-23-4166",
+        "2 BHK luxury apartments with terrace",
+        "Park-facing and garden-view homes",
+        "Attached balconies with every bedroom",
+        "Vehicle-free landscaped podium with recreational facilities",
+        "Swimming pool, jogging park, gym and kids play area",
+        "Aurobindo Hospital and University adjacent; Metro (Luv Kush Square) about 2 min"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A 2 BHK luxury apartment township on Indore-Ujjain Road with landscaped podium amenities and quick access to hospitals, schools, IT campuses, metro and airport.",
+    "amenities": [
+      {
+        "title": "Swimming Pool",
+        "img": "/propertyList/Highline Fortune/img7.jpg"
+      },
+      {
+        "title": "Jogging Park",
+        "img": "/propertyList/Highline Fortune/img8.jpg"
+      },
+      {
+        "title": "Fully Equipped Gym",
+        "img": "/propertyList/Highline Fortune/img8.jpg"
+      },
+      {
+        "title": "Outdoor Kids Play Area",
+        "img": "/propertyList/Highline Fortune/img8.jpg"
+      },
+      {
+        "title": "Multipurpose Lawn",
+        "img": "/propertyList/Highline Fortune/img6.jpg"
+      },
+      {
+        "title": "Themed Landscape Park",
+        "img": "/propertyList/Highline Fortune/img6.jpg"
+      },
+      {
+        "title": "Vehicle-Free Podium with Recreational Facility",
+        "img": "/propertyList/Highline Fortune/img6.jpg"
+      }
+    ],
+    "specifications": [
+      "Branded fixtures",
+      "Attached balconies with every bedroom",
+      "Open space for extra air and sunlight",
+      "2 BHK apartment with terrace"
+    ],
+    "connectivity": [
+      "Vijay Nagar - 10 min",
+      "TCS/Infosys - 5 min",
+      "Aurobindo Hospital - 0 min",
+      "Shishu Kunj / international school - 5 min",
+      "Aurobindo University - 0 min",
+      "Metro Station (Luv Kush Square) - 2 min",
+      "ISBT Indore Bus Station - 5 min",
+      "Airport - 10 min"
+    ],
+    "vision": [
+      "A blooming lifestyle in a secure and exclusive township with the finest amenities and services."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Highline Fortune"
+    },
+    {
+      "label": "RERA No.",
+      "value": "P-IND-23-4166"
+    },
+    {
+      "label": "Property Type",
+      "value": "2 BHK Luxury Apartments"
+    },
+    {
+      "label": "Location",
+      "value": "Bhawrasla, Ujjain Road, Indore"
+    },
+    {
+      "label": "Developer",
+      "value": "Shree Balaji Infrastructure"
+    },
+    {
+      "label": "Contact",
+      "value": "9981233337, 9826036789"
+    },
+    {
+      "label": "Website",
+      "value": "highlinefortune.in"
+    }
+  ],
+  "images": [
+    "/propertyList/Highline Fortune/img1.jpg",
+    "/propertyList/Highline Fortune/img2.jpg",
+    "/propertyList/Highline Fortune/img3.jpg",
+    "/propertyList/Highline Fortune/img4.jpg",
+    "/propertyList/Highline Fortune/img5.jpg",
+    "/propertyList/Highline Fortune/img6.jpg",
+    "/propertyList/Highline Fortune/img7.jpg",
+    "/propertyList/Highline Fortune/img8.jpg",
+    "/propertyList/Highline Fortune/img9.jpg",
+    "/propertyList/Highline Fortune/img10.jpg",
+    "/propertyList/Highline Fortune/img11.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Highline Fortune/img12.jpg",
+    "images": [
+      "/propertyList/Highline Fortune/img12.jpg",
+      "/propertyList/Highline Fortune/img13.jpg",
+      "/propertyList/Highline Fortune/img14.jpg",
+      "/propertyList/Highline Fortune/img15.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Highline Fortune/img10.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Shree Balaji Infrastructure",
+    "description": "Project by Shree Balaji Infrastructure, as shown on the brochure."
+  },
+  "disclaimer": "Highline Fortune details are prepared only from the uploaded brochure/plan documents. Price, sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 441,
+  "title": "Highline Heritage",
+  "slug": "highline-heritage-highline",
+  "location": "Bhawarasla, Tehsil Sanwer",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Apartment",
+  "bhk": "3 BHK / 4 BHK",
+  "area": "",
+  "description": "Highline Heritage is a proposed residential multi-dwelling and plotted development at Gram Bhawarasla, Tehsil Sanwer, District Indore, on a total land area of about 32,780 sq.m. (3.278 hectare). The sanctioned plan shows a multi-dwelling Part-A of about 15,064 sq.m. and a plotted Part of about 10,555 sq.m. The building plan (marked for discussion) shows 3 BHK and 4 BHK flats of roughly 1,500 - 2,390 sq.ft. built-up area with shops, and the shop and office schedule lists shops on the 24 m and 10 m road sides plus offices on four floors.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Multi-dwelling and plotted development on about 3.278 hectare",
+        "Shops on 24 m and 10 m road sides (about 786 - 1,709 sq.ft. SBUP)",
+        "Offices on first to fourth floors (about 675 - 1,631 sq.ft. SBUP)",
+        "3 BHK and 4 BHK flats in Blocks A and B",
+        "Schindler lifts planned; typical plan of 12 flats per floor",
+        "Construction-linked payment plan with 10% on booking"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A mixed-use residential, retail and office project at Bhawarasla, Sanwer, Indore, based on sanction layout, floor plans and shop/office schedule.",
+    "amenities": [],
+    "specifications": [
+      "Multi-dwelling Part-A area approx. 15,064 sq.m.",
+      "Plotted area approx. 10,555 sq.m. with 10% park area",
+      "Proposed height 30 m, FAR 1:2.0",
+      "Lift cars 20 pax (Schindler MRL) in each core",
+      "Typical floor: 12 flats (Blocks A and B)"
+    ],
+    "connectivity": [
+      "Located on a 30 m wide existing road toward Ujjain and Indore"
+    ],
+    "vision": []
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Highline Heritage"
+    },
+    {
+      "label": "Property Type",
+      "value": "Apartments, Shops and Offices"
+    },
+    {
+      "label": "Location",
+      "value": "Gram Bhawarasla, Tehsil Sanwer, Indore"
+    },
+    {
+      "label": "Total Land Area",
+      "value": "32,780 sq.m. (3.278 hectare)"
+    },
+    {
+      "label": "Flat Types",
+      "value": "3 BHK and 4 BHK (BUA about 1,506 - 2,389 sq.ft.)"
+    },
+    {
+      "label": "Shops",
+      "value": "13 shops, SBUP 786 - 1,709 sq.ft."
+    },
+    {
+      "label": "Offices",
+      "value": "Floors 1 - 4, SBUP 675 - 1,631 sq.ft."
+    },
+    {
+      "label": "Payment Plan",
+      "value": "10% booking, 15% plan sanction, 5% per slab, final 5%"
+    }
+  ],
+  "images": [
+    "/propertyList/Highline Heritage/img1.jpg",
+    "/propertyList/Highline Heritage/img2.jpg",
+    "/propertyList/Highline Heritage/img3.jpg",
+    "/propertyList/Highline Heritage/img4.jpg",
+    "/propertyList/Highline Heritage/img5.jpg",
+    "/propertyList/Highline Heritage/img6.jpg",
+    "/propertyList/Highline Heritage/img7.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Highline Heritage/img3.jpg",
+    "images": [
+      "/propertyList/Highline Heritage/img3.jpg",
+      "/propertyList/Highline Heritage/img4.jpg",
+      "/propertyList/Highline Heritage/img5.jpg",
+      "/propertyList/Highline Heritage/img6.jpg",
+      "/propertyList/Highline Heritage/img7.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Highline",
+    "description": "Developer name is taken from the uploaded folder and drawing titles (Highline Apartment Building / Highline Heritage)."
+  },
+  "disclaimer": "Highline Heritage details are prepared only from the uploaded brochure/plan documents. Price, sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 442,
+  "title": "Shri Vidhya Vihar",
+  "slug": "shri-vidhya-vihar-friends-developer",
+  "location": "Village Badodiya Ema, Tehsil Sanwer",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "",
+  "description": "Shri Vidhya Vihar is a proposed residential colony on about 8.225 hectare (82,250 sq.m.) of land at Village Badodiya Ema, Tehsil Sanwer, District Indore, by M/S Friends Developer. The layout plan shows residential and shop plots with EWS and LIG plots, parks, open areas and 9 m, 12 m and 18 m wide internal roads with a 30 m proposed road.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Layout on about 8.225 hectare of land",
+        "Residential and shop plots with EWS and LIG plots",
+        "Park and open areas",
+        "9 m, 12 m and 18 m wide internal roads",
+        "Located toward Ujjain Road, Indore"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A residential plotted colony layout at Badodiya Ema, Sanwer, Indore, prepared from the uploaded layout plan.",
+    "amenities": [],
+    "specifications": [
+      "Net planning area about 73,870 sq.m.",
+      "General residential plots with EWS and LIG provision as per area statement"
+    ],
+    "connectivity": [],
+    "vision": []
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Shri Vidhya Vihar"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": "Village Badodiya Ema, Tehsil Sanwer, Indore"
+    },
+    {
+      "label": "Total Land Area",
+      "value": "8.2250 hectare (82,250 sq.m.)"
+    },
+    {
+      "label": "Developer",
+      "value": "M/S Friends Developer"
+    }
+  ],
+  "images": [
+    "/propertyList/Shri Vidhya Vihar/img1.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Shri Vidhya Vihar/img1.jpg",
+    "pdf": ""
+  },
+  "map": {
+    "image": "",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Friends Developer",
+    "description": "Developer name is taken from the uploaded layout plan."
+  },
+  "disclaimer": "Shri Vidhya Vihar details are prepared only from the uploaded brochure/plan documents. Price, sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 443,
+  "title": "Shekhar Global",
+  "slug": "shekhar-global-shekhar-constructions",
+  "location": "MR-11 Road, near Choithram North Campus School, Nipania",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Apartment",
+  "bhk": "3 BHK / 4 BHK",
+  "area": "",
+  "description": "Shekhar Global (RERA No. P-IND-26-6164) is a premium mixed-use project on the 60-metre wide MR-11 Road in Nipania, Indore, beside Choithram School. It offers a limited collection of 3 BHK and 4 BHK residences, duplexes and exclusive penthouses, along with premium retail shops, showrooms and bare shell offices. The project has two basements of parking, a ground plus 11 floor plan, podium amenities and terrace amenities.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "RERA registered: P-IND-26-6164",
+        "3 BHK and 4 BHK residences, duplexes and penthouses",
+        "Retail shops, showrooms and bare shell offices",
+        "Located on the 60 m wide MR-11 Road beside Choithram School",
+        "Podium amenities: infinity pool, shrine, sky hoops court, ballroom, gym",
+        "Terrace amenities: skate park, play area, promenade, lawn",
+        "Two basement parking levels"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A mixed-use luxury residential and commercial project on MR-11 Road, Indore, marketed by Rishi Tradewing (India) LLP.",
+    "amenities": [
+      {
+        "title": "The Azure Infinity Pool",
+        "img": "/propertyList/Shekhar Global/img7.jpg"
+      },
+      {
+        "title": "The Serene Shrine",
+        "img": "/propertyList/Shekhar Global/img8.jpg"
+      },
+      {
+        "title": "The Sky Hoops Court",
+        "img": "/propertyList/Shekhar Global/img9.jpg"
+      },
+      {
+        "title": "Sky Garden Lounge",
+        "img": "/propertyList/Shekhar Global/img10.jpg"
+      },
+      {
+        "title": "Children's Play Area",
+        "img": "/propertyList/Shekhar Global/img11.jpg"
+      },
+      {
+        "title": "The Adventure Cove",
+        "img": "/propertyList/Shekhar Global/img6.jpg"
+      },
+      {
+        "title": "The Elite Physique Studio",
+        "img": "/propertyList/Shekhar Global/img6.jpg"
+      },
+      {
+        "title": "The Grand Ballroom",
+        "img": "/propertyList/Shekhar Global/img6.jpg"
+      }
+    ],
+    "specifications": [
+      "Italian finish common lobby; vitrified tiles in flats (AGL / Simpolo / Kajaria or equivalent)",
+      "Quartz stone kitchen platform with premium quartz sink",
+      "UPVC 3-track sliding windows with mosquito net",
+      "Flush doors with veneer finish; Yale or Dorset locks",
+      "Jaquar / Hans Grohe / American Standard or equivalent CP and sanitary",
+      "Premium lifts: Schindler / Kone / TKE or equivalent",
+      "Glass balcony railing; granite staircase; wooden plank tile balconies",
+      "Premium emulsion paint (Dulux / Asian Paints)"
+    ],
+    "connectivity": [
+      "Choithram School - 1 min",
+      "Bypass - 3 min",
+      "Ring Road - 6 min",
+      "Bhavans' Prominent and DPS - 5 min",
+      "Sheraton Grand Palace - 5 min",
+      "Bombay Hospital and Kokilaben Hospital - 8 min",
+      "D Mart Nipania - 8 min",
+      "Phoenix Mall - 10 min",
+      "Proposed Indore Metro from Dewas Naka - 11 min",
+      "AB Road - 13 min",
+      "Vijaynagar - 15 min",
+      "Railway Station - 30 min",
+      "Airport - 40 min"
+    ],
+    "vision": [
+      "Relish the best of both worlds: luxury living and business excellence on one of Indore's fastest-developing corridors."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Shekhar Global"
+    },
+    {
+      "label": "RERA No.",
+      "value": "P-IND-26-6164"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential and Commercial (mixed use)"
+    },
+    {
+      "label": "Location",
+      "value": "MR-11 Road, Nipania, Indore"
+    },
+    {
+      "label": "Configurations",
+      "value": "3 BHK, 4 BHK, Duplexes, Penthouses, Shops, Showrooms, Offices"
+    },
+    {
+      "label": "Developer",
+      "value": "Shekhar Constructions"
+    },
+    {
+      "label": "Marketed by",
+      "value": "Rishi Tradewing (India) LLP"
+    },
+    {
+      "label": "Contact",
+      "value": "97555 61928, 97555 01168"
+    }
+  ],
+  "images": [
+    "/propertyList/Shekhar Global/img1.jpg",
+    "/propertyList/Shekhar Global/img2.jpg",
+    "/propertyList/Shekhar Global/img3.jpg",
+    "/propertyList/Shekhar Global/img4.jpg",
+    "/propertyList/Shekhar Global/img5.jpg",
+    "/propertyList/Shekhar Global/img6.jpg",
+    "/propertyList/Shekhar Global/img7.jpg",
+    "/propertyList/Shekhar Global/img8.jpg",
+    "/propertyList/Shekhar Global/img9.jpg",
+    "/propertyList/Shekhar Global/img10.jpg",
+    "/propertyList/Shekhar Global/img11.jpg",
+    "/propertyList/Shekhar Global/img12.jpg",
+    "/propertyList/Shekhar Global/img13.jpg",
+    "/propertyList/Shekhar Global/img14.jpg",
+    "/propertyList/Shekhar Global/img15.jpg",
+    "/propertyList/Shekhar Global/img17.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Shekhar Global/img18.jpg",
+    "images": [
+      "/propertyList/Shekhar Global/img18.jpg",
+      "/propertyList/Shekhar Global/img19.jpg",
+      "/propertyList/Shekhar Global/img20.jpg",
+      "/propertyList/Shekhar Global/img21.jpg",
+      "/propertyList/Shekhar Global/img22.jpg",
+      "/propertyList/Shekhar Global/img23.jpg",
+      "/propertyList/Shekhar Global/img24.jpg",
+      "/propertyList/Shekhar Global/img25.jpg",
+      "/propertyList/Shekhar Global/img26.jpg",
+      "/propertyList/Shekhar Global/img27.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Shekhar Global/img16.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Shekhar Constructions",
+    "description": "With a 35+ year legacy and 20+ landmark projects delivered, Shekhar Constructions is a cornerstone of Indore's real estate sector, chosen by 2000+ families. Its portfolio includes Shekhar Unity, a commercial development."
+  },
+  "disclaimer": "Shekhar Global details are prepared only from the uploaded brochure/plan documents. Price, sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 444,
+  "title": "IRIS Dreams",
+  "slug": "iris-dreams-iris-group",
+  "location": "Near 30 m wide proposed road, toward Badiya Keema Village Main Road",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "22' x 50' (1,099 sq.ft.) and unique size plots",
+  "description": "IRIS Dreams by IRIS Group is a plotted layout with plots numbered up to 121, mainly 22' x 50' (about 1,099 sq.ft.), along with unique-size, EWS and LIG plots. The master plan shows 9 m and 12 m wide internal roads, several parks (up to about 12,298 sq.ft.), service areas and a 30 m wide proposed road on one side.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Unique 22' x 50' plot size (about 1,099 sq.ft.)",
+        "Plots numbered up to 121 with unique-size, EWS and LIG categories",
+        "Parks of about 8,498, 10,419 and 12,298 sq.ft.",
+        "9 m and 12 m wide internal roads",
+        "Adjoins 30 m wide proposed road"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A plotted development by IRIS Group with 22' x 50' plots, parks and wide internal roads, prepared from the uploaded layout plan.",
+    "amenities": [
+      {
+        "title": "Parks and Green Areas",
+        "img": "/propertyList/IRIS Dreams/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "9.0 m and 12.0 m wide internal roads",
+      "Service areas and parks as per layout plan"
+    ],
+    "connectivity": [
+      "30.0 m wide proposed road",
+      "Road toward Badiya Keema village main road and Tigariya Rao"
+    ],
+    "vision": []
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "IRIS Dreams"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Plot Size",
+      "value": "22' x 50' (about 1,099 sq.ft.) and unique sizes"
+    },
+    {
+      "label": "Developer",
+      "value": "IRIS Group"
+    }
+  ],
+  "images": [
+    "/propertyList/IRIS Dreams/img1.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/IRIS Dreams/img1.jpg",
+    "pdf": ""
+  },
+  "map": {
+    "image": "",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "IRIS Group",
+    "description": "Project by IRIS Group, as shown on the uploaded layout plan."
+  },
+  "disclaimer": "IRIS Dreams details are prepared only from the uploaded brochure/plan documents. Price, sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 445,
+  "title": "Blue Iris",
+  "slug": "blue-iris-iris-group",
+  "location": "Near Bicholi Hapsi, Indore - Dewas Road",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "",
+  "description": "Blue Iris by IRIS Group is a plotted layout near Bicholi Hapsi off the Indore-Dewas Road, adjoining a 45 m wide master plan road. The layout shows about 119 numbered plots plus larger plots (S/R84 - S/R86 of about 17,844 - 20,471 sq.ft.), 9 m and 12 m wide internal roads, parks and a nala running through the site.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Adjoins 45 m wide master plan road",
+        "Plots of varied sizes plus large S/R plots",
+        "Parks including about 17,346 sq.ft. and 9,532 sq.ft.",
+        "9 m and 12 m wide internal roads",
+        "Near Bicholi Hapsi, Indore - Dewas Road"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A plotted development by IRIS Group near Bicholi Hapsi, prepared from the uploaded layout plan.",
+    "amenities": [
+      {
+        "title": "Parks and Green Areas",
+        "img": "/propertyList/Blue Iris/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "9.0 m and 12.0 m wide internal roads",
+      "Service areas and parks as per layout plan"
+    ],
+    "connectivity": [
+      "45 m wide master plan road, toward Bypass and village road",
+      "Near Indore - Dewas Road and Bicholi Hapsi Road"
+    ],
+    "vision": []
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Blue Iris"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": "Near Bicholi Hapsi, Indore"
+    },
+    {
+      "label": "Developer",
+      "value": "IRIS Group"
+    }
+  ],
+  "images": [
+    "/propertyList/Blue Iris/img1.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Blue Iris/img1.jpg",
+    "pdf": ""
+  },
+  "map": {
+    "image": "",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "IRIS Group",
+    "description": "Project by IRIS Group, as shown on the uploaded layout plan."
+  },
+  "disclaimer": "Blue Iris details are prepared only from the uploaded brochure/plan documents. Price, sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 446,
+  "title": "IRIS Premium",
+  "slug": "iris-premium-iris-group",
+  "location": "",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "7.00 m x 16.76 m plots (approx.)",
+  "description": "IRIS Premium is a plotted layout drawing titled 'IRIS Premium' (client Bharat Jain, dated 24/07/2021, by Devila Landscape). The plan shows plots of about 7.00 m x 16.76 m, 7.5 m, 9 m, 10.5 m and 12 m wide roads, landscaped parks, a swimming pool area, shops-cum-residential plots and EWS/LIG plots, with a total plot area of 1,06,405 sq.ft.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Plots of about 7.00 m x 16.76 m",
+        "Total plot area 1,06,405 sq.ft.",
+        "Landscaped parks and swimming pool area",
+        "Shops-cum-residential plots",
+        "EWS and LIG plots"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A plotted layout labelled IRIS Premium, prepared from the uploaded layout drawing. Exact location is not stated in the source.",
+    "amenities": [
+      {
+        "title": "Landscaped Park",
+        "img": "/propertyList/IRIS Premium/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "Roads of 7.5 m, 9 m, 10.5 m and 12 m width"
+    ],
+    "connectivity": [],
+    "vision": []
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "IRIS Premium"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Total Plot Area",
+      "value": "1,06,405 sq.ft."
+    },
+    {
+      "label": "Developer",
+      "value": "IRIS Group (assumed from folder and project name)"
+    }
+  ],
+  "images": [
+    "/propertyList/IRIS Premium/img1.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/IRIS Premium/img1.jpg",
+    "pdf": ""
+  },
+  "map": {
+    "image": "",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "IRIS Group",
+    "description": "Developer is taken from the uploaded folder and project name; the drawing itself does not name the developer."
+  },
+  "disclaimer": "IRIS Premium details are prepared only from the uploaded brochure/plan documents. Price, sizes, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 460,
+  "title": "Aura",
+  "slug": "aura-graceland",
+  "location": "",
+  "city": "",
+  "state": "",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "",
+  "area": "",
+  "description": "Aura is a plotted residential layout by Graceland. The layout plan shows around 115 numbered residential plots arranged along 7.50 m wide roads, together with a few LIG, EWS and L.S. cum residential plots, two parks and a 3 m pathway.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Plotted layout with 7.50 m wide roads",
+        "Plot sizes marked on the plan include 4.57 x 13.72 m, 4.57 x 12.19 m, 5.18 x 12.19 m and 6.10 x 12.19 m",
+        "Dedicated LIG, EWS and L.S. cum residential plots",
+        "Parks of about 273.25 sq.m, 210.59 sq.m and 779.16 sq.m",
+        "3 m wide pathway and a service area (S.A.) marked on the plan"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A plotted residential layout with 7.50 m wide roads, parks and a mix of regular, LIG, EWS and L.S. cum residential plots.",
+    "amenities": [
+      {
+        "title": "Parks",
+        "img": "/propertyList/Aura/img1.jpg"
+      },
+      {
+        "title": "7.50 m Wide Roads",
+        "img": "/propertyList/Aura/img1.jpg"
+      },
+      {
+        "title": "3 m Pathway",
+        "img": "/propertyList/Aura/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "7.50 m wide roads",
+      "Plot sizes (m): 4.57 x 13.72, 4.57 x 12.19, 5.18 x 12.19, 6.10 x 12.19",
+      "LIG plots: 4.57 x 11.80 and 4.57 x 9.04 m; EWS plots: 3.60 x 10.67 m; L.S. cum residential: 6.10 x 9.14 m",
+      "Parks: 273.25, 210.59 and 779.16 sq.m; service area 136.30 sq.m"
+    ],
+    "connectivity": [],
+    "vision": [
+      "Well-planned plotted development with wide internal roads, parks and pathways."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Aura"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": ""
+    },
+    {
+      "label": "Developer",
+      "value": "Graceland"
+    },
+    {
+      "label": "Plot Sizes",
+      "value": "4.57 x 13.72 m, 4.57 x 12.19 m, 5.18 x 12.19 m, 6.10 x 12.19 m"
+    },
+    {
+      "label": "Internal Roads",
+      "value": "7.50 m wide"
+    },
+    {
+      "label": "Parks",
+      "value": "3 (273.25, 210.59 and 779.16 sq.m)"
+    }
+  ],
+  "images": [
+    "/propertyList/Aura/img1.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Aura/img1.jpg",
+    "images": [
+      "/propertyList/Aura/img1.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Aura/img1.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Graceland",
+    "description": "Developer name is taken from the uploaded Graceland layout plans and brochure."
+  },
+  "disclaimer": "Aura details are prepared only from the uploaded layout plan. Plot sizes, price, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 461,
+  "title": "Avenue",
+  "slug": "avenue-graceland",
+  "location": "",
+  "city": "",
+  "state": "",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "",
+  "area": "",
+  "description": "Avenue is a plotted residential layout by Graceland. The layout plan shows roughly 290 numbered plots (including A/B/C sub-plots and an L/E series) arranged in blocks along proposed roads, with a central green belt along an HT line corridor and a service area.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Plotted layout with more than 280 numbered plots",
+        "Blocks separated by proposed roads",
+        "Central green belt and landscaped open areas",
+        "Service area (S.A.) marked on the plan",
+        "Two versions of the layout plan are available"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A large plotted layout with proposed internal roads, a central green belt and a service area.",
+    "amenities": [
+      {
+        "title": "Green Belt",
+        "img": "/propertyList/Avenue/img1.jpg"
+      },
+      {
+        "title": "Proposed Roads",
+        "img": "/propertyList/Avenue/img1.jpg"
+      },
+      {
+        "title": "Service Area",
+        "img": "/propertyList/Avenue/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "Plots arranged in blocks along proposed roads",
+      "Central green belt along the HT line corridor",
+      "Service area (S.A.) and passage (P.W.) marked on the plan"
+    ],
+    "connectivity": [],
+    "vision": [
+      "A well-organised plotted layout with generous green space."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Avenue"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": ""
+    },
+    {
+      "label": "Developer",
+      "value": "Graceland"
+    },
+    {
+      "label": "Plots",
+      "value": "Approximately 290 numbered plots (including sub-plots and L/E series)"
+    },
+    {
+      "label": "Layout Plans",
+      "value": "2"
+    }
+  ],
+  "images": [
+    "/propertyList/Avenue/img1.jpg",
+    "/propertyList/Avenue/img2.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Avenue/img1.jpg",
+    "images": [
+      "/propertyList/Avenue/img1.jpg",
+      "/propertyList/Avenue/img2.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Avenue/img1.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Graceland",
+    "description": "Developer name is taken from the uploaded Graceland layout plans and brochure."
+  },
+  "disclaimer": "Avenue details are prepared only from the uploaded layout plans. Plot sizes, price, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 462,
+  "title": "Bliss 02",
+  "slug": "bliss-02-graceland",
+  "location": "",
+  "city": "",
+  "state": "",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "",
+  "area": "",
+  "description": "Bliss 02 is a compact plotted residential layout by Graceland. The layout plan shows roughly 40 numbered plots arranged in blocks along proposed roads, with a green/open area marked on the plan.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Compact plotted layout with about 40 numbered plots",
+        "Blocks separated by proposed roads",
+        "Green/open area marked on the plan"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A compact plotted layout with proposed internal roads and a green area.",
+    "amenities": [
+      {
+        "title": "Green Area",
+        "img": "/propertyList/Bliss 02/img1.jpg"
+      },
+      {
+        "title": "Proposed Roads",
+        "img": "/propertyList/Bliss 02/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "Plots arranged in blocks along proposed roads",
+      "Green area marked on the plan"
+    ],
+    "connectivity": [],
+    "vision": [
+      "A small-format plotted development with planned roads and open space."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Bliss 02"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": ""
+    },
+    {
+      "label": "Developer",
+      "value": "Graceland"
+    },
+    {
+      "label": "Plots",
+      "value": "Approximately 40 numbered plots"
+    }
+  ],
+  "images": [
+    "/propertyList/Bliss 02/img1.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Bliss 02/img1.jpg",
+    "images": [
+      "/propertyList/Bliss 02/img1.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Bliss 02/img1.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Graceland",
+    "description": "Developer name is taken from the uploaded Graceland layout plans and brochure."
+  },
+  "disclaimer": "Bliss 02 details are prepared only from the uploaded layout plan. Plot sizes, price, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 463,
+  "title": "Highway Blossom",
+  "slug": "highway-blossom-graceland",
+  "location": "",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "",
+  "area": "",
+  "description": "Highway Blossom is a large plotted residential layout by Graceland Habitats Serene Pvt. Ltd. The approved layout plan carries the title 'Highway Blossom', shows a Town & Country Planning Indore approval stamp, a khasra plan and a land owner's detail table, with plots arranged along 9.00 m and 12.00 m wide roads, green areas and a proposed wide road linking towards Amli Kheda village.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Approved layout plan (Town & Country Planning, Indore stamp)",
+        "Plots along 9.00 m and 12.00 m wide roads",
+        "Green areas and parks marked on the plan",
+        "Proposed wide road toward Amli Kheda village",
+        "Land owner: Graceland Habitats Serene Pvt. Ltd."
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A large plotted layout titled Highway Blossom, approved by Town & Country Planning, Indore, with wide internal roads and green areas.",
+    "amenities": [
+      {
+        "title": "Green Areas",
+        "img": "/propertyList/Highway Blossom/img1.jpg"
+      },
+      {
+        "title": "Wide Roads",
+        "img": "/propertyList/Highway Blossom/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "Plots along 9.00 m and 12.00 m wide roads",
+      "Khasra plan and land owner's detail included on the layout",
+      "Land owner: Graceland Habitats Serene Pvt. Ltd. (Director: Shri Shivnarayan S/o Shri Rampratap Bhutada)",
+      "Khasra numbers on plan: 135/1/2/2, 134, 133, 124, 125, 126/1, 126/2, 127, 128"
+    ],
+    "connectivity": [
+      "Proposed wide road towards Amli Kheda village",
+      "Existing Garipiplya road shown on the key plan"
+    ],
+    "vision": [
+      "A large plotted community with wide roads and green areas near Indore."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Highway Blossom"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": "Indore, Madhya Pradesh"
+    },
+    {
+      "label": "Developer",
+      "value": "Graceland Habitats Serene Pvt. Ltd."
+    },
+    {
+      "label": "Internal Roads",
+      "value": "9.00 m and 12.00 m wide"
+    },
+    {
+      "label": "Approval",
+      "value": "Layout carries Town & Country Planning, Indore approval stamp"
+    }
+  ],
+  "images": [
+    "/propertyList/Highway Blossom/img1.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Highway Blossom/img1.jpg",
+    "images": [
+      "/propertyList/Highway Blossom/img1.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Highway Blossom/img1.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Graceland Habitats Serene Pvt. Ltd.",
+    "description": "Land owner and developer as named on the approved layout plan: Graceland Habitats Serene Pvt. Ltd."
+  },
+  "disclaimer": "Highway Blossom details are prepared only from the uploaded layout plan. Plot sizes, price, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 464,
+  "title": "Highway Landmark",
+  "slug": "highway-landmark-graceland",
+  "location": "Indore Ujjain Road, Dharampuri",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "",
+  "area": "600 - 1000 Sq.yd.",
+  "description": "Highway Landmark is a premium luxury plotted development by Graceland Habitats Serene Pvt. Ltd. on Indore Ujjain Road, Dharampuri. The brochure lists plot sizes of 600, 800 and 1000 sq.yd., a 9 mtr wide internal road and amenities including a covered campus, beautiful garden, basketball court, cricket turf, mandir, 24x7 security, electricity and water supply, and street lights with drainage.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Location: Indore Ujjain Road, Dharampuri",
+        "Plot sizes: 600 | 800 | 1000 sq.yd.",
+        "9 mtr wide internal road",
+        "Covered campus, beautiful garden, basketball court and cricket turf",
+        "Mandir, kids play area and 24x7 security",
+        "Electricity, water supply, street lights and drainage"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A premium luxury plotted development on Indore Ujjain Road, Dharampuri, with a gated entrance, sports courts, garden and mandir.",
+    "amenities": [
+      {
+        "title": "Covered Campus",
+        "img": "/propertyList/Highway Landmark/img1.jpg"
+      },
+      {
+        "title": "Beautiful Garden",
+        "img": "/propertyList/Highway Landmark/img1.jpg"
+      },
+      {
+        "title": "Basketball Court",
+        "img": "/propertyList/Highway Landmark/img6.jpg"
+      },
+      {
+        "title": "Cricket Turf",
+        "img": "/propertyList/Highway Landmark/img9.jpg"
+      },
+      {
+        "title": "Mandir",
+        "img": "/propertyList/Highway Landmark/img1.jpg"
+      },
+      {
+        "title": "Kids Play Area",
+        "img": "/propertyList/Highway Landmark/img7.jpg"
+      },
+      {
+        "title": "24x7 Security",
+        "img": "/propertyList/Highway Landmark/img1.jpg"
+      },
+      {
+        "title": "Electricity & Water Supply",
+        "img": "/propertyList/Highway Landmark/img1.jpg"
+      },
+      {
+        "title": "Street Lights & Drainage",
+        "img": "/propertyList/Highway Landmark/img1.jpg"
+      },
+      {
+        "title": "9 Mtr Wide Road",
+        "img": "/propertyList/Highway Landmark/img8.jpg"
+      }
+    ],
+    "specifications": [
+      "Plot sizes: 600, 800 and 1000 sq.yd.",
+      "9 mtr wide internal road",
+      "Electricity and water supply",
+      "Street lights and drainage",
+      "24x7 security"
+    ],
+    "connectivity": [
+      "Near Rama Phosphate Limited, Dharampuri, Jaitpura and Indore International College (as shown on the project location map)"
+    ],
+    "vision": [
+      "Live beyond the ordinary: a serene and premium community where peace meets prosperity."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Highway Landmark"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": "Indore Ujjain Road, Dharampuri, Indore, Madhya Pradesh"
+    },
+    {
+      "label": "Developer",
+      "value": "Graceland Habitats Serene Pvt. Ltd."
+    },
+    {
+      "label": "Plot Sizes",
+      "value": "600 | 800 | 1000 sq.yd."
+    },
+    {
+      "label": "Internal Road",
+      "value": "9 mtr wide"
+    },
+    {
+      "label": "Layout Plan",
+      "value": "Numbered plots 1 to about 473 plus L and E series"
+    }
+  ],
+  "images": [
+    "/propertyList/Highway Landmark/img1.jpg",
+    "/propertyList/Highway Landmark/img2.jpg",
+    "/propertyList/Highway Landmark/img3.jpg",
+    "/propertyList/Highway Landmark/img4.jpg",
+    "/propertyList/Highway Landmark/img5.jpg",
+    "/propertyList/Highway Landmark/img6.jpg",
+    "/propertyList/Highway Landmark/img7.jpg",
+    "/propertyList/Highway Landmark/img8.jpg",
+    "/propertyList/Highway Landmark/img9.jpg",
+    "/propertyList/Highway Landmark/img10.jpg",
+    "/propertyList/Highway Landmark/img11.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Highway Landmark/img11.jpg",
+    "images": [
+      "/propertyList/Highway Landmark/img11.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Highway Landmark/img11.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Graceland Habitats Serene Pvt. Ltd.",
+    "description": "A project by Graceland Habitats Serene Pvt. Ltd., as stated in the project brochure."
+  },
+  "disclaimer": "Highway Landmark details are prepared only from the uploaded layout plan and brochure. Plot sizes, price, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 465,
+  "title": "Highway Oasis",
+  "slug": "highway-oasis-graceland",
+  "location": "",
+  "city": "",
+  "state": "",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "",
+  "area": "355 - 4009 Sq.ft.",
+  "description": "Highway Oasis is a plotted residential layout by Graceland. The layout plan shows 9.00 m and 12.00 m wide internal roads, a proposed 30.00 m wide road along the boundary, parks, LIG and EWS plots and plots of 4.57 x 12.19, 6.10 x 12.19, 5.18 x 15.24 and 6.10 x 15.24 m. The accompanying area list gives dimensions and areas for 298 plots, from 355 to 4009 sq.ft., with 600, 800, 850 and 1000 sq.ft. the most common sizes.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "298 plots listed in the area list",
+        "Plot areas from 355 to 4009 sq.ft.; most plots are 600, 800, 850 or 1000 sq.ft.",
+        "9.00 m and 12.00 m wide internal roads",
+        "Proposed 30.00 m wide road along the boundary",
+        "Parks, 3 m pathways, LIG and EWS plots",
+        "SR-1 to SR-18 larger plots of about 1250 to 4009 sq.ft."
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A plotted layout with 9.00 m and 12.00 m wide roads, parks and a detailed plot-wise area list.",
+    "amenities": [
+      {
+        "title": "Parks",
+        "img": "/propertyList/Highway Oasis/img1.jpg"
+      },
+      {
+        "title": "Wide Roads",
+        "img": "/propertyList/Highway Oasis/img1.jpg"
+      },
+      {
+        "title": "3 m Pathways",
+        "img": "/propertyList/Highway Oasis/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "9.00 m and 12.00 m wide internal roads; proposed 30.00 m wide road",
+      "Plot sizes (m): 4.57 x 12.19, 6.10 x 12.19, 5.18 x 15.24, 6.10 x 15.24",
+      "LIG plots 4.57 x 12.19 m and EWS plots 3.60 x 10.67 m",
+      "Area list gives east/west/north/south dimensions in feet and area for every plot (SR-1 to SR-18, 19 onwards and E-1 to E-18)"
+    ],
+    "connectivity": [],
+    "vision": [
+      "A well-planned plotted layout with wide roads and green spaces."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Highway Oasis"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": ""
+    },
+    {
+      "label": "Developer",
+      "value": "Graceland"
+    },
+    {
+      "label": "Total Plots in Area List",
+      "value": "298"
+    },
+    {
+      "label": "Plot Areas",
+      "value": "355 - 4009 sq.ft. (derived from area list; most common 600, 800, 850, 1000 sq.ft.)"
+    },
+    {
+      "label": "Internal Roads",
+      "value": "9.00 m and 12.00 m wide"
+    },
+    {
+      "label": "Approach",
+      "value": "Proposed 30.00 m wide road"
+    }
+  ],
+  "images": [
+    "/propertyList/Highway Oasis/img1.jpg",
+    "/propertyList/Highway Oasis/img2.jpg",
+    "/propertyList/Highway Oasis/img3.jpg",
+    "/propertyList/Highway Oasis/img4.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Highway Oasis/img1.jpg",
+    "images": [
+      "/propertyList/Highway Oasis/img1.jpg",
+      "/propertyList/Highway Oasis/img2.jpg",
+      "/propertyList/Highway Oasis/img3.jpg",
+      "/propertyList/Highway Oasis/img4.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Highway Oasis/img1.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Graceland",
+    "description": "Developer name is taken from the uploaded Graceland layout plans and brochure."
+  },
+  "disclaimer": "Highway Oasis details are prepared only from the uploaded layout plans. Plot sizes, price, availability and approvals should be verified with the official sales team. Plot areas are read from the area list and assumed to be in sq.ft. (they match the feet dimensions listed)."
+},
+{
+  "id": 466,
+  "title": "Radiance",
+  "slug": "radiance-graceland",
+  "location": "",
+  "city": "",
+  "state": "",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "",
+  "area": "",
+  "description": "Radiance is a plotted residential layout by Graceland. The layout plan shows blocks of numbered plots arranged along proposed roads on both sides of a central green belt, with a service area and passage marked.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Plotted layout arranged in blocks along proposed roads",
+        "Central green belt along a utility corridor",
+        "Service area marked on the plan"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A plotted layout with proposed roads and a central green belt.",
+    "amenities": [
+      {
+        "title": "Green Belt",
+        "img": "/propertyList/Radiance/img1.jpg"
+      },
+      {
+        "title": "Proposed Roads",
+        "img": "/propertyList/Radiance/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "Blocks of plots along proposed roads",
+      "Central green belt"
+    ],
+    "connectivity": [],
+    "vision": [
+      "A planned plotted community with open green space."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Radiance"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": ""
+    },
+    {
+      "label": "Developer",
+      "value": "Graceland"
+    },
+    {
+      "label": "Plots",
+      "value": "Numbered plots in several blocks along proposed roads"
+    }
+  ],
+  "images": [
+    "/propertyList/Radiance/img1.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Radiance/img1.jpg",
+    "images": [
+      "/propertyList/Radiance/img1.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Radiance/img1.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Graceland",
+    "description": "Developer name is taken from the uploaded Graceland layout plans and brochure."
+  },
+  "disclaimer": "Radiance details are prepared only from the uploaded layout plan. Plot sizes, price, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 467,
+  "title": "Highway Seasons",
+  "slug": "highway-seasons-graceland",
+  "location": "",
+  "city": "",
+  "state": "",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "",
+  "area": "",
+  "description": "Highway Seasons is a large plotted residential layout by Graceland (hand-titled 'Seasons' on the plan; the coloured plan and the plain plan show the same layout). The plan shows more than 850 numbered plots along 7.50 m and 9.00 m wide roads, several parks, a sub-station area of 2000 sq.m, a service area and an H.T. line corridor.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Large plotted layout; plot numbers run to about 875",
+        "7.50 m and 9.00 m wide roads",
+        "Parks including one of about 956.80 sq.m",
+        "Sub-station area of 2000.00 sq.m",
+        "Plot sizes marked on the plan include 4.57 x 12.19 m and 4.57 x 13.72 m",
+        "3 m wide pathways and service area"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A large plotted layout with 7.50 m and 9.00 m wide roads, multiple parks and a dedicated sub-station area.",
+    "amenities": [
+      {
+        "title": "Parks",
+        "img": "/propertyList/Highway Seasons/img1.jpg"
+      },
+      {
+        "title": "Wide Roads",
+        "img": "/propertyList/Highway Seasons/img1.jpg"
+      },
+      {
+        "title": "3 m Pathways",
+        "img": "/propertyList/Highway Seasons/img1.jpg"
+      },
+      {
+        "title": "Sub Station Area",
+        "img": "/propertyList/Highway Seasons/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "7.50 m and 9.00 m wide roads",
+      "Parks, 3 m wide pathways and service area",
+      "Sub-station area 2000.00 sq.m",
+      "H.T. line corridor on the western side of the layout"
+    ],
+    "connectivity": [],
+    "vision": [
+      "A large, well-connected plotted layout with generous open and utility areas."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Highway Seasons"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": ""
+    },
+    {
+      "label": "Developer",
+      "value": "Graceland"
+    },
+    {
+      "label": "Plots",
+      "value": "About 850+ numbered plots (numbers run to approx. 875)"
+    },
+    {
+      "label": "Internal Roads",
+      "value": "7.50 m and 9.00 m wide"
+    },
+    {
+      "label": "Layout Plans",
+      "value": "2 (plain and coloured)"
+    }
+  ],
+  "images": [
+    "/propertyList/Highway Seasons/img1.jpg",
+    "/propertyList/Highway Seasons/img2.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Highway Seasons/img1.jpg",
+    "images": [
+      "/propertyList/Highway Seasons/img1.jpg",
+      "/propertyList/Highway Seasons/img2.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Highway Seasons/img1.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Graceland",
+    "description": "Developer name is taken from the uploaded Graceland layout plans and brochure."
+  },
+  "disclaimer": "Highway Seasons details are prepared only from the uploaded layout plans. Plot sizes, price, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 468,
+  "title": "Serene 2",
+  "slug": "serene-2-graceland",
+  "location": "",
+  "city": "",
+  "state": "",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "",
+  "area": "",
+  "description": "Serene 2 is a plotted residential layout by Graceland. The layout plan shows plots along 9.00 m and 12.00 m wide roads, a proposed 30.00 m wide road running towards the village of Rampipliya, parks and an H.T. line, and refers to an existing colony (Memo No. 10906 dated 30.12.2021).",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "9.00 m and 12.00 m wide internal roads",
+        "Proposed 30.00 m wide road",
+        "Parks and green areas",
+        "Ex. Colony Memo No. 10906 dated 30.12.2021 referenced on the plan"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A plotted layout with 9.00 m and 12.00 m wide roads, parks and a proposed 30.00 m wide approach road.",
+    "amenities": [
+      {
+        "title": "Parks",
+        "img": "/propertyList/Serene 2/img1.jpg"
+      },
+      {
+        "title": "Wide Roads",
+        "img": "/propertyList/Serene 2/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "9.00 m and 12.00 m wide roads",
+      "Proposed 30.00 m wide road",
+      "Reference: Ex. Colony Memo No. 10906, 30.12.2021"
+    ],
+    "connectivity": [
+      "Proposed 30.00 m wide road towards village Rampipliya (as labelled on the plan)"
+    ],
+    "vision": [
+      "A planned plotted community with wide roads and green areas."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Serene 2"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": ""
+    },
+    {
+      "label": "Developer",
+      "value": "Graceland"
+    },
+    {
+      "label": "Internal Roads",
+      "value": "9.00 m and 12.00 m wide"
+    },
+    {
+      "label": "Approach Road",
+      "value": "Proposed 30.00 m wide"
+    }
+  ],
+  "images": [
+    "/propertyList/Serene 2/img1.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Serene 2/img1.jpg",
+    "images": [
+      "/propertyList/Serene 2/img1.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Serene 2/img1.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Graceland",
+    "description": "Developer name is taken from the uploaded Graceland layout plans and brochure."
+  },
+  "disclaimer": "Serene 2 details are prepared only from the uploaded layout plan. Plot sizes, price, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 469,
+  "title": "Summit",
+  "slug": "summit-graceland",
+  "location": "",
+  "city": "",
+  "state": "",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "",
+  "area": "",
+  "description": "Summit is a plotted residential layout by Graceland. The layout plan shows plots along 9.00 m wide roads with a proposed 30.00 m wide road at one end, a service area, parks and an LT line to be shifted. Handwritten notes on the plan mention plot sizes of 13x40 = 520, 14x40 = 560 and 15x35 = 525 sq.ft.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "9.00 m wide internal roads",
+        "Proposed 30.00 m wide road",
+        "Plot sizes marked on the plan include 4.57 x 12.19, 3.96 x 12.19 and 4.57 x 10.67 m",
+        "Handwritten sizes: 13x40 = 520, 14x40 = 560, 15x35 = 525 sq.ft.",
+        "Parks and service area marked"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A plotted layout with 9.00 m wide roads, a proposed 30.00 m wide road and parks.",
+    "amenities": [
+      {
+        "title": "Parks",
+        "img": "/propertyList/Summit/img1.jpg"
+      },
+      {
+        "title": "9.00 m Wide Roads",
+        "img": "/propertyList/Summit/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "9.00 m wide roads; proposed 30.00 m wide road",
+      "LT line to be shifted (as noted on the plan)",
+      "Service area and parks marked on the plan"
+    ],
+    "connectivity": [],
+    "vision": [
+      "A well-planned plotted layout with wide roads and open space."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Summit"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": ""
+    },
+    {
+      "label": "Developer",
+      "value": "Graceland"
+    },
+    {
+      "label": "Internal Roads",
+      "value": "9.00 m wide"
+    },
+    {
+      "label": "Plot Sizes (handwritten notes)",
+      "value": "520, 525 and 560 sq.ft."
+    },
+    {
+      "label": "Layout Plans",
+      "value": "2"
+    }
+  ],
+  "images": [
+    "/propertyList/Summit/img1.jpg",
+    "/propertyList/Summit/img2.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Summit/img1.jpg",
+    "images": [
+      "/propertyList/Summit/img1.jpg",
+      "/propertyList/Summit/img2.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Summit/img1.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Graceland",
+    "description": "Developer name is taken from the uploaded Graceland layout plans and brochure."
+  },
+  "disclaimer": "Summit details are prepared only from the uploaded layout plans. Plot sizes, price, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 470,
+  "title": "Highway Trident",
+  "slug": "highway-trident-graceland",
+  "location": "",
+  "city": "",
+  "state": "",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "",
+  "area": "",
+  "description": "Highway Trident is a plotted residential layout by Graceland (hand-titled 'Trident' on the plan; the plain and coloured plans show the same layout). The plan shows plots along 7.50 m and 9.00 m wide roads, a central park/green area crossed by a utility corridor, service areas and plot sizes such as 6.10 x 12.19 m, 4.57 x 12.19 m, 24 x 40 ft, 20 x 30 ft and 15 x 40 ft, along with LIG and EWS plots.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "7.50 m and 9.00 m wide roads",
+        "Central park/green area",
+        "Plot sizes include 6.10 x 12.19 m, 4.57 x 12.19 m, 24 x 40 ft and 15 x 40 ft",
+        "LIG (15 x 35 ft) and EWS (12 x 35 ft) plots",
+        "Service areas (S.A.) marked on the plan"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A plotted layout with 7.50 m and 9.00 m wide roads, a central green area and LIG/EWS plots.",
+    "amenities": [
+      {
+        "title": "Central Green Area",
+        "img": "/propertyList/Highway Trident/img1.jpg"
+      },
+      {
+        "title": "Wide Roads",
+        "img": "/propertyList/Highway Trident/img1.jpg"
+      },
+      {
+        "title": "Service Area",
+        "img": "/propertyList/Highway Trident/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "7.50 m and 9.00 m wide roads",
+      "Plot sizes: 6.10 x 12.19 m, 4.57 x 12.19 m, 24 x 40 ft, 20 x 30 ft, 15 x 40 ft",
+      "LIG plots 15 x 35 ft; EWS plots 12 x 35 ft"
+    ],
+    "connectivity": [],
+    "vision": [
+      "A planned plotted community with wide roads and central green space."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Highway Trident"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": ""
+    },
+    {
+      "label": "Developer",
+      "value": "Graceland"
+    },
+    {
+      "label": "Internal Roads",
+      "value": "7.50 m and 9.00 m wide"
+    },
+    {
+      "label": "Layout Plans",
+      "value": "2 (coloured and plain)"
+    }
+  ],
+  "images": [
+    "/propertyList/Highway Trident/img1.jpg",
+    "/propertyList/Highway Trident/img2.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Highway Trident/img1.jpg",
+    "images": [
+      "/propertyList/Highway Trident/img1.jpg",
+      "/propertyList/Highway Trident/img2.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Highway Trident/img1.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Graceland",
+    "description": "Developer name is taken from the uploaded Graceland layout plans and brochure."
+  },
+  "disclaimer": "Highway Trident details are prepared only from the uploaded layout plans. Plot sizes, price, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 471,
+  "title": "Uptown",
+  "slug": "uptown-graceland",
+  "location": "",
+  "city": "",
+  "state": "",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "",
+  "area": "",
+  "description": "Uptown is a plotted residential layout by Graceland. The layout plan shows around 270 numbered plots and an E series along 7.50 m wide roads, with several parks, 3 m pathways and a service area.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "About 270 numbered plots plus an E series",
+        "7.50 m wide roads",
+        "Multiple parks and green areas",
+        "3 m wide pathways and service area marked"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "A plotted layout with 7.50 m wide roads, several parks and pathways.",
+    "amenities": [
+      {
+        "title": "Parks",
+        "img": "/propertyList/Uptown/img1.jpg"
+      },
+      {
+        "title": "7.50 m Wide Roads",
+        "img": "/propertyList/Uptown/img1.jpg"
+      },
+      {
+        "title": "3 m Pathways",
+        "img": "/propertyList/Uptown/img1.jpg"
+      }
+    ],
+    "specifications": [
+      "7.50 m wide roads",
+      "Parks and 3 m wide pathways",
+      "Service area marked on the plan"
+    ],
+    "connectivity": [],
+    "vision": [
+      "A well-planned plotted layout with plenty of green space."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Uptown"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": ""
+    },
+    {
+      "label": "Developer",
+      "value": "Graceland"
+    },
+    {
+      "label": "Plots",
+      "value": "About 270 numbered plots plus E series"
+    },
+    {
+      "label": "Internal Roads",
+      "value": "7.50 m wide"
+    }
+  ],
+  "images": [
+    "/propertyList/Uptown/img1.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Uptown/img1.jpg",
+    "images": [
+      "/propertyList/Uptown/img1.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Uptown/img1.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "Graceland",
+    "description": "Developer name is taken from the uploaded Graceland layout plans and brochure."
+  },
+  "disclaimer": "Uptown details are prepared only from the uploaded layout plan. Plot sizes, price, availability and approvals should be verified with the official sales team."
+},
+{
+  "id": 490,
+  "title": "Forest Mansion",
+  "slug": "forest-mansion-house-of-shubhashish",
+  "location": "Indore-Ujjain Road, Indore",
+  "city": "Indore",
+  "state": "Madhya Pradesh",
+  "type": "Buy",
+  "propertyType": "Plot",
+  "bhk": "Plots",
+  "area": "1200 - 1800 Sq.ft.",
+  "description": "Forest Mansion is a residential plotted development by House of Shubhashish on the Indore-Ujjain Road corridor in Indore, planned around more than 1,00,000 trees and plants, a grand lake, and a lifestyle club, health club and clubhouse. The township is laid out in two phases (Phase 1 about 4.719 hectares and Phase 2 about 4.804 hectares) with 12 m wide roads, and offers two plot categories: Type 1 of 1200 - 1400 sq.ft. and Type 2 of 1600 - 1800 sq.ft. Amenities include a commercial plaza, water body, amphitheater, party lawn, kids play area, open gym, sports courts and a multisports arena, with 6-tier security and solar-powered common areas.",
+  "keyHighlights": [
+    {
+      "title": "Key Highlights of the Project",
+      "points": [
+        "Plots of 1200 - 1400 sq.ft. (Type 1) and 1600 - 1800 sq.ft. (Type 2)",
+        "Over 1,00,000 trees and plants, one of the densest green projects in Indore",
+        "A Grand Lake and water body with fish pond and duck pond",
+        "Health Club with medical room and Lifestyle Club",
+        "6-tier security: guard, boom barrier, biometric entry, CCTV, 24/7 patrols and Smart Box",
+        "Solar-powered common areas",
+        "Sports facilities: lawn tennis, badminton, pickleball, half basketball court and multisports arena",
+        "Located on the Indore-Ujjain Road corridor, with in-house construction and in-house maintenance"
+      ]
+    }
+  ],
+  "sections": {
+    "overview": "Forest Mansion is a nature-centred plotted community on the Indore-Ujjain Road corridor, with dense greenery, a lake, clubs and extensive recreational amenities.",
+    "amenities": [
+      {
+        "title": "Commercial Plaza",
+        "img": "/propertyList/Forest Mansion/img19.jpg"
+      },
+      {
+        "title": "Water Body",
+        "img": "/propertyList/Forest Mansion/img19.jpg"
+      },
+      {
+        "title": "Ram Mandir",
+        "img": "/propertyList/Forest Mansion/img19.jpg"
+      },
+      {
+        "title": "Buddha Sculpture",
+        "img": "/propertyList/Forest Mansion/img19.jpg"
+      },
+      {
+        "title": "Dense Forest",
+        "img": "/propertyList/Forest Mansion/img20.jpg"
+      },
+      {
+        "title": "Amphitheater",
+        "img": "/propertyList/Forest Mansion/img20.jpg"
+      },
+      {
+        "title": "Flower Bed",
+        "img": "/propertyList/Forest Mansion/img20.jpg"
+      },
+      {
+        "title": "Party Lawn",
+        "img": "/propertyList/Forest Mansion/img20.jpg"
+      },
+      {
+        "title": "Kids Play Area",
+        "img": "/propertyList/Forest Mansion/img21.jpg"
+      },
+      {
+        "title": "Duck Pond",
+        "img": "/propertyList/Forest Mansion/img21.jpg"
+      },
+      {
+        "title": "Fish Pond",
+        "img": "/propertyList/Forest Mansion/img21.jpg"
+      },
+      {
+        "title": "Open Gym",
+        "img": "/propertyList/Forest Mansion/img21.jpg"
+      },
+      {
+        "title": "Gazebo",
+        "img": "/propertyList/Forest Mansion/img22.jpg"
+      },
+      {
+        "title": "Pet Area",
+        "img": "/propertyList/Forest Mansion/img22.jpg"
+      },
+      {
+        "title": "Organic Farming",
+        "img": "/propertyList/Forest Mansion/img22.jpg"
+      },
+      {
+        "title": "Half Basketball Court",
+        "img": "/propertyList/Forest Mansion/img22.jpg"
+      },
+      {
+        "title": "Lawn Tennis Court",
+        "img": "/propertyList/Forest Mansion/img23.jpg"
+      },
+      {
+        "title": "Badminton Court",
+        "img": "/propertyList/Forest Mansion/img23.jpg"
+      },
+      {
+        "title": "Pickleball Court",
+        "img": "/propertyList/Forest Mansion/img23.jpg"
+      },
+      {
+        "title": "Multisports Arena",
+        "img": "/propertyList/Forest Mansion/img23.jpg"
+      },
+      {
+        "title": "Health Club",
+        "img": "/propertyList/Forest Mansion/img17.jpg"
+      },
+      {
+        "title": "Lifestyle Club",
+        "img": "/propertyList/Forest Mansion/img18.jpg"
+      },
+      {
+        "title": "Clubhouse",
+        "img": "/propertyList/Forest Mansion/img24.jpg"
+      },
+      {
+        "title": "A Grand Lake",
+        "img": "/propertyList/Forest Mansion/img15.jpg"
+      }
+    ],
+    "specifications": [
+      "Plot Type 1: 1200 - 1400 sq.ft.; Type 2: 1600 - 1800 sq.ft.",
+      "Phase 1 area approx. 4.719 hectares; Phase 2 area approx. 4.804 hectares",
+      "12 m wide main roads as per master plan",
+      "6-tier security: security guard at main entrance, boom barrier at entry gate, biometric entry, CCTV surveillance, 24/7 security patrols, Smart Box",
+      "Solar-powered common areas",
+      "Health Club with a dedicated medical room",
+      "In-house construction and in-house maintenance"
+    ],
+    "connectivity": [
+      "Shree Mahakaleshwar Jyotirlinga Temple - 30 min",
+      "Aqua Imagica Waterpark - 11 min",
+      "Shri Aurobindo Hospital - 15 min",
+      "Symbiosis University - 18 min",
+      "TCS and Infosys - 18 min",
+      "Apollo Hospital - 19 min",
+      "NMIMS - 20 min",
+      "Raddisson Blu - 21 min",
+      "A.P.J. Abdul Kalam University - 21 min",
+      "Bombay Hospital - 22 min",
+      "Sheraton Grand Palace - 22 min",
+      "Indore Airport - 24 min",
+      "Rajwada Palace - 24 min",
+      "Indore Railway Station - 25 min",
+      "Phoenix Citadel Mall - 26 min",
+      "ISBT - 32 min",
+      "IIM Indore - 40 min",
+      "IIT Indore - 43 min",
+      "(Approximate drive times by four-wheeler from the project as per Google Maps, recorded 21 Aug 2025; indicative only.)"
+    ],
+    "vision": [
+      "To offer a private forest-like address where nature is part of everyday living.",
+      "Sustainable living with dense greenery, solar-powered common areas and cleaner air.",
+      "A community with clubs, sports and open spaces in the growing Indore-Ujjain Road corridor."
+    ]
+  },
+  "projectData": [
+    {
+      "label": "Project Name",
+      "value": "Forest Mansion"
+    },
+    {
+      "label": "Property Type",
+      "value": "Residential Plots"
+    },
+    {
+      "label": "Location",
+      "value": "Indore-Ujjain Road, Indore, Madhya Pradesh"
+    },
+    {
+      "label": "Developer",
+      "value": "House of Shubhashish"
+    },
+    {
+      "label": "Plot Sizes",
+      "value": "Type 1: 1200 - 1400 sq.ft.; Type 2: 1600 - 1800 sq.ft."
+    },
+    {
+      "label": "Phase 1 Area",
+      "value": "Approx. 4.719 Hectares"
+    },
+    {
+      "label": "Phase 2 Area",
+      "value": "Approx. 4.804 Hectares"
+    },
+    {
+      "label": "Greenery",
+      "value": "1,00,000+ trees and plants"
+    }
+  ],
+  "images": [
+    "/propertyList/Forest Mansion/img1.jpg",
+    "/propertyList/Forest Mansion/img2.jpg",
+    "/propertyList/Forest Mansion/img3.jpg",
+    "/propertyList/Forest Mansion/img4.jpg",
+    "/propertyList/Forest Mansion/img5.jpg",
+    "/propertyList/Forest Mansion/img6.jpg",
+    "/propertyList/Forest Mansion/img7.jpg",
+    "/propertyList/Forest Mansion/img8.jpg",
+    "/propertyList/Forest Mansion/img9.jpg",
+    "/propertyList/Forest Mansion/img10.jpg",
+    "/propertyList/Forest Mansion/img11.jpg",
+    "/propertyList/Forest Mansion/img12.jpg",
+    "/propertyList/Forest Mansion/img13.jpg",
+    "/propertyList/Forest Mansion/img14.jpg",
+    "/propertyList/Forest Mansion/img15.jpg",
+    "/propertyList/Forest Mansion/img16.jpg",
+    "/propertyList/Forest Mansion/img17.jpg",
+    "/propertyList/Forest Mansion/img18.jpg",
+    "/propertyList/Forest Mansion/img19.jpg",
+    "/propertyList/Forest Mansion/img20.jpg",
+    "/propertyList/Forest Mansion/img21.jpg",
+    "/propertyList/Forest Mansion/img22.jpg",
+    "/propertyList/Forest Mansion/img23.jpg",
+    "/propertyList/Forest Mansion/img24.jpg"
+  ],
+  "floorPlan": {
+    "image": "/propertyList/Forest Mansion/img25.jpg",
+    "images": [
+      "/propertyList/Forest Mansion/img25.jpg"
+    ],
+    "pdf": ""
+  },
+  "map": {
+    "image": "/propertyList/Forest Mansion/img16.jpg",
+    "locationLink": ""
+  },
+  "developer": {
+    "name": "House of Shubhashish",
+    "description": "Developer name is taken from the uploaded project folder. Forest Mansion is presented by House of Shubhashish with in-house construction and in-house maintenance."
+  },
+  "disclaimer": "Forest Mansion details are prepared only from the uploaded brochure and site photos. Images, art and illustrations are for reference purposes only and this is not a legal document. Infrastructure facilities mentioned are proposed to be developed by government and other authorities and their timing is beyond the developer's control; distances and drive times are approximate. Price, plot sizes, availability, RERA and approvals should be verified with the official sales team."
 },
 ];
 

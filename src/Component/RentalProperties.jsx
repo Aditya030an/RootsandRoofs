@@ -13,92 +13,52 @@ import {
   FaChevronUp,
   FaRupeeSign,
   FaUndo,
+  FaHandshake,
 } from "react-icons/fa";
-import { MdVerified, MdLocationOn } from "react-icons/md";
+import {
+  MdVerified,
+  MdLocationOn,
+  MdVerifiedUser,
+  MdAssignmentTurnedIn,
+} from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import { Range } from "react-range";
 import { useNavigate } from "react-router-dom";
-import propertyList from "../utils/propertyList";
+import { api } from "../utils/api";
+import { optimizeImage } from "../utils/image";
+import Pagination from "./Pagination";
 import ContactFormModal from "./ContactSection";
+// bg_img1.png with its baked-in badge strip cropped off — the badges are
+// rendered as HTML below so they wrap on small screens instead of being cut.
+import heroBg from "./photos/hero_bg.jpg";
+
+// Trust badges shown along the bottom of the hero.
+const TRUST_BADGES = [
+  {
+    icon: <span className="text-3xl md:text-4xl font-extrabold text-red-500 leading-none">0%</span>,
+    title: "Brokerage Policy",
+    subtitle: "(No Brokerage)",
+  },
+  {
+    icon: <MdAssignmentTurnedIn className="text-3xl md:text-4xl text-sky-300" />,
+    title: "RERA Registered Platform",
+    subtitle: "(A-GWL-25-2551)",
+  },
+  {
+    icon: <MdVerifiedUser className="text-3xl md:text-4xl text-[#7cc933]" />,
+    title: "Verified Listed",
+    subtitle: "Properties only",
+  },
+  {
+    icon: <FaHandshake className="text-3xl md:text-4xl text-amber-400" />,
+    title: "End-to-End Support",
+    subtitle: "(Dedicated team)",
+  },
+];
 
 // localStorage key that records the visitor already submitted the lead form,
 // so the gate is shown only once (persists across reloads / property clicks).
 const LEAD_CAPTURED_KEY = "propertyLeadCaptured";
-
-// Amenity filters → each maps a friendly label to terms matched against a
-// property's amenity titles (case-insensitive substring match).
-const AMENITY_FILTERS = [
-  { label: "Swimming Pool", terms: ["pool"] },
-  { label: "Clubhouse", terms: ["club"] },
-  { label: "Garden", terms: ["garden", "landscape"] },
-  { label: "Park / Green Area", terms: ["park", "green", "open area"] },
-  { label: "Gym", terms: ["gym"] },
-  { label: "Kids Play Area", terms: ["kid", "play", "children"] },
-  { label: "Temple", terms: ["temple"] },
-  { label: "Sports Courts", terms: ["sport", "court", "tennis", "basketball"] },
-  { label: "Jogging Track", terms: ["jog", "track"] },
-  { label: "Grand Entrance", terms: ["entrance", "gate"] },
-  { label: "Wide Roads", terms: ["road"] },
-  { label: "Security", terms: ["security", "cctv", "boundary"] },
-];
-
-// Map a property to a tab. The dataset is all "Buy"; Plot/Commercial are
-// derived from propertyType/bhk so switching tabs narrows the catalogue.
-const matchesTab = (property, tab) => {
-  const pt = (property.propertyType || "").toLowerCase();
-  const bhk = (property.bhk || "").toLowerCase();
-  if (tab === "Plot") return pt.includes("plot") || bhk.includes("plot");
-  if (tab === "Commercial")
-    return (
-      pt.includes("commercial") ||
-      pt.includes("office") ||
-      pt.includes("it park") ||
-      bhk.includes("office")
-    );
-  if (tab === "Rent") return property.type === "Rent";
-  return property.type === "Buy"; // Buy → full catalogue
-};
-
-// Extract the BHK variant numbers a property offers from its free-text `bhk`
-// value. Handles compound values like "1/2/3 BHK", "2/3 BHK",
-// "3 BHK Row Villas", "Plots / 3 BHK Row Villas" → [1,2,3] / [2,3] / [3] / [3].
-const bhkNumbers = (bhk) => {
-  if (!bhk || !/bhk/i.test(bhk)) return [];
-  const before = bhk.slice(0, bhk.toLowerCase().indexOf("bhk"));
-  return (before.match(/\d+/g) || []).map(Number);
-};
-
-// Pull a numeric sq.ft value out of the free-text area string (e.g.
-// "350 sq.ft. to 5,000 sq.ft."). Returns null when area isn't in sq.ft, so
-// non-sq.ft areas (Acres/Hectares) are never wrongly filtered out.
-const parseAreaSqft = (area) => {
-  if (typeof area === "number") return area;
-  if (!area || typeof area !== "string") return null;
-  if (!/sq\.?\s*ft|sqft/i.test(area)) return null;
-  const match = area.replace(/,/g, "").match(/\d+(\.\d+)?/);
-  return match ? parseFloat(match[0]) : null;
-};
-
-// Pull a numeric INR value out of the price data. `price` may be a legacy
-// number, or the new array of { value | price } strings like "₹ 68 Lakh" or
-// "₹ 5999 /sq.ft.". Returns the lowest parsed value, or null when there's no
-// price (so "price on request" listings are never filtered out).
-const parsePrice = (price) => {
-  if (typeof price === "number") return price > 0 ? price : null;
-  if (!Array.isArray(price)) return null;
-  const nums = price
-    .map((p) => {
-      const str = String(p?.price ?? p?.value ?? "");
-      const m = str.replace(/,/g, "").match(/\d+(\.\d+)?/);
-      if (!m) return null;
-      let n = parseFloat(m[0]);
-      if (/crore|\bcr\b/i.test(str)) n *= 1e7;
-      else if (/lakh|lac|\bl\b/i.test(str)) n *= 1e5;
-      return n;
-    })
-    .filter((n) => n != null && !isNaN(n));
-  return nums.length ? Math.min(...nums) : null;
-};
 
 // Build a human-readable price string (values already include the ₹ symbol).
 // Returns null when there's no price, so callers can show "Price on Request".
@@ -148,7 +108,7 @@ const RentalProperties = () => {
   // Open the property's detail page (new tab, matching the card's old behaviour).
   const openProperty = (property) => {
     window.open(
-      `/propertyDetails/${property.id}`,
+      `/property/${property.slug || property.id}`,
       "_blank",
       "noopener,noreferrer",
     );
@@ -192,7 +152,7 @@ const RentalProperties = () => {
     if (pendingProperty) openProperty(pendingProperty);
   };
 
-  const tabs = ["Buy", "Rent", "Commercial", "Plot"];
+  const tabs = ["Buy", "Rent", "Commercial", "Plot", "Investment"];
 
   const filterRef = useRef(null);
   const [isSticky, setIsSticky] = useState(false);
@@ -257,30 +217,76 @@ const RentalProperties = () => {
   const [activeTab, setActiveTab] = useState("Buy");
   const [leaseOption, setLeaseOption] = useState("Lease");
 
-  // ✅ Filter options derived from the real data for the active tab, so every
-  // option always corresponds to at least one property.
-  const tabProperties = propertyList.filter((p) => matchesTab(p, activeTab));
+  // Rent / Investment have no listings yet, so they never hit the API.
+  const hasListings = activeTab !== "Rent" && activeTab !== "Investment";
 
-  // Clean, canonical BHK options ("1 BHK", "2 BHK", …) built from every BHK
-  // variant mentioned across the tab's properties (so "1/2/3 BHK" contributes
-  // 1, 2 and 3 as separate selectable options).
-  const bhkOptions = [
-    ...new Set(tabProperties.flatMap((p) => bhkNumbers(p.bhk))),
-  ]
-    .sort((a, b) => a - b)
-    .map((n) => `${n} BHK`);
+  // ===== Server-driven listing: one page of cards at a time =====
+  const PAGE_SIZE = 12;
+  const gridRef = useRef(null);
+  const [debouncedQuery, setDebouncedQuery] = useState("");
+  const [result, setResult] = useState({ items: [], total: 0, page: 1, pages: 1, limit: PAGE_SIZE });
+  const [facets, setFacets] = useState({ bhkOptions: [], propertyTypes: [], amenityOptions: [] });
+  const [listLoading, setListLoading] = useState(true);
+  const [listError, setListError] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
-  const propertyTypes = [
-    ...new Set(tabProperties.map((p) => p.propertyType).filter(Boolean)),
-  ].sort();
+  // Debounce typing so we don't query on every keystroke.
+  useEffect(() => {
+    const t = setTimeout(() => setDebouncedQuery(searchQuery.trim()), 300);
+    return () => clearTimeout(t);
+  }, [searchQuery]);
 
-  const amenityOptions = AMENITY_FILTERS.filter((a) =>
-    tabProperties.some((p) =>
-      (p.sections?.amenities || []).some((am) =>
-        a.terms.some((t) => (am.title || "").toLowerCase().includes(t)),
-      ),
-    ),
-  );
+  // The page resets to 1 whenever the tab / search / filters change.
+  const queryKey = JSON.stringify([activeTab, debouncedQuery, filters]);
+  const [pageState, setPageState] = useState({ key: "", page: 1 });
+  const page = pageState.key === queryKey ? pageState.page : 1;
+  const goToPage = (n) => {
+    setPageState({ key: queryKey, page: n });
+    gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  useEffect(() => {
+    if (!hasListings) return;
+    const controller = new AbortController();
+    setListLoading(true);
+    setListError("");
+    api
+      .listProperties(
+        {
+          tab: activeTab,
+          page,
+          limit: PAGE_SIZE,
+          q: debouncedQuery,
+          bhk: filters.bhk,
+          propertyType: filters.propertyType,
+          amenities: filters.amenities,
+          verified: filters.verified ? "true" : "",
+          parking: filters.parking ? "true" : "",
+          minPrice: filters.priceRange[0],
+          maxPrice: filters.priceRange[1],
+          minArea: filters.areaRange[0],
+          maxArea: filters.areaRange[1],
+        },
+        controller.signal,
+      )
+      .then((data) => {
+        setResult(data);
+        setFacets(data.facets);
+        setListLoading(false);
+      })
+      .catch((err) => {
+        if (err.name === "AbortError") return;
+        setListError("Couldn't load properties. Please try again.");
+        setListLoading(false);
+      });
+    return () => controller.abort();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [queryKey, page, hasListings]);
+
+  const bhkOptions = facets.bhkOptions;
+  const propertyTypes = facets.propertyTypes;
+  const amenityOptions = facets.amenityOptions.map((label) => ({ label }));
+  const filteredProperties = result.items;
 
   const themeConfig = {
     Buy: {
@@ -311,20 +317,16 @@ const RentalProperties = () => {
       bgPattern: "Plot",
       description: "Land for Your Dreams",
     },
+    Investment: {
+      gradient: "from-[#1a2a3a] via-[#1f3549] to-[#1a2a3a]",
+      accent: "#7cc933",
+      textColor: "#ffffff",
+      bgPattern: "Investment",
+      description: "Grow Your Wealth with Smart Real Estate",
+    },
   };
 
   const currentTheme = themeConfig[activeTab];
-
-  const getBackgroundPattern = (tabName) => {
-    const patterns = {
-      Buy: "radial-gradient(circle at 85% 20%, rgba(124, 201, 51, 0.08) 0%, transparent 50%), radial-gradient(circle at 90% 60%, rgba(124, 201, 51, 0.06) 0%, transparent 40%)",
-      Rent: "radial-gradient(circle at 85% 30%, rgba(124, 201, 51, 0.08) 0%, transparent 50%), radial-gradient(circle at 88% 75%, rgba(124, 201, 51, 0.06) 0%, transparent 40%)",
-      Commercial:
-        "radial-gradient(circle at 85% 15%, rgba(124, 201, 51, 0.08) 0%, transparent 50%), radial-gradient(circle at 92% 50%, rgba(124, 201, 51, 0.06) 0%, transparent 40%)",
-      Plot: "radial-gradient(circle at 85% 40%, rgba(124, 201, 51, 0.08) 0%, transparent 50%), radial-gradient(circle at 90% 80%, rgba(124, 201, 51, 0.06) 0%, transparent 40%)",
-    };
-    return patterns[tabName] || patterns["Rent"];
-  };
 
   const handleFilterChange = (filterType, value) => {
     setFilters((prev) => {
@@ -364,97 +366,44 @@ const RentalProperties = () => {
   const resetAreaRange = () =>
     setFilters((prev) => ({ ...prev, areaRange: [0, 100000] }));
 
-  // Search suggestions
-  const getSearchSuggestions = () => {
-    if (!searchQuery.trim()) return [];
-
-    const query = searchQuery.toLowerCase();
-    const suggestions = propertyList
-      .filter((p) => matchesTab(p, activeTab))
-      .filter(
-        (p) =>
-          p.title.toLowerCase().includes(query) ||
-          p.location.toLowerCase().includes(query),
-      )
-      .slice(0, 5);
-
-    return suggestions;
-  };
+  // Search suggestions (top 5 matches from the API, debounced with the query).
+  useEffect(() => {
+    if (!hasListings || !debouncedQuery) {
+      setSuggestions([]);
+      return;
+    }
+    const controller = new AbortController();
+    api
+      .listProperties({ tab: activeTab, q: debouncedQuery, limit: 5 }, controller.signal)
+      .then((data) => setSuggestions(data.items))
+      .catch(() => {});
+    return () => controller.abort();
+  }, [activeTab, debouncedQuery, hasListings]);
+  const getSearchSuggestions = () => (searchQuery.trim() ? suggestions : []);
 
   const handleSearchSelect = (property) => {
     setSearchQuery(property.title);
     setShowSuggestions(false);
   };
 
-  // Filter properties
-  const filteredProperties = propertyList.filter((property) => {
-    // 1️⃣ Match tab (Buy, Rent, Commercial, Plot)
-    if (!matchesTab(property, activeTab)) return false;
-
-    // 2️⃣ Search query filter
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase();
-      const matchesSearch =
-        property.title.toLowerCase().includes(query) ||
-        property.location.toLowerCase().includes(query);
-      if (!matchesSearch) return false;
-    }
-
-    // 3️⃣ BHK filter — match selected "N BHK" options against the variant
-    // numbers the property offers (e.g. "2 BHK" matches a "1/2/3 BHK" property).
-    if (filters.bhk.length > 0) {
-      const propNums = bhkNumbers(property.bhk);
-      const selectedNums = filters.bhk.map((o) => parseInt(o, 10));
-      if (!selectedNums.some((n) => propNums.includes(n))) return false;
-    }
-
-    // 4️⃣ Property type filter
-    if (
-      filters.propertyType.length > 0 &&
-      !filters.propertyType.includes(property.propertyType)
-    )
-      return false;
-
-    // 5️⃣ Amenities filter (property must have ALL selected amenities)
-    if (filters.amenities.length > 0) {
-      const titles = (property.sections?.amenities || []).map((a) =>
-        (a.title || "").toLowerCase(),
-      );
-      const hasAll = filters.amenities.every((label) => {
-        const def = AMENITY_FILTERS.find((x) => x.label === label);
-        return (
-          def && titles.some((t) => def.terms.some((term) => t.includes(term)))
-        );
-      });
-      if (!hasAll) return false;
-    }
-
-    // 6️⃣ Verified & parking filters
-    if (filters.verified && !property.verified) return false;
-    if (filters.parking && !property.parking) return false;
-
-    // 7️⃣ Price range (only applied when the property has a parseable price)
-    const priceValue = parsePrice(property.price);
-    if (
-      priceValue != null &&
-      (priceValue < filters.priceRange[0] ||
-        priceValue > filters.priceRange[1])
-    )
-      return false;
-
-    // 8️⃣ Area range (only applied when area is expressed in sq.ft)
-    const areaSqft = parseAreaSqft(property.area);
-    if (
-      areaSqft != null &&
-      (areaSqft < filters.areaRange[0] || areaSqft > filters.areaRange[1])
-    )
-      return false;
-
-    // ✅ Passed all filters
-    return true;
-  });
-
-  console.log("filter property", filteredProperties);
+  // Count of applied filters — shown as a badge on the mobile "Filters" toggle
+  // so users know filters are active even when the controls are collapsed.
+  const DEFAULT_PRICE = [0, 100000000];
+  const DEFAULT_AREA = [0, 100000];
+  const activeFilterCount =
+    filters.bhk.length +
+    filters.propertyType.length +
+    filters.amenities.length +
+    (filters.verified ? 1 : 0) +
+    (filters.parking ? 1 : 0) +
+    (filters.priceRange[0] !== DEFAULT_PRICE[0] ||
+    filters.priceRange[1] !== DEFAULT_PRICE[1]
+      ? 1
+      : 0) +
+    (filters.areaRange[0] !== DEFAULT_AREA[0] ||
+    filters.areaRange[1] !== DEFAULT_AREA[1]
+      ? 1
+      : 0);
 
   // Close suggestions when clicking outside
   useEffect(() => {
@@ -545,40 +494,28 @@ const RentalProperties = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="w-full h-[70vh] flex flex-col justify-center items-center relative overflow-visible"
-          style={{
-            background: `linear-gradient(135deg, #1a2a3a 0%, #1f3549 50%, #1a2a3a 100%), ${getBackgroundPattern(
-              activeTab,
-            )}`,
-            backgroundAttachment: "fixed",
-          }}
+          // Extra 6rem of height + top padding = the space the (now overlaid)
+          // navbar used to take, so the image runs behind it. min-h (not h)
+          // lets the section grow when the badges wrap to two rows on mobile.
+          className="w-full min-h-[calc(70vh+6rem)] pt-24 pb-6 flex flex-col items-center relative overflow-visible"
         >
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: `radial-gradient(ellipse at right center, rgba(124, 201, 51, 0.04) 0%, transparent 80%)`,
-            }}
-          />
-
-          <motion.div
-            key={`shape-${activeTab}`}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 0.15, x: 0 }}
-            exit={{ opacity: 0, x: 100 }}
-            transition={{ duration: 0.6 }}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 w-96 h-96 pointer-events-none"
-            style={{
-              backgroundImage: `radial-gradient(circle at 30% 30%, ${currentTheme.accent} 0%, transparent 70%)`,
-              filter: "blur(80px)",
-            }}
-          />
-
-          <div className="relative z-40 w-full max-w-6xl flex flex-col justify-center items-center">
+          {/* Background photo in its own clipped layer so the blur and dimming
+              don't affect the heading/search, and the section stays
+              overflow-visible for the suggestions dropdown. */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div
+              className="absolute inset-0 scale-105"
+              style={{
+                backgroundImage: `url(${heroBg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                filter: "blur(0.5px)",
+              }}
+            />
+            <div className="absolute inset-0 bg-black/40" />
+          </div>
+          <div className="relative z-40 flex-1 w-full max-w-6xl flex flex-col justify-center items-center">
             {/* Header */}
             <motion.div
               key={`header-${activeTab}`}
@@ -598,7 +535,7 @@ const RentalProperties = () => {
             {/* Tabs */}
             <motion.div
               layout
-              className="max-w-xl md:max-w-3xl w-full mx-auto bg-black/30 backdrop-blur-md border-t border-white/20 rounded-t-xl md:rounded-t-3xl flex items-center justify-between overflow-hidden shadow-lg"
+              className="max-w-xl md:max-w-3xl w-full mx-auto border-t border-white/20 rounded-t-xl md:rounded-t-3xl flex items-center justify-between overflow-hidden shadow-lg"
             >
               {tabs.map((tab, idx) => (
                 <div
@@ -746,6 +683,27 @@ const RentalProperties = () => {
               </AnimatePresence>
             </div>
           </div>
+
+          {/* Trust badges — 2×2 on mobile, one row from md up. z-30 keeps the
+              search suggestions dropdown (z-40 container) above them. */}
+          <div className="relative z-30 w-full max-w-7xl mt-10 px-4 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-6">
+            {TRUST_BADGES.map((badge) => (
+              <div
+                key={badge.title}
+                className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 text-center sm:text-left"
+              >
+                <div className="shrink-0 drop-shadow-lg">{badge.icon}</div>
+                <div className="font-serif text-white drop-shadow-lg">
+                  <p className="text-sm md:text-base lg:text-lg font-bold leading-tight">
+                    {badge.title}
+                  </p>
+                  <p className="text-xs md:text-sm lg:text-base font-semibold text-white/85 leading-tight">
+                    {badge.subtitle}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Horizontal Filters */}
@@ -765,6 +723,11 @@ const RentalProperties = () => {
                 <h3 className="text-lg font-semibold text-slate-800 flex items-center gap-2">
                   <FaFilter className="text-slate-600" />
                   Filters
+                  {activeFilterCount > 0 && (
+                    <span className="ml-1 inline-flex items-center justify-center min-w-[20px] h-5 px-1 rounded-full bg-[#7cc933] text-white text-xs font-semibold">
+                      {activeFilterCount}
+                    </span>
+                  )}
                 </h3>
                 <button
                   onClick={clearFilters}
@@ -774,13 +737,19 @@ const RentalProperties = () => {
                 </button>
               </div>
 
-              <div className="flex flex-wrap gap-3 sm:gap-4 py-2 sm:py-4 px-2 sm:px-0 ">
-                {/* BHK Filter */}
-                {activeTab !== "Commercial" && activeTab !== "Plot" && (
-                  <div className="relative flex-shrink-0 ">
+              <div className="relative">
+                {/* Filter controls: a single horizontally-scrollable strip on
+                    mobile (one swipeable row → saves vertical space) that wraps
+                    normally on larger screens. The dropdown panels are rendered
+                    OUTSIDE this strip so its overflow never clips them. */}
+                <div className="flex flex-nowrap sm:flex-wrap overflow-x-auto sm:overflow-visible no-scrollbar gap-3 sm:gap-4 py-2 sm:py-4">
+                  {/* BHK */}
+                  {activeTab !== "Commercial" &&
+                    activeTab !== "Plot" &&
+                    activeTab !== "Investment" && (
                     <button
                       onClick={() => toggleDropdown("bhk")}
-                      className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                      className="flex-shrink-0 whitespace-nowrap flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
                     >
                       <FaBed className="text-slate-500" />
                       {getSelectedLabel("bhk") || "Configuration"}
@@ -790,37 +759,12 @@ const RentalProperties = () => {
                         <FaChevronDown className="ml-1 text-xs" />
                       )}
                     </button>
+                  )}
 
-                    {openDropdown === "bhk" && (
-                      <div className="absolute z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[180px]">
-                        <p className="text-xs font-semibold text-slate-600 mb-2">
-                          Select BHK
-                        </p>
-                        <div className="w-full lg:w-[600px] flex flex-row flex-wrap gap-2">
-                          {bhkOptions.map((option) => (
-                            <button
-                              key={option}
-                              onClick={() => handleFilterChange("bhk", option)}
-                              className={`px-3 py-1 rounded-lg text-sm font-medium transition-all ${
-                                filters.bhk.includes(option)
-                                  ? "bg-[#7cc933] text-white shadow-md"
-                                  : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                              }`}
-                            >
-                              {option}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* Property Type Filter */}
-                <div className="relative flex-shrink-0 ">
+                  {/* Property Type */}
                   <button
                     onClick={() => toggleDropdown("propertyType")}
-                    className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                    className="flex-shrink-0 whitespace-nowrap flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
                   >
                     <FaHome className="text-slate-500" />
                     {getSelectedLabel("propertyType") || "Property Type"}
@@ -831,37 +775,10 @@ const RentalProperties = () => {
                     )}
                   </button>
 
-                  {openDropdown === "propertyType" && (
-                    <div className="absolute z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[180px]">
-                      <p className="text-xs font-semibold text-slate-600 mb-2">
-                        Select Property Type
-                      </p>
-                      <div className="w-full lg:w-[600px] flex flex-row flex-wrap gap-2">
-                        {propertyTypes.map((type) => (
-                          <button
-                            key={type}
-                            onClick={() =>
-                              handleFilterChange("propertyType", type)
-                            }
-                            className={`px-3 py-1 rounded-lg text-sm font-medium transition-all ${
-                              filters.propertyType.includes(type)
-                                ? "bg-[#7cc933] text-white shadow-md"
-                                : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                            }`}
-                          >
-                            {type}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Amenities */}
-                <div className="relative flex-shrink-0 ">
+                  {/* Amenities */}
                   <button
                     onClick={() => toggleDropdown("amenities")}
-                    className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                    className="flex-shrink-0 whitespace-nowrap flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
                   >
                     <FaBuilding className="text-slate-500" />
                     {filters.amenities.length > 0
@@ -874,46 +791,13 @@ const RentalProperties = () => {
                     )}
                   </button>
 
-                  {openDropdown === "amenities" && (
-                    <div className="absolute z-20 mt-2 bg-white shadow-lg rounded-lg p-3 min-w-[220px] ">
-                      <p className="text-xs font-semibold text-slate-600 mb-2">
-                        Select Amenities
-                      </p>
-                      <div className="w-full lg:w-[600px] flex flex-row flex-wrap gap-2">
-                        {amenityOptions.length === 0 && (
-                          <p className="text-xs text-slate-400">
-                            No amenities available
-                          </p>
-                        )}
-                        {amenityOptions.map((amenity) => (
-                          <button
-                            key={amenity.label}
-                            onClick={() =>
-                              handleFilterChange("amenities", amenity.label)
-                            }
-                            className={`px-3 py-1 rounded-lg text-sm font-medium transition-all ${
-                              filters.amenities.includes(amenity.label)
-                                ? "bg-[#7cc933] text-white shadow-md"
-                                : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                            }`}
-                          >
-                            {amenity.label}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Price Range */}
-                <div className="relative flex-shrink-0 ">
+                  {/* Price Range */}
                   <button
                     onClick={() => toggleDropdown("priceRange")}
-                    className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                    className="flex-shrink-0 whitespace-nowrap flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
                   >
                     <FaRupeeSign className="text-slate-500" />
                     Price Range
-                    {/* {`₹${filters.priceRange[0].toLocaleString()} - ₹${filters.priceRange[1].toLocaleString()}`} */}
                     {openDropdown === "priceRange" ? (
                       <FaChevronUp />
                     ) : (
@@ -921,142 +805,215 @@ const RentalProperties = () => {
                     )}
                   </button>
 
-                  {openDropdown === "priceRange" && (
-                    <div className="absolute left-0 sm:left-auto sm:right-0 z-20 mt-2 bg-white shadow-lg rounded-lg p-3 w-[280px] max-w-[calc(100vw-2.5rem)]">
-                      <div className="flex items-center justify-between mb-2">
-                        <p className="text-xs font-semibold text-slate-600">
-                          Select Price Range
-                        </p>
-                        <button
-                          type="button"
-                          onClick={resetPriceRange}
-                          className="p-1.5 text-slate-500 rounded-md hover:bg-slate-100 hover:text-slate-700 transition"
-                          title="Reset"
-                          aria-label="Reset price range"
-                        >
-                          <FaUndo className="text-xs" />
-                        </button>
-                      </div>
-                      <div className="bg-slate-50 p-3 rounded-lg">
-                        <div className="flex justify-between text-xs text-slate-600 mb-2">
-                          <span>₹{filters.priceRange[0].toLocaleString()}</span>
-                          <span>₹{filters.priceRange[1].toLocaleString()}</span>
-                        </div>
-                        <Range
-                          values={filters.priceRange}
-                          step={500}
-                          min={0}
-                          max={100000000}
-                          onChange={(values) =>
-                            handleFilterChange("priceRange", values)
-                          }
-                          renderTrack={({ props, children }) => (
-                            <div
-                              {...props}
-                              className="w-full h-2 bg-slate-200 rounded-full relative"
-                            >
-                              <div
-                                className="absolute h-2 bg-[#7cc933] rounded-full"
-                                style={{
-                                  // Calculating percentage based on min=0 and max=20000000
-                                  left: `${
-                                    (filters.priceRange[0] / 100000000) * 100
-                                  }%`,
-                                  right: `${
-                                    100 -
-                                    (filters.priceRange[1] / 100000000) * 100
-                                  }%`,
-                                }}
-                              />
-                              {children}
-                            </div>
-                          )}
-                          renderThumb={({ props }) => (
-                            <div
-                              {...props}
-                              className="w-4 h-4 bg-[#7cc933] rounded-full shadow-lg cursor-pointer"
-                            />
-                          )}
-                        />
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Area Range Dropdown */}
-                <div className="relative flex-shrink-0 ">
+                  {/* Area Range */}
                   <button
                     onClick={() => toggleDropdown("areaRange")}
-                    className="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                    className="flex-shrink-0 whitespace-nowrap flex items-center gap-2 bg-slate-100 hover:bg-slate-200 px-4 py-2 rounded-lg text-sm font-medium transition-all"
                   >
-                    <FaRulerCombined className="text-slate-500" /> Area Range 
-                    {/* ( {`${filters.areaRange[0]} - ${filters.areaRange[1]} sq.ft`} ) */}
+                    <FaRulerCombined className="text-slate-500" /> Area Range
                     {openDropdown === "areaRange" ? (
                       <FaChevronUp />
                     ) : (
                       <FaChevronDown />
                     )}
                   </button>
-
-                  {openDropdown === "areaRange" && (
-                    <div className="absolute left-0 sm:left-auto sm:right-0 z-20 mt-2 bg-white shadow-lg rounded-lg p-3 w-[280px] max-w-[calc(100vw-2.5rem)]">
-                      <div className="flex items-center justify-between mb-2">
-                        <p className="text-xs font-semibold text-slate-600">
-                          Select Area Range
-                        </p>
-                        <button
-                          type="button"
-                          onClick={resetAreaRange}
-                          className="p-1.5 text-slate-500 rounded-md hover:bg-slate-100 hover:text-slate-700 transition"
-                          title="Reset"
-                          aria-label="Reset area range"
-                        >
-                          <FaUndo className="text-xs" />
-                        </button>
-                      </div>
-                      <div className="bg-slate-50 p-3 rounded-lg">
-                        <div className="flex justify-between text-xs text-slate-600 mb-2">
-                          <span>{filters.areaRange[0]} sq.ft</span>
-                          <span>{filters.areaRange[1]} sq.ft</span>
-                        </div>
-                        <Range
-                          values={filters.areaRange}
-                          step={500}
-                          min={0}
-                          max={100000}
-                          onChange={(values) =>
-                            handleFilterChange("areaRange", values)
-                          }
-                          renderTrack={({ props, children }) => (
-                            <div
-                              {...props}
-                              className="w-full h-2 bg-slate-200 rounded-full relative"
-                            >
-                              <div
-                                className="absolute h-2 bg-[#7cc933] rounded-full"
-                                style={{
-                                  left: `${
-                                    (filters.areaRange[0] / 100000) * 100
-                                  }%`,
-                                  right: `${
-                                    100 - (filters.areaRange[1] / 100000) * 100
-                                  }%`,
-                                }}
-                              />
-                              {children}
-                            </div>
-                          )}
-                          renderThumb={({ props }) => (
-                            <div
-                              {...props}
-                              className="w-4 h-4 bg-[#7cc933] rounded-full shadow-lg cursor-pointer"
-                            />
-                          )}
-                        />
-                      </div>
-                    </div>
-                  )}
                 </div>
+
+                {/* ── Dropdown panels (outside the scroll strip → never clipped) ── */}
+                {openDropdown === "bhk" && (
+                  <div className="absolute left-0 top-full z-30 mt-1 bg-white shadow-lg rounded-lg p-3 w-[min(600px,calc(100vw-2rem))] max-w-[calc(100vw-2rem)] border border-slate-100">
+                    <p className="text-xs font-semibold text-slate-600 mb-2">
+                      Select BHK
+                    </p>
+                    <div className="w-full flex flex-row flex-wrap gap-2">
+                      {bhkOptions.map((option) => (
+                        <button
+                          key={option}
+                          onClick={() => handleFilterChange("bhk", option)}
+                          className={`px-3 py-1 rounded-lg text-sm font-medium transition-all ${
+                            filters.bhk.includes(option)
+                              ? "bg-[#7cc933] text-white shadow-md"
+                              : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                          }`}
+                        >
+                          {option}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {openDropdown === "propertyType" && (
+                  <div className="absolute left-0 top-full z-30 mt-1 bg-white shadow-lg rounded-lg p-3 w-[min(600px,calc(100vw-2rem))] max-w-[calc(100vw-2rem)] border border-slate-100">
+                    <p className="text-xs font-semibold text-slate-600 mb-2">
+                      Select Property Type
+                    </p>
+                    <div className="w-full flex flex-row flex-wrap gap-2">
+                      {propertyTypes.map((type) => (
+                        <button
+                          key={type}
+                          onClick={() => handleFilterChange("propertyType", type)}
+                          className={`px-3 py-1 rounded-lg text-sm font-medium transition-all ${
+                            filters.propertyType.includes(type)
+                              ? "bg-[#7cc933] text-white shadow-md"
+                              : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                          }`}
+                        >
+                          {type}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {openDropdown === "amenities" && (
+                  <div className="absolute left-0 top-full z-30 mt-1 bg-white shadow-lg rounded-lg p-3 w-[min(600px,calc(100vw-2rem))] max-w-[calc(100vw-2rem)] border border-slate-100">
+                    <p className="text-xs font-semibold text-slate-600 mb-2">
+                      Select Amenities
+                    </p>
+                    <div className="w-full flex flex-row flex-wrap gap-2">
+                      {amenityOptions.length === 0 && (
+                        <p className="text-xs text-slate-400">
+                          No amenities available
+                        </p>
+                      )}
+                      {amenityOptions.map((amenity) => (
+                        <button
+                          key={amenity.label}
+                          onClick={() =>
+                            handleFilterChange("amenities", amenity.label)
+                          }
+                          className={`px-3 py-1 rounded-lg text-sm font-medium transition-all ${
+                            filters.amenities.includes(amenity.label)
+                              ? "bg-[#7cc933] text-white shadow-md"
+                              : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                          }`}
+                        >
+                          {amenity.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {openDropdown === "priceRange" && (
+                  <div className="absolute left-0 sm:left-auto sm:right-0 top-full z-30 mt-1 bg-white shadow-lg rounded-lg p-3 w-[280px] max-w-[calc(100vw-2.5rem)] border border-slate-100">
+                    <div className="flex items-center justify-between mb-2">
+                      <p className="text-xs font-semibold text-slate-600">
+                        Select Price Range
+                      </p>
+                      <button
+                        type="button"
+                        onClick={resetPriceRange}
+                        className="p-1.5 text-slate-500 rounded-md hover:bg-slate-100 hover:text-slate-700 transition"
+                        title="Reset"
+                        aria-label="Reset price range"
+                      >
+                        <FaUndo className="text-xs" />
+                      </button>
+                    </div>
+                    <div className="bg-slate-50 p-3 rounded-lg">
+                      <div className="flex justify-between text-xs text-slate-600 mb-2">
+                        <span>₹{filters.priceRange[0].toLocaleString()}</span>
+                        <span>₹{filters.priceRange[1].toLocaleString()}</span>
+                      </div>
+                      <Range
+                        values={filters.priceRange}
+                        step={500}
+                        min={0}
+                        max={100000000}
+                        onChange={(values) =>
+                          handleFilterChange("priceRange", values)
+                        }
+                        renderTrack={({ props, children }) => (
+                          <div
+                            {...props}
+                            className="w-full h-2 bg-slate-200 rounded-full relative"
+                          >
+                            <div
+                              className="absolute h-2 bg-[#7cc933] rounded-full"
+                              style={{
+                                left: `${
+                                  (filters.priceRange[0] / 100000000) * 100
+                                }%`,
+                                right: `${
+                                  100 -
+                                  (filters.priceRange[1] / 100000000) * 100
+                                }%`,
+                              }}
+                            />
+                            {children}
+                          </div>
+                        )}
+                        renderThumb={({ props }) => (
+                          <div
+                            {...props}
+                            className="w-4 h-4 bg-[#7cc933] rounded-full shadow-lg cursor-pointer"
+                          />
+                        )}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {openDropdown === "areaRange" && (
+                  <div className="absolute left-0 sm:left-auto sm:right-0 top-full z-30 mt-1 bg-white shadow-lg rounded-lg p-3 w-[280px] max-w-[calc(100vw-2.5rem)] border border-slate-100">
+                    <div className="flex items-center justify-between mb-2">
+                      <p className="text-xs font-semibold text-slate-600">
+                        Select Area Range
+                      </p>
+                      <button
+                        type="button"
+                        onClick={resetAreaRange}
+                        className="p-1.5 text-slate-500 rounded-md hover:bg-slate-100 hover:text-slate-700 transition"
+                        title="Reset"
+                        aria-label="Reset area range"
+                      >
+                        <FaUndo className="text-xs" />
+                      </button>
+                    </div>
+                    <div className="bg-slate-50 p-3 rounded-lg">
+                      <div className="flex justify-between text-xs text-slate-600 mb-2">
+                        <span>{filters.areaRange[0]} sq.ft</span>
+                        <span>{filters.areaRange[1]} sq.ft</span>
+                      </div>
+                      <Range
+                        values={filters.areaRange}
+                        step={500}
+                        min={0}
+                        max={100000}
+                        onChange={(values) =>
+                          handleFilterChange("areaRange", values)
+                        }
+                        renderTrack={({ props, children }) => (
+                          <div
+                            {...props}
+                            className="w-full h-2 bg-slate-200 rounded-full relative"
+                          >
+                            <div
+                              className="absolute h-2 bg-[#7cc933] rounded-full"
+                              style={{
+                                left: `${
+                                  (filters.areaRange[0] / 100000) * 100
+                                }%`,
+                                right: `${
+                                  100 - (filters.areaRange[1] / 100000) * 100
+                                }%`,
+                              }}
+                            />
+                            {children}
+                          </div>
+                        )}
+                        renderThumb={({ props }) => (
+                          <div
+                            {...props}
+                            className="w-4 h-4 bg-[#7cc933] rounded-full shadow-lg cursor-pointer"
+                          />
+                        )}
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </motion.div>
@@ -1070,7 +1027,7 @@ const RentalProperties = () => {
           viewport={{ once: true }}
           className={`px-6 md:px-8 lg:px-8 xl:px-20 ${isSticky ? "py-[340px] sm:py-[300px] md:py-48" : "py-10"}`}
         >
-          {activeTab === "Rent" ? (
+          {activeTab === "Rent" || activeTab === "Investment" ? (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -1081,22 +1038,50 @@ const RentalProperties = () => {
                 <FaHome className="text-3xl text-[#7cc933]" />
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-3">
-                Rental Properties Coming Soon
+                {activeTab === "Investment"
+                  ? "Investment Opportunities Coming Soon"
+                  : "Rental Properties Coming Soon"}
               </h3>
               <p className="text-base text-slate-600 max-w-xl mx-auto">
-                We're working on bringing you the best rental listings in Indore.
-                Check back shortly — exciting options are on the way!
+                {activeTab === "Investment"
+                  ? "We're curating the best investment opportunities in Indore. Check back shortly — exciting options are on the way!"
+                  : "We're working on bringing you the best rental listings in Indore. Check back shortly — exciting options are on the way!"}
               </p>
             </motion.div>
           ) : (
             <>
-              <div className="flex items-center justify-between mb-8">
+              {/* <div className="flex items-center justify-between mb-8">
                 <h3 className="text-2xl font-bold text-slate-800">
                   {filteredProperties.length} Properties Found
                 </h3>
-              </div>
+              </div> */}
 
-              {filteredProperties.length === 0 ? (
+              <div ref={gridRef} className="scroll-mt-40" />
+
+              {listError ? (
+                <div className="text-center py-20">
+                  <p className="text-lg text-red-600 mb-4">{listError}</p>
+                  <button
+                    onClick={() => setPageState({ key: queryKey, page })}
+                    className="px-6 py-3 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition"
+                  >
+                    Retry
+                  </button>
+                </div>
+              ) : listLoading && filteredProperties.length === 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" aria-busy="true">
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <div key={i} className="border border-slate-200 rounded-2xl overflow-hidden animate-pulse">
+                      <div className="h-48 bg-slate-100" />
+                      <div className="p-5 space-y-3">
+                        <div className="h-5 w-2/3 bg-slate-100 rounded" />
+                        <div className="h-4 w-1/2 bg-slate-100 rounded" />
+                        <div className="h-10 bg-slate-100 rounded mt-6" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : filteredProperties.length === 0 ? (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -1105,9 +1090,6 @@ const RentalProperties = () => {
               <p className="text-xl text-slate-600 mb-4">
                 No properties match your filters
               </p>
-              {
-                propertyTypes
-              }
               <button
                 onClick={clearFilters}
                 className="px-6 py-3 bg-[#7cc933] text-white rounded-lg font-medium hover:bg-[#6bb028] transition"
@@ -1116,10 +1098,11 @@ const RentalProperties = () => {
               </button>
             </motion.div>
           ) : (
-            <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <>
+            <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity ${listLoading ? "opacity-50" : ""}`}>
               {filteredProperties.map((property, i) => (
                 <motion.a
-                  href={`/propertyDetails/${property?.id}`}
+                  href={`/property/${property?.slug || property?.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => handleCardClick(e, property)}
@@ -1136,8 +1119,10 @@ const RentalProperties = () => {
                 >
                   <div className="relative h-48 w-full overflow-hidden bg-slate-50 flex items-center justify-center p-4">
                     <img
-                      src={property?.images?.[0]}
+                      src={optimizeImage(property?.images?.[0], 600)}
                       alt={property.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-contain"
                     />
 
@@ -1229,6 +1214,15 @@ const RentalProperties = () => {
                 </motion.a>
               ))}
             </div>
+
+            <Pagination
+              page={result.page}
+              pages={result.pages}
+              total={result.total}
+              limit={result.limit}
+              onChange={goToPage}
+            />
+            </>
               )}
             </>
           )}
