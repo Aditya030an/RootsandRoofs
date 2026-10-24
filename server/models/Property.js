@@ -22,6 +22,8 @@ const propertySchema = new Schema(
     pricePerSqFt: { type: Schema.Types.Mixed, default: 0 },
     verified: { type: Boolean, default: true },
     featured: { type: Boolean, default: false },
+    promoted: { type: Boolean, default: false }, // advertised in the site's right-side panel
+    promotedOrder: { type: Number, default: 0 }, // lower shows first
     readyToMove: { type: Boolean, default: false },
     bathrooms: { type: Number, default: 0 },
     parking: { type: Boolean, default: false },

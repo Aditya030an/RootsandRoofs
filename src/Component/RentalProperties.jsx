@@ -27,6 +27,7 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../utils/api";
 import { optimizeImage } from "../utils/image";
 import Pagination from "./Pagination";
+import PromotedPanel from "./PromotedPanel";
 import ContactFormModal from "./ContactSection";
 // bg_img1.png with its baked-in badge strip cropped off — the badges are
 // rendered as HTML below so they wrap on small screens instead of being cut.
@@ -1049,7 +1050,8 @@ const RentalProperties = () => {
               </p>
             </motion.div>
           ) : (
-            <>
+            <div className="flex flex-col-reverse lg:flex-row lg:items-start gap-8">
+            <div className="flex-1 min-w-0">
               {/* <div className="flex items-center justify-between mb-8">
                 <h3 className="text-2xl font-bold text-slate-800">
                   {filteredProperties.length} Properties Found
@@ -1099,7 +1101,7 @@ const RentalProperties = () => {
             </motion.div>
           ) : (
             <>
-            <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 transition-opacity ${listLoading ? "opacity-50" : ""}`}>
+            <div className={`grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 transition-opacity ${listLoading ? "opacity-50" : ""}`}>
               {filteredProperties.map((property, i) => (
                 <motion.a
                   href={`/property/${property?.slug || property?.id}`}
@@ -1224,7 +1226,9 @@ const RentalProperties = () => {
             />
             </>
               )}
-            </>
+            </div>
+            <PromotedPanel />
+            </div>
           )}
         </motion.div>
       </section>
